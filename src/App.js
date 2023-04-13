@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
- <g1>AntColony Pharaon</g1>
+  return (null
+
   );
 }
+
 
 export default App;
