@@ -11,9 +11,9 @@ function LoginForm() {
       <div class="login-right">
         <h2 class="logintitle">Log in</h2>
         <form class="loginforma">
-          <label class="emailh2">Email:</label>
+          <label class="emailh2">Email</label>
           <input type="email" name="login_email" class="placeholder" placeholder="Enter your email"/>
-          <label class="passwordh2">Password:</label>
+          <label class="passwordh2">Password</label>
           <input type="password" name="login_password" class="placeholder" placeholder="Enter your password" />
           <div class="login-buttons">
             <button type="submit">Log in</button>

@@ -11,7 +11,8 @@
     padding: 20px;
     min-height: 100vh;
     display: flex;
-    background-image: url(../../public/img/Backgroundlogin.svg);
+    background: rgba(255, 255, 255, 0.8) url(../../public/img/Backgroundlogin.svg);
+    background-size: cover;
   }
   
   .login-left img {
@@ -118,6 +119,7 @@ right: 65.28%;
 top: 48.44%;
 bottom: 48.41%;
 transform: scale(0.7);
+opacity: 1;
 
   }
 
