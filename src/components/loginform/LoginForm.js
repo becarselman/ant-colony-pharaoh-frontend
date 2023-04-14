@@ -1,4 +1,5 @@
-import './LoginForm.css';
+import './LoginForm.scss';
+import Logotype from '../../images/loginform/Logotype.svg';
 
 function LoginForm() {
   return (
@@ -6,7 +7,7 @@ function LoginForm() {
       <div class="login-left">
         <div class="image-container">
         </div>
-        <img class="logo-type" src="img/Logotype.svg" alt="Slika" /> 
+        <img className="logo-type" src={Logotype} alt="Photo" />
       </div>
       <div class="login-right">
         <h2 class="login-title">Log in</h2>

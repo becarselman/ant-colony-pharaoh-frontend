@@ -11,7 +11,7 @@
     padding: 20px;
     min-height: 100vh;
     display: flex;
-    background: rgba(255, 255, 255, 0.8) url(../../public/img/Backgroundlogin.svg);
+    background: rgba(255, 255, 255, 0.8) url(../../images/loginform/Backgroundlogin.svg);
     background-size: cover;
   }
   
@@ -37,7 +37,6 @@
   .login-right label {
     width: 151px;
     height: 24px;
-    font-family: 'Gilroy';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -99,7 +98,6 @@
     height: -30px;
     left: 1108px;
     top: 563px;
-    font-family: 'Gilroy';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -126,20 +124,12 @@ opacity: 1;
  .placeholder {
 
 
-font-family: 'Gilroy';
 font-style: normal;
 font-weight: 400;
-font-size: 16px;
+font-size: 13.8px;
 line-height: 24px;
-
-/* identical to box height, or 150% */
-
-/* Text/Dark Blue */
 color: #272934;
-
 opacity: 0.5;
-
-/* Inside auto layout */
 flex: none;
 order: 0;
 flex-grow: 0;
@@ -177,7 +167,7 @@ align-items: center;
 
   .login-title {
     width: 100%;
-font-family: 'Gilroy';
+font-family: 'Montserrat';
 font-style: normal;
 font-weight: 600;
 font-size: 32px;
