@@ -6,11 +6,11 @@ function LoginForm() {
       <div class="login-left">
         <div class="image-container">
         </div>
-        <img class="logoType" src="img/Logotype.svg" alt="Slika" /> 
+        <img class="logo-type" src="img/Logotype.svg" alt="Slika" /> 
       </div>
       <div class="login-right">
-        <h2 class="loginTitle">Log in</h2>
-        <form class="loginForm">
+        <h2 class="login-title">Log in</h2>
+        <form class="login-form">
           <label class="emailh2">Email</label>
           <input type="email" name="login_email" class="placeholder" placeholder="Enter your email"/>
           <label class="passwordh2">Password</label>
@@ -22,7 +22,7 @@ function LoginForm() {
               <input type="checkbox" id="remember-password" name="remember-password"  />
               <label for="remember-password">Remember password</label>
             </div>
-            <a class="forgotPassword" href="#">Forgot password?</a>
+            <a class="forgot-password" href="#">Forgot password?</a>
             </div>
           </div>
         </form>

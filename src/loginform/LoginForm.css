@@ -112,7 +112,7 @@
 
 
 
-  .logoType {
+  .logo-type {
     
 left: 15.28%;
 right: 65.28%;
@@ -175,7 +175,7 @@ justify-content: space-between;
 align-items: center;
   }
 
-  .loginTitle {
+  .login-title {
     width: 100%;
 font-family: 'Gilroy';
 font-style: normal;
@@ -186,7 +186,7 @@ text-align: center;
 color: #292929;
   }
 
-  .loginForm {
+  .login-form {
     width:80%;
   }
 
