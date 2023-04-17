@@ -11,7 +11,7 @@ function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  const email = formData.get('login_email');moze
+  const email = formData.get('login_email');
   const password = formData.get('login_password');
   authService.login(email, password)
     .then((response) => {
