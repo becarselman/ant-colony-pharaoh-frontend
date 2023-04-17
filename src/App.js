@@ -1,8 +1,8 @@
-import './App.css';
+import LoginForm from './components/loginform/LoginForm.js';
 
 function App() {
   return (
- <g1>AntColony Pharaon</g1>
+ <LoginForm></LoginForm>
   );
 }
 
