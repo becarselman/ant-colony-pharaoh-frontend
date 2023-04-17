@@ -11,15 +11,13 @@ function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  const email = formData.get('login_email');
+  const email = formData.get('login_email');moze
   const password = formData.get('login_password');
   authService.login(email, password)
     .then((response) => {
-      // Uspesno logovanje - redirekcija na stranicu dobrodošlice
       window.location.href = '/welcome';
     })
     .catch((error) => {
-      // Greška pri logovanju - prikaz poruke korisniku
       alert(error.message);
     });
 }
