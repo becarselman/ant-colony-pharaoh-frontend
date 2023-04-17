@@ -32,6 +32,7 @@ function LoginForm() {
     dispatch(loginRequest(email, password));
   };
 
+function LoginForm() {
   return (
     <div class="login-container">
       <div class="login-left">
