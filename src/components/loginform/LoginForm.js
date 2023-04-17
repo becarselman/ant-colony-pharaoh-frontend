@@ -1,7 +1,39 @@
 import './LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
+import authService from '../../service/authService';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { loginRequest } from '../../actions/authActions';
+
+
+
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+  const email = formData.get('login_email');
+  const password = formData.get('login_password');
+  authService.login(email, password)
+    .then((response) => {
+      // Uspesno logovanje - redirekcija na stranicu dobrodošlice
+      window.location.href = '/welcome';
+    })
+    .catch((error) => {
+      // Greška pri logovanju - prikaz poruke korisniku
+      alert(error.message);
+    });
+}
 
 function LoginForm() {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(loginRequest(email, password));
+  };
+
   return (
     <div class="login-container">
       <div class="login-left">
