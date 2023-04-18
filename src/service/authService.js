@@ -2,8 +2,8 @@ import axios from 'axios';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import authService from '../service/authService';
 import { loginSuccess, loginError } from '../actions/authActions';
-import { LOGIN_REQUEST, } from '../actions/types';
-
+import { LOGIN_REQUEST } from '../actions/types';
+import { actionTypes } from '../actions/types';
 
 function* loginSaga(action) {
   try {
@@ -16,11 +16,21 @@ function* loginSaga(action) {
 }
 
 export function* watchAuth() {
-  yield takeLatest(LOGIN_REQUEST, loginSaga);
+  yield takeLatest(actionTypes.LOGIN_REQUEST, loginSaga);
 }
 
+const API_URL = process.env.REACT_APP_API_URL;
 
-const API_URL = 'http://localhost:3000/';
+axios.interceptors.request.use(
+  config => {
+    const userToken = localStorage.getItem('userToken');
+    if (userToken) {
+      config.headers.Authorization = `Bearer ${userToken}`;
+    }
+    return config;
+  },
+  error => Promise.reject(error)
+);
 
 const login = (email, password) => {
   return axios.post(`${API_URL}/login`, { email, password })
@@ -37,7 +47,12 @@ const logout = () => {
   localStorage.removeItem('userToken');
 };
 
+const isLoggedIn = () => {
+  return !!localStorage.getItem('userToken');
+};
+
 export default {
   login,
   logout,
+  isLoggedIn,
 };

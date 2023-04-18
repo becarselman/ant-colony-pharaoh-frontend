@@ -1,19 +1,38 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
-import authService from '../service/authService';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/types';
+import { put, call, takeLatest } from "redux-saga/effects";
+import { actionTypes } from "../actions/types";
+import authService from "../service/authService";
+import {
+  loginSuccess,
+  loginError,
+  loginRequest,
+  getErrors,
+} from "../actions/authActions";
 
-function* login(action) {
+export function* loginSaga(action) {
+  yield put(loginRequest());
   try {
-    const response = yield call(authService.login, action.payload.email, action.payload.password);
-    localStorage.setItem('token', response.data.token);
-    yield put({ type: LOGIN_SUCCESS });
+    const response = yield call(
+      authService.login,
+      action.payload.email,
+      action.payload.password
+    );
+    const { token, user } = response;
+    localStorage.setItem("jwtToken", token);
+    yield put(loginSuccess(user)); 
   } catch (error) {
-    yield put({ type: LOGIN_FAILURE, payload: error.response.data });
+    yield put(loginError(error.response.data)); 
+    yield put(getErrors(error.response.data)); 
   }
 }
 
-function* authSaga() {
-  yield takeLatest(LOGIN_REQUEST, login);
+export function* logoutSaga() {
+  localStorage.removeItem("jwtToken");
 }
 
-export default authSaga;
+export function* watchLogin() {
+  yield takeLatest(actionTypes.AUTHENTICATE_USER, loginSaga);
+}
+
+export function* watchLogout() {
+  yield takeLatest(actionTypes.LOGOUT_USER, logoutSaga);
+}

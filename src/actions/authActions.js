@@ -1,54 +1,44 @@
-import { AUTHENTICATE_USER, GET_ERRORS, LOGOUT_USER, LOGIN_ERROR, LOGIN_REQUEST } from "./types";
-import authService from "../service/authService";
+import { actionTypes } from "./types";
 
-export const authenticateUser = (email, password) => dispatch => {
-  authService.login(email, password)
-    .then(response => {
-      const { token, user } = response;
-      localStorage.setItem("jwtToken", token);
-      dispatch({  
-        type: AUTHENTICATE_USER,
-        payload: user
-      });
-    })
-    .catch(error => {
-      dispatch({
-        type: LOGIN_ERROR,
-        payload: error.response.data
-      });
-    });
-};
-
-export const logoutUser = () => dispatch => {
-  localStorage.removeItem("jwtToken");
-  dispatch({
-    type: LOGOUT_USER,
-  });
-};
-
-export const loginSuccess = (response) => {
+export const loginUser = (email, password) => {
   return {
-    type: AUTHENTICATE_USER,
-    payload: response
+    type: actionTypes.AUTHENTICATE_USER,
+    payload: {
+      email,
+      password,
+    },
+  };
+};
+
+export const logoutUser = () => {
+  return {
+    type: actionTypes.LOGOUT_USER,
+  };
+};
+
+export const loginSuccess = (user) => {
+  return {
+    type: actionTypes.AUTHENTICATE_USER_SUCCESS,
+    payload: user,
   };
 };
 
 export const loginError = (error) => {
   return {
-    type: LOGIN_ERROR,
-    payload: error
+    type: actionTypes.AUTHENTICATE_USER_ERROR,
+    payload: error,
   };
 };
 
 export const loginRequest = () => {
-    return {
-      type: LOGIN_REQUEST,
-    };
+  return {
+    type: actionTypes.AUTHENTICATE_USER_REQUEST,
+  };
 };
 
 export const getErrors = (errors) => {
   return {
-    type: GET_ERRORS,
-    payload: errors
+    type: actionTypes.GET_ERRORS,
+    payload: errors,
   };
 };
