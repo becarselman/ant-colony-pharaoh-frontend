@@ -1,4 +1,4 @@
-import axiosInstance from './../utilis/axiosInterceptor';
+import axiosInstance from './apiService';
 
 const login = (email, password) => {
   return axiosInstance.post('/login', { email, password })

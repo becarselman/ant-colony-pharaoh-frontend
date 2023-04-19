@@ -7,10 +7,8 @@ import {
   loginRequest,
   getErrors,
 } from "../actions/authActions";
-import axiosInstance from './../utilis/axiosInterceptor';
 
 function* loginSaga(action) {
-  yield put(loginRequest());
   try {
     const { email, password } = action.payload;
     const response = yield call(authService.login, { email, password });

@@ -5,14 +5,14 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function LoginForm({ loginRequest }) {
+function LoginForm({ actions }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginRequest(email, password)
+    actions.loginRequest(email, password)
       .then(() => {
         navigate('/welcome');
       })
