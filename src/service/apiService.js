@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const userToken = localStorage.getItem('jwtToken');
+    const userToken = localStorage.getItem('accessToken');
     if (userToken) {
       config.headers.Authorization = `Bearer ${userToken}`;
     }
@@ -23,8 +23,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('jwtToken');
-      window.location.reload();
+      localStorage.removeItem('accessToken');
     }
     return Promise.reject(error);
   },

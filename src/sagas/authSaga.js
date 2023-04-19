@@ -10,8 +10,7 @@ import {
 
 function* loginSaga(action) {
   try {
-    const { email, password } = action.payload;
-    const response = yield call(authService.login, { email, password });
+    const response = yield call(authService.login, action.payload);
     const { token, user } = response;
     localStorage.setItem("jwtToken", token);
     yield put(loginSuccess(user)); 
