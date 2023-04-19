@@ -1,12 +1,17 @@
-import { GET_ERRORS } from "../actions/types";
+import { actionTypes } from "../actions/types";
 
 const initialState = {};
 
-export default function(state = initialState, action) {
+export default function errorReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_ERRORS:
+    case actionTypes.GET_ERRORS:
       return action.payload;
     default:
       return state;
   }
 }
+
+export const getErrors = (error) => ({
+  type: actionTypes.GET_ERRORS,
+  payload: error,
+});

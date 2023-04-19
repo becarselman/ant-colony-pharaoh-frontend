@@ -1,4 +1,6 @@
 import { actionTypes } from "../actions/types";
+import authService from "../service/authService";
+import { getErrors } from "./errorReducer";
 
 const initialState = {
   isAuthenticated: false,
@@ -25,7 +27,7 @@ export const setUser = (user) => ({
 
 export const login = (email, password) => async (dispatch) => {
   try {
-    const response = await authService.login({ email, password });
+    const response = await authService.login(email, password);
     const { token, user } = response;
     localStorage.setItem("accessToken", token);
     dispatch(setUser(user));
@@ -34,7 +36,4 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
-  localStorage.removeItem("accessToken");
-  dispatch(setUser({}));
-};
+
