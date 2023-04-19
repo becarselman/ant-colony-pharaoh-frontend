@@ -7,15 +7,13 @@ import {
   loginRequest,
   getErrors,
 } from "../actions/authActions";
+import axiosInstance from './../utilis/axiosInterceptor';
 
-export function* loginSaga(action) {
+function* loginSaga(action) {
   yield put(loginRequest());
   try {
-    const response = yield call(
-      authService.login,
-      action.payload.email,
-      action.payload.password
-    );
+    const { email, password } = action.payload;
+    const response = yield call(authService.login, { email, password });
     const { token, user } = response;
     localStorage.setItem("jwtToken", token);
     yield put(loginSuccess(user)); 
@@ -25,14 +23,6 @@ export function* loginSaga(action) {
   }
 }
 
-export function* logoutSaga() {
-  localStorage.removeItem("jwtToken");
-}
-
 export function* watchLogin() {
   yield takeLatest(actionTypes.AUTHENTICATE_USER, loginSaga);
-}
-
-export function* watchLogout() {
-  yield takeLatest(actionTypes.LOGOUT_USER, logoutSaga);
 }

@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import LoginForm from "../LoginForm";
+import { bindActionCreators } from "redux";
 import { loginRequest } from "../../../actions/authActions";
 
 const mapStateToProps = (state) => ({
@@ -7,7 +8,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loginRequest: (email, password) => dispatch(loginRequest(email, password)),
+  actions: bindActionCreators(
+    {
+      loginRequest,
+    },
+    dispatch
+  ),
 });
 
 const LoginFormContainer = connect(
