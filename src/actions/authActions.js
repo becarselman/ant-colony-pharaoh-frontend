@@ -24,6 +24,7 @@ export const loginError = (error) => ({
 
 export const loginRequest = () => ({
   type: actionTypes.AUTHENTICATE_USER_REQUEST,
+  payload: null,
 });
 
 export const getErrors = (errors) => ({

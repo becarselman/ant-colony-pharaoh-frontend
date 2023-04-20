@@ -9,11 +9,6 @@ const login = (email, password) => {
     });
 };
 
-const isLoggedIn = () => {
-  return !!localStorage.getItem('accessToken');
-};
-
 export default {
   login,
-  isLoggedIn,
 };

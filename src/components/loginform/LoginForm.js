@@ -4,14 +4,22 @@ import authService from '../../service/authService';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { notification } from 'antd'
 
 function LoginForm({ actions }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +29,9 @@ function LoginForm({ actions }) {
       dispatch(actions.loginSuccess(res.data));
       navigate('/welcome');
     } catch (error) {
-      toast.error(error.response.data.message);
+      notification.error({
+        message: error.response.data.message,
+      })
     }
   };
 
@@ -34,22 +44,22 @@ function LoginForm({ actions }) {
       <div className="login-right">
         <h2 className="login-title">Log in</h2>
         <form className="login-form" onSubmit={handleSubmit}>
-          <label className="emailh2">Email</label>
+          <label className="email-text">Email</label>
           <input
             type="email"
             name="login_email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="placeholder"
+            onChange={handleEmailChange}
+            className="placeholder-text"
             placeholder="Enter your email"
           />
-          <label className="passwordh2">Password</label>
+          <label className="password-text">Password</label>
           <input
             type="password"
             name="login_password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="placeholder"
+            onChange={handlePasswordChange}
+            className="placeholder-text"
             placeholder="Enter your password"
           />
           <div className="login-buttons">
@@ -64,7 +74,6 @@ function LoginForm({ actions }) {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </div>
   );
 }

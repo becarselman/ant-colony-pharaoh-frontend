@@ -4,15 +4,15 @@ import authService from "../service/authService";
 import {
   loginSuccess,
   loginError,
-  loginRequest,
   getErrors,
 } from "../actions/authActions";
 
 function* loginSaga(action) {
   try {
-    const response = yield call(authService.login, action.payload);
+    const { email, password } = action.payload;
+    const response = yield call(authService.login, email, password);
     const { token, user } = response;
-    localStorage.setItem("jwtToken", token);
+    localStorage.setItem("accesToken", token);
     yield put(loginSuccess(user)); 
   } catch (error) {
     yield put(loginError(error.response.data)); 
