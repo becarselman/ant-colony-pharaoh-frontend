@@ -12,9 +12,9 @@ export const logoutUser = () => ({
   type: actionTypes.LOGOUT_USER,
 });
 
-export const loginSuccess = (user) => ({
+export const loginSuccess = (userId) => ({
   type: actionTypes.AUTHENTICATE_USER_SUCCESS,
-  payload: user,
+  payload: userId,
 });
 
 export const loginError = (error) => ({

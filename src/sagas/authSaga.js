@@ -9,11 +9,11 @@ import {
 
 function* loginSaga(action) {
   try {
-    const { email, password } = action.payload;
+    const { email, password } = action.payloud;
     const response = yield call(authService.login, email, password);
-    const { token, user } = response;
+    const { token, userId } = response;
     localStorage.setItem("accesToken", token);
-    yield put(loginSuccess(user)); 
+    yield put(loginSuccess(userId)); 
   } catch (error) {
     yield put(loginError(error.response.data)); 
     yield put(getErrors(error.response.data)); 
