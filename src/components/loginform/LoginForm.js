@@ -1,11 +1,11 @@
 import './LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
-import authService from '../../service/authService';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { notification } from 'antd'
+import { notification } from 'antd';
+import { loginRequest } from '../../actions/authActions';
 
 function LoginForm({ actions }) {
   const [email, setEmail] = useState('');
@@ -21,19 +21,11 @@ function LoginForm({ actions }) {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    try {
-      const res = await authService.login(email, password);
-      dispatch(actions.loginSuccess(res.data));
-      navigate('/welcome');
-    } catch (error) {
-      notification.error({
-        message: error.response.data.message,
-      })
-    }
+    actions.authenticateUser(email, password);
   };
+
 
   return (
     <div className="login-container">

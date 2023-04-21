@@ -20,17 +20,17 @@ export default function authReducer(state = initialState, action) {
   }
 }
 
-export const setUser = (user) => ({
+export const setUser = (userId) => ({
   type: actionTypes.SET_USER,
-  payload: user
+  payload: userId
 });
 
 export const login = (email, password) => async (dispatch) => {
   try {
     const response = await authService.login(email, password);
-    const { token, user } = response;
+    const { token, userId } = response;
     localStorage.setItem("accessToken", token);
-    dispatch(setUser(user));
+    dispatch(setUser(userId));
   } catch (error) {
     dispatch(getErrors(error.response.data));
   }
