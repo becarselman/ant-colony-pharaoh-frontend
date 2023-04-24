@@ -22,9 +22,9 @@ export const loginError = (error) => ({
   payload: error,
 });
 
-export const loginRequest = () => ({
+export const loginRequest = (data) => ({ 
   type: actionTypes.AUTHENTICATE_USER_REQUEST,
-  payload: null,
+  payload: data,
 });
 
 export const getErrors = (errors) => ({

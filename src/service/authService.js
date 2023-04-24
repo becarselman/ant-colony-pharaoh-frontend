@@ -1,7 +1,7 @@
 import axiosInstance from './apiService';
 
-const login = (email, password) => {
-  return axiosInstance.post('/login', { email, password })
+const login = (data) => {
+  return axiosInstance.post('/login',  data )
     .then((response) => {
       const { token, userId } = response.data;
       localStorage.setItem('accessToken', token);

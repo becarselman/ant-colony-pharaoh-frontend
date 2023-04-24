@@ -1,5 +1,5 @@
 import React from "react";
-import LoginForm from '../components/loginform/LoginForm.js';
+import LoginForm from '../components/loginform/modules/index.js';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 function CustomRouter() {
