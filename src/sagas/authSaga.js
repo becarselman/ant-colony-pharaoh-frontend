@@ -9,7 +9,6 @@ import {
 
 function* loginSaga(action) {
   try {
-    console.log(action.payload, 123)
     const { email, password } = action.payload;
     const response = yield call(authService.login, { email, password });
     const { token, userId } = response;
