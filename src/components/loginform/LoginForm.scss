@@ -56,9 +56,7 @@
 
 .login-right {
   input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+  
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     display: flex;
@@ -69,7 +67,6 @@
     border: 1px solid $checkbox-color;
     border-radius: 6px;
     flex: none;
-    flex-grow: 0;
     order: 0;
     flex-grow: 0;
   }
@@ -122,10 +119,6 @@
 }
 
 .logo-type {
-left: 15.28%;
-right: 65.28%;
-top: 48.44%;
-bottom: 48.41%;
 transform: scale(0.7);
 opacity: 1;
 
@@ -138,9 +131,6 @@ opacity: 1;
     line-height: 24px;
     color: $dark-gray-color;
     opacity: 0.5;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
     }
     
     .login-left {
@@ -195,3 +185,5 @@ opacity: 1;
     .email-text {
     padding-bottom: 10px;
     }
+
+    

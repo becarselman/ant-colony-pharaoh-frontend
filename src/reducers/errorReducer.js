@@ -10,8 +10,3 @@ export default function errorReducer(state = initialState, action) {
       return state;
   }
 }
-
-export const getErrors = (error) => ({
-  type: actionTypes.GET_ERRORS,
-  payload: error,
-});
