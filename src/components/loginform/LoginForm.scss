@@ -186,4 +186,72 @@ opacity: 1;
     padding-bottom: 10px;
     }
 
+    @media only screen and (max-width: 767px) {
+      .login-container {
+        flex-direction: column;
+        background-image: url('../../images/loginform/Backgroundlogin.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .logotype-mobile {
+        margin-top: 50px;
+        margin-bottom: 20px; 
+        width: 300px;
+        height: 100px;
+      }
+      .login-right {
+        max-width: 400px;
+        width: 100%;
+      }
+      .login-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .login-buttons button {
+        background: #1A3835;
+        border-radius: 6px;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        order: 0;
+      }
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+      }
+      .login-buttons a {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14.5px;
+        line-height: 24px;
+        text-align: right;
+        letter-spacing: -0.015em;
+        text-decoration-line: underline;
+        color: #1A3835;
+      }
+      .forgot-password {
+        margin-left: auto;
+        margin-top: 1px;
+        font-size: 16px;
+      }
+        .remember-password {
+          font-size: 12.5px;
+          margin-left: -6px;
+          line-height: 0px;
+          margin-top: 1px;
+          
+      }
+      
+      #remember-password {
+        font-size: 12.5px;
+        line-height: 0px;
+        margin-top: 7px;
+
+      }
+    }
+    
+
     
