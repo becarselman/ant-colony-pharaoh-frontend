@@ -12,10 +12,12 @@ axiosInstance.interceptors.request.use(
     if (userToken) {
       config.headers.Authorization = `Bearer ${userToken}`;
     }
+    config.headers['Content-Type'] = 'application/json'; 
     return config;
   },
   (error) => Promise.reject(error),
 );
+
 
 axiosInstance.interceptors.response.use(
   (response) => {
