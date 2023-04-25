@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { notification } from 'antd';
-import { loginRequest } from '../../actions/authActions';
 
 
 function LoginForm({ actions }) {
