@@ -6,6 +6,9 @@ const login = (data) => {
       const { token, userId } = response.data;
       localStorage.setItem('accessToken', token);
       return userId;
+    })
+    .catch((error) => {
+      throw error;
     });
 };
 

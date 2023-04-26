@@ -1,6 +1,5 @@
 import './LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
-import "../../index.css" 
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -23,10 +22,18 @@ function LoginForm({ actions }) {
   };
 
   const handleSubmit = (event) => {
-    console.log(actions.loginRequest);
     event.preventDefault();
     actions.loginRequest({email, password});
   };
+
+  const logoImage = windowWidth >= 768 ? (
+    <div className="login-left">
+    <div className="image-container"></div>
+    <img className="logo-type" src={Logotype} alt="Photo" />
+    </div>
+    ) : (
+    <img src={Logotype} alt="Logo" className="logotype-mobile" />
+    );
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -37,20 +44,13 @@ function LoginForm({ actions }) {
   }, []);
 
   return (
-    <div className="login-container">
-      {windowWidth >= 768 ? (
-        <div className="login-left">
-          <div className="image-container"></div>
-          <img className="logo-type" src={Logotype} alt="Photo" />
-        </div>
-      ) : (
-        <img src={Logotype} alt="Logo" className="logotype-mobile" />
-      )}
-      <div className="login-right">
-        <h2 className="login-title">Log in</h2>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label className="email-text">Email</label>
-          <input
+             <div className="login-container">
+             {logoImage}
+             <div className="login-right">
+             <h2 className="login-title">Log in</h2>
+             <form className="login-form" onSubmit={handleSubmit}>
+             <label className="email-text">Email</label>
+             <input
             type="email"
             name="login_email"
             value={email}

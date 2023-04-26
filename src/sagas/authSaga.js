@@ -9,17 +9,16 @@ import {
 
 function* loginSaga(action) {
   try {
-    const { email, password } = action.payload;
-    const response = yield call(authService.login, { email, password });
+    const response = yield call(authService.login, action.payload);
     const { token, userId } = response;
     localStorage.setItem("accessToken", token);
     yield put(loginSuccess(userId)); 
   } catch (error) {
-    console.log(error);
     yield put(loginError(error.response.data)); 
     yield put(getErrors(error.response.data)); 
   } 
 }
+
 
 
 export function* watchLogin() {
