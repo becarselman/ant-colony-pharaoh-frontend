@@ -1,0 +1,38 @@
+@mixin mobile {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin login-button-styles {
+    background: $primary-color;
+    border-radius: 6px;
+    color: $white-color;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  @mixin font-bold-medium {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: -0.015em;
+}
+
+@mixin font-bold-normal {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: -0.015em;
+}
+
+@mixin login-title-styles {
+    width: 100%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: $black-color;
+  }

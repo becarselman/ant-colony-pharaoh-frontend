@@ -1,4 +1,5 @@
 @import '../../utilis/colors';
+@import '../../utilis/mixins';
 
 .login-container {
   display: flex;
@@ -80,13 +81,7 @@
 
 .login-buttons {
   button {
-    background: $primary-color;
-    border-radius: 6px;
-    color: $white-color;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-
+    @include login-button-styles;
   }
 }
 
@@ -164,13 +159,7 @@ opacity: 1;
     }
     
     .login-title {
-    width: 100%;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 40px;
-    text-align: center;
-    color: $black-color;
+      @include login-title-styles;
     }
     
     .login-form {
@@ -186,72 +175,68 @@ opacity: 1;
     padding-bottom: 10px;
     }
 
-    @media only screen and (max-width: 767px) {
-      .login-container {
+    .login-container {
+      @include mobile {
         flex-direction: column;
         background-image: url('../../images/loginform/Backgroundlogin.svg');
         background-repeat: no-repeat;
         background-size: cover;
       }
-      .logotype-mobile {
-        margin-top: 50px;
-        margin-bottom: 20px; 
-        width: 300px;
-        height: 100px;
-      }
-      .login-right {
-        max-width: 400px;
-        width: 100%;
-      }
-      .login-buttons {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }
-      
-      .login-buttons button {
-        background: #1A3835;
-        border-radius: 6px;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        order: 0;
-      }
-      .checkbox-container {
-        display: flex;
-        align-items: center;
-      }
-      .login-buttons a {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14.5px;
-        line-height: 24px;
-        text-align: right;
-        letter-spacing: -0.015em;
-        text-decoration-line: underline;
-        color: #1A3835;
-      }
-      .forgot-password {
-        margin-left: auto;
-        margin-top: 1px;
-        font-size: 16px;
-      }
-        .remember-password {
-          font-size: 12.5px;
-          margin-left: -6px;
-          line-height: 0px;
-          margin-top: 1px;
-          
-      }
-      
-      #remember-password {
-        font-size: 12.5px;
-        line-height: 0px;
-        margin-top: 7px;
-
+    }
+    
+    .logotype-mobile {
+      @include mobile {
+        margin-top: 10%;
+        margin-bottom: 4%;
+        width: 65%;
+        height: 10%;
       }
     }
     
-
+    .login-right {
+      @include mobile {
+        max-width: 80%;
+        width: 100%;
+      }
+    }
     
+    .login-buttons {
+      @include mobile {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    
+        button {
+          @include login-button-styles;
+        }
+    
+        a {
+          @include font-bold-medium;
+          text-align: right;
+          text-decoration-line: underline;
+          color: $primary-color;
+        }
+      }
+    }
+    
+    .checkbox-container {  
+      @include mobile {
+        display: flex;
+        align-items: center;
+      }
+    }
+    
+    .forgot-password {
+      @include mobile {
+        margin-left: auto;
+        font-size: 16px;
+      }
+    }
+    
+    .remember-password {
+      @include mobile {
+        @include font-bold-medium;
+        margin-left: -6px;
+        line-height: 0px;
+      }
+    }
