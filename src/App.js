@@ -1,8 +1,13 @@
-import LoginForm from './components/loginform/LoginForm.js';
+import React from "react";
+import CustomRouter from './routing/router';
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
   return (
- <LoginForm></LoginForm>
+    <Provider store={store}>
+      <CustomRouter />
+    </Provider>
   );
 }
 
