@@ -1,8 +1,3 @@
-@mixin mobile {
-  @media only screen and (max-width: 767px) {
-    @content;
-  }
-}
 
 @mixin login-button-styles {
     background: $primary-color;
@@ -13,26 +8,109 @@
     cursor: pointer;
   }
 
-  @mixin font-bold-medium {
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 24px;
-  letter-spacing: -0.015em;
-}
-
-@mixin font-bold-normal {
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 24px;
-  letter-spacing: -0.015em;
-}
-
-@mixin login-title-styles {
-    width: 100%;
+@mixin title {
     font-style: normal;
     font-weight: 600;
     font-size: 32px;
-    line-height: 40px;
-    text-align: center;
     color: $black-color;
   }
+
+  @mixin label-input-styles {
+    label {
+      width: 151px;
+      height: 24px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.015em;
+      flex: none;
+      flex-grow: 0;
+      flex-grow: 0;
+    }
+  
+    input {
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 12px 10px 12px 12px;
+      gap: 10px;
+      border: 1px solid $checkbox-color;
+      border-radius: 6px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+  }
+
+  // Custom260
+$screen-rwd260-min: 260px;
+
+// Custom460
+$screen-rwd468-min: 468px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Custom820
+$screen-rwd820-min: 820px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+
+// Custom820
+@mixin rwd820 {
+  @media (min-width: #{$screen-rwd820-min}) {
+      @content;
+  }
+}
+
+// Custom468
+@mixin rwd468 {
+  @media (min-width: #{$screen-rwd468-min}) {
+      @content;
+  }
+}
+
+// Custom260
+@mixin rwd260 {
+  @media (min-width: #{$screen-rwd260-min}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+      @content;
+  }
+}
+

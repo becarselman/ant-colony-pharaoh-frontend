@@ -1,6 +1,7 @@
 @import '../../utilis/colors';
 @import '../../utilis/mixins';
 
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -159,7 +160,7 @@ opacity: 1;
     }
     
     .login-title {
-      @include login-title-styles;
+      @include title;
     }
     
     .login-form {
@@ -174,34 +175,28 @@ opacity: 1;
     .email-text {
     padding-bottom: 10px;
     }
+    @media only screen and (max-width: 767px) {
 
     .login-container {
-      @include mobile {
         flex-direction: column;
         background-image: url('../../images/loginform/Backgroundlogin.svg');
         background-repeat: no-repeat;
         background-size: cover;
-      }
     }
     
     .logotype-mobile {
-      @include mobile {
         margin-top: 10%;
         margin-bottom: 4%;
         width: 65%;
         height: 10%;
-      }
     }
     
     .login-right {
-      @include mobile {
         max-width: 80%;
         width: 100%;
-      }
     }
     
     .login-buttons {
-      @include mobile {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -211,32 +206,86 @@ opacity: 1;
         }
     
         a {
-          @include font-bold-medium;
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 24px;
+          letter-spacing: -0.015em;
           text-align: right;
           text-decoration-line: underline;
           color: $primary-color;
         }
       }
-    }
+
     
     .checkbox-container {  
-      @include mobile {
         display: flex;
         align-items: center;
       }
-    }
     
     .forgot-password {
-      @include mobile {
-        margin-left: auto;
         font-size: 16px;
       }
-    }
     
     .remember-password {
-      @include mobile {
-        @include font-bold-medium;
-        margin-left: -6px;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: -0.015em;
         line-height: 0px;
       }
+     }
+
+     .login-buttons {
+      a {
+        width: 128px;
+        height: -30px;
+        left: 1108px;
+        top: 563px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: right;
+        letter-spacing: -0.015em;
+        text-decoration-line: underline;
+        color: $primary-color;
+      }
+
+  .checkbox-container-a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: yellow;
+    
+    @include rwd260 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color:green;
     }
+    @include rwd468 {
+      color: blue;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-between;   
+    }
+
+    @include md {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: yellow;
+  }
+    @include rwd820 {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-between;   
+      color: purple;
+  }
+ 
+}
+}
