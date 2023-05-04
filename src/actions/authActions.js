@@ -31,3 +31,8 @@ export const getErrors = (errors) => ({
   type: actionTypes.GET_ERRORS,
   payload: errors,
 });
+
+export const passwordRequest = (email) => ({
+  type: actionTypes.PASSWORD_REQUEST,
+  payload: email,
+})

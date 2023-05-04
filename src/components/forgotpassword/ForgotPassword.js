@@ -1,12 +1,12 @@
-import './LoginForm.scss';
+import '../loginform/LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function LoginForm({ actions }) {
+function ForgotPassword({ actions }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -17,13 +17,9 @@ function LoginForm({ actions }) {
     setEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    actions.loginRequest({email, password});
+    actions.passwordRequest({email});
   };
 
   const logoImage = windowWidth >= 768 ? (
@@ -47,7 +43,7 @@ function LoginForm({ actions }) {
              <div className="login-container">
              {logoImage}
              <div className="login-right">
-             <h2 className="login-title">Log in</h2>
+             <h2 className="login-title">Forgot your password?</h2>
              <form className="login-form" onSubmit={handleSubmit}>
              <label className="email-text">Email</label>
              <input
@@ -58,25 +54,8 @@ function LoginForm({ actions }) {
             className="placeholder-text"
             placeholder="Enter your email"
           />
-          <label className="password-text">Password</label>
-          <input
-            type="password"
-            name="login_password"
-            value={password}
-            onChange={handlePasswordChange}
-            className="placeholder-text"
-            placeholder="Enter your password"
-          />
           <div className="login-buttons">
-            <button type="submit">Log in</button>
-            <div className="checkbox-container-a">
-               <div className="checkbox-container">
-             <input type="checkbox"  id="remember-password" name="remember-password" />
-           <label className="remember-password" htmlFor="remember-password">Remember password</label>
-           </div>
-           <a className="forgot-password" onClick={() => navigate('/forgot-password')} href="#">Forgot password?</a>
-         </div>
-
+            <button type="submit">Send me email</button>
           </div>
         </form>
       </div>
@@ -84,4 +63,4 @@ function LoginForm({ actions }) {
   );
 }
 
-export default LoginForm;
+export default ForgotPassword;

@@ -7,5 +7,6 @@ export const actionTypes = {
     LOGIN_FAILURE: 'LOGIN_FAILURE',
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     SET_USER: 'SET_USER',
+    PASSWORD_REQUEST: 'PASSWORD_REQUEST'
   };
   
