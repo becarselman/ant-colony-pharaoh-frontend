@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import authService from '../../service/authService';
+import { passwordRequest } from '../../actions/authActions.js';
 
 
 function ForgotPassword({ actions }) {
@@ -18,7 +20,8 @@ function ForgotPassword({ actions }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    actions.passwordRequest({email});
+    dispatch(passwordRequest(email));
+    authService.sendPasswordResetEmail(email);
   };
 
   const logoImage = windowWidth >= 768 ? (

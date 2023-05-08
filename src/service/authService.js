@@ -1,4 +1,5 @@
 import axiosInstance from './apiService';
+import { passwordRequest, passwordRequestSuccess, passwordRequestError } from '../actions/authActions.js'
 
 const login = (data) => {
   return axiosInstance.post('/login',  data )
@@ -13,13 +14,16 @@ const login = (data) => {
 };
 
 const sendPasswordResetEmail = (email) => {
-  return axiosInstance.post('/forgot-password', { email })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  return (dispatch) => {
+    dispatch(passwordRequest(email));
+    axiosInstance.post('/password-reset', { email })
+      .then(() => {
+        dispatch(passwordRequestSuccess());
+      })
+      .catch((error) => {
+        dispatch(passwordRequestError(error.message));
+      });
+  };
 };
 
 export default {
