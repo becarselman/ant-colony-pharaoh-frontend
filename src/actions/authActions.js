@@ -36,3 +36,12 @@ export const passwordRequest = (email) => ({
   type: actionTypes.PASSWORD_REQUEST,
   payload: email,
 })
+
+export const passwordRequestSuccess = () => ({
+  type: actionTypes.PASSWORD_REQUEST_SUCCESS,
+});
+
+export const passwordRequestError = (error) => ({
+  type: actionTypes.PASSWORD_REQUEST_ERROR,
+  payload: error,
+});

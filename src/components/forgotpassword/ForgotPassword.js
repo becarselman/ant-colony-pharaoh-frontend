@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function ForgotPassword({ actions }) {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

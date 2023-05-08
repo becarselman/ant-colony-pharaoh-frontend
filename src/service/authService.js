@@ -12,6 +12,17 @@ const login = (data) => {
     });
 };
 
+const sendPasswordResetEmail = (email) => {
+  return axiosInstance.post('/forgot-password', { email })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export default {
   login,
+  sendPasswordResetEmail
 };
