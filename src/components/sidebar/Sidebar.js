@@ -1,16 +1,10 @@
-import './Sidebar.scss'
+import {
+  DownOutlined,
+} from "@ant-design/icons";
+import sidebarOptions from "./sidebar_options/Options"
 import Logotype from '../../images/sidebar/Logotype.svg';
 import SampleProfilePicture from '../../images/sidebar/Sample-Profile-Image.png'
-import { useEffect, useState } from "react";
-import {
-  AuditOutlined,
-  DownOutlined,
-  HomeOutlined,
-  ProjectOutlined,
-  SnippetsOutlined,
-  TeamOutlined,
-  WalletOutlined
-} from "@ant-design/icons";
+import './Sidebar.scss'
 
 function Sidebar({ actions }) {
 
@@ -38,30 +32,14 @@ function Sidebar({ actions }) {
       </div>
 
       <div className="sidebar-options">
-        <div className="sidebar-option">
-          <HomeOutlined />
-          <p>Home</p>
-        </div>
-        <div className="sidebar-option">
-          <ProjectOutlined />
-          <p>Projects</p>
-        </div>
-        <div className="sidebar-option">
-          <TeamOutlined />
-          <p>Employees</p>
-        </div>
-        <div className="sidebar-option">
-          <WalletOutlined />
-          <p>Financial Overview</p>
-        </div>
-        <div className="sidebar-option">
-          <SnippetsOutlined />
-          <p>Project Reporting</p>
-        </div>
-        <div className="sidebar-option">
-          <AuditOutlined />
-          <p>Invoicing</p>
-        </div>
+        {sidebarOptions.map(option => {
+          return (
+            <div className="sidebar-option">
+              {option.image}
+              <p>{option.text}</p>
+            </div>
+          )
+        })}
       </div>
     </div>
 

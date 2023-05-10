@@ -6,8 +6,8 @@
   left: 0;
   top: 0;
 
-  background: linear-gradient(179.32deg, #FCFDFC 8.04%, #E6F2ED 99.41%);
-  border-right: 1px solid #EBF4F1;
+  background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
+  border-right: 1px solid $border-color;
 
   height: 100vh;
 
@@ -34,7 +34,7 @@
   border-radius: 6px;
   padding: 10px;
 
-  border: 1px solid #DFE3E1;
+  border: 1px solid $border-color;
 }
 
 .user-name {
@@ -49,12 +49,7 @@
 }
 
 .user-role {
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: #57585F;
+  @include font("Inter", normal, 400, 14px, 18px, $text-color-primary);
 }
 
 .user-info-section * {
@@ -94,11 +89,5 @@
 .sidebar-option p {
   margin-left: 20px;
 
-  font-family: 'Gilroy', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-
-  color: #1A3835;
+  @include font("Gilroy", normal, 500, 14px, 16px, $text-color-secondary);
 }
