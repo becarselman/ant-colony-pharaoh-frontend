@@ -3,7 +3,8 @@ import { bindActionCreators } from "redux";
 import { passwordRequest } from "../../../actions/authActions";
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  loading: state.forgotPassword.loading,
+  error: state.forgotPassword.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({

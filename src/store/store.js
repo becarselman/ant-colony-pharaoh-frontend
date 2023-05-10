@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "../reducers/reducer";
 import { watchLogin, watchLogout } from "../sagas/authSaga";
+import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 
 const persistConfig = {
   key: "root", 
@@ -22,3 +23,4 @@ export const store = createStore(
 export const persistor = persistStore(store);
 
 sagaMiddleware.run(watchLogin);
+sagaMiddleware.run(watchForgotPassword);

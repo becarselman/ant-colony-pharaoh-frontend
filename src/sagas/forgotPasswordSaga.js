@@ -1,17 +1,18 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { forgotPasswordSuccess, forgotPasswordError } from '../actions/authActions';
-import { sendForgotPasswordRequest } from './forgotPasswordService';
+import { passwordRequestSuccess, passwordRequestError } from '../actions/authActions';
+import { sendForgotPasswordRequest } from '../service/authService';
+import { actionTypes } from '../actions/types';
 
 function* forgotPasswordRequest({ payload }) {
   const { email } = payload;
   try {
     yield call(sendForgotPasswordRequest, email);
-    yield put(forgotPasswordSuccess());
+    yield put(passwordRequestSuccess());
   } catch (error) {
-    yield put(forgotPasswordError(error));
+    yield put(passwordRequestError(error));
   }
 }
 
 export function* watchForgotPassword() {
-  yield takeLatest('FORGOT_PASSWORD_REQUEST', forgotPasswordRequest);
+  yield takeLatest(actionTypes.PASSWORD_REQUEST, forgotPasswordRequest);
 }
