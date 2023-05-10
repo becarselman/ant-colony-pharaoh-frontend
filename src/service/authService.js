@@ -1,5 +1,4 @@
 import axiosInstance from './apiService';
-import { passwordRequest, passwordRequestSuccess, passwordRequestError } from '../actions/authActions.js'
 
 const login = (data) => {
   return axiosInstance.post('/login',  data )
@@ -13,20 +12,23 @@ const login = (data) => {
     });
 };
 
-const sendPasswordResetEmail = (email) => {
-  return (dispatch) => {
-    dispatch(passwordRequest(email));
-    axiosInstance.post('/password-reset', { email })
-      .then(() => {
-        dispatch(passwordRequestSuccess());
-      })
-      .catch((error) => {
-        dispatch(passwordRequestError(error.message));
-      });
-  };
-};
+export async function sendForgotPasswordRequest(email) {
+  try {
+    const response = await axiosInstance.post('/forgot-password', { email });
+
+    if (response.status === 200) {
+      return { success: true };
+    } else {
+      const errorData = response.data;
+      throw new Error(errorData.error);
+    }
+  } catch (error) {
+    throw new Error('An error occurred.');
+  }
+}
+
 
 export default {
   login,
-  sendPasswordResetEmail
+  sendForgotPasswordRequest
 };

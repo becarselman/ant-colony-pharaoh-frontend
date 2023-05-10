@@ -13,17 +13,18 @@ function ForgotPassword({ actions }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(passwordRequest(email));
-    authService.sendPasswordResetEmail(email);
   };
-
+  
   const logoImage = windowWidth >= 768 ? (
     <div className="login-left">
     <div className="image-container"></div>

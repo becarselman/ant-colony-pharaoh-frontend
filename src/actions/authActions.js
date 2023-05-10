@@ -45,3 +45,4 @@ export const passwordRequestError = (error) => ({
   type: actionTypes.PASSWORD_REQUEST_ERROR,
   payload: error,
 });
+
