@@ -23,6 +23,7 @@ function ForgotPassword({ actions }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(passwordRequest(email));
+    console.log("submitted")
   };
   
   const logoImage = windowWidth >= 768 ? (

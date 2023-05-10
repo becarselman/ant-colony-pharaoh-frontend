@@ -4,13 +4,11 @@ import { sendForgotPasswordRequest } from './forgotPasswordService';
 
 function* forgotPasswordRequest({ payload }) {
   const { email } = payload;
-  console.log("aaaaaaaaa");
   try {
     yield call(sendForgotPasswordRequest, email);
     yield put(forgotPasswordSuccess());
   } catch (error) {
-    console.error('An error occurred:', error);
-    yield put(forgotPasswordError('An error occurred.'));
+    yield put(forgotPasswordError(error));
   }
 }
 

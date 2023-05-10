@@ -74,7 +74,7 @@ function LoginForm({ actions }) {
              <input type="checkbox"  id="remember-password" name="remember-password" />
            <label className="remember-password" htmlFor="remember-password">Remember password</label>
            </div>
-           <a className="forgot-password" onClick={() => navigate('/forgot-password')} href="#">Forgot password?</a>
+           <a className="forgot-password" href="/forgot-password">Forgot password?</a>
          </div>
 
           </div>
