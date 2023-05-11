@@ -6,7 +6,16 @@ import Logotype from '../../images/sidebar/Logotype.svg';
 import SampleProfilePicture from '../../images/sidebar/Sample-Profile-Image.png'
 import './Sidebar.scss'
 
-function Sidebar({ actions }) {
+const Sidebar = ({ actions }) => {
+
+  const arrayOfDivsSidebarOptions = sidebarOptions.map(option => {
+    return (
+      <div className="sidebar-option" key={option.text}>
+        {option.image}
+        <p>{option.text}</p>
+      </div>
+    )
+  })
 
   return (
     <div className="sidebar-container">
@@ -32,14 +41,7 @@ function Sidebar({ actions }) {
       </div>
 
       <div className="sidebar-options">
-        {sidebarOptions.map(option => {
-          return (
-            <div className="sidebar-option">
-              {option.image}
-              <p>{option.text}</p>
-            </div>
-          )
-        })}
+        {arrayOfDivsSidebarOptions}
       </div>
     </div>
 

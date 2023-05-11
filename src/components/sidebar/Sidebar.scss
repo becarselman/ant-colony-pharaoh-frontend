@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
 @import '../../utilis/colors';
 @import '../../utilis/mixins';
 
@@ -40,16 +42,17 @@
 .user-name {
   margin-bottom: 5px;
 
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
+  @include inter-medium();
   font-size: 16px;
   line-height: 24px;
-  font-weight: 500;
-  color: #242834;
+  color: $text-color-dark-gray;
 }
 
 .user-role {
-  @include font("Inter", normal, 400, 14px, 18px, $text-color-primary);
+  @include inter-regular();
+  font-size: 14px;
+  line-height: 18px;
+  color: $text-color-primary;
 }
 
 .user-info-section * {
@@ -84,10 +87,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .sidebar-option p {
   margin-left: 20px;
 
-  @include font("Gilroy", normal, 500, 14px, 16px, $text-color-secondary);
+  @include gilroy-medium();
+  font-size: 14px;
+  line-height: 16px;
+  color: $text-color-secondary;
 }
