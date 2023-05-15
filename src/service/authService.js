@@ -1,4 +1,5 @@
 import axiosInstance from './apiService';
+import axios from 'axios';
 
 const login = (data) => {
   return axiosInstance.post('/login',  data )
@@ -27,8 +28,28 @@ export async function sendForgotPasswordRequest(email) {
   }
 }
 
+export async function resetPasswordRequest(token, newPassword) {
+  try {
+    const response = await axios.post(`http://localhost:5000/reset-password/${token}`, { newPassword }, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.status === 200) {
+      return { success: true };
+    } else {
+      const errorData = response.data;
+      throw new Error(errorData.error);
+    }
+  } catch (error) {
+    throw new Error('An error occurred.');
+  }
+}
 
 export default {
   login,
-  sendForgotPasswordRequest
+  sendForgotPasswordRequest,
+  resetPasswordRequest
 };

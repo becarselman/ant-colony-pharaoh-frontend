@@ -15,14 +15,28 @@ function ForgotPassword({ actions }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(passwordRequest({ email: email }));
+    try {
+      setLoading(true);
+      const response = await dispatch(passwordRequest({ email: email }));
+      if (response.success) {
+        setEmailSent(true);
+        setMessage('Email sent');
+      } else {
+        setMessage('Error occurred');
+      }
+    } catch (error) {
+      setMessage('Error occurred');
+    } finally {
+      setLoading(false);
+    }
   };
   
   const logoImage = windowWidth >= 768 ? (
@@ -58,7 +72,9 @@ function ForgotPassword({ actions }) {
             placeholder="Enter your email"
           />
           <div className="login-buttons">
-            <button type="submit">Send me email</button>
+          <button type="submit" disabled={loading || message}>
+            Send me email
+          </button>
           </div>
         </form>
       </div>

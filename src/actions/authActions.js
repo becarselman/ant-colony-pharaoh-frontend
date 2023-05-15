@@ -13,12 +13,12 @@ export const logoutUser = () => ({
 });
 
 export const loginSuccess = (userId) => ({
-  type: actionTypes.AUTHENTICATE_USER_SUCCESS,
+  type: actionTypes.LOGIN_SUCCESS,
   payload: userId,
 });
 
 export const loginError = (error) => ({
-  type: actionTypes.AUTHENTICATE_USER_ERROR,
+  type: actionTypes.LOGIN_ERROR,
   payload: error,
 });
 
@@ -46,3 +46,19 @@ export const passwordRequestError = (error) => ({
   payload: error,
 });
 
+export const resetPasswordRequest = (token, newPassword) => ({
+  type: actionTypes.RESET_PASSWORD_REQUEST,
+  payload: {
+    token,
+    newPassword,
+  },
+});
+
+export const resetPasswordSuccess = () => ({
+  type: actionTypes.RESET_PASSWORD_SUCCESS,
+});
+
+export const resetPasswordError = (error) => ({
+  type: actionTypes.RESET_PASSWORD_ERROR,
+  payload: error,
+});
