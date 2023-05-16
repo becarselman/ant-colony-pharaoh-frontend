@@ -47,6 +47,34 @@
     }
   }
 
+@mixin font($font-family, $font-style, $font-weight, $font-size, $line-height, $color) {
+  font-family: $font-family, sans-serif;
+  font-style: $font-style;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  color: $color;
+}
+
+@mixin inter-medium {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@mixin inter-regular {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@mixin gilroy-medium {
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
   // Custom260
 $screen-rwd260-min: 260px;
 
@@ -115,4 +143,5 @@ $screen-xl-min: 1200px;
       @content;
   }
 }
+
 

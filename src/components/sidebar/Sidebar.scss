@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../utilis/colors';
+@import '../../utilis/mixins';
+
+.sidebar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
+  border-right: 1px solid $border-color;
+
+  height: 100vh;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-section {
+  margin-bottom: 30px;
+}
+
+.profile-picture-section {
+  width: 54px;
+  height: 54px;
+}
+
+.user-profile-overview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  border: 1px solid $border-color;
+}
+
+.user-name {
+  margin-bottom: 5px;
+
+  @include inter-medium();
+  font-size: 16px;
+  line-height: 24px;
+  color: $text-color-dark-gray;
+}
+
+.user-role {
+  @include inter-regular();
+  font-size: 14px;
+  line-height: 18px;
+  color: $text-color-primary;
+}
+
+.user-info-section * {
+  margin: 0;
+  padding: 0;
+}
+
+.user-info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  margin-left: 15px;
+  margin-right: 60px;
+}
+
+.expand-user-info-section {
+  margin-right: 10px;
+}
+
+
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+  margin-top: 20px
+}
+
+.sidebar-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.sidebar-option p {
+  margin-left: 20px;
+
+  @include gilroy-medium();
+  font-size: 14px;
+  line-height: 16px;
+  color: $text-color-secondary;
+}
