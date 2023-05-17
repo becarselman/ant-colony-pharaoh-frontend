@@ -1,8 +1,8 @@
 import React from "react";
 import LoginForm from '../components/loginform/modules/index.js';
-import ForgotPassword from "../components/forgotpassword/ForgotPassword.js";
+import ForgotPassword from '../components/forgotpassword/modules/index.js';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import ResetPassword from "../components/resetpassword/resetPassword.js";
+import ResetPassword from "../components/resetpassword/modules/index.js";
 
 function CustomRouter() {
   return (

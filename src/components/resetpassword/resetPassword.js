@@ -3,12 +3,9 @@ import Logotype from '../../images/loginform/Logotype.svg';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { resetPasswordRequest } from '../../actions/authActions.js';
 
-const ResetPassword = () => {
-  const dispatch = useDispatch();
+const ResetPassword = ({actions}) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -37,14 +34,14 @@ const ResetPassword = () => {
     setErrorMessage('');
   
     try {
-      await dispatch(resetPasswordRequest(token, newPassword));
+      actions.resetPasswordRequest(token, newPassword);
       setLoading(false);
       setMessage('Password reset request sent.');
       
     } catch (error) {
       setLoading(false);
       setMessage('Error occurred. Please try again.');
-      toast.error(error.message);
+      error(error.message);
     }
   };
   
@@ -96,7 +93,6 @@ const ResetPassword = () => {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </div>
   );
 }

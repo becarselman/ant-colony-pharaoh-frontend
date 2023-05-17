@@ -4,14 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { passwordRequest } from '../../actions/authActions.js';
-import { MapDispatchToProps } from './modules/container';
 
-const ForgotPassword = ({actions, error, loading}) => {
+const ForgotPassword = ({actions}) => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [load, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [emailSent, setEmailSent] = useState(false);
 
@@ -24,8 +23,7 @@ const ForgotPassword = ({actions, error, loading}) => {
     console.log(actions)
     try {
       setLoading(true);
-      const response = actions.passwordRequest(email);
-      //const response = await dispatch(passwordRequest({ email: email }));
+      const response = actions.passwordRequest({email});
       if (response.success) {
         setEmailSent(true);
         setMessage('Email sent');

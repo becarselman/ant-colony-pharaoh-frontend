@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { resetPasswordRequest } from "../../../actions/authActions";
-import ResetPassword from "./resetPassword";
 
 
 const mapStateToProps = (state) => ({
-  loading: state.resetPassword.loading,
-  error: state.resetPassword.error,
+  loading: state.loading,
+  error: state.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,4 +17,4 @@ const mapDispatchToProps = (dispatch) => ({
   ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResetPassword);
+export default connect(mapStateToProps, mapDispatchToProps);
