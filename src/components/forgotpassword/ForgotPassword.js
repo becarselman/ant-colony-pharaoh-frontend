@@ -3,17 +3,15 @@ import Logotype from '../../images/loginform/Logotype.svg';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
-import authService from '../../service/authService';
 import { passwordRequest } from '../../actions/authActions.js';
+import { MapDispatchToProps } from './modules/container';
 
-
-function ForgotPassword({ actions }) {
+const ForgotPassword = ({actions, error, loading}) => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [loading, setLoading] = useState(false);
+  const [load, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [emailSent, setEmailSent] = useState(false);
 
@@ -23,9 +21,11 @@ function ForgotPassword({ actions }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(actions)
     try {
       setLoading(true);
-      const response = await dispatch(passwordRequest({ email: email }));
+      const response = actions.passwordRequest(email);
+      //const response = await dispatch(passwordRequest({ email: email }));
       if (response.success) {
         setEmailSent(true);
         setMessage('Email sent');

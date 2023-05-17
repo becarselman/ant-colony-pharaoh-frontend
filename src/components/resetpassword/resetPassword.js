@@ -7,7 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { resetPasswordRequest } from '../../actions/authActions.js';
 
-function ResetPassword() {
+const ResetPassword = () => {
   const dispatch = useDispatch();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
