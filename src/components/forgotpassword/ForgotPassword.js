@@ -20,7 +20,6 @@ const ForgotPassword = ({actions}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(actions)
     try {
       setLoading(true);
       const response = actions.passwordRequest({email});
