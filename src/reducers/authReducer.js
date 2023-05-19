@@ -13,6 +13,11 @@ export default function authReducer(state = initialState, action) {
         isAuthenticated: Object.keys(action.payload).length !== 0,
         user: action.payload
       };
+    case actionTypes.LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true
+      };
     default:
       return state;
   }

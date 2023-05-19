@@ -1,31 +1,41 @@
-import './LoginForm.scss';
+import '../loginform/LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import { passwordRequest } from '../../actions/authActions.js';
 
-
-function LoginForm({ actions }) {
+const ForgotPassword = ({actions}) => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const response = actions.passwordRequest({email});
+      if (response.success) {
+        setEmailSent(true);
+        setMessage('Email sent');
+      } else {
+        setMessage('Error occurred');
+      }
+    } catch (error) {
+      setMessage('Error occurred');
+    } finally {
+      setLoading(false);
+    }
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    actions.loginRequest({email, password});
-  };
-
+  
   const logoImage = windowWidth >= 768 ? (
     <div className="login-left">
     <div className="image-container"></div>
@@ -47,7 +57,7 @@ function LoginForm({ actions }) {
              <div className="login-container">
              {logoImage}
              <div className="login-right">
-             <h2 className="login-title">Log in</h2>
+             <h2 className="login-title">Forgot your password?</h2>
              <form className="login-form" onSubmit={handleSubmit}>
              <label className="email-text">Email</label>
              <input
@@ -58,25 +68,10 @@ function LoginForm({ actions }) {
             className="placeholder-text"
             placeholder="Enter your email"
           />
-          <label className="password-text">Password</label>
-          <input
-            type="password"
-            name="login_password"
-            value={password}
-            onChange={handlePasswordChange}
-            className="placeholder-text"
-            placeholder="Enter your password"
-          />
           <div className="login-buttons">
-            <button type="submit">Log in</button>
-            <div className="checkbox-container-a">
-               <div className="checkbox-container">
-             <input type="checkbox"  id="remember-password" name="remember-password" />
-           <label className="remember-password" htmlFor="remember-password">Remember password</label>
-           </div>
-           <a className="forgot-password" href="/forgot-password">Forgot password?</a>
-         </div>
-
+          <button type="submit" disabled={loading || message}>
+            Send me email
+          </button>
           </div>
         </form>
       </div>
@@ -84,4 +79,4 @@ function LoginForm({ actions }) {
   );
 }
 
-export default LoginForm;
+export default ForgotPassword;
