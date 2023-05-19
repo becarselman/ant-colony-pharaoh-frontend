@@ -1,9 +1,11 @@
+//FIXME: move this import somewhere else, but make sure it is loaded
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
 @import '../../utilis/colors';
 @import '../../utilis/mixins';
 
 .sidebar-container {
+  //FIXME: this sidebar's positioning doesn't work well, https://stackoverflow.com/a/40317378
   position: absolute;
   left: 0;
   top: 0;
