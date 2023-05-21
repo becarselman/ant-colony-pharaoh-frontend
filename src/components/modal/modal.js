@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import "./modal.scss";
 import { CloseOutlined } from "@ant-design/icons"
 import ReactPortal from "./portal";
+import ModalItem from "./modalItem";
 
-function Modal({ children, isOpen, handleClose }) {
+function Modal({ items, isOpen, handleClose }) {
   //componentWillUnmount
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
@@ -16,12 +17,19 @@ function Modal({ children, isOpen, handleClose }) {
 
   if (!isOpen) return null;
 
+  const mappedItems = items.map(i => {
+    return (
+        <ModalItem item = { i } key = { i.id } />
+    )
+  })
+
   return (
     <ReactPortal wrapperId={"modal-wrapper"}>
       <div className="modal">
         <CloseOutlined onClick={handleClose} className="close-btn"/>
         <div className="modal-content">
-          {children}
+          { mappedItems }
+          <button type="submit">Save</button>
         </div>
       </div>
     </ReactPortal>
