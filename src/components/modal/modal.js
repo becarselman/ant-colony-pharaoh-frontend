@@ -19,8 +19,10 @@ function Modal({ children, isOpen, handleClose }) {
   return (
     <ReactPortal wrapperId={"modal-wrapper"}>
       <div className="modal">
-        <CloseOutlined onClick={handleClose} className="close-btn" />
-        <div className="modal-content">{children}</div>
+        <CloseOutlined onClick={handleClose} className="close-btn"/>
+        <div className="modal-content">
+          {children}
+        </div>
       </div>
     </ReactPortal>
   );
