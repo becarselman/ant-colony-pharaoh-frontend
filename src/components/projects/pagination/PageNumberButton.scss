@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+.page-number-button {
+    height: 2rem;
+    border-radius: 0.25rem;
+    border: 1px solid #c0c0c0;
+    padding: 0.75rem;
+    font-family: "Open_Sans";
+    font-size: 0.875rem;
+    background-color: $background-color;
+    color: $black-color;
+    opacity: 0.45;
+    transition: background-color 0.3s, color 0.3s;
+  
+    &.active {
+      background-color: $background-color;
+      font-weight: bold;
+      text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    }
+  
+    &.inactive {
+      background-color: $background-color;
+      color: $black-color;
+    }
+  }
+  

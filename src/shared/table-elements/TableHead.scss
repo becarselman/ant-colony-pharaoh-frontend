@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../utilis/colors';
+@import '../../utilis/mixins';
+
+.table-row {
+    height: 40px;
+    text-align: left;
+    border: 1px solid $border-color;
+  }
+  
+  .table-header-cell {
+    @include gilroy-medium500();
+    width: 150px;
+    padding-left: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    color: $text-color-primary;
+  }
+  

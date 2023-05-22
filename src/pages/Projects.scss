@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../utilis/colors';
+@import '../utilis/mixins';
+
+
+.projects-container {
+    margin: 0 14px;
+    margin-bottom: 17px;
+    margin-top: 34px;
+  
+    .projects-header {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+  
+      .projects-title {
+       @include gilroy-medium();
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 40px;
+        color: $text-color-dark-gray;
+        padding-left: 3px;
+      }
+  
+      .create-project-button {
+      @include login-button-styles();
+      @include inter-regular();
+      width: 176px;
+      height: 40px; 
+      padding: 8px 15px;
+
+        &:hover {
+          filter: saturate(400%);
+        }
+      }
+    }
+  
+    .projects-content {
+      display: flex;
+      flex-direction: column;
+  
+      .navbar-container {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  
+  .pagination-container {
+    margin: 0 14px;
+    margin-bottom: 25px;
+  }
+  
+  

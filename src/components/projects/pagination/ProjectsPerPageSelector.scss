@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+.projects-per-page-selector {
+    height: 2rem;
+    width: 3.375rem;
+    overflow: hidden;
+    border-radius: 0.25rem;
+    border: 1px solid #dfe4ea;
+    text-align: center;
+  
+    & select {
+      height: 100%;
+      width: 75%;
+      font-family: "Open Sans", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.875rem;
+      letter-spacing: 0.009375rem;
+      color: $dark-gray-color;
+      outline: none;
+      padding: 3px;
+    }
+  }
+  

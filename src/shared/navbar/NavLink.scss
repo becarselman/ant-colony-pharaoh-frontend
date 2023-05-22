@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../utilis/colors';
+@import '../../utilis/mixins';
+
+
+.nav-link {
+    cursor: pointer;
+    border: 1px solid;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 22px;
+    color: $dark-green-color;
+  
+    &:hover {
+      background-color: $background-color;
+    }
+
+  }
+  

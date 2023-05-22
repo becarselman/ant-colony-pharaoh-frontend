@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+.projects-table {
+  border: 1px solid $border-color;
+}
+
+.bg-white {
+  background-color: $background-color;
+}
+
+
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding-left: 0.75rem;
+}
+
+.table-header {
+  display: flex;
+  font-family: "Gilroy", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.375rem;
+  justify-content: space-between;
+}
+
+.name-cell {
+}
+
+.description-cell {
+}
+
+.date-cell {
+}
+
+.avatars-cell {
+}
+
+.hourly-rate-cell {
+}
+
+.value-cell {
+}
+
+.status-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 0.75rem;
+}
+
+.status-dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+}
+
+.status-text {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+}

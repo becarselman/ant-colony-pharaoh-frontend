@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../utilis/colors';
+@import '../../utilis/mixins';
+
+.table-row {
+  text-align: left;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.375rem;
+  color: $text-color-primary;
+}
+
+.table-row:not(:last-child) {
+  border: 1px solid $border-color;
+}
+
+  
+  .table-cell {
+    width: 150px;
+    padding-left: 0.75rem;
+  }
+  
+  .name-cell {
+  }
+  
+  .description-cell {
+  }
+  
+  .date-cell {
+  }
+  
+  .avatars-cell {
+  }
+  
+  .hourly-rate-cell {
+    padding-left: 32px;
+  }
+  
+  .value-cell {
+  }
+  
+  .status-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 50px;
+    padding-top: 11px;
+
+  
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    
+    .bg-green{
+      background-color: $green-color;
+
+    }
+    
+    .bg-gray {
+      background-color: $gray-color;
+    }
+    
+    .bg-orange {
+      background-color: $orange-color;
+    }
+
+    .bg-blue {
+      background-color: rgb(12, 213, 236);
+    }
+    
+    .status-text {
+      display: inline-block;
+    }
+    
+  
+    .status-text {
+      font-family: 'Gilroy', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+  }
+  

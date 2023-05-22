@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__top {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+
+    & .pagination__rows-per-page {
+      display: flex;
+      gap: 0.5625rem;
+      align-items: center;
+
+      & span {
+        @include font("Open Sans", normal, 600, 0.875rem, 1.875rem, #2c3e50);
+      }
+    }
+
+    & .pagination__project-range {
+      @include font("Open Sans", normal, 600, 0.875rem, 1.875rem, #9EA1B0);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 0.125rem;
+
+    .page-number-button {
+      padding: 0.375rem 0.625rem;
+      border: none;
+      @include font("Open Sans", normal, 600, 0.875rem, 1.25rem, rgba(0, 0, 0, 0.45));
+      cursor: pointer;
+
+      &.active {
+        color: #3F3F3F;
+        border-radius: 0.1875rem;
+      }
+
+      &:hover {
+        background-color: $background-color;
+      }
+    }
+  }
+}
