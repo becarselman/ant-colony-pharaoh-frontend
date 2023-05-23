@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
-@import '../../utilis/_mixins.scss';
-@import '../../utilis/_colors.scss';
+@import './../../utilis/colors';
+@import './../../utilis/mixins';
+
 
 .table-container {
   display: flex;
@@ -27,6 +28,13 @@
     }
   }
 }
+
+.ant-pagination-next, 
+.ant-pagination-prev {
+    display: none !important;
+}
+
+
 .show-total {
   margin-left: auto;
   padding-left: 20px;
@@ -55,26 +63,26 @@
   display: flex;
   align-items: center;
 
-  .ant-pagination-prev,
-  .ant-pagination-next {
-    display:none;
-    .ant-pagination-item-link {
-      display: none;
+  .ant-pagination-item-active {
+    border-color: $gray-color !important;
+    border-radius: 4px;
+    background-color: $border-color;
 
+    a {
+      color: $black-color;
+      background-color: #F5F6FB;
+      border-color: $border-color;
     }
   }
-.ant-pagination-item-active {
-  border-color: $gray-color !important;
 
-a{
-  color:$black-color;
-}
-}
-.ant-pagination-item {
-  color: rgba(0, 0, 0, 0.45); // Postavite boju na $black-color s 45% prozirnosti
-  border-color: $border-color;
+  .ant-pagination-item {
+    border-color: $border-color;
 
-}
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+  
 }
 
 .ant-select-single {
@@ -83,9 +91,9 @@ a{
 
 .ant-select-selector {
   width: 100%;
-height: 32px;
-padding: 0px 9px;
-margin-bottom: 2px;
+  height: 32px;
+  padding: 0px 9px;
+  margin-bottom: 2px;
 }
 
 .ant-select-arrow {
@@ -95,7 +103,7 @@ margin-bottom: 2px;
     width: 0;
     height: 0;
     margin-left: 4px;
-    border-top: 4px solid #000; /* Promijenite boju i debljinu strelice prema potrebi */
+    border-top: 4px solid #000;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
     vertical-align: middle;
@@ -104,7 +112,7 @@ margin-bottom: 2px;
 
 .ant-select-selection-item {
   @include gilroy-medium600();
-  color:$text-color-primary;
+  color: $text-color-primary;
 
   &::before {
     content: none;
@@ -112,12 +120,12 @@ margin-bottom: 2px;
 }
 
 .anticon {
-  display:none;
+  display: none;
 }
 
 .rows-text {
   @include gilroy-medium600();
-  color: $text-color-primary; 
+  color: $text-color-primary;
 }
 
 .next-last-buttons {
@@ -126,9 +134,27 @@ margin-bottom: 2px;
 
   button {
     margin-left: 8px;
+    width: 46px;
+    height: 32px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    background-color: white;
+    border-color: $border-color;
+    border-width: 1px;
+    border-style: solid;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+    &:active {
+      transform: scale(0.8);
+    }
   }
 }
 
-.pagination-right{
-  display:flex;
+.pagination-right {
+  display: flex;
 }
+
