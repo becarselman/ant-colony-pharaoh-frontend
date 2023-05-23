@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
-@import '../../utilis/colors';
-@import '../../utilis/mixins';
+@import './../../utilis/colors';
+@import './../../utilis/mixins';
 
 .sidebar-container {
   position: absolute;
-  left: 0;
-  top: 0;
+  background-color: #f1f1f1;
 
   background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
   border-right: 1px solid $border-color;
@@ -73,14 +72,11 @@
   margin-right: 10px;
 }
 
-
 .sidebar-options {
   display: flex;
   flex-direction: column;
-
   justify-content: flex-start;
-
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .sidebar-option {
@@ -88,6 +84,8 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .sidebar-option p {
@@ -97,4 +95,53 @@
   font-size: 14px;
   line-height: 16px;
   color: $text-color-secondary;
+}
+
+.sidebar-option.active {
+  background: $active-navbar-color;
+  border-radius: 6px;
+  padding-left: 8px;
+}
+
+.sidebar-option.active p {
+  font-weight: bold;
+}
+
+.sidebar-option.active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: $white-color;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+.dashboard-page {
+  flex: 1;
+  background-color: #fff;
+  margin-left: 250px;
+  /* Dodati sledeći stil za poplavljivanje dužine */
+  width: calc(100vw - 250px);
+}
+
+.anticon {
+  color: $primary-color;
 }

@@ -1,27 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
 @import '../../utilis/_mixins.scss';
 @import '../../utilis/_colors.scss';
+
 .table-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+
+    .pagination-info {
+      @include gilroy-medium();
+      color: #6C6D75;
+      display: flex;
+      align-items: center;
+    }
+    .ant-pagination-total-text {
+      display: none;
+    }
+  }
+}
+.show-total {
+  margin-left: auto;
+  padding-left: 20px;
+  @include gilroy-medium();
+  color: $gray-color;
 }
 
 .table {
-  border: 1px solid $border-color; // Dodajte border oko tabele
+  border: 1px solid $border-color;
 
- .ant-table-thead > tr > th {
-  @include gilroy-medium500;
-  color: #6C6D75;
+  .ant-table-thead > tr > th {
+    @include gilroy-medium500;
+    color: $dark-gray-color;
   }
 }
 
 .table tr {
   border-bottom: 1px solid $border-color;
-
   td {
     @include gilroy-medium();
-    color: #6C6D75; 
+    color: $gray-color;
   }
 }
 
+.custom-pagination {
+  display: flex;
+  align-items: center;
+
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    display:none;
+    .ant-pagination-item-link {
+      display: none;
+
+    }
+  }
+.ant-pagination-item-active {
+  border-color: $gray-color !important;
+
+a{
+  color:$black-color;
+}
+}
+.ant-pagination-item {
+  color: rgba(0, 0, 0, 0.45); // Postavite boju na $black-color s 45% prozirnosti
+  border-color: $border-color;
+
+}
+}
+
+.ant-select-single {
+  padding-left: 12px;
+}
+
+.ant-select-selector {
+  width: 100%;
+height: 32px;
+padding: 0px 9px;
+margin-bottom: 2px;
+}
+
+.ant-select-arrow {
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border-top: 4px solid #000; /* Promijenite boju i debljinu strelice prema potrebi */
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    vertical-align: middle;
+  }
+}
+
+.ant-select-selection-item {
+  @include gilroy-medium600();
+  color:$text-color-primary;
+
+  &::before {
+    content: none;
+  }
+}
+
+.anticon {
+  display:none;
+}
+
+.rows-text {
+  @include gilroy-medium600();
+  color: $text-color-primary; 
+}
+
+.next-last-buttons {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 8px;
+  }
+}
+
+.pagination-right{
+  display:flex;
+}

@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+@import "../../utilis/colors";
+@import "../../utilis/mixins";
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: $dark-white-color;
+  background: linear-gradient(
+    179.32deg,
+    $background-gradient-first-color 8.04%,
+    $background-gradient-second-color 99.41%
+  );
+  border-right: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-content {
+  flex: 1;
+  background-color: $white-color;
+  margin-left: 100px;
+}

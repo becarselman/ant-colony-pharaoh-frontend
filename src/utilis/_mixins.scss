@@ -1,81 +1,92 @@
 
 @mixin login-button-styles {
-    background: $primary-color;
-    border-radius: 6px;
-    color: $white-color;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
+  background: $primary-color;
+  border-radius: 6px;
+  color: $white-color;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
 
 @mixin title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  color: $black-color;
+  font-family: Arial;
+}
+
+@mixin label-input-styles {
+  label {
+    width: 151px;
+    height: 24px;
     font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    color: $black-color;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    flex: none;
+    flex-grow: 0;
+    flex-grow: 0;
     font-family: Arial;
   }
 
-  @mixin label-input-styles {
-    label {
-      width: 151px;
-      height: 24px;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 24px;
-      letter-spacing: -0.015em;
-      flex: none;
-      flex-grow: 0;
-      flex-grow: 0;
-      font-family: Arial;
-    }
-  
-    input {
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 12px 10px 12px 12px;
-      gap: 10px;
-      border: 1px solid $checkbox-color;
-      border-radius: 6px;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
+  input {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 10px 12px 12px;
+    gap: 10px;
+    border: 1px solid $checkbox-color;
+    border-radius: 6px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
   }
+}
 
 @mixin font($font-family, $font-style, $font-weight, $font-size, $line-height, $color) {
-  font-family: $font-family, sans-serif;
-  font-style: $font-style;
-  font-weight: $font-weight;
-  font-size: $font-size;
-  line-height: $line-height;
+font-family: $font-family, sans-serif;
+font-style: $font-style;
+font-weight: $font-weight;
+font-size: $font-size;
+line-height: $line-height;
 
-  color: $color;
+color: $color;
 }
 
 @mixin inter-medium {
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 500;
+font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 500;
 }
 
 @mixin inter-regular {
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 500;
+font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 500;
 }
 
 @mixin gilroy-medium {
-  font-family: 'Gilroy', sans-serif;
-  font-style: normal;
-  font-weight: 400;
+font-family: 'Gilroy', sans-serif;
+font-style: normal;
+font-weight: 400;
 }
 
-  // Custom260
+@mixin gilroy-medium500 {
+font-family: 'Gilroy', sans-serif;
+font-style: normal;
+font-weight: 500;
+}
+
+@mixin gilroy-medium600 {
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  }
+// Custom260
 $screen-rwd260-min: 260px;
 
 // Custom460
@@ -97,51 +108,51 @@ $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
 
 @mixin sm {
-  @media (min-width: #{$screen-sm-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-sm-min}) {
+    @content;
+}
 }
 
 // Medium devices
 @mixin md {
-  @media (min-width: #{$screen-md-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-md-min}) {
+    @content;
+}
 }
 
 // Custom820
 @mixin rwd820 {
-  @media (min-width: #{$screen-rwd820-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-rwd820-min}) {
+    @content;
+}
 }
 
 // Custom468
 @mixin rwd468 {
-  @media (min-width: #{$screen-rwd468-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-rwd468-min}) {
+    @content;
+}
 }
 
 // Custom260
 @mixin rwd260 {
-  @media (min-width: #{$screen-rwd260-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-rwd260-min}) {
+    @content;
+}
 }
 
 // Large devices
 @mixin lg {
-  @media (min-width: #{$screen-lg-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-lg-min}) {
+    @content;
+}
 }
 
 // Extra large devices
 @mixin xl {
-  @media (min-width: #{$screen-xl-min}) {
-      @content;
-  }
+@media (min-width: #{$screen-xl-min}) {
+    @content;
+}
 }
 
 
