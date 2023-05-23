@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import '../../utilis/colors';
+@import '../../utilis/mixins';
+
+.container{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar{
+    height: 100vh;
+}
+
+.right-side{
+    margin-top: 30px;
+    position: relative;
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-left: 355px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 50px;
+}
+
+.home-text{
+    padding-bottom: 30px;
+}
+
+.selections{
+    display: flex;
+    flex-direction: row;
+    padding-bottom:18px;
+}
+
+.selection-options{
+    @include inter-regular();
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $light-selection-color;
+
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $green-border-color;
+    border-radius: 6px;
+}
+
+.selection1{
+    padding-top: 9px;
+    padding-right: 16px;
+    padding-bottom: 9px;
+    padding-left: 16px;    
+    border-right: 1px solid $green-border-color;
+    text-align: center;
+}
+
+.selection2{
+    padding-top: 9px;
+    padding-right: 16px;
+    padding-bottom: 9px;
+    padding-left: 16px;    
+    border-right: 1px solid $green-border-color;
+    text-align: center;
+}
+
+.selection3{
+    padding-top: 9px;
+    padding-right: 16px;
+    padding-bottom: 9px;
+    padding-left: 16px;
+    text-align: center;
+}
+
+.year-selection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end; 
+    margin-left: auto;
+}
+
+.year-text{
+    padding-right: 16px;
+}
+
+.year{
+    @include gilroy-medium;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    padding-top: 9px;
+    padding-right: 16px;
+    padding-bottom: 9px;
+    padding-left: 16px;
+    border: 1px solid $light-gray-border;
+    border-radius: 6px;
+}
+
+.drop-down-arrow{
+    padding-left: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+.card {
+    width: 20.5%; 
+    border: 1px solid $light-gray-border;
+    border-radius: 6px;
+    padding: 10px 16px 10px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+  
+.card-info {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: left;
+}
+  
+.card-icon {
+    margin-left: auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: $icon-background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+  
+.card-title {
+    @include gilroy-medium;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $natural-gray-text;
+}
+  
+.card-value {
+    @include gilroy-medium;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.middle-stats{
+    padding-top: 42px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chart{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $light-gray-border;
+    border-radius: 6px;
+    width: 44%;
+    height: 350px;
+    padding: 20px;
+}
+
+.stats-title{
+    padding-bottom: 20px;
+    border-bottom: 1px solid $light-gray-border;
+    @include gilroy-medium;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.bottom-chart{
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $light-gray-border;
+    border-radius: 6px;
+    padding: 20px;
+}

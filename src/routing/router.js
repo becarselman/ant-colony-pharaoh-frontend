@@ -1,30 +1,31 @@
 import React from "react";
-import LoginForm from '../components/loginform/modules/index.js';
-import ForgotPassword from '../components/forgotpassword/modules/index.js';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import ResetPassword from "../components/resetpassword/modules/index.js";
-//FIXME: something tells me I shouldn't import sidebar like this!?
-import Sidebar from "../components/sidebar/Sidebar";
+import LoginForm from "../components/loginform/modules/index.js";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from "./protectedRoutes";
-import Dashboard from "../components/dashboard/Dashboard";
 import DashboardRoutes from "./dashboardRoutes";
+import Dashboard from "../components/dashboard/Dashboard.js";
+import Home from "../components/home/Home.js";
 
 function CustomRouter() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/dashboard/home" />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password/:token" element={<ResetPassword />} />
-        <Route path="*" element={<Navigate to="/login" />} />
-        <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route exact path="/login" element={<LoginForm />} />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-        <Route path = "/dashboard/*" element={<DashboardRoutes />} />
+        <Route path="/home" element={<Home />}/>
+        <Route
+          path="/dashboard/*"
+          element={
+            <ProtectedRoutes>
+              <Dashboard />
+              <DashboardRoutes />
+            </ProtectedRoutes>
+          }
+        />
+        <Route path="*" element={<Navigate to="/dashboard/home" />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
 export default CustomRouter;
