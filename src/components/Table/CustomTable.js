@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table } from 'antd';
-import PaginationComponent from './Pagination';
+import PaginationComponent from './components/Pagination';
 import './CustomTable.scss';
 
 const CustomTable = ({ data, columns }) => {

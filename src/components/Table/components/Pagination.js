@@ -33,14 +33,18 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
   };
 
   const isLastPage = currentPage === Math.ceil(totalItems / pageSize);
+ 
+  const pageSizeOptions = ['10', '20', '50'];
 
+  const pageSizeSelectOptions = pageSizeOptions.map((value) => (
+    <Select.Option key={value} value={value}>
+      {value}
+    </Select.Option>
+  ));
+  
   const pageSizeSelect = (
     <Select value={pageSize.toString()} onChange={handlePageSizeChange}>
-      {['5', '10', '20'].map((value) => (
-        <Select.Option key={value} value={value}>
-          {value}
-        </Select.Option>
-      ))}
+      {pageSizeSelectOptions}
     </Select>
   );
 

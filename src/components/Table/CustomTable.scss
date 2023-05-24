@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
 @import './../../utilis/colors';
 @import './../../utilis/mixins';
 
@@ -18,7 +16,7 @@
     margin-top: 16px;
 
     .pagination-info {
-      @include gilroy-medium();
+      @include gilroy-medium;
       color: #6C6D75;
       display: flex;
       align-items: center;
@@ -38,7 +36,7 @@
 .show-total {
   margin-left: auto;
   padding-left: 20px;
-  @include gilroy-medium();
+  @include gilroy-medium;
   color: $gray-color;
 }
 
@@ -54,7 +52,7 @@
 .table tr {
   border-bottom: 1px solid $border-color;
   td {
-    @include gilroy-medium();
+    @include gilroy-medium;
     color: $gray-color;
   }
 }
@@ -62,6 +60,14 @@
 .custom-pagination {
   display: flex;
   align-items: center;
+
+  .ant-pagination-item {
+    border-color: $border-color;
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
 
   .ant-pagination-item-active {
     border-color: $gray-color !important;
@@ -74,15 +80,6 @@
       border-color: $border-color;
     }
   }
-
-  .ant-pagination-item {
-    border-color: $border-color;
-
-    &:active {
-      transform: scale(0.8);
-    }
-  }
-  
 }
 
 .ant-select-single {
@@ -111,7 +108,7 @@
 }
 
 .ant-select-selection-item {
-  @include gilroy-medium600();
+  @include gilroy-medium600;
   color: $text-color-primary;
 
   &::before {
@@ -124,7 +121,7 @@
 }
 
 .rows-text {
-  @include gilroy-medium600();
+  @include gilroy-medium600;
   color: $text-color-primary;
 }
 
