@@ -13,8 +13,9 @@ const ModalItem = (props) => {
   }
   else if (props.item.dropdown === true) {
     const dropdownOptions = props.item.value.map(ddo => {
+      const value = ddo.toLowerCase()
       return (
-        <option value = { ddo.toLowerCase() } key={ ddo.toLowerCase() } >{ ddo }</option>
+        <option value = { value } key={ value } >{ ddo }</option>
       )
     })
 
