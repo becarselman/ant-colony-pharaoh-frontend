@@ -20,7 +20,6 @@
     }
   }
 .table-container {
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -45,6 +44,15 @@
   .ant-table-thead > tr > th {
     @include gilroy-medium500;
     color: $dark-gray-color;
+    border-bottom: none; // Uklanja border na dnu zaglavlja kolone
+    border-top: none; // Uklanja border na vrhu zaglavlja kolone
+  }
+
+  .ant-table-tbody > tr > td {
+    @include gilroy-medium;
+    color: $gray-color;
+    border-bottom: none; // Uklanja border na dnu ćelija u tabeli
+    border-top: none; // Uklanja border na vrhu ćelija u tabeli
   }
 }
 

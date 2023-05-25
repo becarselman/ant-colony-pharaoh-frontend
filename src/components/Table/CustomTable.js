@@ -1,41 +1,56 @@
-import React, { useState } from 'react';
-import { Table } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Table, Spin } from 'antd';
 import PaginationComponent from './components/Pagination';
 import './CustomTable.scss';
+import TableHeader from './components/TableHeader';
 
-const CustomTable = ({ data, columns }) => {
-  const [pageSize, setPageSize] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [skip, setSkip] = useState(0); 
-  
+const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading }) => {
+  const [pageData, setPageData] = useState(null);
+
   const handlePageSizeChange = (value) => {
-    setCurrentPage(1);
-    setPageSize(parseInt(value));
-    setSkip(0); 
+    onPageChange(1);
+    onPageSizeChange(parseInt(value));
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    onPageChange(page);
   };
 
-  const totalItems = data.length;
+  useEffect(() => {
+    setPageData(data);
+  }, [data]);
 
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const pageData = data.slice(startIndex, endIndex);
+  const tableHeader = (
+    <TableHeader totalCount={totalCount} handleSearch={(input) => console.log('Search:', input)} />
+  );
+  
 
   return (
     <div className="custom-table-container">
       <div className="table-container">
-        <Table dataSource={pageData} columns={columns} className="table" pagination={false} />
+        {isLoading ? (
+          <div className="loader-container">
+            <Spin size="large" />
+          </div>
+        ) : (
+          <Table
+            dataSource={pageData}
+            columns={columns}
+            className="table"
+            pagination={false}
+            bordered
+            title={() => tableHeader}
+          />
+        )}
       </div>
       <div className="pagination-container">
         <PaginationComponent
-          totalItems={totalItems}
+          totalItems={totalCount}
           pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}   
+          currentPage={page}
+          onPageChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}
+          isLoading={isLoading}
         />
       </div>
     </div>

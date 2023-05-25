@@ -1,8 +1,8 @@
 import React from 'react';
-import { Pagination, Select } from 'antd';
+import { Pagination, Select, Spin } from 'antd';
 import '../CustomTable.scss';
 
-const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, onPageSizeChange }) => {
+const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, onPageSizeChange, loading }) => {
   const handlePageSizeChange = (value) => {
     onPageSizeChange(parseInt(value));
   };
@@ -23,6 +23,7 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
     onChange: handlePageChange,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} Projects`,
   };
+
 
   const handleNextPage = () => {
     if (currentPage < Math.ceil(totalItems / pageSize)) {
@@ -74,12 +75,14 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
         {showTotalSpan}
       </div>
       <div className="pagination-right">
-        <Pagination {...paginationConfig} className="custom-pagination" />
+        <Pagination {...paginationConfig} className="custom-pagination test" />
+
         <div className="next-last-buttons">
           {nextButton}
           {lastButton}
         </div>
       </div>
+      {loading && <Spin className="loading-spinner" />}
     </div>
   );
 };

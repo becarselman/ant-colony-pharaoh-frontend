@@ -1,3 +1,5 @@
+import numeral from 'numeral';
+
 export const tableColumns = [
     {
       title: 'Name',
@@ -23,11 +25,16 @@ export const tableColumns = [
       title: 'Hourly rate',
       dataIndex: 'hourlyRate',
       key: 'hourlyRate',
+      render: (value) => `$${value}`,
     },
     {
       title: 'Project value in BAM',
       dataIndex: 'projectValue',
       key: 'projectValue',
+      render: (value) => {
+        const formattedValue = numeral(value).format('0,0.00');      
+          return `${formattedValue} BAM`;
+      },
     },
     {
       title: 'Status',

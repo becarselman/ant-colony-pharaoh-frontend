@@ -2,68 +2,81 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
-import PaginationComponent from '../Table/components/Pagination';
+import { tableData } from './components/data';
 
-const View = () => {
+import { getAllProjects } from '../../service/projectsService';
+
+const Projects = () => {
   const [dataSource, setDataSource] = useState([]);
-  const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [totalCount, setTotalCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, [skip, limit]);
+  }, [page, pageSize]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/projects?skip=${skip}&limit=${limit}`);
-      const projects = response.data;
+  const fetchData = () => {
+    setIsLoading(true);
 
-      const formattedData = projects.map((project, index) => {
-        const developers = project.developers.map((developer) => developer.user);
-        const fullTime = project.developers.map((developer) => developer.fullTime);
-        const startDateString = new Date(project.duration.from).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-         });
-         
-         const endDateString = new Date(project.duration.to).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-         });
-         
-         return {
-          key: project._id || index.toString(),
-          name: project.name || '',
-          description: project.description || '',
-          duration: `${startDateString} - ${endDateString}`,
-          developers: developers.join(', ') || '',
-          fullTime: fullTime.join(', ') || '',
-          hourlyRate: project.hourlyRate || 0,
-          projectValue: project.projectValue || 0,
-          status: project.projectStatus || '',
-         };
-         
+    getAllProjects(page, pageSize)
+      .then(function (response) {
+        const projects = response.data.projects;
+        const total = response.data.count;
+
+        const formattedData = projects.map((project, index) => {
+          const developers = project.developers.map((developer) => developer.user);
+          const fullTime = project.developers.map((developer) => developer.fullTime);
+          const startDateString = new Date(project.duration.from).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+          });
+
+          const endDateString = new Date(project.duration.to).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+          });
+
+          return {
+            key: project._id || index.toString(),
+            name: project.name || '',
+            description: project.description || '',
+            duration: `${startDateString} - ${endDateString}`,
+            developers: developers.join(', ') || '',
+            fullTime: fullTime.join(', ') || '', 
+            hourlyRate: project.hourlyRate || 0,
+            projectValue: project.projectValue || 0,
+            status: project.projectStatus || '',
+          };
+
+        });
+
+        setDataSource(formattedData);
+        setTotalCount(total);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        setIsLoading(false);
       });
-
-      setDataSource(formattedData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  }
 
   return (
     <div>
       <CustomTable
-        data={dataSource}
+        data={dataSource} 
         columns={tableColumns}
-        paginationComponent={PaginationComponent}
-        skip={skip}
-        limit={limit}
-        onSkipChange={setSkip}
-        onLimitChange={setLimit}
+        totalCount={totalCount}
+        page={page}
+        pageSize={pageSize}
+        onPageChange={setPage}
+        onPageSizeChange={setPageSize}
+        isLoading={isLoading}
       />
     </div>
   );
 };
 
-export default View;
+export default Projects;
