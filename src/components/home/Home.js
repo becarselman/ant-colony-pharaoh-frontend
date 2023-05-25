@@ -13,8 +13,52 @@ import { ReactComponent as AvgTeam } from '../../images/home/avg-team-size.svg';
 import { ReactComponent as AvgValue} from '../../images/home/avg-proj-val.svg';
 import { ReactComponent as AvgLeadClosing } from '../../images/home/avg-lead-closing.svg';
 import { Pie, Bar, Column } from '@ant-design/plots';
+import CardItem from './CardItem';
 
 const Home = () => {
+
+    const data = [
+        {
+            title: 'Number of projects',
+            value: '9',
+            iconComponent:<ProjNumber/>,
+        },
+        {
+            title: 'Total project value',
+            value: '1,605,003.00KM',
+            iconComponent: <TotValue/>,
+        },
+        {
+            title: 'Avg. project value',
+            value: '178,434,89',
+            iconComponent: <AvgValue/>,
+        },
+        {
+            title: 'Avg. lead closing (d)',
+            value: '12',
+            iconComponent: <AvgLeadClosing/>,
+        },
+        {
+            title: 'Avg. team size',
+            value: '2.2',
+            iconComponent: <AvgTeam/>,
+        },
+        {
+            title: 'Avg. velocity',
+            value: '64',
+            iconComponent: <AvgVelocity/>,
+        },
+        {
+            title: 'Weeks over deadline',
+            value: '7',
+            iconComponent: <Deadline/>,
+        },
+        {
+            title: 'Avg. hourly price',
+            value: '$35',
+            iconComponent: <HourPrice/>,
+        },
+    ]
     const salesChannelsData = [
         { value: 335, type: 'Direct' },
         { value: 310, type: 'Email' },
@@ -22,10 +66,39 @@ const Home = () => {
         { value: 135, type: 'Social Media' },
         { value: 1548, type: 'Search Engine' },
       ];
+
+    const PieOptions = {
+        data: salesChannelsData,
+        angleField: 'value',
+        colorField: 'type',
+        radius: 0.9,
+        label: {
+          type: 'inner',
+          offset: '-30%',
+          content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
+          style: {
+            fontSize: 14,
+            textAlign: 'center',
+          },
+        },
+        interactions: [{ type: 'element-active' }],
+    };
+      
     const projectScopeData = [
         { value: 3.75, type: 'Fixed' },
         { value: 5, type: 'On-going' },
     ]
+
+    const BarOptions = {
+        data: projectScopeData,
+        xField: 'value',
+        yField: 'type',
+        seriesField: 'type',
+        legend: {
+          position: 'top-left',
+        },
+      };
+      
     const HoursOverviewData = [
         {
             name: 'grandTotalHoursAvailableName',
@@ -89,6 +162,19 @@ const Home = () => {
         },
       ];
 
+      const ColumnOptions = {
+        data: HoursOverviewData,
+        isGroup: true,
+        seriesField: 'name',
+        xField: 'date',
+        yField: 'value',
+        yAxis: {
+          min: 0,
+          max: 6000,
+        },
+      };
+      
+
   return (
     <div className='container'>
         <div className='sidebar'>
@@ -111,172 +197,34 @@ const Home = () => {
                 </div>
             </div>
             <div className='cards'>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Number of projects
-                        </div>
-                        <div className='card-value'>
-                            9
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                        <ProjNumber/>
-                    </div>
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Total project value
-                        </div>
-                        <div className='card-value'>
-                            1,605,003.00 KM
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                        <TotValue/>
-                    </div>
-
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Avg. project value
-                        </div>
-                        <div className='card-value'>
-                            178,434,89 KM
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                       <AvgValue/> 
-                    </div>
-
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Avg. lead closing (d)
-                        </div>
-                        <div className='card-value'>
-                            12
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                        <AvgLeadClosing/>
-                    </div>
-
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Avg. team size
-                        </div>
-                        <div className='card-value'>
-                            2.2
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                        <AvgTeam/>
-                    </div>
-
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Avg. velocity
-                        </div>
-                        <div className='card-value'>
-                            64
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                        <AvgVelocity/>
-                    </div>
-
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                            Weeks over deadline
-                        </div>
-                        <div className='card-value'>
-                            7
-                        </div>
-                    </div>
-                    <div className='card-icon'>
-                        <Deadline/>
-                    </div>
-
-                </div>
-                <div className='card'>
-                    <div className='card-info'>
-                        <div className='card-title'>
-                        Avg. hourly price
-                        </div>
-                        <div className='card-value'>
-                            $35
-                        </div>
-                    </div>
-                    
-                    <div className='card-icon'>
-                        <HourPrice/>
-                    </div>  
-                    
-                </div>
+                {data.map((item) => (
+                    <CardItem 
+                        key={item.title}
+                        title={item.title}
+                        value={item.value}
+                        iconComponent={item.iconComponent}
+                        />
+                ))}
             </div>
             <div className='middle-stats'>
                 <div className='chart'>
                     <div className='stats-title'>
                         Sales channels
                     </div>
-                <Pie
-                    data={salesChannelsData}
-                    angleField='value'
-                    colorField='type'
-                    radius={0.9}
-                    label={{
-                    type: 'inner',
-                    offset: '-30%',
-                    content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
-                    style: {
-                        fontSize: 14,
-                        textAlign: 'center',
-                    },
-                    }}
-                    interactions={[{ type: 'element-active' }]}
-                />
+                <Pie {...PieOptions}/>
                 </div>
                 <div className='chart'>
                     <div className='stats-title'>
                         Project scope
                     </div>
-                    <Bar
-                            data={projectScopeData}
-                            xField='value'
-                            yField= 'type'
-                            seriesField= 'type'
-                            legend= {{
-                              position: 'top-left',
-                            }}
-                            />
+                    <Bar {...BarOptions}/>
                 </div>
             </div>
             <div className='bottom-chart'>
                 <div className='stats-title'>
                     Hours Overview
                 </div>
-                <Column 
-                    data={HoursOverviewData}
-                    isGroup={true}
-                    seriesField = 'name'
-                    xField="date"
-                    yField="value"
-                    yAxis={{
-                        min: 0,
-                        max: 6000,
-                    }}
-
-                />
+                <Column {...ColumnOptions}/>
             </div>
         </div>
     </div>
