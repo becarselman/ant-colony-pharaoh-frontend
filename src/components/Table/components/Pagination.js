@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Pagination, Select } from 'antd';
+import '../CustomTable.scss';
 
 const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, onPageSizeChange }) => {
   const handlePageSizeChange = (value) => {
@@ -7,6 +8,7 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
   };
 
   const handlePageChange = (page) => {
+    const newSkip = (page - 1) * pageSize;
     onPageChange(page);
   };
 
@@ -33,7 +35,7 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
   };
 
   const isLastPage = currentPage === Math.ceil(totalItems / pageSize);
- 
+
   const pageSizeOptions = ['10', '20', '50'];
 
   const pageSizeSelectOptions = pageSizeOptions.map((value) => (
@@ -41,7 +43,7 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
       {value}
     </Select.Option>
   ));
-  
+
   const pageSizeSelect = (
     <Select value={pageSize.toString()} onChange={handlePageSizeChange}>
       {pageSizeSelectOptions}

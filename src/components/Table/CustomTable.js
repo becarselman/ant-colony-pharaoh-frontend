@@ -6,10 +6,12 @@ import './CustomTable.scss';
 const CustomTable = ({ data, columns }) => {
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [skip, setSkip] = useState(0); 
+  
   const handlePageSizeChange = (value) => {
     setCurrentPage(1);
     setPageSize(parseInt(value));
+    setSkip(0); 
   };
 
   const handlePageChange = (page) => {

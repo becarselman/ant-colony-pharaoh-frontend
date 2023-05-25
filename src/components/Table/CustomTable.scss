@@ -2,12 +2,6 @@
 @import './../../utilis/mixins';
 
 
-.table-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   .pagination-container {
     display: flex;
     align-items: center;
@@ -25,6 +19,11 @@
       display: none;
     }
   }
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .ant-pagination-next, 
