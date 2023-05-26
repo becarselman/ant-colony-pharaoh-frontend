@@ -4,7 +4,7 @@ import PaginationComponent from './components/Pagination';
 import './CustomTable.scss';
 import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
-import NavLink from './components/Navlink';
+
 
 const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
   const [pageData, setPageData] = useState(null);
@@ -47,7 +47,7 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
             <Spin size="large" />
           </div>
         ) : (
-          <Table
+          <Table 
             dataSource={pageData}
             columns={columns}
             className="table"

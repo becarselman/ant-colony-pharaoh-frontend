@@ -1,4 +1,5 @@
 import numeral from 'numeral';
+import '../Projects.scss';
 
 export const tableColumns = [
     {
@@ -40,5 +41,15 @@ export const tableColumns = [
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      render: (projectStatus) => (
+        <span>
+          <span
+           className={`status-dot ${projectStatus === 'Active' ? 
+          'bg-green' : projectStatus === 'Inactive' ?
+          'bg-gray' : projectStatus === 'On-hold' ? 
+          'bg-orange' : projectStatus === 'Completed' ? 'bg-blue' : ''}`} />
+          {projectStatus}
+        </span>
+      ),
     },
   ];

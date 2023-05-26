@@ -48,7 +48,7 @@
 }
 
 .user-role {
-  @include inter-regular();
+  @include inter-medium();
   font-size: 14px;
   line-height: 18px;
   color: $text-color-primary;

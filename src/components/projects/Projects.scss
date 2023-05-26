@@ -1,7 +1,53 @@
-.table-container {
+@import './../../utilis/colors';
+@import './../../utilis/mixins';
+
+.page-header {
   display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: calc(100vh - 32px);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.projects-title {
+  @include title;
+  padding-bottom: 10px;
+  font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 40px;
+}
+
+.create-project-button {
+@include button-styles;
+@include inter-medium;
+font-size: 16px;
+width: 176px;
+height: 40px;
+  cursor: pointer;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.bg-green{
+  background-color: $green-color;
+
+}
+
+.bg-gray {
+  background-color: $gray-color;
+}
+
+.bg-orange {
+  background-color: $orange-color;
+}
+
+.bg-blue {
+  background-color: rgb(12, 213, 236);
 }

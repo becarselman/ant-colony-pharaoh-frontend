@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+  height: 70px;
 
     .header-content {
       display: flex;
@@ -32,7 +33,7 @@
         padding: 0.625rem;
         font-size: 0.875rem;
         line-height: 1.125rem;
-        color: $light-green-color;
+        color: $green-color;
       }
     }
   .search-form {
@@ -44,7 +45,7 @@
     width: 19.6875rem;
     border-radius: 0.125rem;
     border: 1px solid #ccd2d8;
-    padding-left: 0.5rem; 
+    padding-left: 0.8rem;
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     font-weight: normal;
@@ -64,6 +65,8 @@
     left: 0.5rem; 
     font-size: 1.125rem; 
     color: $text-color-primary;
+    padding-right: 10px;
   }
 }
 }
+

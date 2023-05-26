@@ -1,35 +1,28 @@
 @import './../../utilis/colors';
 @import './../../utilis/mixins';
 
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
 
-  .pagination-container {
+  .pagination-info {
+    @include gilroy-medium500;
+    color: #6C6D75;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 16px;
-
-    .pagination-info {
-      @include gilroy-medium;
-      color: #6C6D75;
-      display: flex;
-      align-items: center;
-    }
-    .ant-pagination-total-text {
-      display: none;
-    }
   }
-.table-container {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  .ant-pagination-total-text {
+    display: none;
+  }
 }
 
-.ant-pagination-next, 
-.ant-pagination-prev {
-    display: none !important;
+.ant-pagination-next, .ant-pagination-prev {
+  display: none !important;
 }
-
 
 .show-total {
   margin-left: auto;
@@ -38,30 +31,21 @@
   color: $gray-color;
 }
 
-.table {
-  border: 1px solid $border-color;
-
-  .ant-table-thead > tr > th {
-    @include gilroy-medium500;
-    color: $dark-gray-color;
-    border-bottom: none; // Uklanja border na dnu zaglavlja kolone
-    border-top: none; // Uklanja border na vrhu zaglavlja kolone
-  }
-
-  .ant-table-tbody > tr > td {
-    @include gilroy-medium;
-    color: $gray-color;
-    border-bottom: none; // Uklanja border na dnu ćelija u tabeli
-    border-top: none; // Uklanja border na vrhu ćelija u tabeli
-  }
+.ant-table-thead > tr > th {
+  @include gilroy-medium500;
+  color: $dark-gray-color;
 }
 
-.table tr {
-  border-bottom: 1px solid $border-color;
-  td {
-    @include gilroy-medium;
-    color: $gray-color;
-  }
+.ant-table-tbody > tr > td {
+  @include gilroy-medium;
+  color: $gray-color;
+
+}
+
+.table td {
+  @include gilroy-medium;
+  color: $gray-color;
+  
 }
 
 .custom-pagination {
@@ -161,4 +145,3 @@
 .pagination-right {
   display: flex;
 }
-

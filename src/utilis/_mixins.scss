@@ -1,5 +1,45 @@
 
-@mixin login-button-styles {
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('../fonts/static/Gilroy-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('../fonts/static/Gilroy-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src: url('../fonts/static/Gilroy-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src: url('../fonts/static/Gilroy-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter-Bold';
+  src: url('../fonts/static/Inter-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter-Medium';
+  src: url('../fonts/static/Inter-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url('../fonts/static/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter-SemiBold';
+  src: url('../fonts/static/Inter-SemiBold.ttf') format('truetype');
+}
+
+@mixin button-styles {
   background: $primary-color;
   border-radius: 6px;
   color: $white-color;
@@ -9,11 +49,12 @@
 }
 
 @mixin title {
+  font-family: 'Gilroy', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
   color: $black-color;
-  font-family: Arial;
+
 }
 
 @mixin label-input-styles {
@@ -63,11 +104,11 @@ font-style: normal;
 font-weight: 500;
 }
 
-@mixin inter-regular {
-font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 500;
-}
+@mixin inter-medium600 {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  }
 
 @mixin gilroy-medium {
 font-family: 'Gilroy', sans-serif;

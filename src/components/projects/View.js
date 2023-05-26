@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import './Projects.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
-import { tableData } from './components/data';
-
 import { getAllProjects } from '../../service/projectsService';
 
 const Projects = () => {
@@ -76,6 +74,10 @@ const Projects = () => {
 
   return (
     <div>
+      <div className="page-header">
+        <h2 className="projects-title">Projects</h2>
+        <button className="create-project-button">Create New Project</button>
+      </div>
       <CustomTable
         data={dataSource} 
         columns={tableColumns}

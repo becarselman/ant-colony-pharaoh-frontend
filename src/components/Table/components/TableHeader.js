@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './TableHeader.scss';
 import { Input } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import searchIcon from '../../../images/svg/searchIcon.svg';
 
 const TableHeader = ({ totalCount, handleSearch }) => {
   const [input, setInput] = useState('');
@@ -14,7 +14,7 @@ const TableHeader = ({ totalCount, handleSearch }) => {
       </div>
       <form
         className="search-form"
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           handleSearch(input);
         }}
@@ -23,8 +23,8 @@ const TableHeader = ({ totalCount, handleSearch }) => {
           className="search-input"
           placeholder="Search"
           value={input}
-          onChange={event => setInput(event.target.value)}
-          prefix={<SearchOutlined />}
+          onChange={(event) => setInput(event.target.value)}
+          prefix={<img src={searchIcon} alt="Search" />}
         />
       </form>
     </div>
