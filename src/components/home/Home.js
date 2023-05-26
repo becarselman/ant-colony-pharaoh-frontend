@@ -66,6 +66,9 @@ const Home = () => {
             <div className='bottom-chart'>
                 <div className='stats-title'>
                     Hours Overview
+                    <div className='stats-details'>
+                        <a href='#' className='stats-details'>See details</a>
+                    </div>
                 </div>
                 <Column {...ColumnOptions}/>
             </div>

@@ -45,6 +45,7 @@ export const ColumnOptions = {
     },
     minColumnWidth: 20,
     maxColumnWidth: 20,
+    dodgePadding: 6,
     color: ({ name }) => {
         return name === 'Grand Total Hours Available' ? '#FF9F5A' : '#7BB99F';
       },

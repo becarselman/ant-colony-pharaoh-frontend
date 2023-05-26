@@ -178,6 +178,9 @@
 }
 
 .stats-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding-bottom: 20px;
     border-bottom: 1px solid $light-gray-border;
     @include gilroy-medium;
@@ -186,6 +189,18 @@
     line-height: 28px;
     letter-spacing: 0px;
     text-align: left;
+}
+
+.stats-details{
+    padding-left: 10px;
+    @include inter-medium;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: right;
+    color: $see-details-color;
+    padding-top: 2px;
 }
 
 .bottom-chart{
