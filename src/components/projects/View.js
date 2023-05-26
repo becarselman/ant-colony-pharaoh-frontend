@@ -12,17 +12,20 @@ const Projects = () => {
   const [pageSize, setPageSize] = useState(10);
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const navLabels = ['All Projects', 'Active', 'Inactive', 'Completed'];
+  const [selectedProjectStatus, setSelectedProjectStatus] = useState(navLabels[0]);
 
   useEffect(() => {
     fetchData();
-  }, [page, pageSize]);
+  }, [page, pageSize, selectedProjectStatus]);
 
   const fetchData = () => {
     setIsLoading(true);
 
-    getAllProjects(page, pageSize)
+    getAllProjects(page, pageSize, selectedProjectStatus)
       .then(function (response) {
         const projects = response.data.projects;
+        console.log("fafafafa", projects)
         const total = response.data.count;
 
         const formattedData = projects.map((project, index) => {
@@ -49,7 +52,6 @@ const Projects = () => {
             projectValue: project.projectValue || 0,
             status: project.projectStatus || '',
           };
-
         });
 
         setDataSource(formattedData);
@@ -61,7 +63,12 @@ const Projects = () => {
       .finally(function () {
         setIsLoading(false);
       });
-  }
+  };
+
+  const handleNavSelect = (label) => {
+    setSelectedProjectStatus(label);
+    setPage(1);
+  };
 
   return (
     <div>
@@ -74,6 +81,9 @@ const Projects = () => {
         onPageChange={setPage}
         onPageSizeChange={setPageSize}
         isLoading={isLoading}
+        navLabels={navLabels}
+        selectedNavLabel={selectedProjectStatus}
+        onNavSelect={handleNavSelect}
       />
     </div>
   );
