@@ -6,7 +6,7 @@ import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
 import NavLink from './components/Navlink';
 
-const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect }) => {
+const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
   const [pageData, setPageData] = useState(null);
 
   const handlePageSizeChange = (value) => {
@@ -25,8 +25,12 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     setPageData(filteredData);
   }, [data, selectedNavLabel]);
 
+  const handleSearch = (input) => {
+    onSearchChange(input);
+  };
+
   const tableHeader = (
-    <TableHeader totalCount={totalCount} handleSearch={(input) => console.log('Search:', input)} />
+    <TableHeader totalCount={totalCount} handleSearch={handleSearch} />
   );
 
   return (

@@ -14,18 +14,18 @@ const Projects = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navLabels = ['All Projects', 'Active', 'Inactive', 'Completed'];
   const [selectedProjectStatus, setSelectedProjectStatus] = useState(navLabels[0]);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     fetchData();
-  }, [page, pageSize, selectedProjectStatus]);
+  }, [page, pageSize, selectedProjectStatus, searchInput]);
 
   const fetchData = () => {
     setIsLoading(true);
 
-    getAllProjects(page, pageSize, selectedProjectStatus)
+    getAllProjects(page, pageSize, selectedProjectStatus, searchInput)
       .then(function (response) {
         const projects = response.data.projects;
-        console.log("fafafafa", projects)
         const total = response.data.count;
 
         const formattedData = projects.map((project, index) => {
@@ -70,6 +70,10 @@ const Projects = () => {
     setPage(1);
   };
 
+  const handleSearchChange = (input) => {
+    setSearchInput(input);
+  };
+
   return (
     <div>
       <CustomTable
@@ -84,6 +88,7 @@ const Projects = () => {
         navLabels={navLabels}
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
+        onSearchChange={handleSearchChange}
       />
     </div>
   );
