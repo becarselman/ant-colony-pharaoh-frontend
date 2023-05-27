@@ -1,17 +1,16 @@
 label {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  text-align: right;
-  width: 450px;
+  justify-content: flex-start;
   line-height: 26px;
-  margin-bottom: 20px;
 
   font-size: 18px;
 }
 
 .input {
-  height: 20px;
-  flex: 0 0 200px;
-  margin-left: 40px;
+  margin-bottom: 20px;
+
+  width: 300px;
+
+  border-radius: 5px;
 }

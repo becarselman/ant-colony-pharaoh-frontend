@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import "./modal.scss";
 import { CloseOutlined } from "@ant-design/icons"
-import ReactPortal from "./portal";
-import ModalItem from "./modalItem";
+import ReactPortal from "./Portal";
+import ModalItem from "./ModalItem";
 
 function Modal({ items, isOpen, handleClose }) {
   //componentWillUnmount

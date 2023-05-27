@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import Modal from "../modal/modal";
+import React from "react";
 
 const Dashboard = ({props}) => {
 

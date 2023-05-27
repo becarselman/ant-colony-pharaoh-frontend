@@ -15,14 +15,13 @@
 }
 
 .modal-content {
-    //width: 70%;
-    //height: 70%;
     background-color: $modal-content-background-color;
     color: $modal-content-text-color;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
 
     padding: 100px;
+    //width: 20%;
+
+    border-radius: 40px;
 }
