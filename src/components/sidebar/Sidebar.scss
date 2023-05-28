@@ -4,18 +4,23 @@
 @import './../../utilis/mixins';
 
 .sidebar-container {
-  position: absolute;
+  position: fixed;
   background-color: #f1f1f1;
 
   background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
   border-right: 1px solid $border-color;
 
-  height: 100vh;
+  max-height: 100vh;
+  height: 100%;
 
-  padding: 30px;
+  // max-width: 325px;
 
   display: flex;
   flex-direction: column;
+
+  .sidebar-container-inner {
+    padding: 30px;
+  }
 }
 
 .logo-section {

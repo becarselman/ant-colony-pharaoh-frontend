@@ -20,6 +20,10 @@
   }
 }
 
+.ant-table-cell {
+  border-inline-end:none !important;
+}
+
 .ant-pagination-next, .ant-pagination-prev {
   display: none !important;
 }

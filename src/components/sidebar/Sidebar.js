@@ -38,29 +38,32 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar-container">
-      <div className="logo-section">
-        <img src={Logotype} className="logo-image" alt="Logo"/>
-      </div>
+      <div className="sidebar-container-inner">
+        <div className="logo-section">
+          <img src={Logotype} className="logo-image" alt="Logo" />
+        </div>
 
-      <div className="user-profile-overview">
-        <div className="profile-picture-section">
-          <img src={SampleProfilePicture} alt="Profile picture"/>
+        <div className="user-profile-overview">
+          <div className="profile-picture-section">
+            <img src={SampleProfilePicture} alt="Profile picture" />
+          </div>
+          <div className="user-info-section">
+            <p className="user-name">
+              Miron Lukač
+            </p>
+            <p className="user-role">
+              Admin
+            </p>
+          </div>
+          <div className="expand-user-info-section">
+            <DownOutlined />
+          </div>
         </div>
-        <div className="user-info-section">
-          <p className="user-name">
-            Miron Lukač
-          </p>
-          <p className="user-role">
-            Admin
-          </p>
-        </div>
-        <div className="expand-user-info-section">
-          <DownOutlined />
-        </div>
-      </div>
 
-      <div className="sidebar-options">
-        {arrayOfDivsSidebarOptions}
+        <div className="sidebar-options">
+          {arrayOfDivsSidebarOptions}
+        </div>
+
       </div>
     </div>
 
