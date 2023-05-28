@@ -1,27 +1,35 @@
-import { SET_PROJECTS, SET_LOADING } from './projectsActions';
+import {
+  actionTypes
+} from '../components/projects/modules/types';
 
 const initialState = {
-  dataSource: [],
-  page: 1,
-  pageSize: 10,
-  totalCount: 0,
-  isLoading: false,
-  selectedProjectStatus: 'All Projects',
-  searchInput: '',
+  projects: [],
+  total: 0,
+  loading: false,
+  error: null,
 };
 
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_PROJECTS:
+    case actionTypes.FETCH_PROJECTS_REQUEST:
       return {
         ...state,
-        dataSource: action.payload.projects,
-        totalCount: action.payload.total,
+        loading: true,
+        error: null,
       };
-    case SET_LOADING:
+    case actionTypes.FETCH_PROJECTS_SUCCESS:
       return {
         ...state,
-        isLoading: action.payload,
+        projects: action.payload.projects,
+        total: action.payload.total,
+        loading: false,
+        error: null,
+      };
+    case actionTypes.FETCH_PROJECTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

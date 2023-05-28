@@ -6,9 +6,10 @@ import rootReducer from "../reducers/reducer";
 import { watchLogin, watchLogout } from "../sagas/authSaga";
 import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
+import { projectsSaga } from "../sagas/projectsSaga";
 
 const persistConfig = {
-  key: "root", 
+  key: "root",
   storage,
 };
 
@@ -26,3 +27,4 @@ export const persistor = persistStore(store);
 sagaMiddleware.run(watchLogin);
 sagaMiddleware.run(watchForgotPassword);
 sagaMiddleware.run(watchResetPassword);
+sagaMiddleware.run(projectsSaga);

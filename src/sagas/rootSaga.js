@@ -2,7 +2,8 @@ import { all } from "redux-saga/effects";
 import { watchLogin, watchLogout } from "./authSaga";
 import { watchForgotPassword } from "./forgotPasswordSaga";
 import { watchResetPassword } from "./resetPasswordSaga";
+import { projectsSaga } from "./projectsSaga";
 
 export default function* rootSaga() {
-  yield all([watchLogin(), watchLogout(), watchForgotPassword(), watchResetPassword()]);
+  yield all([watchLogin(), watchLogout(), watchForgotPassword(), watchResetPassword(), projectsSaga()]);
 }
