@@ -1,26 +1,12 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
-import { getAllProjects } from '../service/projectsService';
-import {
-  actionTypes
-} from '../components/projects/modules/types';
-import {
-  fetchProjectsSuccess,
-  fetchProjectsFailure,
-  fetchProjectsRequest, 
-} from '../components/projects/modules/actions';
+import { takeLatest, put, call } from 'redux-saga/effects';
+import { fetchAllProjectsSuccess, fetchAllProjectsFailure } from '../actions';
+import { actionTypes } from "../types";
+import { getAllProjects } from '../../../../service/projectsService';
 
-
-function* fetchProjectsSaga(action) {
-  const { page, pageSize, selectedProjectStatus, searchInput } = action.payload;
-
+function* fetchAllProjectsSaga(action) {
   try {
-    const response = yield call(
-      getAllProjects,
-      page,
-      pageSize,
-      selectedProjectStatus,
-      searchInput
-    );
+    const { page, pageSize, selectedProjectStatus, searchInput } = action.payload;
+    const response = yield call(getAllProjects, page, pageSize, selectedProjectStatus, searchInput);
 
     const projects = response.data.projects;
     const total = response.data.count;
@@ -51,18 +37,12 @@ function* fetchProjectsSaga(action) {
       };
     });
 
-    yield put(fetchProjectsSuccess(formattedData, total));
+    yield put(fetchAllProjectsSuccess(formattedData, total));
   } catch (error) {
-    yield put(fetchProjectsFailure(error));
-  } finally {
-    yield put(fetchProjectsRequest()); // Dodano: Pokretanje fetchProjectsRequest akcije
+    yield put(fetchAllProjectsFailure(error.message));
   }
 }
 
-function* watchFetchProjects() {
-  yield takeLatest(actionTypes.FETCH_PROJECTS_REQUEST, fetchProjectsSaga);
-}
-
-export function* projectsSaga() {
-  yield all([watchFetchProjects()]);
+export function* watchFetchAllProjects() {
+  yield takeLatest(actionTypes.FETCH_ALL_PROJECTS, fetchAllProjectsSaga);
 }

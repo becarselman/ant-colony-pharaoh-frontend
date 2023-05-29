@@ -1,7 +1,7 @@
 import React from "react";
 import { useOutlet, useLocation } from "react-router-dom";
 import Home from "../../pages/Home";
-import Projects from "../projects/View";
+import Projects from "../projects/index.js";
 import Employees from "../../pages/Employees";
 import FinancialOverview from "../../pages/FinancialOverview";
 import ProjectReporting from "../../pages/ProjectReporting";

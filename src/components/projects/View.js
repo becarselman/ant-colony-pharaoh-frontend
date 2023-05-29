@@ -2,22 +2,26 @@ import React, { useEffect, useState } from 'react';
 import './Projects.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProjectsRequest } from './modules/actions';
 
-const Projects = () => {
-  const dispatch = useDispatch();
+const Projects = ({
+  dataSource,
+  totalCount,
+  isLoading,
+  error,
+  actions,
+}) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
-  const navLabels = ['All Projects', 'Active', 'Inactive', 'Completed'];
 
   useEffect(() => {
-    dispatch(fetchProjectsRequest(page, pageSize, selectedProjectStatus, searchInput));
-  }, [dispatch, page, pageSize, selectedProjectStatus, searchInput]);
+    fetchData();
+  }, [page, pageSize, selectedProjectStatus, searchInput]);
 
-  const dataSource = useSelector((state) => state.projects.projects);
+  const fetchData = () => {
+    actions.fetchAllProjects(page, pageSize, selectedProjectStatus, searchInput);
+  };
 
   const handleNavSelect = (label) => {
     setSelectedProjectStatus(label);
@@ -37,11 +41,13 @@ const Projects = () => {
       <CustomTable
         data={dataSource}
         columns={tableColumns}
+        totalCount={totalCount}
         page={page}
         pageSize={pageSize}
         onPageChange={setPage}
         onPageSizeChange={setPageSize}
-        navLabels={navLabels}
+        isLoading={isLoading}
+        navLabels={['All Projects', 'Active', 'Inactive', 'Completed']}
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}

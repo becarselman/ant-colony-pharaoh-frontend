@@ -1,31 +1,26 @@
 import { actionTypes } from "./types";
 
-export const fetchProjectsRequest = (page, pageSize, selectedProjectStatus, searchInput) => {
-  return {
-    type: actionTypes.FETCH_PROJECTS_REQUEST,
-    payload: {
-      page,
-      pageSize,
-      selectedProjectStatus,
-      searchInput,
-    },
-  };
-};
+export const fetchAllProjects = (page, pageSize, selectedProjectStatus, searchInput) => ({
+  type: actionTypes.FETCH_ALL_PROJECTS,
+  payload: {
+    page,
+    pageSize,
+    selectedProjectStatus,
+    searchInput,
+  },
+});
 
-export const fetchProjectsSuccess = (projects, total) => {
-  return {
-    type: actionTypes.FETCH_PROJECTS_SUCCESS,
-    payload: {
-      projects,
-      total,
-    },
-  };
-};
+export const fetchAllProjectsSuccess = (projects, count) => ({
+  type: actionTypes.FETCH_ALL_PROJECTS_SUCCESS,
+  payload: {
+    projects,
+    count,
+  },
+});
 
-
-export const fetchProjectsFailure = (error) => {
-  return {
-    type: actionTypes.FETCH_PROJECTS_FAILURE,
-    payload: error,
-  };
-};
+export const fetchAllProjectsFailure = (error) => ({
+  type: actionTypes.FETCH_ALL_PROJECTS_FAILURE,
+  payload: {
+    error,
+  },
+});

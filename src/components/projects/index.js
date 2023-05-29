@@ -1,5 +1,4 @@
-// projects/index.js
-import Projects from './Projects';
+import Container from './Container';
+import View from './View';
 
-export { default as Projects } from './View';
-
+export default Container(View);
