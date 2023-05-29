@@ -3,7 +3,7 @@ import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import forgotPasswordReducer from "./forgotPasswordReducer";
 import resetPasswordReducer from "./resetPasswordReducer";
-import projectsReducer from '../components/projects/modules/reducer/projectsReducer'; 
+import projectsReducer from '../components/projects/modules/reducer'; 
 
 export default combineReducers({
   auth: authReducer,

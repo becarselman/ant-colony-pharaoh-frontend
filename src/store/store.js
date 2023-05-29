@@ -6,7 +6,7 @@ import rootReducer from "../reducers/reducer";
 import { watchLogin, watchLogout } from "../sagas/authSaga";
 import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
-import { watchFetchAllProjects } from "../components/projects/modules/saga/projectsSaga";
+import { watchFetchAllProjects } from "../components/projects/modules/saga";
 
 const persistConfig = {
   key: "root", 

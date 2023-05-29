@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Spin } from 'antd';
+
 import PaginationComponent from './components/Pagination';
-import './CustomTable.scss';
 import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
 
+import './CustomTable.scss';
 
 const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
   const [pageData, setPageData] = useState(null);
+  const [filter, setFilter] = useState(selectedNavLabel);
 
   const handlePageSizeChange = (value) => {
     onPageChange(1);
@@ -18,44 +20,56 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     onPageChange(page);
   };
 
+  const handleFilterChange = (label) => {
+    setFilter(label);
+  };
+
   useEffect(() => {
     const filteredData = data.filter((item) => {
-      return item.status === selectedNavLabel || selectedNavLabel === 'All Projects';
+      return item.status === filter || filter === 'All Projects';
     });
     setPageData(filteredData);
-  }, [data, selectedNavLabel]);
+  }, [data, filter]);
 
   const handleSearch = (input) => {
     onSearchChange(input);
+  };
+
+  const handlePageSelect = (page, label) => {
+    onNavSelect(label);
+    handleFilterChange(label);
   };
 
   const tableHeader = (
     <TableHeader totalCount={totalCount} handleSearch={handleSearch} />
   );
 
+  const loaderContainer = isLoading ? (
+    <div className="loader-container">
+      <Spin size="large" />
+    </div>
+  ) : null;
+
+  const tableContent = isLoading ? null : (
+    <Table 
+      dataSource={pageData}
+      columns={columns}
+      className="table"
+      pagination={false}
+      bordered
+      title={() => tableHeader}
+    />
+  );
+
   return (
     <div className="custom-table-container">
       <Navbar
         navLabels={navLabels} 
-        handlePageSelect={(page, label) => {
-          onNavSelect(label);
-        }}
+        handlePageSelect={handlePageSelect}
       />
       <div className="table-container">
-        {isLoading ? (
-          <div className="loader-container">
-            <Spin size="large" />
-          </div>
-        ) : (
-          <Table 
-            dataSource={pageData}
-            columns={columns}
-            className="table"
-            pagination={false}
-            bordered
-            title={() => tableHeader}
-          />
-        )}
+        {loaderContainer}
+        {tableContent}
       </div>
       <div className="pagination-container">
         <PaginationComponent
