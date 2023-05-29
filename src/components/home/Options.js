@@ -1,4 +1,5 @@
 import { salesChannelsData, projectScopeData, HoursOverviewData } from './Data';
+import './Home.scss';
 
 export const PieOptions = {
     data: salesChannelsData,
@@ -10,8 +11,7 @@ export const PieOptions = {
       offset: '-30%',
       content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
       style: {
-        fontSize: 14,
-        textAlign: 'center',
+        className: 'pie-text',
       },
     },
     interactions: [{ type: 'element-active' }],

@@ -1,8 +1,6 @@
 import React from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import './Home.scss';
-import { ReactComponent as YearText } from '../../images/home/year-text.svg'
-import { ReactComponent as HomeText } from '../../images/home/home-text.svg';
 import { Dropdown, Space } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
 import { Pie, Bar, Column } from '@ant-design/plots';
@@ -18,7 +16,7 @@ const Home = () => {
             
         </div>
         <div className='right-side'>
-            <HomeText className='home-text'/>
+            <div className='home-text'>Home</div>
             <div className='selections'>
                 <div className='selection-options'>
                     <div className='selection1'>2023 Performance</div>
@@ -26,7 +24,7 @@ const Home = () => {
                     <div className='selection3'>2023 Plan</div>
                 </div>
                 <div className='year-selection'>
-                    <YearText className='year-text'/>
+                    <div className='year-text'>Year:</div>
                     <Dropdown menu={{items,}} trigger={['click']}>
                         <a onClick={(e) => e.preventDefault()}>
                             <Space>
