@@ -31,6 +31,10 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     setPageData(filteredData);
   }, [data, filter]);
 
+  useEffect(() => {
+    handleFilterChange(selectedNavLabel); 
+  }, [selectedNavLabel]);
+
   const handleSearch = (input) => {
     onSearchChange(input);
   };

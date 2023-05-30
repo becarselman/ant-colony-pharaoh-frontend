@@ -25,6 +25,17 @@ const projectsReducer = (state = initialState, action) => {
         error: action.payload.error,
         isLoading: false,
       };
+      case 'START_LOADER':
+  return {
+    ...state,
+    isLoading: true,
+  };
+case 'STOP_LOADER':
+  return {
+    ...state,
+    isLoading: false,
+  };
+
     default:
       return state;
   }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Projects.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
+import { startLoader, stopLoader } from './modules/actions';
 
 const Projects = ({
   dataSource,
@@ -51,6 +52,8 @@ const Projects = ({
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
+        startLoader={startLoader} 
+        stopLoader={stopLoader} 
       />
     </div>
   );

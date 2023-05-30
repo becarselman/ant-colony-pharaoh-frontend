@@ -24,3 +24,12 @@ export const fetchAllProjectsFailure = (error) => ({
     error,
   },
 });
+
+export const startLoader = () => ({
+  type: actionTypes.START_LOADER,
+});
+
+export const stopLoader = () => ({
+  type: actionTypes.STOP_LOADER,
+});
+
