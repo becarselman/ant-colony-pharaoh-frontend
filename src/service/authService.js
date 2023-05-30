@@ -1,5 +1,6 @@
 import axiosInstance from './apiService';
 import axios from 'axios';
+
 const URL = process.env.REACT_APP_API_URL;
 
 const login = (data) => {
@@ -30,18 +31,24 @@ export async function sendForgotPasswordRequest(email) {
 }
 
 export async function resetPasswordRequest(token, newPassword) {
+  console.log(token)
+  console.log(newPassword)
   try {
+    console.log("we are here", URL)
     const response = await axios.post(`${URL}reset-password/${token}`, { newPassword }, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log("after axios post", response)
 
     if (response.status === 200) {
+      console.log("did it");
       return { success: true };
     } else {
       const errorData = response.data;
+      console.log("did not");
       throw new Error(errorData.error);
     }
   } catch (error) {

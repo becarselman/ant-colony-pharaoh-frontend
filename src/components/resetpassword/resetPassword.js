@@ -35,6 +35,7 @@ const ResetPassword = ({actions}) => {
   
     try {
       actions.resetPasswordRequest(token, newPassword);
+      console.log("try block in component")
       setLoading(false);
       setMessage('Password reset request sent.');
       

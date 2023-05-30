@@ -80,6 +80,20 @@
     text-align: center;
 }
 
+.selection1.highlight,
+.selection2.highlight,
+.selection3.highlight {
+  color: $selected-text;
+  @include inter-medium;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  background-color: $selected-background;
+}
+
 .year-selection{
     display: flex;
     flex-direction: row;

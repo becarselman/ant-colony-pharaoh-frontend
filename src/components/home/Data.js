@@ -128,15 +128,19 @@ export const HoursOverviewData = [
 
 export const items = [
     {
-      key: '1',
+      value: '2022',
+      label: '2022',
+    },
+    {
+      value: '2023',
       label: '2023',
     },
     {
-      key: '2',
+      value: '2024',
       label: '2024',
     },
     {
-      key: '3',
+      value: '2025',
       label: '2025',
     },
   ];

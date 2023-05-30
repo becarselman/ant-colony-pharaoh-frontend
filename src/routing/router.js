@@ -5,6 +5,8 @@ import ProtectedRoutes from "./protectedRoutes";
 import DashboardRoutes from "./dashboardRoutes";
 import Dashboard from "../components/dashboard/Dashboard.js";
 import Home from "../components/home/Home.js";
+import ForgotPassword from "../components/forgotpassword/modules/index.js";
+import ResetPassword from "../components/resetpassword/modules/index.js";
 
 function CustomRouter() {
   return (
@@ -13,6 +15,8 @@ function CustomRouter() {
         <Route path="/" element={<Navigate to="/dashboard/home" />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/home" element={<Home />}/>
+        <Route path="/forgot-password" element={<ForgotPassword/>} />
+        <Route path="reset-password/:token" element={<ResetPassword/>} />
         <Route
           path="/dashboard/*"
           element={
