@@ -2,9 +2,11 @@ import Modal from "../modal/Modal";
 import {useState} from "react";
 import FormFields from "./FormFields";
 import Departments from "./Departments";
+import axios from "axios";
 
 const AddEmployeeModal = ({handleClose, isOpen}) => {
     const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [department, setDepartment] = useState(Departments[0])
@@ -13,6 +15,7 @@ const AddEmployeeModal = ({handleClose, isOpen}) => {
 
     const resetState = () => {
         setEmail("")
+        setPassword("")
         setName("")
         setSurname("")
         setDepartment(Departments[0])
@@ -25,6 +28,10 @@ const AddEmployeeModal = ({handleClose, isOpen}) => {
         email: {
             value: email,
             setter: setEmail
+        },
+        password: {
+            value: password,
+            setter: setPassword
         },
         name: {
             value: name,
@@ -48,12 +55,26 @@ const AddEmployeeModal = ({handleClose, isOpen}) => {
         }
     })
 
+    const submitUser = () => {
+        axios.post("http://localhost:5000/register", {
+            email,
+            password,
+            name,
+            surname,
+            department,
+            salary,
+            stack
+        })
+          .then(res => alert("User added successfully"))
+          .catch(err => alert(err.response.data.error))
+    }
+
     return (
         <>
             <Modal handleClose={() => {
                 resetState()
                 handleClose()
-            }} isOpen={isOpen} items={formFields} />
+            }} isOpen={isOpen} items={formFields} handleSubmit={submitUser} />
         </>
     )
 }

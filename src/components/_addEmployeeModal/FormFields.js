@@ -15,6 +15,16 @@ const FormFields = (states) => {
         },
         {
             input: true,
+            type: "password",
+            placeholder: "Password",
+            value: states.password.value,
+            setValue: states.password.setter,
+            id: "password",
+            name: "password",
+            labelText: "Password: "
+        },
+        {
+            input: true,
             type: "text",
             placeholder: "Name",
             value: states.name.value,

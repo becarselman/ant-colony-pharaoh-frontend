@@ -11,7 +11,7 @@
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     z-index: 999;
-    padding: 40px 20px 20px;
+    padding: 10px;
 }
 
 .modal-content {
@@ -20,8 +20,7 @@
     display: flex;
     flex-direction: column;
 
-    padding: 100px;
-    //width: 20%;
+    padding: 50px;
 
     border-radius: 40px;
 }

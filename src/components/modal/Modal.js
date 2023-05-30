@@ -4,7 +4,7 @@ import { CloseOutlined } from "@ant-design/icons"
 import ReactPortal from "./Portal";
 import ModalItem from "./ModalItem";
 
-function Modal({ items, isOpen, handleClose }) {
+function Modal({ items, isOpen, handleClose, handleSubmit }) {
   //componentWillUnmount
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
@@ -29,7 +29,7 @@ function Modal({ items, isOpen, handleClose }) {
         <CloseOutlined onClick={handleClose} className="close-btn"/>
         <div className="modal-content">
           { mappedItems }
-          <button type="submit">Save</button>
+          <button type="submit" onClick={handleSubmit}>Save</button>
         </div>
       </div>
     </ReactPortal>
