@@ -14,10 +14,7 @@ function CustomRouter() {
         <Route
           path="/dashboard/*"
           element={
-            <ProtectedRoutes>
               <Dashboard />
-              <DashboardRoutes />
-            </ProtectedRoutes>
           }
         />
         <Route path="*" element={<Navigate to="/dashboard/home" />} />
