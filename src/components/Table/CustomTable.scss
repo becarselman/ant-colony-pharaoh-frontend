@@ -22,12 +22,25 @@
 
 .ant-table-cell {
   border-inline-end:none !important;
+  
 }
 
 .ant-pagination-next, .ant-pagination-prev {
   display: none !important;
 }
 
+.ant-table-row {
+    transition: transform 0.3s;
+    will-change: transform;
+    cursor: pointer;
+  
+    &:hover {
+      transform: translateX(-4px);
+      font-size: 15px;
+    }
+  
+  
+}
 .show-total {
   margin-left: auto;
   padding-left: 20px;
