@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Spin } from 'antd';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setPageData, setTotalCount, setPageSize } from './modules/actions';
 import PaginationComponent from './components/Pagination';
 import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
@@ -8,16 +9,20 @@ import Navbar from './components/Navbar';
 import './CustomTable.scss';
 
 const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
-  const [pageData, setPageData] = useState(null);
+  const [pageData, setPageDataState] = useState(null);
   const [filter, setFilter] = useState(selectedNavLabel);
+  const dispatch = useDispatch();
 
   const handlePageSizeChange = (value) => {
     onPageChange(1);
     onPageSizeChange(parseInt(value));
+    dispatch(setPageData(null));
+    dispatch(setPageSize(parseInt(value)));
   };
 
   const handlePageChange = (page) => {
     onPageChange(page);
+    dispatch(setPageData(null));
   };
 
   const handleFilterChange = (label) => {
@@ -28,7 +33,9 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     const filteredData = data.filter((item) => {
       return item.status === filter || filter === 'All Projects';
     });
-    setPageData(filteredData);
+    setPageDataState(filteredData);
+    dispatch(setPageData(filteredData));
+    dispatch(setTotalCount(filteredData.length));
   }, [data, filter]);
 
   useEffect(() => {
@@ -42,9 +49,10 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
   const handlePageSelect = (page, label) => {
     onNavSelect(label);
     handleFilterChange(label);
+    dispatch(setPageData(null));
   };
 
-  const tableHeader = (
+  const tableHeader = () => (
     <TableHeader totalCount={totalCount} handleSearch={handleSearch} />
   );
 
@@ -61,7 +69,7 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
       className="table"
       pagination={false}
       bordered
-      title={() => tableHeader}
+      title={tableHeader}
     />
   );
 

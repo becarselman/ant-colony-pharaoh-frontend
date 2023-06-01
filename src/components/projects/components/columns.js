@@ -1,5 +1,6 @@
 import numeral from 'numeral';
 import '../Projects.scss';
+import classnames from 'classnames';
 
 export const tableColumns = [
     {
@@ -44,10 +45,13 @@ export const tableColumns = [
       render: (projectStatus) => (
         <span>
           <span
-           className={`status-dot ${projectStatus === 'Active' ? 
-          'bg-green' : projectStatus === 'Inactive' ?
-          'bg-gray' : projectStatus === 'On-hold' ? 
-          'bg-orange' : projectStatus === 'Completed' ? 'bg-blue' : ''}`} />
+            className={classnames('status-dot', {
+              'bg-green': projectStatus === 'Active',
+              'bg-gray': projectStatus === 'Inactive',
+              'bg-orange': projectStatus === 'On-hold',
+              'bg-blue': projectStatus === 'Completed',
+            })}
+          />
           {projectStatus}
         </span>
       ),

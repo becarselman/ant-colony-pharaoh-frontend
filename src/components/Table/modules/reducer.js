@@ -1,7 +1,7 @@
 const initialState = {
     pageData: null,
     totalCount: 0,
-    pageSize: 10, // Set your desired initial page size here
+    pageSize: 10, 
   };
   
   const customTableReducer = (state = initialState, action) => {

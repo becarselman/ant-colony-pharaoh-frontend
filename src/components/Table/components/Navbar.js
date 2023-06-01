@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Navbar.scss';
+import classnames from 'classnames';
 
 import NavLink from './Navlink';
 
@@ -11,16 +12,24 @@ const Navbar = ({ navLabels, handlePageSelect }) => {
     setSelectedPage(index + 1);
   };
 
-  const navLinks = navLabels.map((label, index) => (
-    <NavLink
-      key={index}
-      label={label}
-      onClick={() => handleClick(index, label)}
-      className={`${selectedPage === index + 1 ? 'active-link' : ''} ${
-        index === 0 ? 'first-link' : ''
-      } ${index === navLabels.length - 1 ? 'last-link' : ''}`}
-    />
-  ));
+  const navLinks = navLabels.map((label, index) => {
+    const linkClass = classnames({
+      'active-link': selectedPage === index + 1,
+      'first-link': index === 0,
+      'last-link': index === navLabels.length - 1
+    });
+
+    const handleNavLinkClick = () => handleClick(index, label);
+
+    return (
+      <NavLink
+        key={index}
+        label={label}
+        onClick={handleNavLinkClick}
+        className={linkClass}
+      />
+    );
+  });
 
   return (
     <div className="navbar-container">
