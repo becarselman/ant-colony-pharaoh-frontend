@@ -35,6 +35,11 @@ case 'STOP_LOADER':
     ...state,
     isLoading: false,
   };
+  case 'SET_PAGE_DATA':
+    return {
+      ...state,
+      pageData: action.payload,
+    };
 
     default:
       return state;

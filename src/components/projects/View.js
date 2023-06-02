@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Projects.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
-import { startLoader, stopLoader } from './modules/actions';
+import { setPageData} from './modules/actions';
+import { useDispatch } from 'react-redux';
 
 const Projects = ({
   dataSource,
@@ -14,6 +15,8 @@ const Projects = ({
   const [pageSize, setPageSize] = useState(10);
   const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
+  
+  const dispatch = useDispatch();
 
   const handleSearchChange = (input) => {
     setSearchInput(input);
@@ -25,11 +28,13 @@ const Projects = ({
 
   const fetchData = () => {
     actions.fetchAllProjects(page, pageSize, selectedProjectStatus, searchInput);
+    dispatch(setPageData(null));
   };
 
   const handleNavSelect = (label) => {
     setSelectedProjectStatus(label);
     setPage(1);
+    dispatch(setPageData(null));
   };
 
   return (
@@ -51,8 +56,6 @@ const Projects = ({
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
-        startLoader={startLoader} 
-        stopLoader={stopLoader} 
       />
     </div>
   );

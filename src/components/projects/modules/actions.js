@@ -33,3 +33,8 @@ export const stopLoader = () => ({
   type: actionTypes.STOP_LOADER,
 });
 
+export const setPageData = (pageData) => ({
+  type: 'SET_PAGE_DATA',
+  payload: pageData,
+});
+

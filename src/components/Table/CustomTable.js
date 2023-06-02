@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Spin } from 'antd';
-import { useDispatch } from 'react-redux';
-import { setPageData, setTotalCount, setPageSize } from './modules/actions';
 import PaginationComponent from './components/Pagination';
 import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
@@ -13,18 +11,13 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
   const [filter, setFilter] = useState(selectedNavLabel);
   const [searchValue, setSearchValue] = useState('');
 
-  const dispatch = useDispatch();
-
   const handlePageSizeChange = (value) => {
     onPageChange(1);
     onPageSizeChange(parseInt(value));
-    dispatch(setPageData(null));
-    dispatch(setPageSize(parseInt(value)));
   };
 
   const handlePageChange = (page) => {
     onPageChange(page);
-    dispatch(setPageData(null));
   };
 
   const handleFilterChange = (label) => {
@@ -40,9 +33,7 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
       return item.status === filter || filter === 'All Projects';
     });
     setPageDataState(filteredData);
-    dispatch(setPageData(filteredData));
-    dispatch(setTotalCount(filteredData.length));
-  }, [data, filter, dispatch]);
+  }, [data, filter]);
 
   useEffect(() => {
     handleFilterChange(selectedNavLabel);
@@ -59,7 +50,6 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
   const handlePageSelect = (page, label) => {
     onNavSelect(label);
     handleFilterChange(label);
-    dispatch(setPageData(null));
   };
 
   const tableHeader = () => (
@@ -79,6 +69,7 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
       pagination={false}
       bordered
       title={tableHeader}
+      isLoading={isLoading}
     />
   );
 
