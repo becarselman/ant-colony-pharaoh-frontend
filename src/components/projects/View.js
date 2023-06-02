@@ -8,13 +8,16 @@ const Projects = ({
   dataSource,
   totalCount,
   isLoading,
-  error,
   actions,
 }) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
+
+  const handleSearchChange = (input) => {
+    setSearchInput(input);
+  };
 
   useEffect(() => {
     fetchData();
@@ -27,10 +30,6 @@ const Projects = ({
   const handleNavSelect = (label) => {
     setSelectedProjectStatus(label);
     setPage(1);
-  };
-
-  const handleSearchChange = (input) => {
-    setSearchInput(input);
   };
 
   return (

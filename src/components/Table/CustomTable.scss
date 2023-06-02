@@ -162,3 +162,23 @@
 .pagination-right {
   display: flex;
 }
+
+.ant-input-affix-wrapper {
+  height: 2.5rem;
+  width: 19.6875rem;
+  border-radius: 0.125rem;
+  border: 1px solid #ccd2d8;
+  padding-left: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.375rem;
+  color: $text-color-primary;
+  transition: transform 0.3s;
+  will-change: transform;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateX(-3px);
+  }
+}

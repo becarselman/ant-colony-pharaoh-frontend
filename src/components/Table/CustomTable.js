@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Spin } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setPageData, setTotalCount, setPageSize } from './modules/actions';
 import PaginationComponent from './components/Pagination';
 import TableHeader from './components/TableHeader';
@@ -11,6 +11,8 @@ import './CustomTable.scss';
 const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
   const [pageData, setPageDataState] = useState(null);
   const [filter, setFilter] = useState(selectedNavLabel);
+  const [searchValue, setSearchValue] = useState('');
+
   const dispatch = useDispatch();
 
   const handlePageSizeChange = (value) => {
@@ -29,6 +31,10 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     setFilter(label);
   };
 
+  const handleSearchValueChange = (value) => {
+    setSearchValue(value);
+  };
+
   useEffect(() => {
     const filteredData = data.filter((item) => {
       return item.status === filter || filter === 'All Projects';
@@ -36,14 +42,18 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     setPageDataState(filteredData);
     dispatch(setPageData(filteredData));
     dispatch(setTotalCount(filteredData.length));
-  }, [data, filter]);
+  }, [data, filter, dispatch]);
 
   useEffect(() => {
-    handleFilterChange(selectedNavLabel); 
+    handleFilterChange(selectedNavLabel);
   }, [selectedNavLabel]);
 
-  const handleSearch = (input) => {
-    onSearchChange(input);
+  useEffect(() => {
+    onSearchChange(searchValue);
+  }, [searchValue, onSearchChange]);
+
+  const handleSearch = (value) => {
+    setSearchValue(value);
   };
 
   const handlePageSelect = (page, label) => {
@@ -53,17 +63,16 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
   };
 
   const tableHeader = () => (
-    <TableHeader totalCount={totalCount} handleSearch={handleSearch} />
+    <TableHeader
+      totalCount={totalCount}
+      searchValue={searchValue}
+      handleSearch={handleSearch}
+      handleSearchValueChange={handleSearchValueChange}
+    />
   );
 
-  const loaderContainer = isLoading ? (
-    <div className="loader-container">
-      <Spin size="large" />
-    </div>
-  ) : null;
-
-  const tableContent = isLoading ? null : (
-    <Table 
+  const tableContent = (
+    <Table
       dataSource={pageData}
       columns={columns}
       className="table"
@@ -75,13 +84,20 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
 
   return (
     <div className="custom-table-container">
-      <Navbar
-        navLabels={navLabels} 
-        handlePageSelect={handlePageSelect}
-      />
+      <Navbar navLabels={navLabels} handlePageSelect={handlePageSelect} />
       <div className="table-container">
-        {loaderContainer}
         {tableContent}
+        <table className="ant-table">
+          <tbody>
+            {isLoading && (
+              <tr className="loader-container">
+                <td colSpan={columns.length}>
+                  <Spin size="large" />
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
       <div className="pagination-container">
         <PaginationComponent
