@@ -182,3 +182,31 @@
     transform: translateX(-3px);
   }
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.logo {
+  animation: rotateLoader 1s linear infinite;
+  transform-origin: center;
+  max-width: 100px;
+  max-height: 100px;
+  opacity: 70%;
+}
+
+@keyframes rotateLoader {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
+
+

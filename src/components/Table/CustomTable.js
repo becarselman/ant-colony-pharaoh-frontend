@@ -3,6 +3,7 @@ import { Table, Spin } from 'antd';
 import PaginationComponent from './components/Pagination';
 import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
+import Logotype from '../../images/loader/Logotype.png';
 
 import './CustomTable.scss';
 
@@ -80,13 +81,15 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
         {tableContent}
         <table className="ant-table">
           <tbody>
-            {isLoading && (
-              <tr className="loader-container">
-                <td colSpan={columns.length}>
-                  <Spin size="large" />
-                </td>
-              </tr>
-            )}
+          {isLoading && (
+  <tr className="loader-container">
+    <td colSpan={columns.length}>
+      <div className="loader">
+        <img src={Logotype} alt="Logo" className="logo" />
+      </div>
+    </td>
+  </tr>
+)}
           </tbody>
         </table>
       </div>
