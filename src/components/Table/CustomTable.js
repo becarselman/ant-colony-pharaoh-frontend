@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Spin } from 'antd';
+import { Table } from 'antd';
 import PaginationComponent from './components/Pagination';
 import TableHeader from './components/TableHeader';
 import Navbar from './components/Navbar';
@@ -7,10 +7,10 @@ import Logotype from '../../images/loader/Logotype.png';
 
 import './CustomTable.scss';
 
-const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
-  const [pageData, setPageDataState] = useState(null);
+const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, onPageSizeChange, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange, }) => {
   const [filter, setFilter] = useState(selectedNavLabel);
   const [searchValue, setSearchValue] = useState('');
+  const [setPageDataState] = useState(data); 
 
   const handlePageSizeChange = (value) => {
     onPageChange(1);
@@ -29,12 +29,12 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
     setSearchValue(value);
   };
 
-  useEffect(() => {
+  const handleClick = () => {
     const filteredData = data.filter((item) => {
       return item.status === filter || filter === 'All Projects';
     });
     setPageDataState(filteredData);
-  }, [data, filter]);
+  };
 
   useEffect(() => {
     handleFilterChange(selectedNavLabel);
@@ -64,7 +64,7 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
 
   const tableContent = (
     <Table
-      dataSource={pageData}
+      dataSource={data}
       columns={columns}
       className="table"
       pagination={false}
@@ -82,14 +82,14 @@ const CustomTable = ({ data, columns, totalCount, page, pageSize, onPageChange, 
         <table className="ant-table">
           <tbody>
           {isLoading && (
-  <tr className="loader-container">
-    <td colSpan={columns.length}>
-      <div className="loader">
-        <img src={Logotype} alt="Logo" className="logo" />
-      </div>
-    </td>
-  </tr>
-)}
+            <tr className="loader-container" onClick={handleClick}>
+              <td colSpan={columns.length}>
+                <div className="loader">
+                  <img src={Logotype} alt="Logo" className="logo" />
+                </div>
+              </td>
+            </tr>
+          )}
           </tbody>
         </table>
       </div>

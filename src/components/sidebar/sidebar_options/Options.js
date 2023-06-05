@@ -9,35 +9,31 @@ const {
 
 const sidebarOptions = [
   {
-    image: <HomeOutlined />,
-    text: "Home",
-    path: "/dashboard"
+      image: <HomeOutlined />,
+      text: "Home"
   },
   {
-    image: <ProjectOutlined />,
-    text: "Projects",
-    path: "/dashboard/projects"
+      image: <ProjectOutlined />,
+      text: "Projects"
   },
   {
-    image: <TeamOutlined />,
-    text: "Employees",
-    path: "/dashboard/employees"
+      image: <TeamOutlined />,
+      text: "Employees"
   },
   {
-    image: <WalletOutlined />,
-    text: "Financial Overview",
-    path: "/dashboard/financial"
+      image: <WalletOutlined />,
+      text: "Financial Overview"
   },
   {
-    image: <SnippetsOutlined />,
-    text: "Project Reporting",
-    path: "/dashboard/reporting"
+      image: <SnippetsOutlined />,
+      text: "Project Reporting"
   },
   {
-    image: <AuditOutlined />,
-    text: "Invoicing",
-    path: "/dashboard/invoicing"
+      image: <AuditOutlined />,
+      text: "Invoicing"
   }
-];
+]
+
+
 
 export default sidebarOptions

@@ -5,19 +5,10 @@ import searchIcon from '../../../images/svg/searchIcon.svg';
 
 const TableHeader = ({ totalCount, searchValue, handleSearch, handleSearchValueChange }) => {
   const [input, setInput] = useState('');
-  const [countChanged, setCountChanged] = useState(false);
 
   useEffect(() => {
     setInput(searchValue);
   }, [searchValue]);
-
-  useEffect(() => {
-    setCountChanged(true);
-    const timeout = setTimeout(() => {
-      setCountChanged(false);
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, [totalCount]);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -34,7 +25,7 @@ const TableHeader = ({ totalCount, searchValue, handleSearch, handleSearchValueC
     <div className="table-header">
       <div className="header-content">
         <h2 className="header-title">All Projects</h2>
-        <div className={`project-count ${countChanged ? 'changed' : ''}`}>{totalCount} total</div>
+        <div className="project-count">{totalCount} total</div>
       </div>
       <div className="search-input-container">
         <form onSubmit={handleSearchSubmit}>

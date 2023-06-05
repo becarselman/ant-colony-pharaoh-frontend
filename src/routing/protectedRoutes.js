@@ -1,20 +1,22 @@
-import { Navigate, Outlet } from "react-router-dom";
+import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
 import Dashboard from "../components/dashboard/Dashboard";
 import React from "react";
 
 const ProtectedRoutes = () => {
-  const storedOption = localStorage.getItem("selectedOption");
+  //here is the core logic that prevents unauthorized access to routes
+  //each protected route should have this component as parent
 
-  return storedOption && storedOption !== "" ? (
-    <>
-      <Sidebar />
-      <Dashboard selectedOption={storedOption} />
-      <Outlet />
-    </>
-  ) : (
-    <Navigate to="/login" />
-  );
-};
+  let token = localStorage.getItem("accessToken")
 
-export default ProtectedRoutes;
+  return token && token !== "" ?
+    (
+      <>
+        <Sidebar />
+        <Outlet />
+      </>
+    )
+  : <Navigate to="/login" />
+}
+
+export default ProtectedRoutes
