@@ -23,7 +23,7 @@ const Navbar = ({ navLabels, handlePageSelect }) => {
       <NavLink
         key={index}
         label={label}
-        onClick={() => handleClick(index, label)} // Change the index to pass the correct index
+        onClick={() => handleClick(index, label)} 
         className={linkClass}
       />
     );
