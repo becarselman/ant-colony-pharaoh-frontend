@@ -19,11 +19,14 @@ const Navbar = ({ navLabels, handlePageSelect }) => {
       'last-link': index === navLabels.length - 1
     });
 
+    const onClick = () => handleClick(index, label);
+
+
     return (
       <NavLink
         key={index}
         label={label}
-        onClick={() => handleClick(index, label)} 
+        onClick={onClick} 
         className={linkClass}
       />
     );

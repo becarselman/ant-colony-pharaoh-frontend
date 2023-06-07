@@ -3,11 +3,22 @@ import { fetchAllProjectsSuccess, fetchAllProjectsFailure, startLoader, stopLoad
 import { actionTypes } from "./types";
 import { getAllProjects } from '../../../service/projectsService';
 
+function generateQueryParams(selectedProjectStatus, searchInput) {
+  const statusQueryParam = selectedProjectStatus !== 'All Projects' ? selectedProjectStatus : '';
+  const searchQueryParam = searchInput ? `search[name]=${encodeURIComponent(searchInput)}` : '';
+
+  return { statusQueryParam, searchQueryParam };
+}
+
 function* fetchAllProjectsSaga(action) {
   try {
     yield put(startLoader()); 
 
-    const response = yield call(getAllProjects, action.payload);
+    const { page, pageSize, selectedProjectStatus, searchInput } = action.payload;
+
+    const { statusQueryParam, searchQueryParam } = generateQueryParams(selectedProjectStatus, searchInput);
+
+    const response = yield call(getAllProjects, { page, pageSize, statusQueryParam, searchQueryParam });
 
     const projects = response.data.projects;
     const total = response.data.count;

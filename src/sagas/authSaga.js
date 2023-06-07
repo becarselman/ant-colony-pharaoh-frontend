@@ -19,20 +19,7 @@ function* loginSaga(action) {
   }
 }
 
-function* logoutSaga() {
-  try {
-    // logic here
-    // ...
-  } catch (error) {
-    // logout errors
-    // ...
-  }
-}
-
 export function* watchLogin() {
   yield takeLatest(actionTypes.AUTHENTICATE_USER_REQUEST, loginSaga);
 }
 
-export function* watchLogout() {
-  yield takeLatest(actionTypes.LOGOUT_REQUEST, logoutSaga);
-}

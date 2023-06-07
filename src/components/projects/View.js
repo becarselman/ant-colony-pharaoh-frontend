@@ -10,8 +10,6 @@ const Projects = ({
   isLoading,
   actions,
 }) => {
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
   const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
 
@@ -20,18 +18,17 @@ const Projects = ({
   };
 
   useEffect(() => {
-    fetchData();
-  }, [page, pageSize, selectedProjectStatus, searchInput]);
+    fetchData(1, 10);
+  }, [selectedProjectStatus, searchInput]);
 
-  const fetchData = () => {
+  const fetchData = (page, pageSize) => {
     actions.fetchAllProjects(page, pageSize, selectedProjectStatus, searchInput);
     setPageData(null);
   };
 
   const handleNavSelect = (label) => {
     setSelectedProjectStatus(label);
-    setPage(1);
-    setPageData(null);
+    fetchData(1, 10);
   };
 
   return (
@@ -44,10 +41,7 @@ const Projects = ({
         data={dataSource}
         columns={tableColumns}
         totalCount={totalCount}
-        page={page}
-        pageSize={pageSize}
-        onPageChange={setPage}
-        onPageSizeChange={setPageSize}
+        fetchData={fetchData}
         isLoading={isLoading}
         navLabels={['All Projects', 'Active', 'Inactive', 'Completed']}
         selectedNavLabel={selectedProjectStatus}
