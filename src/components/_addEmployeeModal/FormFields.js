@@ -1,5 +1,5 @@
-import Departments from "./Departments";
-import Stacks from "./Stacks";
+import Departments from "./utils/Departments";
+import Stacks from "./utils/Stacks";
 
 const FormFields = (states) => {
     return [
