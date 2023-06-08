@@ -2,13 +2,7 @@ import Departments from "../utils/Departments";
 import {actionTypes} from "./types";
 
 const initialState = {
-    email: "",
-    password: "",
-    name: "",
-    surname: "",
-    department: Departments[0],
-    salary: 0,
-    stack: [],
+    isLoading: false,
     error: null
 }
 
@@ -20,11 +14,15 @@ const addEmployeeModalReducer = (state = initialState, action) => {
                 isLoading: true
             }
         case actionTypes.SEND_USER_DATA_SUCCESS:
-            return initialState
+            return {
+                ...state,
+                isLoading: false
+            }
         case actionTypes.SEND_USER_DATA_FAILURE:
             return {
                 ...state,
-                error: action.payload.error
+                error: action.payload.error,
+                isLoading: false
             }
         default:
             return state

@@ -8,7 +8,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import ProtectedRoutes from "./protectedRoutes";
 import Dashboard from "../components/dashboard/Dashboard";
 import DashboardRoutes from "./dashboardRoutes";
-import OpenModalButton from "../components/_addEmployeeModal/OpenModalButton";
+import OpenModalButton from "../components/_addEmployeeModal/index";
 
 function CustomRouter() {
   return (

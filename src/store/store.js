@@ -6,6 +6,7 @@ import rootReducer from "../reducers/reducer";
 import { watchLogin, watchLogout } from "../sagas/authSaga";
 import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
+import { watchSendUserDataSaga } from "../components/_addEmployeeModal/modules/saga";
 
 const persistConfig = {
   key: "root", 
@@ -26,3 +27,4 @@ export const persistor = persistStore(store);
 sagaMiddleware.run(watchLogin);
 sagaMiddleware.run(watchForgotPassword);
 sagaMiddleware.run(watchResetPassword);
+sagaMiddleware.run(watchSendUserDataSaga)
