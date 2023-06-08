@@ -7,7 +7,7 @@ import Logotype from '../../images/loader/Logotype.png';
 
 import './CustomTable.scss';
 
-const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabels, selectedNavLabel, onNavSelect, onSearchChange }) => {
+const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabels, selectedNavLabel, selectedPage, onNavSelect, onSearchChange }) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [filter, setFilter] = useState(selectedNavLabel);
@@ -40,6 +40,10 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
     onSearchChange(searchValue);
   }, [searchValue, onSearchChange]);
 
+  useEffect(() => {
+    fetchData(selectedPage, pageSize);
+  }, [selectedPage, pageSize]);
+
   const handleSearch = (value) => {
     setSearchValue(value);
   };
@@ -48,7 +52,6 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
     onNavSelect(label);
     handleFilterChange(label);
     setPage(page);
-    fetchData(page, pageSize);
   };
 
   const tableHeader = () => (
@@ -74,34 +77,35 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
 
   return (
     <div className="custom-table-container">
-      <Navbar navLabels={navLabels} handlePageSelect={handlePageSelect} />
-      <div className="table-container">
-        {tableContent}
-        <table className="ant-table">
-          <tbody>
-            {isLoading && (
-              <tr className="loader-container">
-                <td colSpan={columns.length}>
-                  <div className="loader">
-                    <img src={Logotype} alt="Logo" className="logo" />
-                  </div>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <div className="pagination-container">
-        <PaginationComponent
-          totalItems={totalCount}
-          pageSize={pageSize}
-          currentPage={page}
-          onPageChange={handlePageChange}
-          onPageSizeChange={handlePageSizeChange}
-          isLoading={isLoading}
-        />
-      </div>
-    </div>
+  <Navbar navLabels={navLabels} handlePageSelect={handlePageSelect} />
+  <div className="table-container">
+    <table className="ant-table">
+      <tbody>
+        {isLoading && (
+          <tr className="loader-container">
+            <td colSpan={columns.length}>
+              <div className="loader">
+                <img src={Logotype} alt="Logo" className="logo" />
+              </div>
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+    {tableContent}
+  </div>
+  <div className="pagination-container">
+    <PaginationComponent
+      totalItems={totalCount}
+      pageSize={pageSize}
+      currentPage={page}
+      onPageChange={handlePageChange}
+      onPageSizeChange={handlePageSizeChange}
+      isLoading={isLoading}
+    />
+  </div>
+</div>
+
   );
 };
 
