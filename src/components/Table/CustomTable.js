@@ -7,7 +7,7 @@ import Logotype from '../../images/loader/Logotype.png';
 
 import './CustomTable.scss';
 
-const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabels, selectedNavLabel, selectedPage, onNavSelect, onSearchChange }) => {
+const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabels, selectedNavLabel, selectedPage, onNavSelect, onSearchChange, title }) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [filter, setFilter] = useState(selectedNavLabel);
@@ -60,6 +60,7 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
       searchValue={searchValue}
       handleSearch={handleSearch}
       handleSearchValueChange={handleSearchValueChange}
+      title={title} 
     />
   );
 

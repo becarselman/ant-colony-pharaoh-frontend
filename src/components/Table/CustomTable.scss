@@ -10,7 +10,7 @@
 
   .pagination-info {
     @include gilroy-medium500;
-    color: #6C6D75;
+    color: $dark-gray-color;
     display: flex;
     align-items: center;
   }

@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import './TableHeader.scss';
 import searchIcon from '../../../images/svg/searchIcon.svg';
 
-const TableHeader = ({ totalCount, searchValue, handleSearch, handleSearchValueChange }) => {
+const TableHeader = ({ totalCount, searchValue, handleSearch, handleSearchValueChange, title }) => {
   const [input, setInput] = useState('');
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const TableHeader = ({ totalCount, searchValue, handleSearch, handleSearchValueC
   return (
     <div className="table-header">
       <div className="header-content">
-        <h2 className="header-title">All Projects</h2>
+        <h2 className="header-title">{title}</h2>
         <div className="project-count">{totalCount} total</div>
       </div>
       <div className="search-input-container">

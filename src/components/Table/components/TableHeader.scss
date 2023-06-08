@@ -7,37 +7,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 16px;
   height: 70px;
 
   .header-content {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.4375rem 0;
+    gap: 16px;
+    padding: 23px 0;
 
     .header-title {
       @include gilroy-medium500();
-      font-size: 1.2rem;
+      font-size: 19.2px;
       color: $text-color-dark-gray;
     }
 
     .project-count {
       @include gilroy-medium500();
       display: flex;
-      height: 1.875rem;
+      height: 30px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border-radius: 0.25rem;
-      padding: 0.625rem;
-      font-size: 0.875rem;
-      line-height: 1.125rem;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 18px;
       color: $green-color;
       transition: font-size 0.3s;
 
       &.changed {
-        font-size: 1rem;
+        font-size: 16px;
       }
     }
   }
@@ -47,15 +47,15 @@
     padding-right: 90px;
 
     .ant-input-affix-wrapper {
-      height: 2.5rem;
-      width: 19.6875rem;
-      border-radius: 0.125rem;
+      height: 40px;
+      width: 300px;
+      border-radius: 2px;
       border: 1px solid #ccd2d8;
-      padding-left: 0.8rem;
+      padding-left: 8px;
       font-family: 'Inter', sans-serif;
-      font-size: 0.875rem;
+      font-size: 14px;
       font-weight: normal;
-      line-height: 1.375rem;
+      line-height: 22px;
       color: $text-color-primary;
       transition: transform 0.3s;
       will-change: transform;
@@ -68,16 +68,16 @@
 
       ::placeholder {
         font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
+        font-size: 14px;
         font-weight: normal;
-        line-height: 1.375rem;
+        line-height: 22px;
         color: $text-color-primary;
       }
     }
 
     .ant-input-prefix {
-      left: 0.5rem;
-      font-size: 1.125rem;
+      left: 8px;
+      font-size: 18px;
       color: $text-color-primary;
       padding-right: 10px;
     }

@@ -5,7 +5,7 @@ import { getAllProjects } from '../../../service/projectsService';
 
 function generateQueryParams(selectedProjectStatus, searchInput) {
   const statusQueryParam = selectedProjectStatus !== 'All Projects' ? selectedProjectStatus : '';
-  const searchQueryParam = searchInput ? `search[name]=${encodeURIComponent(searchInput)}` : '';
+  const searchQueryParam = searchInput ? `search[name]=${searchInput}` : '';
 
   return { statusQueryParam, searchQueryParam };
 }

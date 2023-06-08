@@ -47,6 +47,7 @@ const Projects = ({
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
+        title="All Projects" 
       />
     </div>
   );
