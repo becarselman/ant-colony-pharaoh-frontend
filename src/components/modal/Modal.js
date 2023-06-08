@@ -30,7 +30,7 @@ function Modal({ items, isOpen, handleClose, handleSubmit, isLoading }) {
         <div className="modal-content">
           { mappedItems }
           {
-            isLoading === true ?
+            isLoading === false ?
               <button type="submit" onClick={handleSubmit}>Save</button>
             :
               <button type="submit">...</button>
