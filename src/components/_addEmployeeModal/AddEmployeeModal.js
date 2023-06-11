@@ -1,8 +1,16 @@
 import Modal from "../modal/Modal";
 import {useState} from "react";
-import FormFields from "./FormFields";
+import FormFields from "./utils/FormFields";
 import Departments from "./utils/Departments";
+import FormField from "./utils/FormField";
 
+//TODO:
+/*
+when employees table is implemented
+and when admin clicks on user row
+find a way to forward data from table row to this component
+and set initial states to that data
+ */
 const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -22,38 +30,6 @@ const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
     setStack([])
   }
 
-
-  const formFields = FormFields({
-    email: {
-      value: email,
-      setter: setEmail
-    },
-    password: {
-      value: password,
-      setter: setPassword
-    },
-    name: {
-      value: name,
-      setter: setName
-    },
-    surname: {
-      value: surname,
-      setter: setSurname
-    },
-    department: {
-      value: department,
-      setter: setDepartment
-    },
-    salary: {
-      value: salary,
-      setter: setSalary
-    },
-    stack: {
-      value: stack,
-      setter: setStack
-    }
-  })
-
   const handleSubmit = () => {
     actions.sendUserData({
       email,
@@ -66,12 +42,69 @@ const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
     })
   }
 
+  const formFields = FormFields({
+    isLoading,
+    email: {
+      state: {
+        value: email,
+        setter: setEmail
+      }
+    },
+    password: {
+      state: {
+        value: password,
+        setter: setPassword
+      }
+    },
+    name: {
+      state: {
+        value: name,
+        setter: setName
+      }
+    },
+    surname: {
+      state: {
+        value: surname,
+        setter: setSurname
+      }
+    },
+    department: {
+      state: {
+        value: department,
+        setter: setDepartment
+      }
+    },
+    salary: {
+      state: {
+        value: salary,
+        setter: setSalary
+      }
+    },
+    stack: {
+      state: {
+        value: stack,
+        setter: setStack
+      }
+    },
+    submitButton: {
+      onClick: handleSubmit
+    }
+  })
+
+  const items = formFields.map(i => {
+      return (
+          <FormField item = { i } key = { i.id } />
+      )
+    })
+
+  const resetStateAndCloseModal = () => {
+    resetState()
+    handleClose()
+  }
+
   return (
     <>
-      <Modal handleClose={() => {
-        resetState()
-        handleClose()
-      }} isOpen={isOpen} items={formFields} handleSubmit={handleSubmit} isLoading={isLoading}  />
+      <Modal handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items} />
     </>
   )
 }
