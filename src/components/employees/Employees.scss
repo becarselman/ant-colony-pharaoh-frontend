@@ -1,0 +1,59 @@
+@import './../../utilis/colors';
+@import './../../utilis/mixins';
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.employees-title {
+  @include title;
+  padding-bottom: 10px;
+  font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 40px;
+}
+
+.create-employee-button {
+@include button-styles;
+@include inter-medium;
+font-size: 16px;
+width: 176px;
+height: 40px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.create-employee-button:hover {
+  background-color: #056229;
+  ;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.bg-green{
+  background-color: $green-color;
+
+}
+
+.bg-gray {
+  background-color: $gray-color;
+}
+
+.bg-orange {
+  background-color: $orange-color;
+}
+
+.bg-blue {
+  background-color: rgb(12, 213, 236);
+}
