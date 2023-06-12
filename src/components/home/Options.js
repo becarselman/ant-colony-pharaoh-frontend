@@ -6,6 +6,13 @@ export const PieOptions = {
     angleField: 'value',
     colorField: 'type',
     radius: 0.9,
+    legend: {
+      position: 'right',
+      itemWidth: 'null',
+      style: {
+        className: "pie-text"
+      },
+    },
     label: {
       type: 'inner',
       offset: '-30%',
