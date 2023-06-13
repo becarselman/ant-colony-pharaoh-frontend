@@ -28,7 +28,7 @@ function* fetchAllProjectsSaga(action) {
       const fullTime = [];
 
       project.developers.forEach((developer) => {
-        developers.push(developer.user);
+        developers.push(developer.employee);
         fullTime.push(developer.fullTime);
       });
 

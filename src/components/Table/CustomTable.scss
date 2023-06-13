@@ -220,3 +220,25 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.previous-button {
+  margin-right: 7px;
+  cursor: pointer;
+  color: $gray-color;
+  @include gilroy-medium600;
+  border: solid 1px $border-color;
+  border-radius: 9%;
+  background-color: transparent;
+
+}
+
+.next-button {
+  cursor: pointer;
+  color: $gray-color;
+  @include gilroy-medium600;
+  border: solid 1px $border-color;
+  border-radius: 9%;
+  background-color: transparent;
+
+}
+

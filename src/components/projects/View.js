@@ -12,6 +12,7 @@ const Projects = ({
 }) => {
   const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
+  const [showText, setShowText] = useState('Projects'); 
 
   const handleSearchChange = (input) => {
     setSearchInput(input);
@@ -48,6 +49,7 @@ const Projects = ({
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
         title="All Projects" 
+        showText={showText}
       />
     </div>
   );
