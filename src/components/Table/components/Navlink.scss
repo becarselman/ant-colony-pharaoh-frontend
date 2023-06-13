@@ -1,0 +1,19 @@
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+
+.nav-link {
+    cursor: pointer;
+    border: 1px solid;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 22px;
+    color: $dark-green-color;
+
+    &:hover {
+      background-color: $background-color;
+      font-size: 14.4px;
+    }
+
+  }
+

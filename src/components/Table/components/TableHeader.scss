@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 70px;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 23px 0;
+
+    .header-title {
+      @include gilroy-medium500();
+      font-size: 19.2px;
+      color: $text-color-dark-gray;
+    }
+
+    .project-count {
+      @include gilroy-medium500();
+      display: flex;
+      height: 30px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 18px;
+      color: $green-color;
+      transition: font-size 0.3s;
+
+      &.changed {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .search-form {
+    position: relative;
+    padding-right: 90px;
+
+    .ant-input-affix-wrapper {
+      height: 40px;
+      width: 300px;
+      border-radius: 2px;
+      border: 1px solid #ccd2d8;
+      padding-left: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 22px;
+      color: $text-color-primary;
+      transition: transform 0.3s;
+      will-change: transform;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateX(-3px);
+        font-size: 15px;
+      }
+
+      ::placeholder {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 22px;
+        color: $text-color-primary;
+      }
+    }
+
+    .ant-input-prefix {
+      left: 8px;
+      font-size: 18px;
+      color: $text-color-primary;
+      padding-right: 10px;
+    }
+  }
+}
