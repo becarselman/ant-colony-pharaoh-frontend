@@ -43,6 +43,8 @@ const Sidebar = ({ actions }) => {
       <div className="sidebar-options">
         {arrayOfDivsSidebarOptions}
       </div>
+
+
     </div>
 
   );

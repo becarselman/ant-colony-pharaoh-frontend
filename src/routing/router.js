@@ -6,6 +6,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import ProtectedRoutes from "./protectedRoutes";
 import Dashboard from "../components/dashboard/Dashboard";
 import DashboardRoutes from "./dashboardRoutes";
+import OpenModalButton from "../components/_addEmployeeModal/index";
 import Projects from "../components/projects/index.js"
 
 function CustomRouter() {
@@ -14,6 +15,7 @@ function CustomRouter() {
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route exact path="/login" element={<LoginForm />} />
+        <Route exact path="/employees" element={ <OpenModalButton /> } />
         <Route path="*" element={<Navigate to="/dashboard" />} />
 
         <Route path = "/dashboard/*" element={<DashboardRoutes />} />
