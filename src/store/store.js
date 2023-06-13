@@ -3,10 +3,11 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "../reducers/reducer";
-import { watchLogin, watchLogout } from "../sagas/authSaga";
+import { watchLogin } from "../sagas/authSaga";
 import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
 import { watchSendUserDataSaga } from "../components/_addEmployeeModal/modules/saga";
+import { watchFetchAllProjects } from "../components/projects/modules/saga";
 
 const persistConfig = {
   key: "root", 
@@ -28,3 +29,4 @@ sagaMiddleware.run(watchLogin);
 sagaMiddleware.run(watchForgotPassword);
 sagaMiddleware.run(watchResetPassword);
 sagaMiddleware.run(watchSendUserDataSaga)
+sagaMiddleware.run(watchFetchAllProjects);
