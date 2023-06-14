@@ -1,18 +1,18 @@
 import '../loginform/LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
-import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { resetPasswordRequest } from '../../actions/authActions.js';
+import { notification } from 'antd';
 
 const ResetPassword = ({actions}) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { token } = useParams();
+
+  const openNotification = notification.open;
 
   const handleNewPasswordChange = (event) => {
     setNewPassword(event.target.value);
@@ -26,23 +26,16 @@ const ResetPassword = ({actions}) => {
     event.preventDefault();
   
     if (newPassword !== confirmPassword) {
-      setErrorMessage('Passwords do not match');
+      openNotification({
+        message: 'Error',
+        description: 'Passwords do not match.',
+        type: 'error',
+      });
       return;
     }
-  
+    
     setLoading(true);
-    setErrorMessage('');
-  
-    try {
-      actions.resetPasswordRequest(token, newPassword);
-      setLoading(false);
-      setMessage('Password reset request sent.');
-      
-    } catch (error) {
-      setLoading(false);
-      setMessage('Error occurred. Please try again.');
-      error(error.message);
-    }
+    actions.resetPasswordRequest(token, newPassword);
   };
   
 
