@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination, Select, Spin } from 'antd';
 import '../CustomTable.scss';
 
-const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, onPageSizeChange, loading }) => {
+const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, onPageSizeChange, loading, showText }) => {
   const handlePageSizeChange = (value) => {
     onPageSizeChange(parseInt(value));
   };
@@ -21,7 +21,7 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
     current: currentPage,
     onShowSizeChange: handlePageSizeChange,
     onChange: handlePageChange,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} Projects`,
+    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} ${showText}`,
   };
 
 

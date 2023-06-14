@@ -47,7 +47,8 @@ const Employees = ({
         selectedNavLabel={selectedEmployeeStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
-        title="All Employees" 
+        title="All Employees"
+        showText="Employees"
       />
     </div>
   );
