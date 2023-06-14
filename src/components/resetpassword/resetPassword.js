@@ -14,6 +14,31 @@ const ResetPassword = ({actions}) => {
 
   const openNotification = notification.open;
 
+  const passwordPolicy = {
+    min: 6,
+    max: 30,
+    lowerCase: 1,
+    upperCase: 1,
+    numeric: 1,
+    symbol: 0,
+  };
+
+  const validatePassword = (newPassword) => {
+    if(newPassword.length < passwordPolicy.min || newPassword.length > passwordPolicy.max)
+      return false;
+
+    if(passwordPolicy.lowerCase && !/[a-z]/.test(newPassword))
+      return false;
+    
+    if(passwordPolicy.upperCase && !/[A-Z]/.test(newPassword))
+      return false;
+
+    if(passwordPolicy.numeric && !/[0-9]/.test(newPassword))
+      return false;
+    
+    return true;
+  };
+
   const handleNewPasswordChange = (event) => {
     setNewPassword(event.target.value);
   };
@@ -24,6 +49,15 @@ const ResetPassword = ({actions}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if(!validatePassword(newPassword)) {
+      openNotification({
+        message: 'Error',
+        description: 'Invalid password. Password must contain at least 6 characters, and combination of uppercase and lowercase letter and number.',
+        type:'error',
+      });
+      return;
+    }
   
     if (newPassword !== confirmPassword) {
       openNotification({
