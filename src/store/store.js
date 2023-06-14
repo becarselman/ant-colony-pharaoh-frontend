@@ -8,6 +8,8 @@ import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
 import { watchSendUserDataSaga } from "../components/_addEmployeeModal/modules/saga";
 import { watchFetchAllProjects } from "../components/projects/modules/saga";
+import { watchFetchAllEmployees } from "../components/employees/modules/saga";
+import {composeWithDevTools} from "@redux-devtools/extension";
 
 const persistConfig = {
   key: "root", 
@@ -20,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   persistedReducer,
-  applyMiddleware(sagaMiddleware)
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
 export const persistor = persistStore(store);
@@ -30,3 +32,4 @@ sagaMiddleware.run(watchForgotPassword);
 sagaMiddleware.run(watchResetPassword);
 sagaMiddleware.run(watchSendUserDataSaga)
 sagaMiddleware.run(watchFetchAllProjects);
+sagaMiddleware.run(watchFetchAllEmployees)

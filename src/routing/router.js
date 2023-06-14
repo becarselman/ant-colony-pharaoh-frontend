@@ -8,6 +8,7 @@ import Dashboard from "../components/dashboard/Dashboard";
 import DashboardRoutes from "./dashboardRoutes";
 import OpenModalButton from "../components/_addEmployeeModal/index";
 import Projects from "../components/projects/index.js"
+import Employees from "../components/employees/index.js"
 
 function CustomRouter() {
   return (
@@ -20,6 +21,7 @@ function CustomRouter() {
 
         <Route path = "/dashboard/*" element={<DashboardRoutes />} />
         <Route path = "/dashboard/projects" element={<Projects />} />
+        <Route path = "/dashboard/employees" element={<Employees />} />
 
       </Routes>
     </Router>
