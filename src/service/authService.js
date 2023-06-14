@@ -50,7 +50,6 @@ export async function resetPasswordRequest(token, newPassword) {
       throw new Error(errorData.error);
     }
   } catch (error) {
-    console.log(error);
     throw new Error('An error occurred.');
   }
 }

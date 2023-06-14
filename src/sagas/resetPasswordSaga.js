@@ -9,7 +9,6 @@ const { open } = notification;
 function* resetPassword({ payload }) {
   const { token, newPassword } = payload;
   try {
-    console.log(1)
     yield call(resetPasswordRequest, token, newPassword);
     yield put(resetPasswordSuccess());
     yield call(open, {
@@ -18,8 +17,6 @@ function* resetPassword({ payload }) {
       type: 'success',
     });
   } catch (error) {
-    console.log(2)
-    console.log(error)
     yield put(resetPasswordError(error));
     yield call(open, {
       message: 'Error',
