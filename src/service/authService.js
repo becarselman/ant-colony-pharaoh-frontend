@@ -42,7 +42,6 @@ export async function resetPasswordRequest(token, newPassword) {
 
     const response = await fetch(`${URL}/reset-password/${token}`, data)
 
-    console.log(response)
     if (response.ok) {
       return { success: true };
     } else {
