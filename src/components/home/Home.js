@@ -31,6 +31,25 @@ const Home = () => {
           setHighlightPlan(true);
         }
       };
+
+      const performanceClick = () => {
+        handleChange('2023 Performance');
+      }
+      const developmentClick = () => {
+        handleChange('Development & Revenue Costs');
+      }
+      const planClick = () => {
+        handleChange('2023 Plan');
+      }
+
+      const cardItems = data.map((item) => (
+        <CardItem 
+          key={item.title}
+          title={item.title}
+          value={item.value}
+          iconComponent={item.iconComponent}
+        />
+      ));
       
   return (
     <div className='container'>
@@ -45,7 +64,7 @@ const Home = () => {
                     className={`selection1 ${
                         selectedOption === '2023 Performance' ? 'highlight' : ''
                     }`}
-                    onClick={() => handleChange('2023 Performance')}
+                    onClick={performanceClick}
                     >
                     2023 Performance
                 </div>
@@ -55,7 +74,7 @@ const Home = () => {
                         ? 'highlight'
                         : ''
                     }`}
-                    onClick={() => handleChange('Development & Revenue Costs')}
+                    onClick={developmentClick}
                     >
                     Development & Revenue Costs
                 </div>
@@ -63,7 +82,7 @@ const Home = () => {
                     className={`selection3 ${
                         selectedOption === '2023 Plan' ? 'highlight' : ''
                     }`}
-                    onClick={() => handleChange('2023 Plan')}
+                    onClick={planClick}
                     >
                     2023 Plan
                 </div>
@@ -74,14 +93,7 @@ const Home = () => {
                 </div>
             </div>
             <div className='cards'>
-                {data.map((item) => (
-                    <CardItem 
-                        key={item.title}
-                        title={item.title}
-                        value={item.value}
-                        iconComponent={item.iconComponent}
-                        />
-                ))}
+                {cardItems}
             </div>
             <div className='middle-stats'>
                 <div className='chart'>
