@@ -127,6 +127,12 @@ font-weight: 500;
   font-style: normal;
   font-weight: 600;
   }
+
+@mixin gilroy-medium700 {
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
 // Custom260
 $screen-rwd260-min: 260px;
 
