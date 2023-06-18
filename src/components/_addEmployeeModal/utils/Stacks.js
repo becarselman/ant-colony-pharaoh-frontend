@@ -1,16 +1,8 @@
 const Stacks = [
-    {
-        value: "react",
-        label: "React"
-    },
-    {
-        value: "angular",
-        label: "Angular"
-    },
-    {
-        value: "vue",
-        label: "Vue"
-    },
+    "Full Stack",
+    "Front End",
+    "Back End",
+    "N/A"
 ]
 
 export default Stacks

@@ -1,48 +1,38 @@
 import Departments from "./Departments";
 import Stacks from "./Stacks";
-import * as actions from "../modules/actions";
+import Currencies from "./Currencies";
 
 const FormFields = (componentData) => {
     return [
         {
             type: "input",
-            inputType: "email",
-            placeholder: "Email",
-            value: componentData.email.state.value,
-            setValue: componentData.email.state.setter,
-            id: "email",
-            name: "email",
-            labelText: "Email: "
-        },
-        {
-            type: "input",
-            inputType: "password",
-            placeholder: "Password",
-            value: componentData.password.state.value,
-            setValue: componentData.password.state.setter,
-            id: "password",
-            name: "password",
-            labelText: "Password: "
-        },
-        {
-            type: "input",
             inputType: "text",
-            placeholder: "Name",
+            placeholder: "First Name",
             value: componentData.name.state.value,
             setValue: componentData.name.state.setter,
             id: "name",
             name: "name",
-            labelText: "Name: "
+            labelText: "First Name"
         },
         {
             type: "input",
             inputType: "text",
-            placeholder: "Surname",
+            placeholder: "Last Name",
             value: componentData.surname.state.value,
             setValue: componentData.surname.state.setter,
             id: "surname",
             name: "surname",
-            labelText: "Surname: "
+            labelText: "Last Name"
+        },
+        {
+            type: "file",
+            inputType: "file",
+            placeholder: "Profile Image",
+            value: componentData.image.state.value,
+            setValue: componentData.image.state.setter,
+            id: "image",
+            name: "image",
+            labelText: "Profile Image"
         },
         {
             type: "select",
@@ -51,37 +41,61 @@ const FormFields = (componentData) => {
             setValue: componentData.department.state.setter,
             id: "department",
             name: "department",
-            labelText: "Department: ",
+            labelText: "Department",
         },
         {
-            type: "input",
-            inputType: "number",
-            placeholder: "Salary",
-            value: componentData.salary.state.value,
-            setValue: componentData.salary.state.setter,
-            id: "salary",
-            name: "salary",
-            labelText: "Salary: "
+            type: "inputWithSelect",
+            id: "salary-with-currency",
+            labelText: "Salary",
+            input: {
+                inputType: "number",
+                placeholder: "Enter the amount",
+                value: componentData.salary.state.value,
+                setValue: componentData.salary.state.setter,
+                id: "salary",
+                name: "salary",
+                labelText: "Salary"
+            },
+            select: {
+                values: Currencies,
+                value: componentData.currency.state.value,
+                setValue: componentData.currency.state.setter,
+                id: "currency",
+                name: "currency",
+                labelText: "Currency"
+            }
         },
         {
-            type: "multiselect",
+            type: "select",
             values: Stacks,
             value: componentData.stack.state.value,
             setValue: componentData.stack.state.setter,
             id: "stack",
             name: "stack",
-            labelText: "Stack: "
+            labelText: "Tech Stack"
+        },
+        {
+            type: "button",
+            buttonType: "button",
+            buttonStyle: "secondary",
+            id: "cancel",
+            text: componentData.isLoading === false
+                ? "Cancel"
+                : "...",
+            isLoading: componentData.isLoading,
+            onClick: componentData.cancelButton.onClick
         },
         {
             type: "button",
             buttonType: "submit",
+            buttonStyle: "primary",
             id: "submit",
             text: componentData.isLoading === false
-              ? "Submit"
+              ? "Add Employee"
               : "...",
             isLoading: componentData.isLoading,
             onClick: componentData.submitButton.onClick
-        }
+        },
     ]
 }
 

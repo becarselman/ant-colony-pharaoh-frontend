@@ -1,31 +1,44 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 import "./modal.scss";
-import { CloseOutlined } from "@ant-design/icons"
+import {LeftOutlined} from "@ant-design/icons"
 import ReactPortal from "./Portal";
-import FormField from "../_addEmployeeModal/utils/FormField";
 
-function Modal({ items, isOpen, handleClose }) {
-  //componentWillUnmount
-  useEffect(() => {
-    const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
-    document.body.addEventListener("keydown", closeOnEscapeKey);
-    return () => {
-      document.body.removeEventListener("keydown", closeOnEscapeKey);
-    };
-  }, [handleClose]);
+function Modal({header, items, isOpen, handleClose}) {
+    //componentWillUnmount
+    useEffect(() => {
+        const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
+        document.body.addEventListener("keydown", closeOnEscapeKey);
+        return () => {
+            document.body.removeEventListener("keydown", closeOnEscapeKey);
+        };
+    }, [handleClose]);
 
 
-  if (!isOpen) return null;
+    if (!isOpen) return null;
 
-  return (
-    <ReactPortal wrapperId={"modal-wrapper"}>
-      <div className="modal">
-        <CloseOutlined onClick={handleClose} className="close-btn"/>
-        <div className="modal-content">
-          { items }
-        </div>
-      </div>
-    </ReactPortal>
-  );
+    let formFields = items.filter(i => i.type.name !== "Button")
+    let formButtons = items.filter(i => i.type.name === "Button")
+
+    return (
+        <ReactPortal wrapperId={"modal-wrapper"}>
+            <div className="modal">
+                <div className="modal-content">
+                    <div className="modal-back-button-wrapper" onClick={handleClose}>
+                        <LeftOutlined className="close-btn"/> <span>Back</span>
+                    </div>
+                    <div className="modal-header-wrapper modal-wrapper">
+                        <p className="modal-header">{header}</p>
+                    </div>
+                    <div className="modal-content-wrapper modal-wrapper">
+                        {formFields}
+                    </div>
+                    <div className="modal-buttons-wrapper modal-wrapper">
+                        { formButtons }
+                    </div>
+                </div>
+            </div>
+        </ReactPortal>
+    );
 }
+
 export default Modal;
