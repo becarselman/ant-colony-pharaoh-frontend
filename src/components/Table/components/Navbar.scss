@@ -1,0 +1,44 @@
+
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navbar-links {
+    display: flex;
+    padding-left: 3px;
+    padding-bottom: 30px;
+  }
+
+  .navbar-links .nav-link {
+    padding: 8px 12px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: normal;
+    color: $project-text-color;
+    border: 1px solid $light-green-color;
+
+    &:hover {
+      background-color: $dark-white-color;
+    }
+
+    &.active-link {
+      background-color: $active-navbar-color;
+      color: $active-navbar-text-color;
+      @include inter-medium
+    }
+
+    &.first-link {
+      border-radius: 4px 0 0 4px;
+      border-left: 1px solid #d1d5db;
+    }
+
+    &.last-link {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+

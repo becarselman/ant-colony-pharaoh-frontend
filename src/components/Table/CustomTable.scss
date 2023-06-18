@@ -1,0 +1,222 @@
+@import './../../utilis/colors';
+@import './../../utilis/mixins';
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
+
+  .pagination-info {
+    @include gilroy-medium500;
+    color: $dark-gray-color;
+    display: flex;
+    align-items: center;
+  }
+
+  .ant-pagination-total-text {
+    display: none;
+  }
+}
+
+.ant-spin {
+  display: none !important;
+}
+
+.ant-table-cell {
+  border-inline-end: none !important;
+}
+
+.ant-pagination-next,
+.ant-pagination-prev {
+  display: none !important;
+}
+
+.show-total {
+  margin-left: auto;
+  padding-left: 20px;
+  @include gilroy-medium;
+  color: $gray-color;
+}
+
+.ant-table-thead > tr > th {
+  @include gilroy-medium500;
+  color: $dark-gray-color;
+}
+
+.ant-table-tbody > tr > td {
+  @include gilroy-medium;
+  color: $gray-color;
+}
+
+.ant-table-tbody > tr:hover {
+  background-color: $hover-color;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ant-table-tbody > tr:hover td {
+  color: $dark-gray-color;
+}
+
+.table td {
+  @include gilroy-medium;
+  color: $gray-color;
+}
+
+.custom-pagination {
+  display: flex;
+  align-items: center;
+
+  .ant-pagination-item {
+    border-color: $border-color;
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+
+  .ant-pagination-item-active {
+    border-color: $gray-color !important;
+    border-radius: 4px;
+    background-color: $border-color;
+
+    a {
+      color: $black-color;
+      background-color: $border-color;
+      border-color: $border-color;
+    }
+  }
+}
+
+.ant-select-single {
+  padding-left: 12px;
+}
+
+.ant-select-selector {
+  width: 100%;
+  height: 32px;
+  padding: 0px 9px;
+  margin-bottom: 2px;
+}
+
+.ant-select-arrow {
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border-top: 4px solid #000;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    vertical-align: middle;
+  }
+}
+
+.ant-select-selection-item {
+  @include gilroy-medium600;
+  color: $text-color-primary;
+
+  &::before {
+    content: none;
+  }
+}
+
+.anticon {
+  display: none;
+}
+
+.rows-text {
+  @include gilroy-medium600;
+  color: $text-color-primary;
+}
+
+.next-last-buttons {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 8px;
+    width: 46px;
+    height: 32px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    background-color: white;
+    border-color: $border-color;
+    border-width: 1px;
+    border-style: solid;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+}
+
+.pagination-right {
+  display: flex;
+}
+
+.ant-input-affix-wrapper {
+  height: 2.5rem;
+  width: 19.6875rem;
+  border-radius: 0.125rem;
+  border: 1px solid #ccd2d8;
+  padding-left: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.375rem;
+  color: $text-color-primary;
+  transition: transform 0.3s;
+  will-change: transform;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateX(-3px);
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.logo {
+  animation: rotateLoader 1s linear infinite;
+  transform-origin: center;
+  max-width: 100px;
+  max-height: 100px;
+  opacity: 70%;
+}
+
+@keyframes rotateLoader {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.ant-table-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

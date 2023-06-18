@@ -1,0 +1,26 @@
+@import '../../utilis/colors';
+
+.modal {
+    position: fixed;
+    inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+    background-color: $modal-background-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+    padding: 10px;
+}
+
+.modal-content {
+    background-color: $modal-content-background-color;
+    color: $modal-content-text-color;
+    display: flex;
+    flex-direction: column;
+
+    padding: 50px;
+
+    border-radius: 40px;
+}

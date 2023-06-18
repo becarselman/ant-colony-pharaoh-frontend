@@ -54,7 +54,7 @@
 
 .login-buttons {
   button {
-    @include login-button-styles;
+    @include button-styles;
   }
 }
 
@@ -182,7 +182,7 @@ opacity: 1;
         justify-content: center;
     
         button {
-          @include login-button-styles;
+          @include button-styles;
         }
     
         a {
