@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FormFields from "./utils/FormFields";
 import FormField from "./utils/FormField";
 import ProjectStatus from "./utils/ProjectStatus";
+import { formatData as formatProjectData } from "./modules/saga";
 
 const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }) => {
   const [name, setName] = useState("");
@@ -38,50 +39,32 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
     try {
       actions.fetchAllEmployeesRequest();
     } catch (error) {
-      console.error("Error fetching developers:", error);
     }
   };
 
   useEffect(() => {
-    setDeveloperOptions(
-      employees.map((developer) => ({
-        value: developer._id,
-        label: `${developer.firstName} ${developer.lastName}`,
-        employee: developer,
-      }))
-    );
+    if (employees) {
+      const options = employees.reduce((acc, developer) => {
+        const option = {
+          value: developer._id,
+          label: `${developer.firstName} ${developer.lastName}`,
+          employee: developer,
+        };
+        acc.push(option);
+        return acc;
+      }, []);
+      setDeveloperOptions(options);
+    }
   }, [employees]);
 
   const handleSubmit = async () => {
     try {
-      const formattedDevelopers = developers.map((developerId) => {
-        const selectedDeveloper = developerOptions.find((option) => option.value === developerId);
-        if (!selectedDeveloper) {
-          console.error(`Developer not found for developerId: ${developerId}`);
-          return null;
-        }
-        return {
-          employee: selectedDeveloper.employee._id,
-          fullTime: true,
-        };
-      });
-  
-      const projectData = {
-        name,
-        description,
-        duration,
-        developers: formattedDevelopers,
-        hourlyRate,
-        projectValue,
-        projectStatus,
-      };
-  
+      const projectData = formatProjectData(name, description, duration, developers, hourlyRate, projectValue, projectStatus, developerOptions);
       actions.createProjectRequest(projectData);
     } catch (error) {
-      console.error("Error submitting project:", error);
     }
   };
-  
+
   const formFields = FormFields({
     isLoading,
     name: {
@@ -133,11 +116,7 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
       },
       options: Object.values(ProjectStatus),
     },
-    developerOptions: employees.map((developer) => ({
-      value: developer._id, 
-      label: `${developer.firstName} ${developer.lastName}`,
-      employee: developer, 
-    })),
+    developerOptions: developerOptions || [],
     submitButton: {
       onClick: handleSubmit,
     },
