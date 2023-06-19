@@ -36,11 +36,9 @@ const ResetPassword = ({actions}) => {
     try {
       actions.resetPasswordRequest(token, newPassword);
       setLoading(false);
-      setMessage('Password reset request sent.');
       
     } catch (error) {
       setLoading(false);
-      setMessage('Error occurred. Please try again.');
       error(error.message);
     }
   };
