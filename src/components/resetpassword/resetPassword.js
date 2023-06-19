@@ -1,18 +1,43 @@
 import '../loginform/LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
-import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { resetPasswordRequest } from '../../actions/authActions.js';
+import { notification } from 'antd';
 
 const ResetPassword = ({actions}) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { token } = useParams();
+
+  const openNotification = notification.open;
+
+  const passwordPolicy = {
+    min: 6,
+    max: 30,
+    lowerCase: 1,
+    upperCase: 1,
+    numeric: 1,
+    symbol: 0,
+  };
+
+  const validatePassword = (newPassword) => {
+    if(newPassword.length < passwordPolicy.min || newPassword.length > passwordPolicy.max)
+      return false;
+
+    if(passwordPolicy.lowerCase && !/[a-z]/.test(newPassword))
+      return false;
+    
+    if(passwordPolicy.upperCase && !/[A-Z]/.test(newPassword))
+      return false;
+
+    if(passwordPolicy.numeric && !/[0-9]/.test(newPassword))
+      return false;
+    
+    return true;
+  };
 
   const handleNewPasswordChange = (event) => {
     setNewPassword(event.target.value);
@@ -24,23 +49,27 @@ const ResetPassword = ({actions}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    if (newPassword !== confirmPassword) {
-      setErrorMessage('Passwords do not match');
+
+    if(!validatePassword(newPassword)) {
+      openNotification({
+        message: 'Error',
+        description: 'Invalid password. Password must contain at least 6 characters, and combination of uppercase and lowercase letter and number.',
+        type:'error',
+      });
       return;
     }
   
-    setLoading(true);
-    setErrorMessage('');
-  
-    try {
-      actions.resetPasswordRequest(token, newPassword);
-      setLoading(false);
-      
-    } catch (error) {
-      setLoading(false);
-      error(error.message);
+    if (newPassword !== confirmPassword) {
+      openNotification({
+        message: 'Error',
+        description: 'Passwords do not match.',
+        type: 'error',
+      });
+      return;
     }
+    
+    setLoading(true);
+    actions.resetPasswordRequest(token, newPassword);
   };
   
 
