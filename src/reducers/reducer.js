@@ -12,7 +12,7 @@ export default combineReducers({
   errors: errorReducer,
   passwordReq: forgotPasswordReducer,
   passwordRes: resetPasswordReducer,
-  addEmployeeModal: addEmployeeModalReducer
+  addEmployeeModal: addEmployeeModalReducer,
   projects: projectsReducer, 
   customTable: customTableReducer, 
 });
