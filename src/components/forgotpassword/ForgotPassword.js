@@ -1,39 +1,52 @@
 import '../loginform/LoginForm.scss';
 import Logotype from '../../images/loginform/Logotype.svg';
-import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { passwordRequest } from '../../actions/authActions.js';
+import { notification } from 'antd';
+
 
 const ForgotPassword = ({actions}) => {
   const [email, setEmail] = useState('');
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [emailSent, setEmailSent] = useState(false);
+
+
+  const openNotification = notification.open;
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+  }
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
   };
 
+
+
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    try {
-      setLoading(true);
-      const response = actions.passwordRequest({email});
-      if (response.success) {
-        setEmailSent(true);
-        setMessage('Email sent');
-      } else {
-        setMessage('Error occurred');
-      }
-    } catch (error) {
-      setMessage('Error occurred');
-    } finally {
-      setLoading(false);
+  
+    if (email.trim() === '') {
+      openNotification({
+        message: 'Error',
+        description: 'Please enter your email.',
+        type: 'error',
+      });
+      return;
     }
+
+    if (!validateEmail(email)) {
+      openNotification({
+        message: 'Error',
+        description: 'Please enter a valid email.',
+        type: 'error',
+      });
+      return;
+    }
+
+    actions.passwordRequest({ email });
+
   };
   
   const logoImage = windowWidth >= 768 ? (
@@ -69,7 +82,7 @@ const ForgotPassword = ({actions}) => {
             placeholder="Enter your email"
           />
           <div className="login-buttons">
-          <button type="submit" disabled={loading || message}>
+          <button type="submit" disabled={loading}>
             Send me email
           </button>
           </div>

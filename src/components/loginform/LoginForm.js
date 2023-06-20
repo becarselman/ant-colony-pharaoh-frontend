@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { loginSuccess } from '../../actions/authActions';
+import { actionTypes } from '../../actions/types';
 
 
 function LoginForm({ actions }) {
@@ -23,8 +25,9 @@ function LoginForm({ actions }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    actions.loginRequest({email, password});
+    actions.loginRequest({email, password, navigate});
   };
+
 
   const logoImage = windowWidth >= 768 ? (
     <div className="login-left">
