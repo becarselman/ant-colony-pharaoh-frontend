@@ -14,7 +14,7 @@ const Sidebar = ({actions}) => {
             <div className="sidebar-option" key={option.text}>
                 {option.image}
                 <NavLink
-                    exact
+                    exact="true"
                     to={`/dashboard/${option.text.toLowerCase()}`}
                     className={({isActive}) => isActive ? "sidebar-active-link": "sidebar-not-active-link" } >
                     {option.text}
