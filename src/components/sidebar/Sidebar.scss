@@ -1,15 +1,7 @@
-//FIXME: move this import somewhere else, but make sure it is loaded
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
 @import '../../utilis/colors';
 @import '../../utilis/mixins';
 
 .sidebar-container {
-  //FIXME: this sidebar's positioning doesn't work well, https://stackoverflow.com/a/40317378
-  position: absolute;
-  left: 0;
-  top: 0;
-
   background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
   border-right: 1px solid $border-color;
 
@@ -92,11 +84,19 @@
   margin-bottom: 5px;
 }
 
-.sidebar-option p {
-  margin-left: 20px;
+.sidebar-option a {
+  margin: 14px 0 14px 20px;
 
   @include gilroy-medium();
   font-size: 14px;
   line-height: 16px;
   color: $text-color-secondary;
+
+  text-decoration: none;
+}
+//:has doesn't work in firefox, it is actively worked on by firefox devs
+//couldn't find more elegant solution to style parent div of .sidebar-active-link
+.sidebar-option:has(> .sidebar-active-link) {
+  @include gilroy-medium700;
+  background-color: $sidebar-active-link-background-color;
 }
