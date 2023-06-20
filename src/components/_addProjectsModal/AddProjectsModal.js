@@ -36,10 +36,7 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
   };
 
   const fetchDevelopers = async () => {
-    try {
-      actions.fetchAllEmployeesRequest();
-    } catch (error) {
-    }
+    actions.fetchAllEmployeesRequest();
   };
 
   useEffect(() => {
@@ -57,12 +54,18 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
     }
   }, [employees]);
 
-  const handleSubmit = async () => {
-    try {
-      const projectData = formatProjectData(name, description, duration, developers, hourlyRate, projectValue, projectStatus, developerOptions);
-      actions.createProjectRequest(projectData);
-    } catch (error) {
-    }
+  const handleSubmit = () => {
+    const projectData = formatProjectData(
+      name,
+      description,
+      duration,
+      developers,
+      hourlyRate,
+      projectValue,
+      projectStatus,
+      developerOptions
+    );
+    actions.createProjectRequest(projectData);
   };
 
   const formFields = FormFields({
