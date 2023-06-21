@@ -1,14 +1,11 @@
 const Select = ({ item }) => {
-  const dropdownOptions = item.values.map(ddo => {
-    const value = ddo.toLowerCase()
-    return (
-      <option value={value} key={value}>{ddo}</option>
-    )
-  })
+  const dropdownOptions = item.values.map(ddo => (
+    <option value={ddo} key={ddo}>{ddo}</option>
+  ));
 
   const onChange = e => {
-    item.setValue(e.target.value)
-  }
+    item.setValue(e.target.value);
+  };
 
   return (
     <div className="form-field">
@@ -20,7 +17,7 @@ const Select = ({ item }) => {
         {dropdownOptions}
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default Select
+export default Select;

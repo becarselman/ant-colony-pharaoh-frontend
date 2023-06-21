@@ -1,4 +1,4 @@
-import axiosInstance from './apiService';
+import axiosInstance from "../../../service/apiService";
 const URL = process.env.REACT_APP_API_URL;
 
 export const getAllProjects = ({ page, pageSize, statusQueryParam, searchQueryParam }) => {
