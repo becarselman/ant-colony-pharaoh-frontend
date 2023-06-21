@@ -6,13 +6,6 @@ import FormField from "./utils/FormField";
 import Stacks from "./utils/Stacks";
 import Currencies from "./utils/Currencies";
 
-//TODO:
-/*
-when employees table is implemented
-and when admin clicks on user row
-find a way to forward data from table row to this component
-and set initial states to that data
- */
 const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")

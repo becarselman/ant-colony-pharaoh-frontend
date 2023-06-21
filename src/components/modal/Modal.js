@@ -27,7 +27,7 @@ function Modal({header, items, isOpen, handleClose}) {
                         <LeftOutlined className="close-btn"/> <span>Back</span>
                     </div>
                     <div className="modal-header-wrapper modal-wrapper">
-                        <p className="modal-header">{header}</p>
+                        <span className="modal-header">{header}</span>
                     </div>
                     <div className="modal-content-wrapper modal-wrapper">
                         {formFields}

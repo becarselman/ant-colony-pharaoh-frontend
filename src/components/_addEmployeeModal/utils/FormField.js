@@ -15,10 +15,6 @@ const FormField = ({ item, k }) => {
         case "multiselect":
             return <MultiSelect item={item} />
         case "button":
-            //Button won't be wrapped in <FormField>
-            //so I need to explicitly provide key for him
-            //reason? when displaying modal, I want to separate buttons from form fields
-            //not a very clean solution, but too late for full refactor
             return <Button item={item} key={k} />
         case "file":
             return <Upload item={item} />

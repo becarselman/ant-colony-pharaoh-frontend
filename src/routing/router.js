@@ -1,9 +1,6 @@
 import React from "react";
 import LoginForm from '../components/loginform/modules/index.js';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-//FIXME: something tells me I shouldn't import sidebar like this!?
-import Sidebar from "../components/sidebar/Sidebar";
-import ProtectedRoutes from "./protectedRoutes";
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import DashboardRoutes from "./dashboardRoutes";
 import Home from "../components/home/Home.js";
 import ForgotPassword from "../components/forgotpassword/modules/index.js";
