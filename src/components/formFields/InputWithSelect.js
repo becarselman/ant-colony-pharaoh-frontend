@@ -15,12 +15,12 @@ const InputWithSelect = ({ item }) => {
     }
 
     return (
-        <div className="form-field">
+        <div className="form-field currency-input-wrapper">
             <label htmlFor={item.id}>
                 {item.labelText}
             </label>
             <div id={item.id}>
-                <input className="input-field" type={item.input.inputType} placeholder={item.input.placeholder}
+                <input className="input-field currency-input" type={item.input.inputType} placeholder={item.input.placeholder}
                        id={item.input.id} name={item.input.name} value={item.input.value}
                        onChange={onChangeInput}/>
                 <select id={item.select.id} name={item.select.name} value={item.select.value}
