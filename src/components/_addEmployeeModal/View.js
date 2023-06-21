@@ -1,5 +1,5 @@
 import {useState} from "react";
-import AddEmployeeModal from "./AddEmployeeModal";
+import AddEmployeeModal from "../_addEmployeeModal/AddEmployeeModal";
 
 const OpenModalButton = ({isLoading, actions}) => {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { fetchAllProjectsSuccess, fetchAllProjectsFailure, startLoader, stopLoader } from './actions';
 import { actionTypes } from "./types";
-import { getAllProjects } from '../../../service/projectsService';
+import { getAllProjects } from './service';
 
 function generateQueryParams(selectedProjectStatus, searchInput) {
   const statusQueryParam = selectedProjectStatus !== 'All Projects' ? selectedProjectStatus : '';
@@ -28,7 +28,7 @@ function* fetchAllProjectsSaga(action) {
       const fullTime = [];
 
       project.developers.forEach((developer) => {
-        developers.push(developer.user);
+        developers.push(developer.employee);
         fullTime.push(developer.fullTime);
       });
 
