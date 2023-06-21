@@ -2,15 +2,15 @@
 @import '../../utilis/mixins';
 
 .sidebar-container {
-  background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
-  border-right: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
 
-  height: 100vh;
+  min-height: 100vh;
 
   padding: 30px;
 
-  display: flex;
-  flex-direction: column;
+  background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
+  border-right: 1px solid $border-color;
 }
 
 .logo-section {
@@ -94,8 +94,7 @@
 
   text-decoration: none;
 }
-//:has doesn't work in firefox, it is actively worked on by firefox devs
-//couldn't find more elegant solution to style parent div of .sidebar-active-link
+
 .sidebar-option:has(> .sidebar-active-link) {
   @include gilroy-medium700;
   background-color: $sidebar-active-link-background-color;
