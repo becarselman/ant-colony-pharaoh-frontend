@@ -1,7 +1,7 @@
 import React from "react";
 import LoginForm from '../components/loginform/modules/index.js';
 import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
-import DashboardRoutes from "./dashboardRoutes";
+import ProtectedRoute from "./protectedRoute";
 import Home from "../components/home/Home.js";
 import ForgotPassword from "../components/forgotpassword/modules/index.js";
 import ResetPassword from "../components/resetpassword/modules/index.js";
@@ -13,16 +13,20 @@ function CustomRouter() {
   return (
     <Router>
       <Routes>
-        <Route path="/home" element={<Home />}/>
-        <Route path="/forgot-password" element={<ForgotPassword/>} />
-        <Route path="reset-password/:token" element={<ResetPassword/>} />
-        <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route exact path="/login" element={<LoginForm />} />
-        <Route exact path="/employees" element={ <OpenModalButton /> } />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="/dashboard" element={<ProtectedRoute />} >
+          <Route index element={<Navigate to="home" />}  />
+          <Route exact path="home" element={<Home />}/>
+          <Route exact path = "projects" element={<Projects />} />
+          <Route exact path="employees" element={ <OpenModalButton /> } />
+        </Route>
 
-        <Route path = "/dashboard/*" element={<DashboardRoutes />} />
-        <Route path = "/dashboard/projects" element={<Projects />} />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+
+        <Route exact path="/login" element={<LoginForm />} />
+        <Route exact path="/forgot-password" element={<ForgotPassword/>} />
+        <Route exact path="reset-password/:token" element={<ResetPassword/>} />
+
+        <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
     </Router>
   );

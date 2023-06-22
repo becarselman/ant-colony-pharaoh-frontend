@@ -3,7 +3,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import Dashboard from "../components/dashboard/Dashboard";
 import React from "react";
 
-const ProtectedRoutes = () => {
+const ProtectedRoute = () => {
   //here is the core logic that prevents unauthorized access to routes
   //each protected route should have this component as parent
 
@@ -16,7 +16,7 @@ const ProtectedRoutes = () => {
         <Outlet />
       </>
     )
-  : <Navigate to="/login" />
+  : <Navigate to="/login" replace />
 }
 
-export default ProtectedRoutes
+export default ProtectedRoute
