@@ -24,17 +24,19 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} ${showText}`,
   };
 
-
   const handleNextPage = () => {
     if (currentPage < Math.ceil(totalItems / pageSize)) {
       onPageChange(currentPage + 1);
     }
   };
 
-  const handleLastPage = () => {
-    onPageChange(Math.ceil(totalItems / pageSize));
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
   };
 
+  const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === Math.ceil(totalItems / pageSize);
 
   const pageSizeOptions = ['10', '20', '50'];
@@ -55,15 +57,15 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
     <span className="show-total">{paginationConfig.showTotal(totalItems, [startIndex + 1, endIndex])}</span>
   );
 
-  const nextButton = (
-    <button onClick={handleNextPage} disabled={isLastPage}>
-      Next
+  const previousButton = (
+    <button className="previous-button" onClick={handlePreviousPage} disabled={currentPage === 1}>
+      Previous
     </button>
   );
-
-  const lastButton = (
-    <button onClick={handleLastPage} disabled={isLastPage}>
-      Last
+  
+  const nextButton = (
+    <button className="next-button" onClick={handleNextPage} disabled={isLastPage}>
+      Next
     </button>
   );
 
@@ -75,12 +77,9 @@ const PaginationComponent = ({ totalItems, pageSize, currentPage, onPageChange, 
         {showTotalSpan}
       </div>
       <div className="pagination-right">
+        {previousButton}
         <Pagination {...paginationConfig} className="custom-pagination test" />
-
-        <div className="next-last-buttons">
-          {nextButton}
-          {lastButton}
-        </div>
+        {nextButton}
       </div>
       {loading && <Spin className="loading-spinner" />}
     </div>

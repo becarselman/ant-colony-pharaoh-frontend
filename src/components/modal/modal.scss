@@ -1,26 +1,90 @@
 @import '../../utilis/colors';
+@import '../../utilis/mixins';
 
 .modal {
     position: fixed;
-    inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+    inset: 0;
     background-color: $modal-background-color;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease-in-out;
+    flex-direction: row;
+    justify-content: flex-end;
     overflow: hidden;
     z-index: 999;
-    padding: 10px;
+    height: 100vh;
 }
 
 .modal-content {
-    background-color: $modal-content-background-color;
-    color: $modal-content-text-color;
     display: flex;
     flex-direction: column;
 
-    padding: 50px;
+    background-color: $modal-content-background-color;
+    color: $modal-content-text-color;
 
-    border-radius: 40px;
+    height: 100vh;
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 16px 24px;
+    background-color: white;
+
+    margin-right: 24px;
+    margin-left: 24px;
+
+    border-radius: 8px;
+}
+
+.modal-back-button-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+
+    width: fit-content;
+    height: 24px;
+
+    margin-left: 29px;
+    margin-top: 27px;
+
+    @include inter-medium600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-header-wrapper {
+    margin-top: 13px;
+    margin-bottom: 16px;
+}
+
+.modal-header {
+    @include gilroy-medium700;
+    font-size: 21px;
+}
+
+.modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 16px;
+}
+
+.modal-buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto 0 0;
+    border-radius: 0;
+}
+
+
+.anticon {
+    display: inline-block !important;
 }
