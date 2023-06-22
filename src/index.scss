@@ -12,3 +12,7 @@ code {
     monospace;
 }
 
+#root {
+  display: flex;
+  flex-direction: row;
+}
