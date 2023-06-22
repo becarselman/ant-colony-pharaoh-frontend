@@ -17,6 +17,4 @@ export default combineReducers({
   projects: projectsReducer,
   customTable: customTableReducer,
   projectsModal: projectsModalReducer, 
-  projects: projectsReducer, 
-  customTable: customTableReducer, 
 });

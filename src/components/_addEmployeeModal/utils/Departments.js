@@ -1,9 +1,8 @@
 const Departments = [
-    "HR",
-    "QA",
-    "Backend",
-    "Frontend",
-    "DevOps"
+    "Management",
+    "Administration",
+    "Design",
+    "Development"
 ]
 
 export default Departments
