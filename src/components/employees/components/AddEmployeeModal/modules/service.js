@@ -1,7 +1,7 @@
-import axiosInstance from "../../../service/apiService"
+import axiosInstance from "../../../../../service/apiService"
 
 export const createUser = (body) => {
-    return axiosInstance.post("/register", body)
+    return axiosInstance.post("/employee", body)
         .then(res => {
             return res
         })

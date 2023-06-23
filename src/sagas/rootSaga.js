@@ -3,8 +3,8 @@ import { watchLogin, watchLogout } from './authSaga';
 import { watchForgotPassword } from './forgotPasswordSaga';
 import { watchResetPassword } from './resetPasswordSaga';
 import { watchFetchAllProjects, watchCreateProject } from '../components/projects/modules/saga/projectsSaga';
-import { watchSendUserDataSaga } from "../components/_addEmployeeModal/modules/saga";
-import { watchFetchEmployees } from '../components/_addProjectsModal/modules/saga';
+import { watchSendUserDataSaga } from "../components/employees/components/AddEmployeeModal/modules/saga";
+import { watchFetchEmployees } from '../components/projects/components/AddProjectsModal/modules/saga';
 
 export default function* rootSaga() {
   yield all([

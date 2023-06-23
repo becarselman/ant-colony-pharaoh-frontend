@@ -1,4 +1,3 @@
-import Departments from "../utils/Departments";
 import {actionTypes} from "./types";
 
 const initialState = {

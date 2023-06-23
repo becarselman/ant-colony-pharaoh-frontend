@@ -1,6 +1,5 @@
 import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
-import Dashboard from "../components/dashboard/Dashboard";
 import React from "react";
 
 const ProtectedRoute = () => {
@@ -13,7 +12,9 @@ const ProtectedRoute = () => {
     (
       <>
         <Sidebar />
-        <Outlet />
+        <div style={{width: "100%"}}>
+            <Outlet />
+        </div>
       </>
     )
   : <Navigate to="/login" replace />

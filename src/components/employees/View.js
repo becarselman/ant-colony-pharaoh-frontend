@@ -3,6 +3,7 @@ import './Employees.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
+import AddEmplyeesModal from "./components/AddEmployeeModal/index";
 
 const Employees = ({
   dataSource,
@@ -12,6 +13,15 @@ const Employees = ({
 }) => {
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
+  const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
+
+  const openAddEmployeeModal = () => {
+    setAddEmployeeModalOpen(true)
+  }
+
+  const closeAddEmployeeModal = () => {
+    setAddEmployeeModalOpen(false)
+  }
 
   const handleSearchChange = (input) => {
     setSearchInput(input);
@@ -35,7 +45,7 @@ const Employees = ({
     <div>
       <div className="page-header">
         <h2 className="employees-title">Employees</h2>
-        <button className="create-employee-button">Create New Employee</button>
+        <button className="create-employee-button" onClick={openAddEmployeeModal}>Create New Employee</button>
       </div>
       <CustomTable
         data={dataSource}
@@ -50,7 +60,9 @@ const Employees = ({
         title="All Employees"
         showText="Employees"
       />
+      <AddEmplyeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
     </div>
+
   );
 };
 

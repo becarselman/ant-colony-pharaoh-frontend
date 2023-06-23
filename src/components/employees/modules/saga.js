@@ -24,11 +24,11 @@ function* fetchAllEmployeesSaga(action) {
     const formattedData = employees.map((employee, index) => {
       return {
         key: employee._id || index.toString(),
-        name: employee.name || '',
-        surname: employee.surname || '',
+        name: employee.firstName || '',
+        surname: employee.lastName || '',
         department: employee.department || '',
-        salary: employee.salary || 0,
-        stack: employee.stack || 'N/A'
+        salary: employee.monthlySalary || 0,
+        stack: employee.techStack || 'N/A'
       };
     });
 

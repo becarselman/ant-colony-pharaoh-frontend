@@ -5,7 +5,6 @@ import ProtectedRoute from "./protectedRoute";
 import Home from "../components/home/Home.js";
 import ForgotPassword from "../components/forgotpassword/modules/index.js";
 import ResetPassword from "../components/resetpassword/modules/index.js";
-import OpenModalButton from "../components/_addEmployeeModal/index";
 import Projects from "../components/projects/index.js"
 import Employees from "../components/employees/index.js"
 
@@ -18,7 +17,7 @@ function CustomRouter() {
           <Route index element={<Navigate to="home" />}  />
           <Route exact path="home" element={<Home />}/>
           <Route exact path = "projects" element={<Projects />} />
-          <Route exact path="employees" element={ <OpenModalButton /> } />
+          <Route exact path="employees" element={ <Employees /> } />
         </Route>
 
         <Route path="/" element={<Navigate to="/dashboard" />} />

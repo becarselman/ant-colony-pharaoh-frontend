@@ -6,11 +6,12 @@ import rootReducer from "../reducers/reducer";
 import { watchLogin } from "../sagas/authSaga";
 import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
-import { watchSendUserDataSaga } from "../components/_addEmployeeModal/modules/saga";
+import { watchSendUserDataSaga } from "../components/employees/components/AddEmployeeModal/modules/saga";
 import { watchFetchAllProjects } from "../components/projects/modules/saga";
 import {composeWithDevTools} from "@redux-devtools/extension";
-import { watchFetchEmployees } from "../components/_addProjectsModal/modules/saga";
-import { watchCreateProject } from "../components/_addProjectsModal/modules/saga";
+import { watchFetchEmployees } from "../components/projects/components/AddProjectsModal/modules/saga";
+import { watchFetchAllEmployees } from '../components/employees/modules/saga'
+import { watchCreateProject } from "../components/projects/components/AddProjectsModal/modules/saga";
 
 const persistConfig = {
   key: "root", 

@@ -1,4 +1,4 @@
-import axiosInstance from '../../../service/apiService';
+import axiosInstance from '../../../../../service/apiService';
 
 export const getEmployees = () => {
   return axiosInstance.get('/employee');
