@@ -87,7 +87,7 @@ const FormFields = (componentData) => {
       buttonType: "submit",
       buttonStyle: "primary",
       id: "submit",
-      text: componentData.isLoading === false ? "Add New Project" : "...",
+      text: componentData.isLoading === false ? "Add Project" : "...",
       isLoading: componentData.isLoading,
       onClick: componentData.submitButton.onClick,
       

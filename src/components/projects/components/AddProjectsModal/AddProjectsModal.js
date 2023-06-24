@@ -41,7 +41,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
 
   useEffect(() => {
     if (employees) {
-      console.log(employees)
       const options = employees.reduce((acc, developer) => {
         const option = {
           value: developer._id,
@@ -142,7 +141,7 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
 
   return (
     <>
-      <Modal handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items} />
+      <Modal header="Add New Project" handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items} />
     </>
   );
 };
