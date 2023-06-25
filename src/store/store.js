@@ -33,6 +33,5 @@ sagaMiddleware.run(watchForgotPassword);
 sagaMiddleware.run(watchResetPassword);
 sagaMiddleware.run(watchSendUserDataSaga);
 sagaMiddleware.run(watchFetchAllProjects);
-sagaMiddleware.run(watchFetchAllEmployees)
 sagaMiddleware.run(watchFetchEmployees);
 sagaMiddleware.run(watchCreateProject);
