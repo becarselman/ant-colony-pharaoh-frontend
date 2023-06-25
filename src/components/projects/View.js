@@ -62,7 +62,7 @@ const Projects = ({
   }
 
   return (
-    <div>
+    <div className="full-projects">
       <div className="page-header">
         <h2 className="projects-title">Projects</h2>
         <button className="create-project-button" onClick={handleCreateNewProject}>

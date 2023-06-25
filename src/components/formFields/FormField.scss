@@ -118,3 +118,48 @@ button[data-style="secondary"] {
     border-style: solid;
   }
 }
+
+.date-range-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.date-range-input {
+  padding: 8px 43px;
+  gap: 16px; 
+  font-family: "Gilroy", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: white;
+  color: #6C6D75;
+  border-radius: 6px;
+  border-style: solid;
+}
+
+.date-range-separator {
+  margin: 0 16px;
+  font-size: 35px;
+  padding-bottom: 3px;
+}
+
+.date-range-separator-to {
+  margin: 0 16px;
+  font-size: 15px;
+  padding-bottom: 3px;
+}
+
+.date-range-input {
+  padding-left: 16px;
+  flex-grow: 1;
+}
+
+.ant-picker .ant-picker-input {
+  display: block ruby !important;
+}
+
+> input {
+  color: $modal-input-text-color;
+}
+
