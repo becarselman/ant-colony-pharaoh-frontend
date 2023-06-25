@@ -3,7 +3,7 @@ import './Employees.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
-import AddEmplyeesModal from "./components/AddEmployeeModal/index";
+import AddEmployeesModal from "./components/AddEmployeeModal/index";
 
 const Employees = ({
   dataSource,
@@ -60,7 +60,7 @@ const Employees = ({
         title="All Employees"
         showText="Employees"
       />
-      <AddEmplyeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+      <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
     </div>
 
   );
