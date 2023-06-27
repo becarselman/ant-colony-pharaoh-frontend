@@ -11,7 +11,7 @@ const ProtectedRoute = () => {
     return !token || token === "" ?
         (
             <>
-                <div style={{width: "100%"}}>
+                <div className="width100">
                     <Outlet />
                 </div>
             </>
