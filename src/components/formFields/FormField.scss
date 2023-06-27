@@ -162,6 +162,29 @@ button[data-style="secondary"] {
 .ant-picker .ant-picker-input > input {
   display: block ruby !important;
   color: $modal-input-text-color;
-  
 }
 
+.css-13cymwt-control {
+  cursor: pointer !important;
+}
+
+.checkbox-option {
+  cursor: pointer;
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: $modal-input-text-color;
+  }
+
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+
+  .option-label {
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}

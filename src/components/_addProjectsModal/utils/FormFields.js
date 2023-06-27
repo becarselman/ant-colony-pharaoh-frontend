@@ -45,7 +45,7 @@ const FormFields = (componentData) => {
       id: "developers",
       name: "developers",
       labelText: "Assign developers",
-      options: componentData.developerOptions, 
+      options: componentData.developerOptions,
     },
     {
       type: "input",
