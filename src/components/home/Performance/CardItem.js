@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.scss';
+import './Performance.scss';
 
 const CardItem = ({ title, value, iconComponent}) => {
     return(
