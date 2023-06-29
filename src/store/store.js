@@ -11,6 +11,8 @@ import { watchFetchAllProjects } from "../components/projects/modules/saga";
 import {composeWithDevTools} from "@redux-devtools/extension";
 import { watchFetchEmployees } from "../components/_addProjectsModal/modules/saga";
 import { watchCreateProject } from "../components/_addProjectsModal/modules/saga";
+import { watchFetchAllEmployees } from '../components/employees/modules/saga'
+import { watchFetchProject } from "../components/_dataReviewModal/modules/saga";
 
 const persistConfig = {
   key: "root", 
@@ -36,3 +38,4 @@ sagaMiddleware.run(watchFetchAllProjects);
 sagaMiddleware.run(watchFetchAllEmployees)
 sagaMiddleware.run(watchFetchEmployees);
 sagaMiddleware.run(watchCreateProject);
+sagaMiddleware.run(watchFetchProject);

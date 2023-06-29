@@ -5,6 +5,7 @@ import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
 import AddProjectsModal from '../_addProjectsModal/index';
+import DataReviewModal from '../_dataReviewModal/Index';
 
 const Projects = ({
   dataSource,
@@ -17,6 +18,8 @@ const Projects = ({
   const [searchInput, setSearchInput] = useState('');
   const [showText, setShowText] = useState('Projects');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDataModalOpen, setIsDataModalOpen] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
 
   const handleSearchChange = (input) => {
     setSearchInput(input);
@@ -44,6 +47,21 @@ const Projects = ({
     setIsModalOpen(false);
   };
 
+  const handleCloseDataModal = () => {
+    setIsDataModalOpen(false);
+    setSelectedProjectId(null);
+  };
+  
+
+  const handleOpenDataModal = (projectId) => {
+    setSelectedProjectId(projectId);
+    setIsDataModalOpen(true);
+  };
+
+  const handleProjectClick = (project) => {
+    handleOpenDataModal(project.key);
+  };
+
   return (
     <div>
       <div className="page-header">
@@ -64,11 +82,16 @@ const Projects = ({
         onSearchChange={handleSearchChange}
         title="All Projects" 
         showText={showText}
+        onProjectClick={handleProjectClick}
       />
 
       {isModalOpen && (
         <AddProjectsModal handleClose={handleCloseModal} isOpen={isModalOpen} actions={actions} employees={employees}/>
       )}
+      {isDataModalOpen && (
+        <DataReviewModal projectId={selectedProjectId} handleClose={handleCloseDataModal} isOpen={true} />
+      )}
+
     </div>
   );
 };

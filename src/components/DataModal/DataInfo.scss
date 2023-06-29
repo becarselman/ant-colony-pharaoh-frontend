@@ -1,0 +1,147 @@
+@import '../../utilis/colors';
+@import '../../utilis/mixins';
+
+.modal-container{
+    position: fixed;
+    inset: 0;
+    background-color: $modal-background-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    overflow: hidden;
+    z-index: 999;
+    height: 100vh;
+};
+
+.info-container{
+    display: flex;
+    flex-direction: column;
+
+    background-color: $modal-content-background-color;
+    color: $modal-content-text-color;
+
+    height: 100vh;
+    word-wrap: break-word;
+    width: 496px;
+}
+
+.back-arrow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+
+    width: fit-content;
+    height: 24px;
+
+    margin-left: 29px;
+    margin-top: 27px;
+
+    @include inter-medium600;
+    font-size: 16px;
+    cursor: pointer;
+};
+
+.project-title{
+    width: 400px;
+    margin-top: 16px;
+    margin-left: 24px;
+    margin-right: 24px; 
+    padding: 16px 24px;
+    background-color: $white-color;
+    border-radius: 8px;
+    color: $black-color;
+    @include gilroy-medium700;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 24px;
+
+};
+
+.project-info{
+    background-color: $white-color;
+    margin-top: 16px;
+    margin-left: 24px;
+    margin-right: 24px; 
+    border-radius: 8px;
+    word-wrap: break-word;
+    width: 448px;
+};
+
+.info{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color: $black-color;
+    margin-left: 24px;
+    margin-right: 24px; 
+    border-bottom: 1px solid $light-gray-border;
+    word-wrap: break-word;
+};
+
+.info:last-child { 
+    border-bottom: none; 
+};
+
+.info-title{
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    @include gilroy-medium500;
+    line-height: 24px;
+    font-size: 16px;
+    color: $black-color;
+};
+
+.info-description{
+    @include gilroy-medium;
+    color: $project-text-color;
+    font-size: 16px;
+    line-height: 24px;
+    word-wrap: break-word;
+};
+
+.button-container{
+    //padding: 24px;
+    background-color: $white-color;
+    display: flex;
+    //padding: 24px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 496px;
+    height: 88px;
+};
+
+.delete-button{
+    display: flex;
+    padding: 8px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    border: 1px solid $red-color;
+    color: $red-color;
+    @include inter-medium600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.24px;
+    cursor: pointer;
+};
+
+.edit-button{
+    display: flex;
+    padding: 8px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    background: $primary-color;
+    color: $white-color;
+    @include inter-medium600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.24px;
+    cursor: pointer;
+    margin-right: 24px;
+}
