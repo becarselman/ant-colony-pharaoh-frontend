@@ -11,3 +11,13 @@ export const getProjectById = (projectId) => {
       throw error;
     });
 };
+
+export const getEmployeeById = (employeeId) => {
+  return axiosInstance.get(`${URL}/employee/${employeeId}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
