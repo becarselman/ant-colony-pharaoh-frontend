@@ -11,6 +11,8 @@ import {UserInfoOptions} from "./sidebar_options/UserInfoOptions";
 
 const Sidebar = ({actions}) => {
 
+  const preventDefault = e => e.preventDefault()
+
     const arrayOfDivsSidebarOptions = sidebarOptions.map(option => {
         return (
             <div className="sidebar-option" key={option.text}>
@@ -48,7 +50,7 @@ const Sidebar = ({actions}) => {
                         menu={{items: UserInfoOptions}}
                         trigger={['click']}
                     >
-                        <a onClick={(e) => e.preventDefault()}>
+                        <a onClick={preventDefault}>
                             <Space>
                                 <DownOutlined />
                             </Space>

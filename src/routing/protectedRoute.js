@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
     (
       <>
         <Sidebar />
-        <div style={{width: "100%"}}>
+        <div className="width100">
             <Outlet />
         </div>
       </>
