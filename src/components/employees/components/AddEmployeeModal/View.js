@@ -6,14 +6,14 @@ import FormField from "./utils/FormField";
 import Stacks from "./utils/Stacks";
 import Currencies from "./utils/Currencies";
 
-const View = ({handleClose, isOpen, isLoading, actions}) => {
-    const [name, setName] = useState("")
-    const [surname, setSurname] = useState("")
+const View = ({handleClose, isOpen, isLoading, data, actions}) => {
+    const [name, setName] = useState(data.name)
+    const [surname, setSurname] = useState(data.surname)
     const [image, setImage] = useState(undefined)
-    const [department, setDepartment] = useState(Departments[0])
-    const [salary, setSalary] = useState("")
+    const [department, setDepartment] = useState(data.department)
+    const [salary, setSalary] = useState(data.salary)
     const [currency, setCurrency] = useState(Currencies[0])
-    const [stack, setStack] = useState(Stacks[0])
+    const [stack, setStack] = useState(data.stack)
 
     const resetState = () => {
         setName("")
@@ -94,6 +94,10 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
     })
 
     const items = formFields.map(i => {
+        // console.log("Data.name: ")
+        // console.log(data.name)
+        // console.log("Item: ")
+        // console.log(i)
         return i.type !== "button"
             ? <FormField item={i} key={i.id}/>
             : FormField({
@@ -101,7 +105,6 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
             k: i.id
         });
     })
-
 
     return (
         <>
