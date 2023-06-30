@@ -50,7 +50,7 @@
     cursor: pointer;
 }
 
-.selection1{
+.selection{
     padding-top: 9px;
     padding-right: 16px;
     padding-bottom: 9px;
@@ -59,26 +59,8 @@
     text-align: center;
 }
 
-.selection2{
-    padding-top: 9px;
-    padding-right: 16px;
-    padding-bottom: 9px;
-    padding-left: 16px;    
-    border-right: 1px solid $green-border-color;
-    text-align: center;
-}
 
-.selection3{
-    padding-top: 9px;
-    padding-right: 16px;
-    padding-bottom: 9px;
-    padding-left: 16px;
-    text-align: center;
-}
-
-.selection1.highlight,
-.selection2.highlight,
-.selection3.highlight {
+.selection.highlight {
   color: $selected-text;
   @include inter-medium;
   font-size: 14px;
@@ -86,7 +68,6 @@
   line-height: 22px;
   letter-spacing: 0em;
   text-align: left;
-
   background-color: $selected-background;
 }
 

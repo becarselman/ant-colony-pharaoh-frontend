@@ -36,9 +36,11 @@ const Development = () => {
     handleChange('2023 Performance');
     window.location.href = '/dashboard/performance';
   };
+
   const developmentClick = () => {
     handleChange('Development & Revenue Costs');
   };
+
   const planClick = () => {
     handleChange('2023 Plan');
   };
@@ -65,6 +67,38 @@ const Development = () => {
   const topCards = cardItems.slice(0, 2);
   const bottomCards = cardItems.slice(2, 4);
 
+  const renderRevenueCostsM = () => {
+    return RevenueCostsM.map((project, index) => (
+      <Col span={8}>
+        <div className='chart-container'>
+          <div className='chart-title'></div>
+          <Column
+            {...RevenueCostsMonth}
+            data={project}
+            yAxis={
+              index !== 0
+                ? { ...RevenueCostsMonth.yAxis, label: null }
+                : RevenueCostsMonth.yAxis
+            }
+          />
+        </div>
+      </Col>
+    ));
+  };
+
+  const renderRevenueGap = () => {
+    return RevenueGap.map((project) => (
+      <Col span={8} key={project.data[0].title}>
+        <SpecialCardItem
+          key={project.data[0].title}
+          title={project.data[0].title}
+          value={project.data[0].value}
+          className='revenue-gap'
+        />
+      </Col>
+    ));
+  };
+
   return (
     <div className='container'>
       <div className='sidebar'></div>
@@ -73,7 +107,7 @@ const Development = () => {
         <div className='selections'>
           <div className='selection-options'>
             <div
-              className={`selection1 ${
+              className={`selection ${
                 selectedOption === '2023 Performance' ? 'highlight' : ''
               }`}
               onClick={performanceClick}
@@ -81,7 +115,7 @@ const Development = () => {
               2023 Performance
             </div>
             <div
-              className={`selection2 ${
+              className={`selection ${
                 selectedOption === 'Development & Revenue Costs'
                   ? 'highlight'
                   : ''
@@ -91,7 +125,7 @@ const Development = () => {
               Development & Revenue Costs
             </div>
             <div
-              className={`selection3 ${
+              className={`selection ${
                 selectedOption === '2023 Plan' ? 'highlight' : ''
               }`}
               onClick={planClick}
@@ -105,65 +139,34 @@ const Development = () => {
           </div>
         </div>
         <div className='cards'>
-      <div className='other-cards'>
-        {topCards}
+          <div className='other-cards'>{topCards}</div>
+          <div className='other-cards'>{bottomCards}</div>
+          <div className='grey-card '>{greyCard}</div>
+        </div>
+        <div className='middle-stats'></div>
+        <div className='bottom-chart'>
+          <div className='stats-titles'>
+            Revenue & costs (per project) - plan
+            <a href='#' className='stats-details'>
+              See details
+            </a>{' '}
+          </div>
+          <Column {...RevenueCostsActual} />
+        </div>
+        <div className='bottom-chart'>
+          <div className='stats-titles-m'>
+            Revenue & costs (per project) - per month
+            <a href='#' className='stats-details'>
+              See details
+            </a>
+          </div>
+          <Row gutter={[16, 16]}>{renderRevenueCostsM()}</Row>
+        </div>
+        <div>
+          <Row gutter={[16, 16]}>{renderRevenueGap()}</Row>
+        </div>
       </div>
-      <div className='other-cards'>
-        {bottomCards}
-      </div>
-      <div className='grey-card '>{greyCard}</div>
     </div>
-        <div className='middle-stats'>
-        </div>
-        <div className='bottom-chart'>
-       <div className='stats-titles'>Revenue & costs (per project) - plan 
-       <a href='#' className='stats-details'>
-                See details
-              </a> </div>
-              <Column {...RevenueCostsActual} />
-        </div>
-        <div className='bottom-chart'>
-        <div className='stats-titles-m'>Revenue & costs (per project) - per month 
-        <a href='#' className='stats-details'>
-                See details
-              </a>
-              </div>
-              <Row gutter={[16, 16]}>
-  {RevenueCostsM.map((project, index) => (
-    <Col span={8}>
-      <div className='chart-container'>
-        <div className='chart-title'></div>
-        <Column
-          {...RevenueCostsMonth}
-          data={project}
-          yAxis={
-            index === 1 || index === 2
-              ? { ...RevenueCostsMonth.yAxis, label: null }
-              : RevenueCostsMonth.yAxis
-          }
-        />
-      </div>
-    </Col>
-  ))}
-</Row>
-</div>
-          <div>
-          <Row gutter={[16, 16]}>
-  {RevenueGap.map((project) => (
-    <Col span={8} key={project.data[0].title}>
-      <SpecialCardItem 
-        key={project.data[0].title}
-        title={project.data[0].title}
-        value={project.data[0].value}
-        className="revenue-gap"
-      />
-    </Col>
-  ))}
-</Row>
-
-           </div>
-        </div>
-      </div>
   );
 };
 
