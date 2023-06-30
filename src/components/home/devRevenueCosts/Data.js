@@ -145,66 +145,66 @@ export const RevenueCostsA = [
   export const RevenueCostsM = [
     [
       {
-        name: 'Grand Total Planned Revenue',
+        type: 'Grand Total Planned Revenue',
         month: 'January: 1/1/2023',
         value: 70000,
       },
       {
-        name: 'Grand Total Actual Revenue',
-        month: 'January: 1/1/2023',
-        value: 290000,
-      },
-      {
-        name: 'Grand Total Total Expenses (Planned)',
-        month: 'January: 1/1/2023',
-        value: 70000,
-      },
-      {
-        name: 'Grand Total Total Expenses (Actual)',
+        type: 'Grand Total Actual Revenue',
         month: 'January: 1/1/2023',
         value: 290000,
       },
-    ],
-    [
       {
-        name: 'Grand Total Planned Revenue',
-        month: 'February: 1/2/2023',
+        type: 'Grand Total Total Expenses (Planned)',
+        month: 'January: 1/1/2023',
         value: 70000,
       },
       {
-        name: 'Grand Total Actual Revenue',
-        month: 'February: 1/2/2023',
-        value: 290000,
-      },
-      {
-        name: 'Grand Total Total Expenses (Planned)',
-        month: 'February: 1/2/2023',
-        value: 70000,
-      },
-      {
-        name: 'Grand Total Total Expenses (Actual)',
-        month: 'February: 1/2/2023',
+        type: 'Grand Total Total Expenses (Actual)',
+        month: 'January: 1/1/2023',
         value: 290000,
       },
     ],
     [
       {
-        name: 'Grand Total Planned Revenue',
+        type: 'Grand Total Planned Revenue',
+        month: 'February: 1/2/2023',
+        value: 70000,
+      },
+      {
+        type: 'Grand Total Actual Revenue',
+        month: 'February: 1/2/2023',
+        value: 290000,
+      },
+      {
+        type: 'Grand Total Total Expenses (Planned)',
+        month: 'February: 1/2/2023',
+        value: 70000,
+      },
+      {
+        type: 'Grand Total Total Expenses (Actual)',
+        month: 'February: 1/2/2023',
+        value: 290000,
+      },
+    ],
+    [
+      {
+        type: 'Grand Total Planned Revenue',
         month: 'March: 1/3/2023',
         value: 20000,
       },
       {
-        name: 'Grand Total Actual Revenue',
+        type: 'Grand Total Actual Revenue',
         month: 'March: 1/3/2023',
         value: 220000,
       },
       {
-        name: 'Grand Total Total Expenses (Planned)',
+        type: 'Grand Total Total Expenses (Planned)',
         month: 'March: 1/3/2023',
         value: 70000,
       },
       {
-        name: 'Grand Total Total Expenses (Actual)',
+        type: 'Grand Total Total Expenses (Actual)',
         month: 'March: 1/3/2023',
         value: 290000,
       },

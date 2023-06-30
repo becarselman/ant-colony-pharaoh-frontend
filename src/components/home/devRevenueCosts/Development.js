@@ -119,24 +119,34 @@ const Development = () => {
        <div className='stats-titles'>Revenue & costs (per project) - plan 
        <a href='#' className='stats-details'>
                 See details
-              </a>
-              <Column {...RevenueCostsActual} /></div>
+              </a> </div>
+              <Column {...RevenueCostsActual} />
         </div>
+        <div className='bottom-chart'>
         <div className='stats-titles-m'>Revenue & costs (per project) - per month 
         <a href='#' className='stats-details'>
                 See details
               </a>
               </div>
               <Row gutter={[16, 16]}>
-          {RevenueCostsM.map((project) => (
-            <Col span={8}>
-              <div className='chart-container'>
-                <div className='chart-title'></div>
-                <Column {...RevenueCostsMonth} data={project} />
-              </div>
-            </Col>
-          ))}
-        </Row>
+  {RevenueCostsM.map((project, index) => (
+    <Col span={8}>
+      <div className='chart-container'>
+        <div className='chart-title'></div>
+        <Column
+          {...RevenueCostsMonth}
+          data={project}
+          yAxis={
+            index === 1 || index === 2
+              ? { ...RevenueCostsMonth.yAxis, label: null }
+              : RevenueCostsMonth.yAxis
+          }
+        />
+      </div>
+    </Col>
+  ))}
+</Row>
+</div>
           <div>
           <Row gutter={[16, 16]}>
   {RevenueGap.map((project) => (

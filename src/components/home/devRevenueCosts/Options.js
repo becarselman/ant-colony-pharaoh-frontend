@@ -30,11 +30,12 @@ export const RevenueCostsActual = {
 };
 
 export const RevenueCostsMonth = {
-  data: RevenueCostsM,
+  data: RevenueCostsM.flat(),
   isGroup: true,
-  seriesField: 'name',
-  xField: 'month', 
+  seriesField: 'type',
+  xField: 'type', 
   yField: 'value',
+  groupField: 'name',
   yAxis: {
     min: 0,
     max: 260000,
@@ -42,14 +43,14 @@ export const RevenueCostsMonth = {
   minColumnWidth: 20,
   maxColumnWidth: 20,
   dodgePadding: 6,
-  color: ({ name }) => {
-    if (name === 'Grand Total Planned Revenue') {
+  color: ({ type }) => {
+    if (type === 'Grand Total Planned Revenue') {
       return '#FF9F5A';
-    } else if (name === 'Grand Total Actual Revenue') {
+    } else if (type === 'Grand Total Actual Revenue') {
       return '#7BB99F';
-    } else if (name === 'Grand Total Total Expenses (Planned)') {
+    } else if (type === 'Grand Total Total Expenses (Planned)') {
       return '#1890FF';
-    } else if (name === 'Grand Total Total Expenses (Actual)') {
+    } else if (type === 'Grand Total Total Expenses (Actual)') {
       return '#FADB14';
     }
     return '#7BB99F';
