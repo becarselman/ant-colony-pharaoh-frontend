@@ -19,11 +19,18 @@ export const RevenueCostsActual = {
   legend: {
     position: 'top-right',
     layout: 'horizontal',
-  },
+    marker: {
+      symbol: 'circle',
+      r: 5,
+      lineWidth: 2,
+      strokeColor: ({ color }) => color, 
+      fill: 'transparent',
+    },
+    },
 };
 
 export const RevenueCostsMonth = {
-  data: [...RevenueCostsM.reduce((result, item) => result.concat(item.data), [])],
+  data: RevenueCostsM,
   isGroup: true,
   seriesField: 'name',
   xField: 'month', 
@@ -51,15 +58,12 @@ export const RevenueCostsMonth = {
     position: 'bottom',
     layout: 'vertical',
     marker: {
-      style: {
-        symbol: 'circle',
-        r: 5,
-        fill: 'transparent',
-        stroke: '#FF9F5A',
-        lineWidth: 2
-      },
+      symbol: 'circle',
+      r: 5,
+      lineWidth: 2,
+      strokeColor: ({ color }) => color, 
+      fill: 'transparent',
     },
-
   },
 };
 
