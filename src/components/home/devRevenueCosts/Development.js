@@ -127,28 +127,16 @@ const Development = () => {
                 See details
               </a>
               </div>
-        <Row gutter={[16, 16]}>
-        {RevenueCostsM.map((project) => (
-          <Col span={8} key={project.projectName}>
-            <div className='chart-container'>
-              <div className='chart-title'></div>
-              <Column
-                data={project.data}
-                isGroup={RevenueCostsMonth.isGroup}
-                seriesField={RevenueCostsMonth.seriesField}
-                xField={RevenueCostsMonth.xField}
-                yField={RevenueCostsMonth.yField}
-                yAxis={RevenueCostsMonth.yAxis}
-                minColumnWidth={RevenueCostsMonth.minColumnWidth}
-                maxColumnWidth={RevenueCostsMonth.maxColumnWidth}
-                dodgePadding={RevenueCostsMonth.dodgePadding}
-                color={RevenueCostsMonth.color}
-                legend={RevenueCostsMonth.legend}
-              />
-            </div>
-          </Col>
-        ))}
-      </Row>
+              <Row gutter={[16, 16]}>
+          {RevenueCostsM.map((project) => (
+            <Col span={8}>
+              <div className='chart-container'>
+                <div className='chart-title'></div>
+                <Column {...RevenueCostsMonth} data={project} />
+              </div>
+            </Col>
+          ))}
+        </Row>
           <div>
           <Row gutter={[16, 16]}>
   {RevenueGap.map((project) => (
