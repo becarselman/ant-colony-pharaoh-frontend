@@ -31,6 +31,33 @@ export const actualGrossProfit = {
   value: '-284,086,00 KM',
 };
 
+export const RevenueGap = [
+  {
+    data: [
+      {
+        title: 'Revenue Gap',
+        value: '914,00 KM',
+      },
+    ],
+  },
+  {
+    data: [
+      {
+        title: 'Revenue Gap',
+        value: '10,000,00 KM',
+      },
+],
+},
+{
+  data: [
+    {
+      title: 'Revenue Gap',
+      value: '-15,000,00 KM',
+    },
+]
+},
+];
+
 export const RevenueCostsA = [
     {
         name: 'Grand Total Total Billed',
@@ -117,64 +144,77 @@ export const RevenueCostsA = [
   
 export const RevenueCostsM = [
   {
-      name: 'Grand Total Planned Revenue',
-      projectName: 'January: 1/1/2023',
-      value: 70000,
+    data: [
+      {
+        name: 'Grand Total Planned Revenue',
+        month: 'January: 1/1/2023',
+        value: 70000,
+      },
+      {
+        name: 'Grand Total Actual Revenue',
+        month: 'January: 1/1/2023',
+        value: 290000,
+      },
+      {
+        name: 'Grand Total Total Expenses (Planned)',
+        month: 'January: 1/1/2023',
+        value: 70000,
+      },
+      {
+        name: 'Grand Total Total Expenses (Actual)',
+        month: 'January: 1/1/2023',
+        value: 290000,
+      },
+    ],
   },
   {
-      name: 'Grand Total Actual Revenue',
-      projectName: 'January: 1/1/2023',
-      value: 290000,
-  },
-  {
-    name: 'Grand Total Total Expenses (Planned)',
-    projectName: 'January: 1/1/2023',
-    value: 70000,
-},
-{
-    name: 'Grand Total Total Expenses (Actual)',
-    projectName: 'January: 1/1/2023',
-    value: 290000,
-},
-{
+    data: [
+      {
   name: 'Grand Total Planned Revenue',
-  projectName: 'February: 1/2/2023',
+  month: 'February: 1/2/2023',
   value: 70000,
 },
 {
   name: 'Grand Total Actual Revenue',
-  projectName: 'February: 1/2/2023',
+  month: 'February: 1/2/2023',
   value: 290000,
 },
 {
 name: 'Grand Total Total Expenses (Planned)',
-projectName: 'February: 1/2/2023',
+month: 'February: 1/2/2023',
 value: 70000,
 },
 {
 name: 'Grand Total Total Expenses (Actual)',
-projectName: 'February: 1/2/2023',
+month: 'February: 1/2/2023',
 value: 290000,
 },
+],
+},
 {
+  data: [
+    {
   name: 'Grand Total Planned Revenue',
-  projectName: 'March: 1/3/2023',
+  month: 'March: 1/3/2023',
   value: 70000,
 },
 {
+  
   name: 'Grand Total Actual Revenue',
-  projectName: 'March: 1/3/2023',
+  month: 'March: 1/3/2023',
   value: 290000,
 },
 {
 name: 'Grand Total Total Expenses (Planned)',
-projectName: 'March: 1/3/2023',
+month: 'March: 1/3/2023',
 value: 70000,
 },
 {
 name: 'Grand Total Total Expenses (Actual)',
-projectName: 'March: 1/3/2023',
+month: 'March: 1/3/2023',
 value: 290000,
+},
+]
 },
 ];
 
@@ -202,5 +242,6 @@ export default {
     data,
     RevenueCostsA,
     RevenueCostsM,
+    RevenueGap,
     items,
 }

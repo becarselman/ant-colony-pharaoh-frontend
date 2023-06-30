@@ -23,10 +23,10 @@ export const RevenueCostsActual = {
 };
 
 export const RevenueCostsMonth = {
-  data: RevenueCostsM,
+  data: [...RevenueCostsM.reduce((result, item) => result.concat(item.data), [])],
   isGroup: true,
   seriesField: 'name',
-  xField: 'projectName',
+  xField: 'month', 
   yField: 'value',
   yAxis: {
     min: 0,
@@ -50,6 +50,16 @@ export const RevenueCostsMonth = {
   legend: {
     position: 'bottom',
     layout: 'vertical',
+    marker: {
+      style: {
+        symbol: 'circle',
+        r: 5,
+        fill: 'transparent',
+        stroke: '#FF9F5A',
+        lineWidth: 2
+      },
+    },
+
   },
 };
 

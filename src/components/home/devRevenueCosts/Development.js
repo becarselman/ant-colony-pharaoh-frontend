@@ -5,9 +5,9 @@ import './Development.scss';
 import { Select } from 'antd';
 import CardItem from './CardItem';
 import SpecialCardItem from './SpecialCardItem';
-import { data, items, actualGrossProfit } from './Data';
+import { data, items, actualGrossProfit, RevenueCostsM, RevenueGap } from './Data';
 import { RevenueCostsActual, RevenueCostsMonth } from './Options';
-import { Row } from 'antd';
+import { Row, Col } from 'antd';
 import { Column } from '@ant-design/plots';
 
 const Development = () => {
@@ -116,11 +116,54 @@ const Development = () => {
         <div className='middle-stats'>
         </div>
         <div className='bottom-chart'>
-       <div className='stats-titles'>Revenue & costs (per project) - plan <Column {...RevenueCostsActual} /></div>
+       <div className='stats-titles'>Revenue & costs (per project) - plan 
+       <a href='#' className='stats-details'>
+                See details
+              </a>
+              <Column {...RevenueCostsActual} /></div>
         </div>
-        <div className='stats-titles-m'>Revenue & costs (per project) - per month <Column {...RevenueCostsMonth} /></div>
+        <div className='stats-titles-m'>Revenue & costs (per project) - per month 
+        <a href='#' className='stats-details'>
+                See details
+              </a>
+              </div>
+        <Row gutter={[16, 16]}>
+        {RevenueCostsM.map((project) => (
+          <Col span={8} key={project.projectName}>
+            <div className='chart-container'>
+              <div className='chart-title'></div>
+              <Column
+                data={project.data}
+                isGroup={RevenueCostsMonth.isGroup}
+                seriesField={RevenueCostsMonth.seriesField}
+                xField={RevenueCostsMonth.xField}
+                yField={RevenueCostsMonth.yField}
+                yAxis={RevenueCostsMonth.yAxis}
+                minColumnWidth={RevenueCostsMonth.minColumnWidth}
+                maxColumnWidth={RevenueCostsMonth.maxColumnWidth}
+                dodgePadding={RevenueCostsMonth.dodgePadding}
+                color={RevenueCostsMonth.color}
+                legend={RevenueCostsMonth.legend}
+              />
+            </div>
+          </Col>
+        ))}
+      </Row>
+          <div>
+          <Row gutter={[16, 16]}>
+  {RevenueGap.map((project) => (
+    <Col span={8} key={project.data[0].title}>
+      <SpecialCardItem 
+        key={project.data[0].title}
+        title={project.data[0].title}
+        value={project.data[0].value}
+        className="revenue-gap"
+      />
+    </Col>
+  ))}
+</Row>
 
-
+           </div>
         </div>
       </div>
   );
