@@ -1,6 +1,10 @@
 @import './../../utilis/colors';
 @import './../../utilis/mixins';
 
+.custom-table-container {
+  margin-left: 10px;
+}
+
 .pagination-container {
   display: flex;
   align-items: center;

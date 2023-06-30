@@ -1,4 +1,4 @@
-import Modal from "../modal/Modal";
+import Modal from "../../../modal/Modal";
 import { useState, useEffect } from "react";
 import FormFields from "./utils/FormFields";
 import FormField from "./utils/FormField";
@@ -125,9 +125,14 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
     },
   });
 
-  const items = formFields.map((item) => {
-    return <FormField item={item} key={item.id} />;
-  });
+  const items = formFields.map(i => {
+    return i.type !== "button"
+        ? <FormField item={i} key={i.id}/>
+        : FormField({
+          item: i,
+          k: i.id
+        });
+  })
 
   const resetStateAndCloseModal = () => {
     resetState();
@@ -136,7 +141,7 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
 
   return (
     <>
-      <Modal handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items} />
+      <Modal header="Add New Project" handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items} />
     </>
   );
 };

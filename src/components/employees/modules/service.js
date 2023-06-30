@@ -1,6 +1,5 @@
 import axiosInstance from '../../../service/apiService';
 import { faker } from "@faker-js/faker";
-const URL = process.env.REACT_APP_API_URL;
 
 const createRandomEmployee = () => {
     return {
@@ -16,25 +15,29 @@ const createRandomEmployee = () => {
     }
 }
 
+const generateRandomEmployees = (page, pageSize, count) => {
+    return {
+        data: {
+            employees: faker.helpers.multiple(createRandomEmployee, {
+                count
+            }).slice((page-1)*pageSize, (page-1)*pageSize + pageSize),
+            count
+        }
+    }
+}
+
 export const getAllEmployees = ({ page, pageSize, statusQueryParam, searchQueryParam }) => {
-    // return axiosInstance.get(`${URL}/projects?page=${page}&limit=${pageSize}&projectStatus=${statusQueryParam}&${searchQueryParam}`)
-    //     .then((response) => {
-    //         return response;
-    //     })
-    //     .catch((error) => {
-    //         throw error;
-    //     });
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({
-                data: {
-                    employees: faker.helpers.multiple(createRandomEmployee, {
-                        count: 45
-                    }).slice((page-1)*pageSize, (page-1)*pageSize + pageSize),
-                    count: 45
-                }
-            })
-        },
-            1500)
-    })
+    if (!page || !pageSize) {
+        return new Promise((resolve, reject) => {
+            resolve([])
+        })
+    }
+
+    return axiosInstance.get(`/employee/paginated?page=${page}&limit=${pageSize}&${searchQueryParam}`)
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            throw error;
+        });
 };

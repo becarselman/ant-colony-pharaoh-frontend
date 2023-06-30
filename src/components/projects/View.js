@@ -4,7 +4,7 @@ import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
-import AddProjectsModal from '../_addProjectsModal/index';
+import AddProjectsModal from './components/AddProjectsModal/index';
 
 const Projects = ({
   dataSource,

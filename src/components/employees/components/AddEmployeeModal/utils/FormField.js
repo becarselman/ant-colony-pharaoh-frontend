@@ -1,10 +1,10 @@
-import "../../formFields/FormField.scss"
-import Input from "../../formFields/Input";
-import Select from "../../formFields/Select";
-import MultiSelect from "../../formFields/MultiSelect";
-import Button from "../../formFields/Button";
-import Upload from "../../formFields/Upload";
-import InputWithSelect from "../../formFields/InputWithSelect";
+import "../../../../formFields/FormField.scss"
+import Input from "../../../../formFields/Input";
+import Select from "../../../../formFields/Select";
+import MultiSelect from "../../../../formFields/MultiSelect";
+import Button from "../../../../formFields/Button";
+import Upload from "../../../../formFields/Upload";
+import InputWithSelect from "../../../../formFields/InputWithSelect";
 
 const FormField = ({ item, k }) => {
     switch(item.type) {

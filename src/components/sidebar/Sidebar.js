@@ -1,13 +1,17 @@
 import {
     DownOutlined,
 } from "@ant-design/icons";
-import sidebarOptions from "./sidebar_options/Options"
+import sidebarOptions from "./sidebar_options/SidebarOptions"
 import Logotype from '../../images/sidebar/Logotype.svg';
 import SampleProfilePicture from '../../images/sidebar/Sample-Profile-Image.png'
 import './Sidebar.scss'
 import {NavLink} from "react-router-dom";
+import {Dropdown, Space} from "antd";
+import {UserInfoOptions} from "./sidebar_options/UserInfoOptions";
 
 const Sidebar = ({actions}) => {
+
+  const preventDefault = e => e.preventDefault()
 
     const arrayOfDivsSidebarOptions = sidebarOptions.map(option => {
         return (
@@ -42,7 +46,16 @@ const Sidebar = ({actions}) => {
                     </p>
                 </div>
                 <div className="expand-user-info-section">
-                    <DownOutlined/>
+                    <Dropdown
+                        menu={{items: UserInfoOptions}}
+                        trigger={['click']}
+                    >
+                        <a onClick={preventDefault}>
+                            <Space>
+                                <DownOutlined />
+                            </Space>
+                        </a>
+                    </Dropdown>
                 </div>
             </div>
 

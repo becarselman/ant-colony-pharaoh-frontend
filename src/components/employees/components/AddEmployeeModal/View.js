@@ -1,4 +1,4 @@
-import Modal from "../modal/Modal";
+import Modal from "../../../modal/Modal";
 import {useState} from "react";
 import FormFields from "./utils/FormFields";
 import Departments from "./utils/Departments";
@@ -6,7 +6,7 @@ import FormField from "./utils/FormField";
 import Stacks from "./utils/Stacks";
 import Currencies from "./utils/Currencies";
 
-const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
+const View = ({handleClose, isOpen, isLoading, actions}) => {
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [image, setImage] = useState(undefined)
@@ -27,11 +27,11 @@ const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
 
     const handleSubmit = () => {
         actions.sendUserData({
-            name,
-            surname,
+            firstName: name,
+            lastName: surname,
             department,
-            salary,
-            stack
+            monthlySalary: salary,
+            techStack: stack
         })
     }
 
@@ -110,4 +110,4 @@ const AddEmployeeModal = ({handleClose, isOpen, isLoading, actions}) => {
     )
 }
 
-export default AddEmployeeModal
+export default View
