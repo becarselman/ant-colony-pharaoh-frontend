@@ -1,12 +1,12 @@
 import Modal from "../../../modal/Modal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import FormFields from "./utils/FormFields";
 import Departments from "./utils/Departments";
 import FormField from "./utils/FormField";
 import Stacks from "./utils/Stacks";
 import Currencies from "./utils/Currencies";
 
-const View = ({handleClose, isOpen, isLoading, actions}) => {
+const View = ({handleClose, isOpen, isLoading, actions, employeeData}) => {
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [image, setImage] = useState(undefined)
@@ -14,6 +14,14 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
     const [salary, setSalary] = useState("")
     const [currency, setCurrency] = useState(Currencies[0])
     const [stack, setStack] = useState(Stacks[0])
+
+    useEffect(() => {
+        setName(employeeData.name)
+        setSurname(employeeData.surname)
+        setDepartment(employeeData.department)
+        setSalary(employeeData.salary)
+        setStack(employeeData.stack)
+    }, [employeeData])
 
     const resetState = () => {
         setName("")

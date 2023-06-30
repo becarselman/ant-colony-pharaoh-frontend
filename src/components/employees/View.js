@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Employees.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
@@ -14,12 +14,14 @@ const Employees = ({
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
   const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
+  const clickedEmployeeData = useRef({})
 
   const openAddEmployeeModal = () => {
     setAddEmployeeModalOpen(true)
   }
 
   const closeAddEmployeeModal = () => {
+    clickedEmployeeData.current = {}
     setAddEmployeeModalOpen(false)
   }
 
@@ -41,6 +43,11 @@ const Employees = ({
     fetchData(1, 10);
   };
 
+  const onRowClick = (employeeData) => {
+    clickedEmployeeData.current = employeeData
+    openAddEmployeeModal()
+  }
+
   return (
     <div>
       <div className="page-header">
@@ -57,10 +64,11 @@ const Employees = ({
         selectedNavLabel={selectedEmployeeStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
+        onRowClick={onRowClick}
         title="All Employees"
         showText="Employees"
       />
-      <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+      <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} employeeData={clickedEmployeeData.current} />
     </div>
 
   );
