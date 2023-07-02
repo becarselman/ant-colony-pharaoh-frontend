@@ -6,7 +6,8 @@ import FormField from "./utils/FormField";
 import Stacks from "./utils/Stacks";
 import Currencies from "./utils/Currencies";
 
-const View = ({handleClose, isOpen, isLoading, actions}) => {
+const View = ({handleClose, isOpen, isLoading, actions, employeeData}) => {
+    const [id, setId] = useState("")
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [image, setImage] = useState(undefined)
@@ -15,18 +16,18 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
     const [currency, setCurrency] = useState(Currencies[0])
     const [stack, setStack] = useState(Stacks[0])
 
-    const resetState = () => {
-        setName("")
-        setSurname("")
-        setImage(undefined)
-        setDepartment(Departments[0])
-        setSalary("")
-        setCurrency(Currencies[0])
-        setStack(Stacks[0])
-    }
+    useEffect(() => {
+        setId(employeeData.key)
+        setName(employeeData.name)
+        setSurname(employeeData.surname)
+        setDepartment(employeeData.department)
+        setSalary(employeeData.salary)
+        setStack(employeeData.stack)
+    }, [employeeData])
 
     const handleSubmit = () => {
-        actions.sendUserData({
+        actions.sendEditUserData({
+            _id: id,
             firstName: name,
             lastName: surname,
             department,
@@ -36,13 +37,17 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
     }
 
 
-    const resetStateAndCloseModal = () => {
-        resetState()
+    const closeModal = () => {
         handleClose()
     }
 
     const formFields = FormFields({
         isLoading,
+        id: {
+            state: {
+                value: id
+            }
+        },
         name: {
             state: {
                 value: name,
@@ -89,7 +94,7 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
             onClick: handleSubmit
         },
         cancelButton: {
-            onClick: resetStateAndCloseModal
+            onClick: closeModal
         }
     })
 
@@ -105,7 +110,7 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
 
     return (
         <>
-            <Modal header={"Add New Employee"} handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items}/>
+            <Modal header={"Edit Employee"} handleClose={closeModal} isOpen={isOpen} items={items}/>
         </>
     )
 }

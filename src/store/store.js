@@ -7,6 +7,7 @@ import { watchLogin } from "../sagas/authSaga";
 import { watchForgotPassword } from "../sagas/forgotPasswordSaga";
 import { watchResetPassword } from "../sagas/resetPasswordSaga";
 import { watchSendUserDataSaga } from "../components/employees/components/AddEmployeeModal/modules/saga";
+import { watchSendEditUserDataSaga } from "../components/employees/components/EditEmployeeModal/modules/saga";
 import { watchFetchAllProjects } from "../components/projects/modules/saga";
 import {composeWithDevTools} from "@redux-devtools/extension";
 import { watchFetchEmployees } from "../components/projects/components/AddProjectsModal/modules/saga";
@@ -33,6 +34,7 @@ sagaMiddleware.run(watchLogin);
 sagaMiddleware.run(watchForgotPassword);
 sagaMiddleware.run(watchResetPassword);
 sagaMiddleware.run(watchSendUserDataSaga);
+sagaMiddleware.run(watchSendEditUserDataSaga);
 sagaMiddleware.run(watchFetchAllProjects);
 sagaMiddleware.run(watchFetchAllEmployees)
 sagaMiddleware.run(watchFetchEmployees);

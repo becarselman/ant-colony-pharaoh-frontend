@@ -8,6 +8,7 @@ import projectsReducer from '../components/projects/modules/reducer';
 import customTableReducer from '../components/Table/modules/reducer';
 import employeesReducer from "../components/employees/modules/reducer";
 import projectsModalReducer from "../components/projects/components/AddProjectsModal/modules/reducer";
+import editEmployeeModalReducer from "../components/employees/components/EditEmployeeModal/modules/reducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -15,6 +16,7 @@ export default combineReducers({
   passwordReq: forgotPasswordReducer,
   passwordRes: resetPasswordReducer,
   addEmployeeModal: addEmployeeModalReducer,
+  editEmployeeModal: editEmployeeModalReducer,
   employees: employeesReducer,
   projects: projectsReducer,
   customTable: customTableReducer,
