@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Projects.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
 import AddProjectsModal from './components/AddProjectsModal/index';
+import EditProjectsModal from "./components/EditProjectsModal";
 
 const Projects = ({
   dataSource,
@@ -16,7 +17,9 @@ const Projects = ({
   const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
   const [showText, setShowText] = useState('Projects');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddProjectModalOpen, setIsAddProjectModalOpen] = useState(false);
+  const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
+  const clickedProjectData = useRef({})
 
   const handleSearchChange = (input) => {
     setSearchInput(input);
@@ -37,12 +40,26 @@ const Projects = ({
   };
 
   const handleCreateNewProject = () => {
-    setIsModalOpen(true);
+    setIsAddProjectModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleEditProject = () => {
+    setIsEditProjectModalOpen(true);
   };
+
+  const handleCloseNewProjectModal = () => {
+    setIsAddProjectModalOpen(false);
+  };
+
+  const handleCloseEditProjectModal = () => {
+    clickedProjectData.current = {}
+    setIsEditProjectModalOpen(false);
+  };
+
+  const onRowClick = (projectData) => {
+    clickedProjectData.current = projectData
+    handleEditProject()
+  }
 
   return (
     <div>
@@ -62,12 +79,16 @@ const Projects = ({
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
+        onRowClick={onRowClick}
         title="All Projects" 
         showText={showText}
       />
 
-      {isModalOpen && (
-        <AddProjectsModal handleClose={handleCloseModal} isOpen={isModalOpen} actions={actions} employees={employees}/>
+      {isAddProjectModalOpen && (
+        <AddProjectsModal handleClose={handleCloseNewProjectModal} isOpen={isAddProjectModalOpen} actions={actions} employees={employees}/>
+      )}
+      {isEditProjectModalOpen && (
+        <EditProjectsModal handleClose={handleCloseEditProjectModal} isOpen={isEditProjectModalOpen} employees={employees} projectData={clickedProjectData.current} />
       )}
     </div>
   );

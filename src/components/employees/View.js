@@ -78,8 +78,16 @@ const Employees = ({
         title="All Employees"
         showText="Employees"
       />
-      <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
-      <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editEmployeeModalOpen} employeeData={clickedEmployeeData.current} />
+      {
+        addEmployeeModalOpen && (
+              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+          )
+      }
+      {
+        editEmployeeModalOpen && (
+              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editEmployeeModalOpen} employeeData={clickedEmployeeData.current} />
+          )
+      }
     </div>
 
   );
