@@ -50,7 +50,7 @@ const FormFields = (componentData) => {
       setValue: componentData.developers.state.setter,
       id: "developers",
       name: "developers",
-      labelText: "Developers",
+      labelText: "Assign developers",
       placeholder: "Select team members working on this project",
       options: componentData.developerOptions, 
     },
