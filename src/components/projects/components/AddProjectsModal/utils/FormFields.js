@@ -51,6 +51,7 @@ const FormFields = (componentData) => {
       id: "developers",
       name: "developers",
       labelText: "Developers",
+      placeholder: "Select team members working on this project",
       options: componentData.developerOptions, 
     },
     {

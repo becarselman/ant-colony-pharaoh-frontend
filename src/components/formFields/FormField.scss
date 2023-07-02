@@ -118,3 +118,112 @@ button[data-style="secondary"] {
     border-style: solid;
   }
 }
+
+.input-field-multiselect {
+  gap: 8px;
+  @include gilroy-medium;
+  font-size: 14px;
+  background-color: white;
+  color: $modal-input-text-color;
+  width: 435px;
+  border-radius: 6px;
+  border: solid 2px;
+  padding: 4px;
+  border-color: #dcd9d9;
+  cursor: pointer;
+}
+
+.css-bg1rzq-control {
+  height: 25px !important;
+  border:none !important;
+  background-color: transparent !important;
+  flex-wrap: nowrap !important;
+  min-height: 0px !important;
+  cursor: pointer !important;
+}
+
+.css-bgvzuu-indicatorSeparator {
+  display:none !important;
+}
+
+.employment-type-select {
+  border: solid 2px;
+  width: 100px;
+  height: 25px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border-color: #dcd9d9;
+}
+
+.css.iszy77t-control {
+border: none !important;
+color: none !important;
+cursor: pointer;
+}
+
+.selected-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  margin-left: 5px;
+
+  .selected-item-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .selected-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .selected-item {
+    @include gilroy-medium500;
+    font-size: 14px;
+  }
+
+  .remove-icon {
+    cursor: pointer;
+    transition: transform 0.2s;
+  
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+}
+
+.selected-list {
+  width: 435px;
+}
+
+.right-side-select {
+  display: flex;
+}
+
+.css-1hwfws3 {
+  font-size: 12px !important;
+}
+
+.css-xo7z33-option {
+  background-color: #dcd9d9 !important;
+  cursor: pointer;
+}
+
+.label,
+.option-label,
+.checkbox-option,
+.css-fk865s-option,
+.css-11unzgr,
+.css-fk865s-option,
+.css-dpec0i-option {
+  cursor: pointer !important;
+}
+
+.option-label {
+  padding-left: 10px;
+}

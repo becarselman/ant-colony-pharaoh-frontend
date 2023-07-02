@@ -20,14 +20,14 @@ function showErrorNotification() {
 }
 
 export const formatData = (name, description, duration, developers, hourlyRate, projectValue, projectStatus, developerOptions) => {
-    const formattedDevelopers = developers.map((developerId) => {
-    const selectedDeveloper = developerOptions.find((option) => option.value === developerId);
+  const formattedDevelopers = developers.map((developer) => {
+    const selectedDeveloper = developerOptions.find((option) => option.value === developer.value);
     if (!selectedDeveloper) {
       return null;
     }
     return {
       employee: selectedDeveloper.employee._id,
-      fullTime: true,
+      employmentType: developer.employmentType, 
     };
   });
 
@@ -41,6 +41,7 @@ export const formatData = (name, description, duration, developers, hourlyRate, 
     projectStatus,
   };
 };
+
 
 function* fetchEmployees() {
   try {

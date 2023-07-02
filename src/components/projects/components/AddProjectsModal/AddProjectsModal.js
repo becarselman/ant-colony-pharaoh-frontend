@@ -38,6 +38,7 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
   const fetchDevelopers = async () => {
     actions.fetchAllEmployeesRequest();
   };
+  
 
   useEffect(() => {
     if (employees) {
@@ -125,14 +126,13 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
     },
   });
 
-  const items = formFields.map(i => {
-    return i.type !== "button"
-        ? <FormField item={i} key={i.id}/>
-        : FormField({
-          item: i,
-          k: i.id
-        });
-  })
+  const items = formFields.map((i) => {
+    return i.type !== "button" ? (
+<FormField item={i} key={i.id} options={i.type === "multiselect" ? developerOptions : null} />
+    ) : (
+      <FormField item={i} key={i.id} />
+    );
+  });
 
   const resetStateAndCloseModal = () => {
     resetState();
