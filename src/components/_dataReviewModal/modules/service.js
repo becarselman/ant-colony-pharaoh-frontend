@@ -6,7 +6,8 @@ export const getProjectById = (projectId) => {
   return axiosInstance.get(`${URL}/projects/${projectId}`)
     .then(async (response) => {
       const projectData = response.data;
-      const employeePromises = projectData.developers.map(developers => getEmployeeById(String(developers.employee)));
+      const employeePromises = projectData.developers
+      .map(developers => getEmployeeById(String(developers.employee)));
       const employees = await Promise.all(employeePromises);
       projectData.developers = employees;
       return projectData;

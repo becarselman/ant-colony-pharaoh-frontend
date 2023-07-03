@@ -21,7 +21,7 @@ const DataInfo = ({ handleClose, isOpen, items}) => {
         const employeeNames = items.developers.map((employee) => `${employee.firstName} ${employee.lastName}`);
         value = employeeNames.join(', ');
       } else {
-        value = JSON.stringify(items[item.key]);
+        value = items[item.key];
       }
 
       return (

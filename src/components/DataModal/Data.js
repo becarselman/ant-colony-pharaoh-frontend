@@ -12,9 +12,22 @@ export const data = [
         key: 'description',
     },
     {
-        title: 'Duration',
-        key: 'duration',
-    },
+      title: 'Duration',
+      key: 'duration',
+      render: (value) => {
+        const startDateString = new Date(value.from).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+        });
+  
+        const endDateString = new Date(value.to).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+        });
+        console.log(value)
+        return `${startDateString} - ${endDateString}`
+      },
+    },   
     {
         title: 'Team Members',
         key: 'developers',
@@ -22,6 +35,10 @@ export const data = [
     {
         title: 'Hourly Rate (USD)',
         key: 'hourlyRate',
+        render: (value) => {
+          const formattedValue = numeral(value).format('0,0.00');      
+            return `${formattedValue}`;
+        },
     },
     {
         title: 'Project Value (BAM)',
