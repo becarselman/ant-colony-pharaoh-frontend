@@ -1,4 +1,5 @@
 import ProjectStatus from "./ProjectStatus";
+import { Select } from "antd";
 
 const FormFields = (componentData) => {
   const projectStatusOptions = Object.values(ProjectStatus);
@@ -44,6 +45,7 @@ const FormFields = (componentData) => {
       placeholder: "Select team members working on this project",
       id: "developers",
       name: "developers",
+      placeholder: "Select team members working on this project",
       labelText: "Assign developers",
       options: componentData.developerOptions, 
     },

@@ -187,3 +187,43 @@ button[data-style="secondary"] {
 
   border-style: solid;
 }
+
+
+.input-field-multiselect {
+  font-family: "Gilroy", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: $modal-input-text-color;
+  width: 455px;
+  border-radius: 6px;
+  padding-right: 20px;
+
+}
+
+.selected-developer {
+  width: 435px;
+justify-content: space-between;
+display: flex;
+}
+
+.ant-select-selector {
+  height: 35px;
+}
+
+.option-value {
+  margin-left: 12px;
+}
+
+.employment-type-select {
+  margin-right: 9px
+}
+
+.anticon-close{
+  color:$dark-red-color;
+}
+
+:where(.css-dev-only-do-not-override-1wazalj)[class^="ant-select"] [class^="ant-select"]::after {
+  display:none;
+}
+
