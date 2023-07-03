@@ -28,12 +28,9 @@ const MultiSelect = ({ item }) => {
   const optionElements = item.options.map((option) => {
     const isChecked = item.value.includes(option.value);
     return (
-      <Option key={option.value} value={option.value}>
+      <Option key={option.value} value={option.value} label={option.label}>
         <div className="developer-option">
-          <Checkbox
-            onChange={(e) => e.stopPropagation()}
-            checked={isChecked}
-          />
+          <Checkbox onChange={(e) => e.stopPropagation()} checked={isChecked} />
           <div className="developer-name">{option.label}</div>
         </div>
       </Option>
@@ -73,6 +70,9 @@ const MultiSelect = ({ item }) => {
     onChange: onChange,
     value: item.value,
     placeholder: item.placeholder,
+    showSearch: true,
+    filterOption: (input, option) =>
+      option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0,
   };
 
   return (
