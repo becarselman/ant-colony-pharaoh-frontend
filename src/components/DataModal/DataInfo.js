@@ -4,7 +4,8 @@ import { LeftOutlined } from '@ant-design/icons';
 import InfoCard from './InfoCard';
 import data from './Data';
 
-const DataInfo = ({ handleClose, isOpen, items, team }) => {
+const DataInfo = ({ handleClose, isOpen, items}) => {
+
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
     document.body.addEventListener("keydown", closeOnEscapeKey);
@@ -13,16 +14,27 @@ const DataInfo = ({ handleClose, isOpen, items, team }) => {
     };
   }, [handleClose]);
 
-  const InfoItems = items ? (data.map((item) => (
-    <InfoCard
-      key={item.title}
-      title={item.title}
-      value={item.key === 'developers' ? JSON.stringify(`${team.firstName} ${team.lastName}`) : JSON.stringify(items[item.key])}
-      render={item.render}
-    />
-  ))
-  ) : null;
+  const InfoItems = items ? (
+    data.map((item) => {
+      let value;
+      if (item.key === 'developers') {
+        const employeeNames = items.developers.map((employee) => `${employee.firstName} ${employee.lastName}`);
+        value = employeeNames.join(', ');
+      } else {
+        value = JSON.stringify(items[item.key]);
+      }
 
+      return (
+        <InfoCard
+          key={item.title}
+          title={item.title}
+          value={value}
+          render={item.render}
+        />
+      );
+    })
+  ) : null;
+    
   return (
     <div className='modal-container'>
       <div className='info-container'>
