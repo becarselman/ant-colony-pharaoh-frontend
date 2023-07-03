@@ -128,10 +128,7 @@ button[data-style="secondary"] {
 .date-range-input {
   padding: 8px 43px;
   gap: 16px; 
-  font-family: "Gilroy", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
+  @include gilroy-medium;
   background-color: white;
   color: #6C6D75;
   border-radius: 6px;
@@ -156,11 +153,11 @@ button[data-style="secondary"] {
 }
 
 .ant-picker .ant-picker-input {
-  display: block ruby !important;
+  display: block ruby;
 }
 
 .ant-picker .ant-picker-input > input {
-  display: block ruby !important;
+  display: block ruby ;
   color: $modal-input-text-color;
   
 }
