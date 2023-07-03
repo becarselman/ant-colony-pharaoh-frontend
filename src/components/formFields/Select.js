@@ -12,7 +12,7 @@ const Select = ({ item }) => {
       <label htmlFor={item.id}>
         {item.labelText}
       </label>
-      <select className="input-field-select" id={item.id} name={item.name} value={item.value}
+      <select className="input-field-new" id={item.id} name={item.name} value={item.value}
               onChange={onChange}>
         {dropdownOptions}
       </select>
