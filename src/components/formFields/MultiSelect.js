@@ -25,57 +25,60 @@ const MultiSelect = ({ item }) => {
     setEmploymentTypes(updatedEmploymentTypes);
   };
 
-  const optionElements = item.options.map((option) => (
-    <Option key={option.value} value={option.value}>
-      <div className="developer-option">
-        <div className="checkbox-wrapper">
+  const optionElements = item.options.map((option) => {
+    const isChecked = item.value.includes(option.value);
+    return (
+      <Option key={option.value} value={option.value}>
+        <div className="developer-option">
           <Checkbox
             onChange={(e) => e.stopPropagation()}
-            checked={item.value.includes(option.value)}
+            checked={isChecked}
           />
+          <div className="developer-name">{option.label}</div>
         </div>
-        <div className="developer-name">{option.label}</div>
-      </div>
-    </Option>
-  ));
-  
-
-  const selectedDevelopers = item.value.map((developerId) => {
-    const developer = item.options.find((option) => option.value === developerId);
-    return (
-      <div key={developer.value} className="selected-developer">
-        {developer.label}
-        <div>
-          <Select
-            className="employment-type-select"
-            value={employmentTypes[developer.value] || "full-time"}
-            onChange={(value) => onEmploymentTypeChange(developer.value, value)}
-          >
-            <Option value="full-time">Full Time</Option>
-            <Option value="part-time">Part Time</Option>
-          </Select>
-          <CloseOutlined onClick={() => onRemoveDeveloper(developer.value)} />
-        </div>
-      </div>
+      </Option>
     );
   });
 
+  const SelectedDeveloper = ({ developer }) => (
+    <div key={developer.value} className="selected-developer">
+      {developer.label}
+      <div>
+        <EmploymentTypeSelect
+          value={employmentTypes[developer.value] || "full-time"}
+          onChange={(value) => onEmploymentTypeChange(developer.value, value)}
+        />
+        <CloseOutlined onClick={() => onRemoveDeveloper(developer.value)} />
+      </div>
+    </div>
+  );
+
+  const EmploymentTypeSelect = ({ value, onChange }) => (
+    <Select className="employment-type-select" value={value} onChange={onChange}>
+      <Option value="full-time">Full Time</Option>
+      <Option value="part-time">Part Time</Option>
+    </Select>
+  );
+
+  const selectedDevelopers = item.value.map((developerId) => {
+    const developer = item.options.find((option) => option.value === developerId);
+    return <SelectedDeveloper key={developer.value} developer={developer} />;
+  });
+
   const selectProps = {
-    className:"input-field-multiselect",
-    mode:"multiple",
-    id:item.id,
-    name:item.name,
-    onChange:onChange,
-    value:item.value,
-    placeholder:item.placeholder,
+    className: "input-field-multiselect",
+    mode: "multiple",
+    id: item.id,
+    name: item.name,
+    onChange: onChange,
+    value: item.value,
+    placeholder: item.placeholder,
   };
 
   return (
     <div className="form-field">
       <label htmlFor={item.id}>{item.labelText}</label>
-      <Select {...selectProps}>
-        {optionElements}
-      </Select>
+      <Select {...selectProps}>{optionElements}</Select>
       <div className="selected-developers">{selectedDevelopers}</div>
     </div>
   );

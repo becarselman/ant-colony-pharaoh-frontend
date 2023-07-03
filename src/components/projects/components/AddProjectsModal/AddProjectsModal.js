@@ -48,19 +48,23 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
     setDevelopers(updatedDevelopers);
   };
 
+  const RemoveDeveloperButton = ({ developerId, onClick }) => (
+    <Button
+      className="button-x"
+      type="text"
+      size="small"
+      icon={<CloseOutlined />}
+      onClick={onClick(developerId)}
+    />
+  );
+
   const renderSelectedDevelopers = () => {
     return developers.map((developer) => {
       const fullName = `${developer.firstName} ${developer.lastName}`;
       return (
         <div key={developer._id} className="selected-developer">
           <span>{fullName}</span>
-          <Button
-            className= "button-x"
-            type="text"
-            size="small"
-            icon={<CloseOutlined />}
-            onClick={() => removeDeveloper(developer._id)}
-          />
+          <RemoveDeveloperButton developerId={developer._id} onClick={removeDeveloper} />
         </div>
       );
     });
