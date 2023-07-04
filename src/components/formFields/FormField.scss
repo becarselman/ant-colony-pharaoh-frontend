@@ -152,9 +152,10 @@ button[data-style="secondary"] {
   flex-grow: 1;
 }
 
-.ant-picker .ant-picker-input {
+.date-range-input {
+  .ant-picker-input {
   display: block ruby;
 }
-
+}
 
 
