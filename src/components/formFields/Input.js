@@ -10,7 +10,7 @@ const Input = ({ item }) => {
       </label>
       <input className="input-field" type={item.inputType} placeholder={item.placeholder}
              id={item.id} name={item.name} value={item.value}
-             onChange={onChange}/>
+             onChange={onChange} hidden={item.hidden} />
     </div>
   )
 }

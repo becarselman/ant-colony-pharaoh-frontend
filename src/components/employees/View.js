@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Employees.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import AddEmployeesModal from "./components/AddEmployeeModal/index";
+import EditEmployeeModal from "./components/EditEmployeeModal";
 
 const Employees = ({
   dataSource,
@@ -14,13 +15,24 @@ const Employees = ({
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
   const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
+  const [editEmployeeModalOpen, setEditEmployeeModalOpen] = useState(false)
+  const clickedEmployeeData = useRef({})
 
   const openAddEmployeeModal = () => {
     setAddEmployeeModalOpen(true)
   }
 
+  const openEditEmployeeModal = () => {
+    setEditEmployeeModalOpen(true)
+  }
+
   const closeAddEmployeeModal = () => {
     setAddEmployeeModalOpen(false)
+  }
+
+  const closeEditEmployeeModal = () => {
+    clickedEmployeeData.current = {}
+    setEditEmployeeModalOpen(false)
   }
 
   const handleSearchChange = (input) => {
@@ -41,6 +53,11 @@ const Employees = ({
     fetchData(1, 10);
   };
 
+  const onRowClick = (employeeData) => {
+    clickedEmployeeData.current = employeeData
+    openEditEmployeeModal()
+  }
+
   return (
     <div>
       <div className="page-header">
@@ -57,10 +74,20 @@ const Employees = ({
         selectedNavLabel={selectedEmployeeStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
+        onRowClick={onRowClick}
         title="All Employees"
         showText="Employees"
       />
-      <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+      {
+        addEmployeeModalOpen && (
+              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+          )
+      }
+      {
+        editEmployeeModalOpen && (
+              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editEmployeeModalOpen} employeeData={clickedEmployeeData.current} />
+          )
+      }
     </div>
 
   );
