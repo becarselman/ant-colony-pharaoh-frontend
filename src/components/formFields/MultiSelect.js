@@ -51,7 +51,7 @@ const MultiSelect = ({ item }) => {
   );
 
   const EmploymentTypeSelect = ({ value, onChange }) => (
-    <Select className="employment-type-select" value={value} onChange={onChange}>
+    <Select size={"small"} className="employment-type-select" value={value} onChange={onChange}>
       <Option value="full-time">Full Time</Option>
       <Option value="part-time">Part Time</Option>
     </Select>
