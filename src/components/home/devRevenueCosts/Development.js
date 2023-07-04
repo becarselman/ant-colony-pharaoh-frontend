@@ -80,6 +80,11 @@ const Development = () => {
                 ? { ...RevenueCostsMonth.yAxis, label: null }
                 : RevenueCostsMonth.yAxis
             }
+            xAxis={
+              index >= 0
+                ? { ...RevenueCostsMonth.xAxis, label: null }
+                : RevenueCostsMonth.xAxis
+            }
           />
         </div>
       </Col>
