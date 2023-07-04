@@ -246,9 +246,16 @@ display: flex;
   gap: 8px;
   @include gilroy-medium;
   font-size: 14px;
-  background-color: white;
+  background-color: $white-color;
   color: $modal-input-text-color;
   width: 435px;
   border-radius: 6px;
   border-style: solid;
 }
+
+
+
+ .ant-select-selection-item {
+ font-size:12px ;
+      }
+    
