@@ -1,6 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { sendUserDataSuccess, sendUSerDataFailure } from './actions';
 import { actionTypes } from "./types";
+import { closeAddEmployeeModal, fetchAllEmployees } from "../../../modules/actions"
 import { createUser } from "./service";
 import {notification} from "antd";
 
@@ -24,6 +25,8 @@ function* sendUserDataSaga(action) {
 
     yield put(sendUserDataSuccess(response));
     showSuccessNotification()
+    yield put(closeAddEmployeeModal())
+    yield put(fetchAllEmployees())
   } catch (error) {
     yield put(sendUSerDataFailure(error.message));
     showErrorNotification()

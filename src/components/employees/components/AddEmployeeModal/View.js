@@ -26,15 +26,13 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
     }
 
     const handleSubmit = () => {
-        let res = actions.sendUserData({
+        actions.sendUserData({
             firstName: name,
             lastName: surname,
             department,
             monthlySalary: salary,
             techStack: stack
         })
-
-        console.log(res)
     }
 
 

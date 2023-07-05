@@ -1,10 +1,16 @@
 import { actionTypes } from "./types";
 
-export const fetchAllEmployees = (page, pageSize, selectedEmployeeStatus, searchInput) => ({
-  type: actionTypes.FETCH_ALL_EMPLOYEES,
+
+export const setPageAndPageSize = (page, pageSize) => ({
+  type: actionTypes.SET_PAGE_AND_PAGE_SIZE_EMPLOYEES,
   payload: {
     page,
-    pageSize,
+    pageSize
+  }
+})
+export const fetchAllEmployees = (selectedEmployeeStatus, searchInput) => ({
+  type: actionTypes.FETCH_ALL_EMPLOYEES,
+  payload: {
     selectedEmployeeStatus,
     searchInput,
   },
@@ -30,3 +36,10 @@ export const setPageData = (pageData) => ({
   payload: pageData,
 });
 
+export const openAddEmployeeModal = () => ({
+  type: actionTypes.OPEN_ADD_EMPLOYEE_MODAL
+})
+
+export const closeAddEmployeeModal = () => ({
+  type: actionTypes.CLOSE_ADD_EMPLOYEE_MODAL
+})

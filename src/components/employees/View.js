@@ -9,17 +9,17 @@ import EditEmployeeModal from "./components/EditEmployeeModal";
 const Employees = ({
   dataSource,
   totalCount,
+  addModalActive,
   isLoading,
   actions,
 }) => {
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
-  const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
   const [editEmployeeModalOpen, setEditEmployeeModalOpen] = useState(false)
   const clickedEmployeeData = useRef({})
 
   const openAddEmployeeModal = () => {
-    setAddEmployeeModalOpen(true)
+    actions.openAddEmployeeModal()
   }
 
   const openEditEmployeeModal = () => {
@@ -27,7 +27,7 @@ const Employees = ({
   }
 
   const closeAddEmployeeModal = () => {
-    setAddEmployeeModalOpen(false)
+    actions.closeAddEmployeeModal()
   }
 
   const closeEditEmployeeModal = () => {
@@ -44,7 +44,8 @@ const Employees = ({
   }, [selectedEmployeeStatus, searchInput]);
 
   const fetchData = (page, pageSize) => {
-    actions.fetchAllEmployees(page, pageSize, selectedEmployeeStatus, searchInput);
+    actions.setPageAndPageSize(page, pageSize)
+    actions.fetchAllEmployees(selectedEmployeeStatus, searchInput);
     setPageData(null);
   };
 
@@ -79,8 +80,8 @@ const Employees = ({
         showText="Employees"
       />
       {
-        addEmployeeModalOpen && (
-              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+        addModalActive && (
+              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addModalActive} isLoading={isLoading} actions={actions} />
           )
       }
       {

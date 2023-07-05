@@ -40,10 +40,6 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
     onSearchChange(searchValue);
   }, [searchValue, onSearchChange]);
 
-  useEffect(() => {
-    fetchData(selectedPage, pageSize);
-  }, [selectedPage, pageSize]);
-
   const handleSearch = (value) => {
     setSearchValue(value);
   };
