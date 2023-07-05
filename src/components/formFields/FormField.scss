@@ -159,3 +159,31 @@ button[data-style="secondary"] {
 }
 
 
+.input-field-multiselect {
+
+  @include gilroy-medium;
+  font-size: 14px;
+  background-color: white;
+  color: $modal-input-text-color;
+
+  width: 435px;
+
+  border-radius: 6px;
+
+}
+
+.input-field-select {
+  padding: 8px 16px;
+  gap: 8px;
+
+  @include gilroy-medium;
+  font-size: 14px;
+  background-color: white;
+  color: $modal-input-text-color;
+
+  width: 435px;
+
+  border-radius: 6px;
+
+  border-style: solid;
+}
