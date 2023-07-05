@@ -1,8 +1,8 @@
-import "../../formFields/FormField.scss"
-import Input from "../../formFields/Input";
-import Select from "../../formFields/Select";
-import MultiSelect from "../../formFields/MultiSelect";
-import Button from "../../formFields/Button";
+import "../../../../formFields/FormField.scss"
+import Input from "../../../../formFields/Input";
+import Select from "../../../../formFields/Select";
+import MultiSelect from "../../../../formFields/MultiSelect";
+import Button from "../../../../formFields/Button";
 
 const FormField = ({ item }) => {
     switch(item.type) {
@@ -18,3 +18,5 @@ const FormField = ({ item }) => {
             return "Specified modal item not implemented"
     }
 }
+
+export default FormField

@@ -152,17 +152,17 @@ export const RevenueCostsA = [
       {
         type: 'Grand Total Actual Revenue',
         month: 'January: 1/1/2023',
-        value: 290000,
+        value: 250000,
       },
       {
         type: 'Grand Total Total Expenses (Planned)',
         month: 'January: 1/1/2023',
-        value: 70000,
+        value: 90000,
       },
       {
         type: 'Grand Total Total Expenses (Actual)',
         month: 'January: 1/1/2023',
-        value: 290000,
+        value: 180000,
       },
     ],
     [
@@ -179,24 +179,24 @@ export const RevenueCostsA = [
       {
         type: 'Grand Total Total Expenses (Planned)',
         month: 'February: 1/2/2023',
-        value: 70000,
+        value: 50000,
       },
       {
         type: 'Grand Total Total Expenses (Actual)',
         month: 'February: 1/2/2023',
-        value: 290000,
+        value: 230000,
       },
     ],
     [
       {
         type: 'Grand Total Planned Revenue',
         month: 'March: 1/3/2023',
-        value: 20000,
+        value: 16000,
       },
       {
         type: 'Grand Total Actual Revenue',
         month: 'March: 1/3/2023',
-        value: 220000,
+        value: 150000,
       },
       {
         type: 'Grand Total Total Expenses (Planned)',
