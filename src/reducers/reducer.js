@@ -18,9 +18,9 @@ export default combineReducers({
   passwordRes: resetPasswordReducer,
   addEmployeeModal: addEmployeeModalReducer,
   editEmployeeModal: editEmployeeModalReducer,
-  employees: employeesReducer,,
+  employees: employeesReducer,
   projects: projectsReducer,
   customTable: customTableReducer,
   projectsModal: projectsModalReducer,
-  editProjectsModal: editProjectsModalReducer
+  editProjectsModal: editProjectsModalReducer,
 });
