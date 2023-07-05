@@ -2,14 +2,31 @@ import { takeLatest, put, call } from 'redux-saga/effects';
 import { sendUserDataSuccess, sendUSerDataFailure } from './actions';
 import { actionTypes } from "./types";
 import { createUser } from "./service";
+import {notification} from "antd";
+
+function showSuccessNotification() {
+  notification.success({
+    message: "Successfully created employee",
+    description: "The employee has been successfully created.",
+  });
+}
+
+function showErrorNotification(message) {
+  notification.error({
+    message: "Employee creation failed",
+    description: "An error occurred while creating the employee.",
+  });
+}
 
 function* sendUserDataSaga(action) {
   try {
     const response = yield call(createUser, action.payload);
 
     yield put(sendUserDataSuccess(response));
+    showSuccessNotification()
   } catch (error) {
     yield put(sendUSerDataFailure(error.message));
+    showErrorNotification()
   }
 }
 

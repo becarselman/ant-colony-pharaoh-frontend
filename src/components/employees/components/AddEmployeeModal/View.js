@@ -1,5 +1,5 @@
 import Modal from "../../../modal/Modal";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import FormFields from "./utils/FormFields";
 import Departments from "./utils/Departments";
 import FormField from "./utils/FormField";
@@ -26,13 +26,15 @@ const View = ({handleClose, isOpen, isLoading, actions}) => {
     }
 
     const handleSubmit = () => {
-        actions.sendUserData({
+        let res = actions.sendUserData({
             firstName: name,
             lastName: surname,
             department,
             monthlySalary: salary,
             techStack: stack
         })
+
+        console.log(res)
     }
 
 
