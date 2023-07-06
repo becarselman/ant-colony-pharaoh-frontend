@@ -22,13 +22,13 @@ function showErrorNotification() {
 
 export const formatData = (id, name, description, duration, developers, hourlyRate, projectValue, projectStatus, developerOptions) => {
     const formattedDevelopers = developers.map((developerId) => {
-    const selectedDeveloper = developerOptions.find((option) => option.value === developerId);
-    if (!selectedDeveloper) {
-      return null;
-    }
-    return {
-      employee: selectedDeveloper.employee._id,
-      fullTime: true,
+      const selectedDeveloper = developerOptions.find((option) => option.value === developerId);
+      if (!selectedDeveloper) {
+        return null;
+      }
+      return {
+        employee: selectedDeveloper.employee._id,
+        fullTime: true,
     };
   });
 

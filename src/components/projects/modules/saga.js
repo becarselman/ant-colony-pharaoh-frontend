@@ -28,12 +28,8 @@ function* fetchAllProjectsSaga(action) {
     const { statusQueryParam, searchQueryParam } = generateQueryParams(selectedProjectStatus, searchInput);
 
     const { page, pageSize } = yield select(getPageAndPageSize)
-    console.log(action)
-    console.log(page, pageSize)
 
     const response = yield call(getAllProjects, { page, pageSize, statusQueryParam, searchQueryParam });
-
-    console.log(response)
 
     const projects = response.data.projects;
     const total = response.data.count;

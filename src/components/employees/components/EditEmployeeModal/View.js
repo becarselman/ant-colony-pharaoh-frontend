@@ -27,7 +27,7 @@ const View = ({handleClose, isOpen, isLoading, actions, employeeData}) => {
 
     const handleSubmit = () => {
         actions.sendEditUserData({
-            _id: id,
+            id,
             firstName: name,
             lastName: surname,
             department,
