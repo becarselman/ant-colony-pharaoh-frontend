@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {closeAddEmployeeModal, fetchAllEmployees, openAddEmployeeModal, setPageAndPageSize } from './modules/actions';
+import { openEditEmployeeModal, closeEditEmployeeModal, closeAddEmployeeModal, fetchAllEmployees, openAddEmployeeModal, setPageAndPageSize } from './modules/actions';
 import { bindActionCreators } from "redux";
 
 
@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     dataSource: state.employees.dataSource,
     totalCount: state.employees.totalCount,
     addModalActive: state.employees.addModalActive,
+    editModalActive: state.employees.editModalActive,
     isLoading: state.employees.isLoading,
     error: state.employees.error,
   };
@@ -19,7 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
           setPageAndPageSize,
           fetchAllEmployees,
           openAddEmployeeModal,
-          closeAddEmployeeModal
+          closeAddEmployeeModal,
+          openEditEmployeeModal,
+          closeEditEmployeeModal
       },
       dispatch
     ),

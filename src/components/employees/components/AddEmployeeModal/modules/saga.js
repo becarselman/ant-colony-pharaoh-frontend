@@ -25,8 +25,8 @@ function* sendUserDataSaga(action) {
 
     yield put(sendUserDataSuccess(response));
     showSuccessNotification()
-    yield put(closeAddEmployeeModal())
     yield put(fetchAllEmployees())
+    yield put(closeAddEmployeeModal())
   } catch (error) {
     yield put(sendUSerDataFailure(error.message));
     showErrorNotification()

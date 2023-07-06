@@ -43,3 +43,11 @@ export const openAddEmployeeModal = () => ({
 export const closeAddEmployeeModal = () => ({
   type: actionTypes.CLOSE_ADD_EMPLOYEE_MODAL
 })
+
+export const openEditEmployeeModal = () => ({
+  type: actionTypes.OPEN_EDIT_EMPLOYEE_MODAL
+})
+
+export const closeEditEmployeeModal = () => ({
+  type: actionTypes.CLOSE_EDIT_EMPLOYEE_MODAL
+})

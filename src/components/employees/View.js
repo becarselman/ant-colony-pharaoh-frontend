@@ -10,12 +10,12 @@ const Employees = ({
   dataSource,
   totalCount,
   addModalActive,
+  editModalActive,
   isLoading,
   actions,
 }) => {
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
-  const [editEmployeeModalOpen, setEditEmployeeModalOpen] = useState(false)
   const clickedEmployeeData = useRef({})
 
   const openAddEmployeeModal = () => {
@@ -23,7 +23,7 @@ const Employees = ({
   }
 
   const openEditEmployeeModal = () => {
-    setEditEmployeeModalOpen(true)
+    actions.openEditEmployeeModal()
   }
 
   const closeAddEmployeeModal = () => {
@@ -32,7 +32,7 @@ const Employees = ({
 
   const closeEditEmployeeModal = () => {
     clickedEmployeeData.current = {}
-    setEditEmployeeModalOpen(false)
+    actions.closeEditEmployeeModal()
   }
 
   const handleSearchChange = (input) => {
@@ -85,8 +85,8 @@ const Employees = ({
           )
       }
       {
-        editEmployeeModalOpen && (
-              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editEmployeeModalOpen} employeeData={clickedEmployeeData.current} />
+        editModalActive && (
+              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editModalActive} employeeData={clickedEmployeeData.current} />
           )
       }
     </div>

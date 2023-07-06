@@ -4,6 +4,7 @@ const initialState = {
     dataSource: [],
     totalCount: 0,
     addModalActive: false,
+    editModalActive: false,
     pageEmployees: 1,
     pageSizeEmployees: 10,
     isLoading: false,
@@ -50,6 +51,16 @@ const employeesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addModalActive: false
+            }
+        case actionTypes.OPEN_EDIT_EMPLOYEE_MODAL:
+            return {
+                ...state,
+                editModalActive: true
+            }
+        case actionTypes.CLOSE_EDIT_EMPLOYEE_MODAL:
+            return {
+                ...state,
+                editModalActive: false
             }
 
         default:
