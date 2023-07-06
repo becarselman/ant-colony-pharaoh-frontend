@@ -8,6 +8,7 @@ import './Sidebar.scss'
 import {NavLink} from "react-router-dom";
 import {Dropdown, Space} from "antd";
 import {UserInfoOptions} from "./sidebar_options/UserInfoOptions";
+import AvatarComponent from "../Avatar/Avatar";
 
 const View = ({name, surname}) => {
 
@@ -35,7 +36,8 @@ const View = ({name, surname}) => {
 
             <div className="user-profile-overview">
                 <div className="profile-picture-section">
-                    <img src={SampleProfilePicture} alt="Profile picture"/>
+                    {/*<img src={SampleProfilePicture} alt="Profile picture"/>*/}
+                    <AvatarComponent name={`${name} ${surname}`} developerList={[]} />
                 </div>
                 <div className="user-info-section">
                     <p className="user-name">
