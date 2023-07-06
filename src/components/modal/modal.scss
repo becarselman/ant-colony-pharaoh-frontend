@@ -27,6 +27,8 @@
     flex-direction: column;
     align-items: flex-start;
 
+    overflow-y: scroll;
+
     padding: 16px 24px;
     background-color: white;
 
@@ -71,8 +73,6 @@
     gap: 16px;
 
     margin-bottom: 24px;
-
-    overflow-y: scroll;
 }
 
 .modal-buttons-wrapper {
