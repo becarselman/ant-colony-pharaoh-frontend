@@ -10,6 +10,7 @@
     justify-content: flex-end;
     overflow: hidden;
     z-index: 999;
+    height: 100vh;
 }
 
 .modal-content {
@@ -19,7 +20,7 @@
     background-color: $modal-content-background-color;
     color: $modal-content-text-color;
 
-    overflow-y: scroll;
+    height: 100vh;
 }
 
 .modal-wrapper {
@@ -69,8 +70,6 @@
     align-items: flex-start;
 
     gap: 16px;
-
-    margin-bottom: 24px;
 }
 
 .modal-buttons-wrapper {

@@ -24,11 +24,9 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers = composeWithDevTools({ trace: false, traceLimit: 25 })
-
 export const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
 export const persistor = persistStore(store);
