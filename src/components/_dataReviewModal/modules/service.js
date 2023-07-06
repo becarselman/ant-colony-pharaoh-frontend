@@ -10,7 +10,6 @@ export const getProjectById = (projectId) => {
       .map(developers => getEmployeeById(String(developers.employee)));
       const employees = await Promise.all(employeePromises);
       projectData.developers = employees;
-      console.log("servis ", projectData);
       return projectData;
     })
     .catch((error) => {

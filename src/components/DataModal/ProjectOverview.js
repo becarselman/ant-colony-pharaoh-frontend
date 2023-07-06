@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import "./DataInfo.scss";
+import "./ProjectOverview.scss";
 import { LeftOutlined } from '@ant-design/icons';
 import InfoCard from './InfoCard';
 import data from './Data';
 
-const DataInfo = ({ handleClose, isOpen, items}) => {
+const ProjectOverview = ({ handleClose, isOpen, items}) => {
 
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
@@ -59,4 +59,4 @@ const DataInfo = ({ handleClose, isOpen, items}) => {
   );
 };
 
-export default DataInfo;
+export default ProjectOverview;

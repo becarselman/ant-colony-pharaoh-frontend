@@ -1,5 +1,5 @@
 import React from "react";
-import './DataInfo.scss';
+import './ProjectOverview.scss';
 
 const InfoCard = ({ title, value, render }) => {
     const renderedValue = render ? render(value) : value;

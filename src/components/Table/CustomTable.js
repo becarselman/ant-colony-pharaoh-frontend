@@ -19,10 +19,11 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
     }
   };
 
-  const onRowClick = (record) => {
-    handleRowClick(record);
+  const getRowProps = (record) => {
+    return {
+      onClick: () => handleRowClick(record)
+    };
   };
-
   const handlePageSizeChange = (value) => {
     setPage(1);
     setPageSize(parseInt(value));
@@ -83,9 +84,7 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
       bordered
       title={tableHeader}
       loading={isLoading}
-      onRow={(record) => ({
-        onClick: () => handleRowClick(record),
-      })}
+      onRow={getRowProps}
     />
   );
 

@@ -1,4 +1,4 @@
-import DataInfo from '../DataModal/DataInfo';
+import ProjectOverview from '../DataModal/ProjectOverview';
 import { useEffect } from 'react';
 
 const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project }) => {
@@ -13,7 +13,7 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project }) =
 
   return (
     <>
-      <DataInfo
+      <ProjectOverview
         handleClose={resetStateAndCloseModal}
         isOpen={isOpen}
         items={project.project}

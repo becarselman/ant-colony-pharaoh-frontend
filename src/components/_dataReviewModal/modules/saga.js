@@ -10,7 +10,6 @@ function* fetchProjectSaga(action) {
     const response = yield call(getProjectById, projectId);
 
     const project = response;
-    console.log("saga ", project);
 
     yield put(fetchProjectSuccess(project));
 
