@@ -6,6 +6,7 @@ import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
 import AddProjectsModal from './components/AddProjectsModal/index';
 import EditProjectsModal from "./components/EditProjectsModal";
+import AvatarComponent from './components/Avatar';
 
 const Projects = ({
   dataSource,
@@ -56,11 +57,20 @@ const Projects = ({
     clickedProjectData.current = {}
     actions.closeEditProjectModal()
   };
-
+  
   const onRowClick = (projectData) => {
     clickedProjectData.current = projectData
     handleEditProject()
   }
+  const columnsWithAvatar = tableColumns.map((column) => {
+    if (column.dataIndex === 'developers') {
+      return {
+        ...column,
+        render: (text) => <AvatarComponent name={text} />,
+      };
+    }
+    return column;
+  });
 
   return (
     <div className="full-projects">
@@ -72,7 +82,7 @@ const Projects = ({
       </div>
       <CustomTable
         data={dataSource}
-        columns={tableColumns}
+        columns={columnsWithAvatar}
         totalCount={totalCount}
         fetchData={fetchData}
         isLoading={isLoading}
