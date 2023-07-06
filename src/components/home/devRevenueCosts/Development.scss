@@ -226,6 +226,14 @@
     padding: 20px;
 }
   
+.bottom-chart-m{
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $light-gray-border;
+    border-radius: 6px;
+    padding: 20px;
+}
   .card-content {
     display: flex;
     justify-content: space-between;
@@ -246,8 +254,6 @@
     padding: 15px;
     text-align: center;
     margin-top: 21px;
-    padding-left: 35px;
-    padding-right: 35px;
     
     .special-card-title {
         @include gilroy-medium;
@@ -263,4 +269,7 @@
     }
   }
   
-  
+  .chart-container {
+    width: 274px;
+  }
+

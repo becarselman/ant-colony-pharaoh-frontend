@@ -68,18 +68,18 @@ const Development = () => {
   const bottomCards = cardItems.slice(2, 4);
 
   const renderRevenueCostsM = () => {
-    return RevenueCostsM.map((project, index) => (
-      <Col span={8}>
+    return RevenueCostsM.map((monthData, index) => (
+      <Col span={8} key={index}>
         <div className='chart-container'>
-          <div className='chart-title'></div>
           <Column
             {...RevenueCostsMonth}
-            data={project}
+            data={monthData}
             yAxis={
               index !== 0
                 ? { ...RevenueCostsMonth.yAxis, label: null }
                 : RevenueCostsMonth.yAxis
             }
+            style={index === 0 ? { height: '405px' } : null} // Povećajte visinu samo za prvi chart na poziciji 0
             xAxis={
               index >= 0
                 ? { ...RevenueCostsMonth.xAxis, label: null }
@@ -158,7 +158,7 @@ const Development = () => {
           </div>
           <Column {...RevenueCostsActual} />
         </div>
-        <div className='bottom-chart'>
+        <div className='bottom-chart-m'>
           <div className='stats-titles-m'>
             Revenue & costs (per project) - per month
             <a href='#' className='stats-details'>
@@ -167,7 +167,7 @@ const Development = () => {
           </div>
           <Row gutter={[16, 16]}>{renderRevenueCostsM()}</Row>
         </div>
-        <div>
+        <div className="revenue-gap">
           <Row gutter={[16, 16]}>{renderRevenueGap()}</Row>
         </div>
       </div>

@@ -1,5 +1,24 @@
 import { RevenueCostsA, RevenueCostsM } from './Data';
 
+const generateRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+const colorMapA = {};
+const colorMapM = {};
+
+const getColor = (name, colorMap) => {
+  if (!colorMap.hasOwnProperty(name)) {
+    colorMap[name] = generateRandomColor();
+  }
+  return colorMap[name];
+};
+
 export const RevenueCostsActual = {
   data: RevenueCostsA,
   isGroup: true,
@@ -13,48 +32,35 @@ export const RevenueCostsActual = {
   minColumnWidth: 20,
   maxColumnWidth: 20,
   dodgePadding: 6,
-  color: ({ name }) => {
-    const colorMap = {
-      'Grand Total Costs': '#FF9F5A',
-    };
-    return colorMap[name] || '#7BB99F';
-  },
+  color: ({ name }) => getColor(name, colorMapA),
   legend: {
     position: 'top-right',
     layout: 'horizontal',
     marker: {
       symbol: 'circle',
       r: 5,
-      lineWidth: 2,
-      strokeColor: ({ color }) => color, 
       fill: 'transparent',
+      stroke: ({ name }) => getColor(name, colorMapA),
+      lineWidth: 2,
     },
-    },
+  },
 };
 
 export const RevenueCostsMonth = {
   data: RevenueCostsM.flat(),
   isGroup: true,
-  seriesField: 'type',
-  xField: 'type', 
+  seriesField: 'name',
+  xField: 'name',
   yField: 'value',
   groupField: 'name',
   yAxis: {
     min: 0,
     max: 260000,
   },
-  minColumnWidth: 20,
-  maxColumnWidth: 20,
+  minColumnWidth: 35,
+  maxColumnWidth: 35,
   dodgePadding: 6,
-  color: ({ type }) => {
-    const colorMap = {
-      'Grand Total Planned Revenue': '#FF9F5A',
-      'Grand Total Actual Revenue': '#7BB99F',
-      'Grand Total Total Expenses (Planned)': '#1890FF',
-      'Grand Total Total Expenses (Actual)': '#FADB14',
-    };
-    return colorMap[type] || '#7BB99F';
-  },
+  color: ({ name }) => getColor(name, colorMapM),
   legend: {
     position: 'bottom',
     layout: 'vertical',
@@ -62,9 +68,9 @@ export const RevenueCostsMonth = {
       symbol: 'circle',
       r: 5,
       lineWidth: 2,
-      strokeColor: ({ color }) => color, 
-      fill: 'transparent',
     },
+    offsetX: 35,
+    offsetY: 5,
   },
 };
 
