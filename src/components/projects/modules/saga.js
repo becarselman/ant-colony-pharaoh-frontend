@@ -26,9 +26,9 @@ function* fetchAllProjectsSaga(action) {
     const formattedData = projects.map((project, index) => {
       const developers = [];
       const fullTime = [];
-
+    
       project.developers.forEach((developer) => {
-        developers.push(developer.employee);
+        developers.push(`${developer.employee.firstName} ${developer.employee.lastName}`);
         fullTime.push(developer.fullTime);
       });
 
@@ -47,7 +47,7 @@ function* fetchAllProjectsSaga(action) {
         name: project.name || '',
         description: project.description || '',
         duration: `${startDateString} - ${endDateString}`,
-        developers: developers || '',
+        developers: developers.join(', ') || '',
         fullTime: fullTime || '',
         hourlyRate: project.hourlyRate || 0,
         projectValue: project.projectValue || 0,

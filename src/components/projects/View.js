@@ -5,6 +5,7 @@ import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
 import AddProjectsModal from './components/AddProjectsModal/index';
+import AvatarComponent from './components/Avatar';
 
 const Projects = ({
   dataSource,
@@ -44,6 +45,16 @@ const Projects = ({
     setIsModalOpen(false);
   };
 
+  const columnsWithAvatar = tableColumns.map((column) => {
+    if (column.dataIndex === 'developers') {
+      return {
+        ...column,
+        render: (text) => <AvatarComponent name={text} />,
+      };
+    }
+    return column;
+  });
+
   return (
     <div>
       <div className="page-header">
@@ -54,7 +65,7 @@ const Projects = ({
       </div>
       <CustomTable
         data={dataSource}
-        columns={tableColumns}
+        columns={columnsWithAvatar}
         totalCount={totalCount}
         fetchData={fetchData}
         isLoading={isLoading}
@@ -62,12 +73,17 @@ const Projects = ({
         selectedNavLabel={selectedProjectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
-        title="All Projects" 
+        title="All Projects"
         showText={showText}
       />
 
       {isModalOpen && (
-        <AddProjectsModal handleClose={handleCloseModal} isOpen={isModalOpen} actions={actions} employees={employees}/>
+        <AddProjectsModal
+          handleClose={handleCloseModal}
+          isOpen={isModalOpen}
+          actions={actions}
+          employees={employees}
+        />
       )}
     </div>
   );

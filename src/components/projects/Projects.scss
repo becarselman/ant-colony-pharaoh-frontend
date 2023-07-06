@@ -58,3 +58,60 @@ height: 40px;
 .bg-blue {
   background-color: rgb(12, 213, 236);
 }
+
+.avatar-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -8px;
+  margin-bottom: -8px;
+}
+
+.avatar-container > span {
+  margin-right: -8px;
+  margin-bottom: -8px;
+  
+}
+
+.avatar-container > span > .ant-avatar {
+  position: relative;
+  z-index: 1;
+  @include inter-medium;
+}
+
+.avatar-container > span > .ant-avatar:first-child  {
+  margin-left: 0;
+}
+
+.avatar-container > span > .ant-avatar:last-child {
+  margin-right: 0;
+}
+
+.remaining-developers {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $dark-green-color;
+  color: $white-color;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+
+.remaining-developers:hover {
+  z-index: 2;
+}
+}
+
+.popover-class {
+ .ant-popover-inner-content {
+  color: $white-color ;
+}
+  .ant-popover-inner {
+    background-color: $black-color ;
+    padding: 4px 14px;
+}
+}
