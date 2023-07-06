@@ -1,11 +1,16 @@
 import { actionTypes } from "./types";
 
-export const fetchAllProjects = (page, pageSize, selectedProjectStatus, searchInput) => ({
-  type: actionTypes.FETCH_ALL_PROJECTS,
+export const setPageAndPageSize = (page, pageSize) => ({
+  type: actionTypes.SET_PAGE_AND_PAGE_SIZE_PROJECTS,
   payload: {
     page,
-    pageSize,
-    selectedProjectStatus,
+    pageSize
+  }
+})
+
+export const fetchAllProjects = (searchInput) => ({
+  type: actionTypes.FETCH_ALL_PROJECTS,
+  payload: {
     searchInput,
   },
 });
@@ -38,3 +43,23 @@ export const setPageData = (pageData) => ({
   payload: pageData,
 });
 
+export const openAddProjectModal = () => ({
+  type: actionTypes.OPEN_ADD_PROJECT_MODAL
+})
+
+export const closeAddProjectModal = () => ({
+  type: actionTypes.CLOSE_ADD_PROJECT_MODAL
+})
+
+export const openEditProjectModal = () => ({
+  type: actionTypes.OPEN_EDIT_PROJECT_MODAL
+})
+
+export const closeEditProjectModal = () => ({
+  type: actionTypes.CLOSE_EDIT_PROJECT_MODAL
+})
+
+export const changeProjectTableStatus = (newStatus) => ({
+  type: actionTypes.CHANGE_PROJECT_TABLE_STATUS,
+  payload: newStatus
+})

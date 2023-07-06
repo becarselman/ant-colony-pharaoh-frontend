@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchAllEmployeesSuccess, fetchAllEmployeesFailure, editProjectSuccess, editProjectFailure } from './actions';
+import { fetchAllProjects, closeEditProjectModal } from "../../../modules/actions"
 import { getEmployees, editProject } from './service';
 import { actionTypes } from "./types";
 import { notification } from "antd";
@@ -57,6 +58,8 @@ function* editProjectSaga(action) {
     yield call(editProject, action.payload);
     yield put(editProjectSuccess());
     showSuccessNotification(); 
+    yield put(fetchAllProjects())
+    yield put(closeEditProjectModal())
   } catch (error) {
     yield put(editProjectFailure(error.message));
     showErrorNotification(); 

@@ -11,14 +11,14 @@ const Projects = ({
   dataSource,
   totalCount,
   isLoading,
+  addModalActive,
+  editModalActive,
+  projectStatus,
   actions,
   employees,
 }) => {
-  const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
   const [showText, setShowText] = useState('Projects');
-  const [isAddProjectModalOpen, setIsAddProjectModalOpen] = useState(false);
-  const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
   const clickedProjectData = useRef({})
 
   const handleSearchChange = (input) => {
@@ -27,33 +27,34 @@ const Projects = ({
 
   useEffect(() => {
     fetchData(1, 10);
-  }, [selectedProjectStatus, searchInput]);
+  }, [projectStatus, searchInput]);
 
   const fetchData = (page, pageSize) => {
-    actions.fetchAllProjects(page, pageSize, selectedProjectStatus, searchInput);
+    actions.setPageAndPageSize(page, pageSize)
+    actions.fetchAllProjects(searchInput);
     setPageData(null);
   };
 
   const handleNavSelect = (label) => {
-    setSelectedProjectStatus(label);
+    actions.changeProjectTableStatus(label)
     fetchData(1, 10);
   };
 
   const handleCreateNewProject = () => {
-    setIsAddProjectModalOpen(true);
+    actions.openAddProjectModal()
   };
 
   const handleEditProject = () => {
-    setIsEditProjectModalOpen(true);
+    actions.openEditProjectModal()
   };
 
   const handleCloseNewProjectModal = () => {
-    setIsAddProjectModalOpen(false);
+    actions.closeAddProjectModal()
   };
 
   const handleCloseEditProjectModal = () => {
     clickedProjectData.current = {}
-    setIsEditProjectModalOpen(false);
+    actions.closeEditProjectModal()
   };
 
   const onRowClick = (projectData) => {
@@ -76,7 +77,7 @@ const Projects = ({
         fetchData={fetchData}
         isLoading={isLoading}
         navLabels={['All Projects', 'Active', 'Inactive', 'Completed']}
-        selectedNavLabel={selectedProjectStatus}
+        selectedNavLabel={projectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
         onRowClick={onRowClick}
@@ -84,11 +85,11 @@ const Projects = ({
         showText={showText}
       />
 
-      {isAddProjectModalOpen && (
-        <AddProjectsModal handleClose={handleCloseNewProjectModal} isOpen={isAddProjectModalOpen} actions={actions} employees={employees}/>
+      {addModalActive && (
+        <AddProjectsModal handleClose={handleCloseNewProjectModal} isOpen={addModalActive} actions={actions} employees={employees}/>
       )}
-      {isEditProjectModalOpen && (
-        <EditProjectsModal handleClose={handleCloseEditProjectModal} isOpen={isEditProjectModalOpen} employees={employees} projectData={clickedProjectData.current} />
+      {editModalActive && (
+        <EditProjectsModal handleClose={handleCloseEditProjectModal} isOpen={editModalActive} employees={employees} projectData={clickedProjectData.current} />
       )}
     </div>
   );
