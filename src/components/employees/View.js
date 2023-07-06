@@ -9,30 +9,30 @@ import EditEmployeeModal from "./components/EditEmployeeModal";
 const Employees = ({
   dataSource,
   totalCount,
-  addModalActive,
-  editModalActive,
   isLoading,
   actions,
 }) => {
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
+  const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
+  const [editEmployeeModalOpen, setEditEmployeeModalOpen] = useState(false)
   const clickedEmployeeData = useRef({})
 
   const openAddEmployeeModal = () => {
-    actions.openAddEmployeeModal()
+    setAddEmployeeModalOpen(true)
   }
 
   const openEditEmployeeModal = () => {
-    actions.openEditEmployeeModal()
+    setEditEmployeeModalOpen(true)
   }
 
   const closeAddEmployeeModal = () => {
-    actions.closeAddEmployeeModal()
+    setAddEmployeeModalOpen(false)
   }
 
   const closeEditEmployeeModal = () => {
     clickedEmployeeData.current = {}
-    actions.closeEditEmployeeModal()
+    setEditEmployeeModalOpen(false)
   }
 
   const handleSearchChange = (input) => {
@@ -44,8 +44,7 @@ const Employees = ({
   }, [selectedEmployeeStatus, searchInput]);
 
   const fetchData = (page, pageSize) => {
-    actions.setPageAndPageSize(page, pageSize)
-    actions.fetchAllEmployees(selectedEmployeeStatus, searchInput);
+    actions.fetchAllEmployees(page, pageSize, selectedEmployeeStatus, searchInput);
     setPageData(null);
   };
 
@@ -80,13 +79,13 @@ const Employees = ({
         showText="Employees"
       />
       {
-        addModalActive && (
-              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addModalActive} isLoading={isLoading} actions={actions} />
+        addEmployeeModalOpen && (
+              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
           )
       }
       {
-        editModalActive && (
-              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editModalActive} employeeData={clickedEmployeeData.current} />
+        editEmployeeModalOpen && (
+              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editEmployeeModalOpen} employeeData={clickedEmployeeData.current} />
           )
       }
     </div>

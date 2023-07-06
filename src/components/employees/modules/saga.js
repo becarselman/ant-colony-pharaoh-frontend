@@ -1,12 +1,7 @@
-import { takeLatest, put, call, select } from 'redux-saga/effects';
+import { takeLatest, put, call } from 'redux-saga/effects';
 import { fetchAllEmployeesSuccess, fetchAllEmployeesFailure } from './actions';
 import { actionTypes } from "./types";
 import { getAllEmployees } from './service';
-
-const getPageAndPageSize = state => ({
-  page: state.employees.pageEmployees,
-  pageSize: state.employees.pageSizeEmployees
-})
 
 function generateQueryParams(selectedEmployeeStatus, searchInput) {
   const statusQueryParam = selectedEmployeeStatus !== 'All Employees' ? selectedEmployeeStatus : '';
@@ -17,11 +12,9 @@ function generateQueryParams(selectedEmployeeStatus, searchInput) {
 
 function* fetchAllEmployeesSaga(action) {
   try {
-    const { selectedEmployeeStatus, searchInput } = action.payload;
+    const { page, pageSize, selectedEmployeeStatus, searchInput } = action.payload;
 
     const { statusQueryParam, searchQueryParam } = generateQueryParams(selectedEmployeeStatus, searchInput);
-
-    const {page, pageSize} = yield select(getPageAndPageSize)
 
     const response = yield call(getAllEmployees, { page, pageSize, statusQueryParam, searchQueryParam });
 

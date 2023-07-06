@@ -5,7 +5,5 @@ export const getEmployees = () => {
 };
 
 export const editProject = (projectData) => {
-  const projectId = projectData.id
-  delete projectData["id"]
-  return axiosInstance.put(`/projects/${projectId}`, projectData);
+  return axiosInstance.put(`/projects/${projectData.id}`, projectData);
 };
