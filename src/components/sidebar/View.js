@@ -9,7 +9,7 @@ import {NavLink} from "react-router-dom";
 import {Dropdown, Space} from "antd";
 import {UserInfoOptions} from "./sidebar_options/UserInfoOptions";
 
-const Sidebar = ({actions}) => {
+const View = ({name, surname}) => {
 
   const preventDefault = e => e.preventDefault()
 
@@ -39,7 +39,7 @@ const Sidebar = ({actions}) => {
                 </div>
                 <div className="user-info-section">
                     <p className="user-name">
-                        Miron Lukač
+                        { name } { surname }
                     </p>
                     <p className="user-role">
                         Admin
@@ -69,4 +69,4 @@ const Sidebar = ({actions}) => {
     );
 }
 
-export default Sidebar
+export default View

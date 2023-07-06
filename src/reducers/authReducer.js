@@ -2,7 +2,9 @@ import { actionTypes } from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
-  user: {}
+  userId: "",
+  userName: "",
+  userSurname: ""
 };
 
 export default function authReducer(state = initialState, action) {
@@ -11,7 +13,9 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: Object.keys(action.payload).length !== 0,
-        user: action.payload
+        userId: action.payload.id,
+        userName: action.payload.name,
+        userSurname: action.payload.surname
       };
     case actionTypes.LOGIN_SUCCESS:
       return {

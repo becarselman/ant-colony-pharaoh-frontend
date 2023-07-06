@@ -1,5 +1,5 @@
 import {Navigate, Outlet, Route, Routes} from "react-router-dom";
-import Sidebar from "../components/sidebar/Sidebar";
+import Sidebar from "../components/sidebar/index";
 import React from "react";
 
 const ProtectedRoute = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import Sidebar from '../sidebar/Sidebar';
+import View from '../sidebar/View';
 import './Home.scss';
 import { Select, Space } from 'antd';
 import { Pie, Bar, Column } from '@ant-design/plots';

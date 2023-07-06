@@ -6,6 +6,7 @@ import {
   loginSuccess,
   loginError,
   getErrors,
+  setUser
 } from "../actions/authActions";
 
 const { open } = notification;
@@ -13,9 +14,14 @@ const { open } = notification;
 function* loginSaga(action) {
   try {
     const response = yield call(authService.login, action.payload);
-    const { token, userId } = response;
+    const { token, userId, name, surname } = response;
     localStorage.setItem("accessToken", token);
     yield put(loginSuccess(userId));
+    yield put(setUser( {
+      id: userId,
+      name,
+      surname
+    } ))
     action.payload.navigate('/home');
   } catch (error) {
     yield put(loginError(error.response.data));
