@@ -5,24 +5,13 @@ import { useState } from "react";
 const { Option } = Select;
 
 const MultiSelect = ({ item }) => {
-  const [employmentTypes, setEmploymentTypes] = useState({});
   const onChange = (selected) => {
     item.setValue(selected);
   };
 
-  const onEmploymentTypeChange = (developerId, employmentType) => {
-    setEmploymentTypes((prevEmploymentTypes) => ({
-      ...prevEmploymentTypes,
-      [developerId]: employmentType,
-    }));
-  };
-
   const onRemoveDeveloper = (developerId) => {
     const updatedDevelopers = item.value.filter((developer) => developer !== developerId);
-    const updatedEmploymentTypes = { ...employmentTypes };
-    delete updatedEmploymentTypes[developerId];
     item.setValue(updatedDevelopers);
-    setEmploymentTypes(updatedEmploymentTypes);
   };
 
   const optionElements = item.options.map((option) => {
@@ -41,20 +30,9 @@ const MultiSelect = ({ item }) => {
     <div key={developer.value} className="selected-developer">
       {developer.label}
       <div>
-        <EmploymentTypeSelect
-          value={employmentTypes[developer.value] || "full-time"}
-          onChange={(value) => onEmploymentTypeChange(developer.value, value)}
-        />
         <CloseOutlined onClick={() => onRemoveDeveloper(developer.value)} />
       </div>
     </div>
-  );
-
-  const EmploymentTypeSelect = ({ value, onChange }) => (
-    <Select size={"small"} className="employment-type-select" value={value} onChange={onChange}>
-      <Option value="full-time">Full Time</Option>
-      <Option value="part-time">Part Time</Option>
-    </Select>
   );
 
   const selectedDevelopers = item.value.map((developerId) => {
