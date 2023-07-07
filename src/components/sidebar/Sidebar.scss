@@ -20,6 +20,11 @@
 .profile-picture-section {
   width: 54px;
   height: 54px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-profile-overview {
@@ -30,7 +35,7 @@
   border-radius: 6px;
   padding: 10px;
 
-  border: 1px solid $border-color;
+  border: 2px solid $border-color;
 }
 
 .user-name {
@@ -40,10 +45,12 @@
   font-size: 16px;
   line-height: 24px;
   color: $text-color-dark-gray;
+
+  white-space: nowrap;
 }
 
 .user-role {
-  @include inter-medium();
+  @include inter-medium400();
   font-size: 14px;
   line-height: 18px;
   color: $text-color-primary;
@@ -75,7 +82,9 @@
 
   justify-content: flex-start;
 
-  margin-top: 20px
+  margin-top: 20px;
+
+  gap: 8px;
 }
 
 .sidebar-option {
@@ -83,10 +92,12 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 5px;
+
+  padding: 12px 0 12px 14px;
 }
 
 .sidebar-option a {
-  margin: 14px 0 14px 20px;
+  margin-left: 20px;
 
   @include gilroy-medium();
   font-size: 14px;
@@ -97,6 +108,9 @@
 }
 
 .sidebar-option:has(> .sidebar-active-link) {
-  @include gilroy-medium700;
+  a {
+    @include gilroy-medium700();
+  }
   background-color: $sidebar-active-link-background-color;
+  border-radius: 6px;
 }
