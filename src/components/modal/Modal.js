@@ -8,8 +8,10 @@ function Modal({header, items, isOpen, handleClose}) {
     useEffect(() => {
         const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
         document.body.addEventListener("keydown", closeOnEscapeKey);
+        document.body.style.overflow = "hidden"
         return () => {
             document.body.removeEventListener("keydown", closeOnEscapeKey);
+            document.body.style.overflow = "scroll"
         };
     }, [handleClose]);
 

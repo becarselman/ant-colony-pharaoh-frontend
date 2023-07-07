@@ -1,4 +1,4 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, select } from 'redux-saga/effects';
 import { fetchAllProjectsSuccess, fetchAllProjectsFailure, startLoader, stopLoader } from './actions';
 import { actionTypes } from "./types";
 import { getAllProjects } from './service';
@@ -10,13 +10,24 @@ function generateQueryParams(selectedProjectStatus, searchInput) {
   return { statusQueryParam, searchQueryParam };
 }
 
+const getPageAndPageSize = state => ({
+  page: state.projects.pageProjects,
+  pageSize: state.projects.pageSizeProjects
+})
+
+const getSelectedProjectStatus = state => state.projects.projectStatus
+
 function* fetchAllProjectsSaga(action) {
   try {
     yield put(startLoader()); 
 
-    const { page, pageSize, selectedProjectStatus, searchInput } = action.payload;
+    const { searchInput } = action.payload;
+
+    const selectedProjectStatus = yield select(getSelectedProjectStatus)
 
     const { statusQueryParam, searchQueryParam } = generateQueryParams(selectedProjectStatus, searchInput);
+
+    const { page, pageSize } = yield select(getPageAndPageSize)
 
     const response = yield call(getAllProjects, { page, pageSize, statusQueryParam, searchQueryParam });
 
