@@ -1,35 +1,33 @@
-const {
-  HomeOutlined,
-  ProjectOutlined,
-  TeamOutlined,
-  WalletOutlined,
-  SnippetsOutlined,
-  AuditOutlined
-} = require("@ant-design/icons");
+import { ReactComponent as Home } from "../../../images/sidebar/Home.svg"
+import { ReactComponent as Employees } from "../../../images/sidebar/Employees.svg"
+import { ReactComponent as Invoicing } from "../../../images/sidebar/Invoicing.svg"
+import { ReactComponent as FinancialOverview } from "../../../images/sidebar/FinancialOverview.svg"
+import { ReactComponent as ProjectReporting } from "../../../images/sidebar/ProjectReporting.svg"
+import { ReactComponent as Projects } from "../../../images/sidebar/Projects.svg"
 
 const sidebarOptions = [
   {
-      image: <HomeOutlined />,
+      image: <Home />,
       text: "Home"
   },
   {
-      image: <ProjectOutlined />,
+      image: <Projects />,
       text: "Projects"
   },
   {
-      image: <TeamOutlined />,
+      image: <Employees />,
       text: "Employees"
   },
   {
-      image: <WalletOutlined />,
+      image: <FinancialOverview />,
       text: "Financial Overview"
   },
   {
-      image: <SnippetsOutlined />,
+      image: <ProjectReporting />,
       text: "Project Reporting"
   },
   {
-      image: <AuditOutlined />,
+      image: <Invoicing />,
       text: "Invoicing"
   }
 ]
