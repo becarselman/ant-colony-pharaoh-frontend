@@ -29,7 +29,6 @@ export const formatData = (
   projectValue,
   projectStatus,
   developerOptions,
-  employmentTypes
 ) => {
   const formattedDevelopers = developers.map((developerId) => {
     const selectedDeveloper = developerOptions.find((option) => option.value === developerId);
@@ -38,7 +37,7 @@ export const formatData = (
     }
     return {
       employee: selectedDeveloper.employee._id,
-      employmentType: employmentTypes[developerId] || "full-time",
+      fullTime: true,
     };
   });
 
@@ -46,7 +45,7 @@ export const formatData = (
     name,
     description,
     duration,
-    developers: formattedDevelopers.filter((developer) => developer !== null),
+    developers: formattedDevelopers,
     hourlyRate,
     projectValue,
     projectStatus,
