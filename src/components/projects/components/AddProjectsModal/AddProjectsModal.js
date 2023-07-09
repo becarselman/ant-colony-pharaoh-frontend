@@ -19,7 +19,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
   const [projectValue, setProjectValue] = useState(0);
   const [projectStatus, setProjectStatus] = useState(ProjectStatus.Active);
   const [developerOptions, setDeveloperOptions] = useState([]);
-  const [employmentTypes, setEmploymentTypes] = useState({}); 
 
   useEffect(() => {
     fetchDevelopers();
@@ -36,7 +35,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
     setHourlyRate(0);
     setProjectValue(0);
     setProjectStatus(ProjectStatus.Active);
-    setEmploymentTypes([]);
   };
 
   const fetchDevelopers = async () => {
@@ -95,7 +93,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
       projectValue,
       projectStatus,
       developerOptions,
-      employmentTypes,
     );
     actions.createProjectRequest(projectData);
   };
@@ -151,7 +148,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
       },
       options: Object.values(ProjectStatus),
     },
-    employmentTypes,
     developerOptions: developerOptions || [],
     submitButton: {
       onClick: handleSubmit,
