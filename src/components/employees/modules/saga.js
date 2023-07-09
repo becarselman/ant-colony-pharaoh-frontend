@@ -5,7 +5,7 @@ import { getAllEmployees } from './service';
 
 function generateQueryParams(selectedEmployeeStatus, searchInput) {
   const statusQueryParam = selectedEmployeeStatus !== 'All Employees' ? selectedEmployeeStatus : '';
-  const searchQueryParam = searchInput ? `search[name]=${searchInput}` : '';
+  const searchQueryParam = searchInput ? `search=${searchInput}` : '';
 
   return { statusQueryParam, searchQueryParam };
 }
