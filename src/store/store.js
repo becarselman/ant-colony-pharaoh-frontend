@@ -13,6 +13,7 @@ import { watchFetchEmployees } from "../components/projects/components/AddProjec
 import { watchFetchAllEmployees } from '../components/employees/modules/saga'
 import { watchCreateProject } from "../components/projects/components/AddProjectsModal/modules/saga";
 import { watchFetchProject } from "../components/_dataReviewModal/modules/saga";
+import { watchFetchEmployee } from "../components/EmployeeReviewModal/modules/saga";
 
 const persistConfig = {
   key: "root", 
@@ -39,3 +40,4 @@ sagaMiddleware.run(watchFetchAllEmployees)
 sagaMiddleware.run(watchFetchEmployees);
 sagaMiddleware.run(watchCreateProject);
 sagaMiddleware.run(watchFetchProject);
+sagaMiddleware.run(watchFetchEmployee);

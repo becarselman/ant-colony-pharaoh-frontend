@@ -4,6 +4,7 @@ import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import AddEmployeesModal from "./components/AddEmployeeModal/index";
+import EmployeeReviewModal from "../EmployeeReviewModal/Index"
 
 const Employees = ({
   dataSource,
@@ -14,7 +15,23 @@ const Employees = ({
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
   const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
+  const [isDataModalOpen, setIsDataModalOpen] = useState(false);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  
+  const handleCloseDataModal = () => {
+    setIsDataModalOpen(false);
+    setSelectedEmployeeId(null);
+  };
 
+
+  const handleOpenDataModal = (employeeId) => {
+    setSelectedEmployeeId(employeeId);
+    setIsDataModalOpen(true);
+  };
+
+  const handleEmployeeClick = (employee) => {
+    handleOpenDataModal(employee.key);
+  };
   const openAddEmployeeModal = () => {
     setAddEmployeeModalOpen(true)
   }
@@ -59,8 +76,12 @@ const Employees = ({
         onSearchChange={handleSearchChange}
         title="All Employees"
         showText="Employees"
+        onProjectClick={handleEmployeeClick}
       />
       <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
+      {isDataModalOpen && (
+        <EmployeeReviewModal employeeId={selectedEmployeeId} handleClose={handleCloseDataModal} isOpen={true} />
+      )}
     </div>
 
   );

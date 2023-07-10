@@ -9,6 +9,7 @@ import customTableReducer from '../components/Table/modules/reducer';
 import employeesReducer from "../components/employees/modules/reducer";
 import projectsModalReducer from "../components/projects/components/AddProjectsModal/modules/reducer";
 import projectReducer from "../components/_dataReviewModal/modules/projectReducer";
+import employeeReducer from "../components/EmployeeReviewModal/modules/employeeReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -21,4 +22,5 @@ export default combineReducers({
   customTable: customTableReducer,
   projectsModal: projectsModalReducer, 
   project: projectReducer,
+  employee: employeeReducer,
 });

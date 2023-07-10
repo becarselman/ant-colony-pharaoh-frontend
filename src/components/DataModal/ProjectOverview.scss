@@ -43,6 +43,9 @@
 };
 
 .project-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 400px;
     margin-top: 16px;
     margin-left: 24px;
@@ -57,6 +60,17 @@
     line-height: 24px;
 
 };
+.employee-info{
+    padding: 16px;
+}
+
+.employee-department{
+    @include gilroy-medium500;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: $project-text-color;
+}
 
 .project-info{
     background-color: $white-color;
@@ -142,4 +156,84 @@
     letter-spacing: -0.24px;
     cursor: pointer;
     margin-right: 24px;
+}
+
+.employee-projects{
+    align-content: center;
+    background-color: $white-color;
+    margin-top: 16px;
+    margin-left: 24px;
+    margin-right: 24px; 
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.projects{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    padding: 8px 0px;
+    border-bottom: 1px solid $light-gray-border;
+    margin-top: 4px;
+}
+
+.projects:last-child { 
+    border-bottom: none; 
+};
+
+.project-items{
+    padding-top: 8px;
+}
+
+.assigned{
+    @include gilroy-medium500;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    color:$black-color;
+}
+
+.employee-projects-name{
+    @include gilroy-medium500;
+    color: $project-text-color;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.employment-type-full-time{
+    border-radius: 12px;
+    background-color:$see-details-color;
+    color: $white-color;
+    @include gilroy-medium500;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.16px;
+
+    display: flex;
+    width: 52px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    padding: 2px 8px;
+}
+
+.employment-type-part-time{
+    border-radius: 12px;
+    background-color:$part-time-color;
+    color: $white-color;
+    @include gilroy-medium500;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.16px;
+
+    display: flex;
+    width: 52px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    padding: 2px 8px;
 }

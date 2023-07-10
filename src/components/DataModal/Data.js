@@ -24,7 +24,6 @@ export const data = [
           year: 'numeric',
           month: 'short',
         });
-        console.log(value)
         return `${startDateString} - ${endDateString}`
       },
     },   

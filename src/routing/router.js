@@ -9,6 +9,7 @@ import Projects from "../components/projects/index.js"
 import Employees from "../components/employees/index.js"
 import Logout from "../components/logout/Logout";
 import PublicRoute from "./publicRoute";
+import EmployeeOverview from "../components/DataModal/EmployeeOverview.js";
 
 
 function CustomRouter() {
@@ -29,7 +30,7 @@ function CustomRouter() {
           <Route exact path="/forgot-password" element={<ForgotPassword/>} />
           <Route exact path="reset-password/:token" element={<ResetPassword/>} />
         </Route>
-          
+        <Route path="/overview" element={<EmployeeOverview/>}></Route>
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
     </Router>
