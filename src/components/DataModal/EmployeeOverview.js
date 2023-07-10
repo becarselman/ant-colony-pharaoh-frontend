@@ -4,6 +4,7 @@ import { LeftOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import InfoCard from './InfoCard';
 import data from './EmployeeData';
+import ReactPortal from '../modal/Portal';
 
 
 const EmployeeOverview = ({ handleClose, isOpen, items}) => {
@@ -13,8 +14,10 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
     document.body.addEventListener("keydown", closeOnEscapeKey);
+    document.body.style.overflow = "hidden"
     return () => {
       document.body.removeEventListener("keydown", closeOnEscapeKey);
+      document.body.style.overflow = "scroll"
     };
   }, [handleClose]);
 
@@ -48,7 +51,7 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
   ) : null;
 
   const getEmploymentTypeClass = (employmentType) => {
-    if (employmentType === 'full-time') {
+    if (employmentType) {
       return 'employment-type-full-time';
     } else if (employmentType === 'part-time') {
       return 'employment-type-part-time';
@@ -58,7 +61,7 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
   };
 
   const EmploymentType = (employmentType) => {
-    if (employmentType === 'full-time') {
+    if (employmentType) {
       return 'Full time';
     }
     else if (employmentType === 'part-time') {
@@ -89,6 +92,7 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
     
   return (
     <div className='modal-container'>
+      <div className='modal'>
       <div className='info-container'>
         <div className='back-arrow' onClick={handleClose}>
           <LeftOutlined />
@@ -114,11 +118,12 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
           <div className='assigned'>Assigned to projects</div>
           <div className='project-items'>{ProjectItems}</div>
         </div>
+      </div>
         <div className='button-container'>
           <div className='delete-button'>Delete Employee</div>
           <div className='edit-button'>Edit Employee</div>
         </div>
-      </div>
+        </div>
     </div>
   );
 };

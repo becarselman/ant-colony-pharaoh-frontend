@@ -5,7 +5,6 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project }) =
 
   useEffect(() => {
     actions.fetchProject(projectId);
-    actions.fetchProject("all");
   }, [projectId]);
 
   const resetStateAndCloseModal = () => {

@@ -19,6 +19,7 @@ const Employees = ({
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  const [isDataModalOpen, setIsDataModalOpen] = useState(null);
   
   const handleCloseDataModal = () => {
     setIsDataModalOpen(false);

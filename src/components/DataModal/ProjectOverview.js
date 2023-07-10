@@ -9,8 +9,10 @@ const ProjectOverview = ({ handleClose, isOpen, items}) => {
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
     document.body.addEventListener("keydown", closeOnEscapeKey);
+    document.body.style.overflow = "hidden"
     return () => {
       document.body.removeEventListener("keydown", closeOnEscapeKey);
+      document.body.style.overflow = "scroll"
     };
   }, [handleClose]);
 
@@ -39,6 +41,7 @@ const ProjectOverview = ({ handleClose, isOpen, items}) => {
     
   return (
     <div className='modal-container'>
+      <div className='modal'>
       <div className='info-container'>
         <div className='back-arrow' onClick={handleClose}>
           <LeftOutlined />
@@ -54,6 +57,7 @@ const ProjectOverview = ({ handleClose, isOpen, items}) => {
           <div className='delete-button'>Delete Project</div>
           <div className='edit-button'>Edit Project</div>
         </div>
+      </div>
       </div>
     </div>
   );

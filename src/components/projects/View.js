@@ -53,11 +53,6 @@ const Projects = ({
     actions.openEditProjectModal()
   };
 
-  const handleCloseDataModal = () => {
-    setIsDataModalOpen(false);
-    setSelectedProjectId(null);
-  };
-
   const handleCloseNewProjectModal = () => {
     actions.closeAddProjectModal()
   };
@@ -67,6 +62,20 @@ const Projects = ({
     actions.closeEditProjectModal()
   };
 
+  const handleCloseDataModal = () => {
+    setIsDataModalOpen(false);
+    setSelectedProjectId(null);
+  };
+
+
+  const handleOpenDataModal = (projectId) => {
+    setSelectedProjectId(projectId);
+    setIsDataModalOpen(true);
+  };
+
+  const handleProjectClick = (project) => {
+    handleOpenDataModal(project.key);
+  };
 
   return (
     <div>
