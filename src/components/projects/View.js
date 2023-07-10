@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Projects.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
@@ -6,20 +6,25 @@ import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
 import AddProjectsModal from './components/AddProjectsModal/index';
 import DataReviewModal from '../_dataReviewModal/Index';
+import EditProjectsModal from "./components/EditProjectsModal";
+
 
 const Projects = ({
   dataSource,
   totalCount,
   isLoading,
+  addModalActive,
+  editModalActive,
+  projectStatus,
   actions,
   employees,
 }) => {
-  const [selectedProjectStatus, setSelectedProjectStatus] = useState('All Projects');
   const [searchInput, setSearchInput] = useState('');
   const [showText, setShowText] = useState('Projects');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isDataModalOpen, setIsDataModalOpen] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const clickedProjectData = useRef({})
 
   const handleSearchChange = (input) => {
     setSearchInput(input);
@@ -27,24 +32,25 @@ const Projects = ({
 
   useEffect(() => {
     fetchData(1, 10);
-  }, [selectedProjectStatus, searchInput]);
+  }, [projectStatus, searchInput]);
 
   const fetchData = (page, pageSize) => {
-    actions.fetchAllProjects(page, pageSize, selectedProjectStatus, searchInput);
+    actions.setPageAndPageSize(page, pageSize)
+    actions.fetchAllProjects(searchInput);
     setPageData(null);
   };
 
   const handleNavSelect = (label) => {
-    setSelectedProjectStatus(label);
+    actions.changeProjectTableStatus(label)
     fetchData(1, 10);
   };
 
   const handleCreateNewProject = () => {
-    setIsModalOpen(true);
+    actions.openAddProjectModal()
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleEditProject = () => {
+    actions.openEditProjectModal()
   };
 
   const handleCloseDataModal = () => {
@@ -52,14 +58,13 @@ const Projects = ({
     setSelectedProjectId(null);
   };
 
-
-  const handleOpenDataModal = (projectId) => {
-    setSelectedProjectId(projectId);
-    setIsDataModalOpen(true);
+  const handleCloseNewProjectModal = () => {
+    actions.closeAddProjectModal()
   };
 
-  const handleProjectClick = (project) => {
-    handleOpenDataModal(project.key);
+  const handleCloseEditProjectModal = () => {
+    clickedProjectData.current = {}
+    actions.closeEditProjectModal()
   };
 
 
@@ -78,7 +83,7 @@ const Projects = ({
         fetchData={fetchData}
         isLoading={isLoading}
         navLabels={['All Projects', 'Active', 'Inactive', 'Completed']}
-        selectedNavLabel={selectedProjectStatus}
+        selectedNavLabel={projectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
         title="All Projects" 
@@ -86,8 +91,11 @@ const Projects = ({
         onProjectClick={handleProjectClick}
       />
 
-      {isModalOpen && (
-        <AddProjectsModal handleClose={handleCloseModal} isOpen={isModalOpen} actions={actions} employees={employees}/>
+      {addModalActive && (
+        <AddProjectsModal handleClose={handleCloseNewProjectModal} isOpen={addModalActive} actions={actions} employees={employees}/>
+      )}
+      {editModalActive && (
+        <EditProjectsModal handleClose={handleCloseEditProjectModal} isOpen={editModalActive} employees={employees} projectData={clickedProjectData.current} />
       )}
 
       {isDataModalOpen && (

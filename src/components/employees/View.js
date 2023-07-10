@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Employees.scss';
 import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import AddEmployeesModal from "./components/AddEmployeeModal/index";
 import EmployeeReviewModal from "../EmployeeReviewModal/Index"
+import EditEmployeeModal from "./components/EditEmployeeModal";
+
 
 const Employees = ({
   dataSource,
   totalCount,
+  addModalActive,
+  editModalActive,
   isLoading,
   actions,
 }) => {
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
-  const [addEmployeeModalOpen, setAddEmployeeModalOpen] = useState(false)
-  const [isDataModalOpen, setIsDataModalOpen] = useState(false);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   
   const handleCloseDataModal = () => {
@@ -23,6 +25,7 @@ const Employees = ({
     setSelectedEmployeeId(null);
   };
 
+  const clickedEmployeeData = useRef({})
 
   const handleOpenDataModal = (employeeId) => {
     setSelectedEmployeeId(employeeId);
@@ -33,11 +36,20 @@ const Employees = ({
     handleOpenDataModal(employee.key);
   };
   const openAddEmployeeModal = () => {
-    setAddEmployeeModalOpen(true)
+    actions.openAddEmployeeModal()
+  }
+
+  const openEditEmployeeModal = () => {
+    actions.openEditEmployeeModal()
   }
 
   const closeAddEmployeeModal = () => {
-    setAddEmployeeModalOpen(false)
+    actions.closeAddEmployeeModal()
+  }
+
+  const closeEditEmployeeModal = () => {
+    clickedEmployeeData.current = {}
+    actions.closeEditEmployeeModal()
   }
 
   const handleSearchChange = (input) => {
@@ -49,7 +61,8 @@ const Employees = ({
   }, [selectedEmployeeStatus, searchInput]);
 
   const fetchData = (page, pageSize) => {
-    actions.fetchAllEmployees(page, pageSize, selectedEmployeeStatus, searchInput);
+    actions.setPageAndPageSize(page, pageSize)
+    actions.fetchAllEmployees(selectedEmployeeStatus, searchInput);
     setPageData(null);
   };
 
@@ -57,6 +70,11 @@ const Employees = ({
     setSelectedEmployeeStatus(label);
     fetchData(1, 10);
   };
+
+  const onRowClick = (employeeData) => {
+    clickedEmployeeData.current = employeeData
+    openEditEmployeeModal()
+  }
 
   return (
     <div>
@@ -78,10 +96,19 @@ const Employees = ({
         showText="Employees"
         onProjectClick={handleEmployeeClick}
       />
-      <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addEmployeeModalOpen} isLoading={isLoading} actions={actions} />
-      {isDataModalOpen && (
+    {isDataModalOpen && (
         <EmployeeReviewModal employeeId={selectedEmployeeId} handleClose={handleCloseDataModal} isOpen={true} />
       )}
+      {
+        addModalActive && (
+              <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addModalActive} isLoading={isLoading} actions={actions} />
+          )
+      }
+      {
+        editModalActive && (
+              <EditEmployeeModal handleClose={closeEditEmployeeModal} isOpen={editModalActive} employeeData={clickedEmployeeData.current} />
+          )
+      }
     </div>
 
   );
