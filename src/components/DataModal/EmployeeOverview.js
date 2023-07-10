@@ -67,15 +67,16 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
   }
 
   const ProjectItems = items ? (
-    data?.map((item) => {
+    data?.map((item, index) => {
       let value;
       if (item?.key === 'projects') {
-        const projectValues = items?.projects?.map((project) => (
-          <div className='projects'>
+        const projectValues = items?.projects?.map((project, projectIndex) => ( 
+          <div key={`${item.key}-${projectIndex}`} className='projects'>
             <div className='employee-projects-name'>{project.name}</div>
             <div className={getEmploymentTypeClass(project.employmentType)}>
-              {EmploymentType(project.employmentType)}  </div>        
+              {EmploymentType(project.employmentType)}
             </div>
+          </div>
         ));
         value = projectValues;
       }

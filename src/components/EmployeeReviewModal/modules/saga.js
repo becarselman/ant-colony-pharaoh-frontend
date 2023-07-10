@@ -8,7 +8,6 @@ function* fetchEmployeeSaga(action) {
     const { employeeId } = action.payload;
 
     const response = yield call(getEmployeeById, employeeId);
-    console.log(response)
     const employee = response;
 
     yield put(fetchEmployeeSuccess(employee));
