@@ -6,9 +6,7 @@ const URL = process.env.REACT_APP_API_URL;
 const login = (data) => {
   return axiosInstance.post('/login',  data )
     .then((response) => {
-      const { token, userId } = response.data;
-      localStorage.setItem('accessToken', token);
-      return userId;
+      return response.data
     })
     .catch((error) => {
       throw error;

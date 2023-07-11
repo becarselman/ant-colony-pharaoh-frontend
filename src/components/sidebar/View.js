@@ -3,13 +3,13 @@ import {
 } from "@ant-design/icons";
 import sidebarOptions from "./sidebar_options/SidebarOptions"
 import Logotype from '../../images/sidebar/Logotype.svg';
-import SampleProfilePicture from '../../images/sidebar/Sample-Profile-Image.png'
 import './Sidebar.scss'
 import {NavLink} from "react-router-dom";
 import {Dropdown, Space} from "antd";
 import {UserInfoOptions} from "./sidebar_options/UserInfoOptions";
+import AvatarComponent from "../Avatar/Avatar";
 
-const Sidebar = ({actions}) => {
+const View = ({name, surname}) => {
 
   const preventDefault = e => e.preventDefault()
 
@@ -35,15 +35,15 @@ const Sidebar = ({actions}) => {
 
             <div className="user-profile-overview">
                 <div className="profile-picture-section">
-                    <img src={SampleProfilePicture} alt="Profile picture"/>
+                    <AvatarComponent name={`${name} ${surname}`} developerList={[]} />
                 </div>
                 <div className="user-info-section">
-                    <p className="user-name">
-                        Miron Lukač
-                    </p>
-                    <p className="user-role">
+                    <span className="user-name">
+                        {name} {surname}
+                    </span>
+                    <span className="user-role">
                         Admin
-                    </p>
+                    </span>
                 </div>
                 <div className="expand-user-info-section">
                     <Dropdown
@@ -69,4 +69,4 @@ const Sidebar = ({actions}) => {
     );
 }
 
-export default Sidebar
+export default View

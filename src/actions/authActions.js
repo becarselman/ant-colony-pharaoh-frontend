@@ -17,6 +17,11 @@ export const loginSuccess = (userId) => ({
   payload: userId,
 });
 
+export const setUser = (data) => ({
+  type: actionTypes.SET_USER,
+  payload: data
+})
+
 export const loginError = (error) => ({
   type: actionTypes.LOGIN_ERROR,
   payload: error,

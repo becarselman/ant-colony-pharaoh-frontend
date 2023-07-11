@@ -98,6 +98,12 @@ line-height: $line-height;
 color: $color;
 }
 
+@mixin inter-medium400 {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
 @mixin inter-medium {
 font-family: 'Inter', sans-serif;
 font-style: normal;
