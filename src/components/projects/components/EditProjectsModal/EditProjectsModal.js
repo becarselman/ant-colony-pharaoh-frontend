@@ -24,12 +24,12 @@ const EditProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees,
     setId(projectData.key)
     setName(projectData.name)
     setDescription(projectData.description)
-    setDuration((prev) => (
-        {
-          from: dateMapper(projectData.duration.split(" - ")[0]),
-          to: dateMapper(projectData.duration.split(" - ")[1])
-        }
-    ))
+    if (projectData.duration) {
+      setDuration((prev) => ({
+        from: dateMapper(projectData.duration.split(" - ")[0]),
+        to: dateMapper(projectData.duration.split(" - ")[1])
+      }))
+    }
     setDevelopers(projectData.developers)
     setHourlyRate(projectData.hourlyRate)
     setProjectValue(projectData.projectValue)

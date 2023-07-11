@@ -1,6 +1,5 @@
 import { Select, Checkbox } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import { useState } from "react";
 
 const { Option } = Select;
 
@@ -14,18 +13,6 @@ const MultiSelect = ({ item }) => {
     item.setValue(updatedDevelopers);
   };
 
-  const optionElements = item.options.map((option) => {
-    const isChecked = item.value.includes(option.value);
-    return (
-      <Option key={option.value} value={option.value} label={option.label}>
-        <div className="developer-option">
-          <Checkbox onChange={(e) => e.stopPropagation()} checked={isChecked} />
-          <div className="developer-name">{option.label}</div>
-        </div>
-      </Option>
-    );
-  });
-
   const SelectedDeveloper = ({ developer }) => (
     <div key={developer.value} className="selected-developer">
       {developer.label}
@@ -35,9 +22,23 @@ const MultiSelect = ({ item }) => {
     </div>
   );
 
-  const selectedDevelopers = item.value.map((developerId) => {
-    const developer = item.options.find((option) => option.value === developerId);
-    return <SelectedDeveloper key={developer.value} developer={developer} />;
+  const selectedDevelopers = item.value
+    ? item.value.map((developerId) => {
+        const developer = item.options.find((option) => option.value === developerId);
+        return <SelectedDeveloper key={developer.value} developer={developer} />;
+      })
+    : [];
+
+  const optionElements = item.options.map((option) => {
+    const isChecked = item.value ? item.value.includes(option.value) : false;
+    return (
+      <Option key={option.value} value={option.value} label={option.label}>
+        <div className="developer-option">
+          <Checkbox onChange={(e) => e.stopPropagation()} checked={isChecked} />
+          <div className="developer-name">{option.label}</div>
+        </div>
+      </Option>
+    );
   });
 
   const selectProps = {
@@ -49,8 +50,7 @@ const MultiSelect = ({ item }) => {
     value: item.value,
     placeholder: item.placeholder,
     showSearch: true,
-    filterOption: (input, option) =>
-      option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+    filterOption: (input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0,
   };
 
   return (
