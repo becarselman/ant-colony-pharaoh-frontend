@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchAllEmployeesSuccess, fetchAllEmployeesFailure, createProjectSuccess, createProjectFailure } from './actions';
+import { fetchAllProjects, closeAddProjectModal } from "../../../modules/actions"
 import { getEmployees, createProject } from './service';
 import { actionTypes } from "./types";
 import { notification } from "antd";
@@ -19,8 +20,17 @@ function showErrorNotification() {
   });
 }
 
-export const formatData = (name, description, duration, developers, hourlyRate, projectValue, projectStatus, developerOptions) => {
-    const formattedDevelopers = developers.map((developerId) => {
+export const formatData = (
+  name,
+  description,
+  duration,
+  developers,
+  hourlyRate,
+  projectValue,
+  projectStatus,
+  developerOptions,
+) => {
+  const formattedDevelopers = developers.map((developerId) => {
     const selectedDeveloper = developerOptions.find((option) => option.value === developerId);
     if (!selectedDeveloper) {
       return null;
@@ -56,6 +66,8 @@ function* createProjectSaga(action) {
     yield call(createProject, action.payload);
     yield put(createProjectSuccess());
     showSuccessNotification(); 
+    yield put(fetchAllProjects())
+    yield put(closeAddProjectModal())
   } catch (error) {
     yield put(createProjectFailure(error.message));
     showErrorNotification(); 

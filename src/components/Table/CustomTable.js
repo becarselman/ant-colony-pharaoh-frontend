@@ -7,12 +7,23 @@ import Logotype from '../../images/loader/Logotype.png';
 
 import './CustomTable.scss';
 
-const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabels, selectedNavLabel, selectedPage, onNavSelect, onSearchChange, onRowClick, title, showText }) => {
+const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabels, selectedNavLabel, selectedPage, onNavSelect, onSearchChange, title, showText, onProjectClick }) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [filter, setFilter] = useState(selectedNavLabel);
   const [searchValue, setSearchValue] = useState('');
 
+  const handleRowClick = (record) => {
+    if (onProjectClick) {
+      onProjectClick(record);
+    }
+  };
+
+  const getRowProps = (record) => {
+    return {
+      onClick: () => handleRowClick(record)
+    };
+  };
   const handlePageSizeChange = (value) => {
     setPage(1);
     setPageSize(parseInt(value));
@@ -40,10 +51,6 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
     onSearchChange(searchValue);
   }, [searchValue, onSearchChange]);
 
-  useEffect(() => {
-    fetchData(selectedPage, pageSize);
-  }, [selectedPage, pageSize]);
-
   const handleSearch = (value) => {
     setSearchValue(value);
   };
@@ -64,12 +71,6 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
     />
   );
 
-  const onRow = (record, index) => {
-    return {
-      onClick: e => onRowClick(record)
-    }
-  }
-
   const tableContent = (
     <Table
       dataSource={data}
@@ -79,7 +80,7 @@ const CustomTable = ({ data, columns, totalCount, fetchData, isLoading, navLabel
       bordered
       title={tableHeader}
       loading={isLoading}
-      onRow={onRow}
+      onRow={getRowProps}
     />
   );
 
