@@ -4,7 +4,9 @@ import CustomTable from '../Table/CustomTable';
 import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import AddEmployeesModal from "./components/AddEmployeeModal/index";
+import EmployeeReviewModal from "../EmployeeReviewModal/Index"
 import EditEmployeeModal from "./components/EditEmployeeModal";
+
 
 const Employees = ({
   dataSource,
@@ -16,8 +18,24 @@ const Employees = ({
 }) => {
   const [selectedEmployeeStatus, setSelectedEmployeeStatus] = useState('All Employees');
   const [searchInput, setSearchInput] = useState('');
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+  const [isDataModalOpen, setIsDataModalOpen] = useState(null);
+  
+  const handleCloseDataModal = () => {
+    setIsDataModalOpen(false);
+    setSelectedEmployeeId(null);
+  };
+
   const clickedEmployeeData = useRef({})
 
+  const handleOpenDataModal = (employeeId) => {
+    setSelectedEmployeeId(employeeId);
+    setIsDataModalOpen(true);
+  };
+
+  const handleEmployeeClick = (employee) => {
+    handleOpenDataModal(employee.key);
+  };
   const openAddEmployeeModal = () => {
     actions.openAddEmployeeModal()
   }
@@ -75,10 +93,13 @@ const Employees = ({
         selectedNavLabel={selectedEmployeeStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
-        onRowClick={onRowClick}
         title="All Employees"
         showText="Employees"
+        onProjectClick={handleEmployeeClick}
       />
+    {isDataModalOpen && (
+        <EmployeeReviewModal employeeId={selectedEmployeeId} handleClose={handleCloseDataModal} isOpen={true} />
+      )}
       {
         addModalActive && (
               <AddEmployeesModal handleClose={closeAddEmployeeModal} isOpen={addModalActive} isLoading={isLoading} actions={actions} />
