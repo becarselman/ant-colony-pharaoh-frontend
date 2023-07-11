@@ -22,5 +22,5 @@ export default combineReducers({
   projects: projectsReducer,
   customTable: customTableReducer,
   projectsModal: projectsModalReducer,
-  editProjectsModal: editProjectsModalReducer
+  editProjectsModal: editProjectsModalReducer,
 });

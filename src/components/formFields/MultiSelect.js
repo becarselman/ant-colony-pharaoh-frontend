@@ -13,7 +13,7 @@ const MultiSelect = ({ item }) => {
     <div className="form-field">
       <label htmlFor={item.id}>{item.labelText}</label>
       <Select
-        className="input-field"
+        className="input-field-multiselect"
         isMulti
         id={item.id}
         name={item.name}
