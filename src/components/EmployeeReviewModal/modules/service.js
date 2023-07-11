@@ -2,34 +2,6 @@ import axiosInstance from "../../../service/apiService";
 
 const URL = process.env.REACT_APP_API_URL;
 
-/*export const getEmployeeById = (employeeId) => {
-  return axiosInstance.get(`${URL}/employee/${employeeId}`)
-    .then(async (response) => {
-      /*const employeePromises = projectData.developers
-      .map(developers => getEmployeeById(String(developers.employee)));
-      const employees = await Promise.all(employeePromises);
-      projectData.developers = employees;
-      console.log("servis", response)
-      return response;
-    })
-    .catch((error) => {
-      throw error;
-    });
-};*/
-
-
-
-/*export const getEmployeeById = (employeeId) => {
-  return axiosInstance.get(`${URL}/employee/${employeeId}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      throw error;
-    });
-};
-*/
-
 export const getEmployeeById = (employeeId) => {
   return axiosInstance.get(`${URL}/employee/${employeeId}`)
     .then(async (response) => {
@@ -38,6 +10,7 @@ export const getEmployeeById = (employeeId) => {
       const projectsResponse = await getAllProjects();
 
       const projects = projectsResponse.data.filter(project =>
+        project.projectStatus === "Active" && 
         project.developers.some(developer => developer.employee === employeeId)
       );
 
@@ -61,13 +34,12 @@ function getEmploymentType(developers, employeeId) {
   return developer ? developer.employmentType : null;
 }
 
-
 export const getAllProjects = () => {
   return axiosInstance.get(`${URL}/projects/all`)
     .then((response) => {
       return response;
     })
     .catch((error) => {
-      throw error
+      throw error;
     })
 }
