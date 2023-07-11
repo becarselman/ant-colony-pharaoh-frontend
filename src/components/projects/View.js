@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import AddProjectsModal from './components/AddProjectsModal/index';
 import DataReviewModal from '../_dataReviewModal/Index';
 import EditProjectsModal from "./components/EditProjectsModal";
-
+import AvatarComponent from './components/AddProjectsModal/modules/Avatar';
 
 const Projects = ({
   dataSource,
@@ -77,6 +77,16 @@ const Projects = ({
     handleOpenDataModal(project.key);
   };
 
+  const columnsWithAvatar = tableColumns.map((column) => {
+    if (column.dataIndex === 'developers') {
+      return {
+        ...column,
+        render: (text) => <AvatarComponent name={text} />,
+      };
+    }
+    return column;
+  });
+
   return (
     <div className="full-projects">
       <div className="page-header">
@@ -87,7 +97,7 @@ const Projects = ({
       </div>
       <CustomTable
         data={dataSource}
-        columns={tableColumns}
+        columns={columnsWithAvatar}
         totalCount={totalCount}
         fetchData={fetchData}
         isLoading={isLoading}
