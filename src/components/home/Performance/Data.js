@@ -1,11 +1,13 @@
-import { ReactComponent as ProjNumber } from '../../images/home/no-of-proj.svg';
-import { ReactComponent as TotValue } from '../../images/home/tot-proj-val.svg';
-import { ReactComponent as HourPrice } from '../../images/home/hourly-price.svg';
-import { ReactComponent as Deadline } from '../../images/home/deadline.svg';
-import { ReactComponent as AvgVelocity } from '../../images/home/avg-vel.svg';
-import { ReactComponent as AvgTeam } from '../../images/home/avg-team-size.svg';
-import { ReactComponent as AvgValue} from '../../images/home/avg-proj-val.svg';
-import { ReactComponent as AvgLeadClosing } from '../../images/home/avg-lead-closing.svg';
+import { ReactComponent as ProjNumber } from '../../../images/home/no-of-proj.svg';
+import { ReactComponent as TotValue } from '../../../images/home/tot-proj-val.svg';
+import { ReactComponent as HourPrice } from '../../../images/home/hourly-price.svg';
+import { ReactComponent as Deadline } from '../../../images/home/deadline.svg';
+import { ReactComponent as AvgVelocity } from '../../../images/home/avg-vel.svg';
+import { ReactComponent as AvgTeam } from '../../../images/home/avg-team-size.svg';
+import { ReactComponent as AvgValue} from '../../../images/home/avg-proj-val.svg';
+import { ReactComponent as AvgLeadClosing } from '../../../images/home/avg-lead-closing.svg';
+import { ReactComponent as Percentage } from '../../../images/home/percentage.svg';
+
 
 export const data = [
     {
@@ -31,7 +33,7 @@ export const data = [
     {
         title: 'Avg. team size',
         value: '2.2',
-        iconComponent: <AvgTeam/>,
+        iconComponent: <Percentage/>,
     },
     {
         title: 'Avg. velocity',

@@ -118,3 +118,72 @@ button[data-style="secondary"] {
     border-style: solid;
   }
 }
+
+.date-range-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.date-range-input {
+  padding: 8px 43px;
+  gap: 16px; 
+  @include gilroy-medium;
+  background-color: white;
+  color: #6C6D75;
+  border-radius: 6px;
+  border-style: solid;
+}
+
+.date-range-separator {
+  margin: 0 16px;
+  font-size: 35px;
+  padding-bottom: 3px;
+}
+
+.date-range-separator-to {
+  margin: 0 16px;
+  font-size: 15px;
+  padding-bottom: 3px;
+}
+
+.date-range-input {
+  padding-left: 16px;
+  flex-grow: 1;
+}
+
+.date-range-input {
+  .ant-picker-input {
+  display: block ruby;
+}
+}
+
+
+.input-field-multiselect {
+
+  @include gilroy-medium;
+  font-size: 14px;
+  background-color: white;
+  color: $modal-input-text-color;
+
+  width: 435px;
+
+  border-radius: 6px;
+
+}
+
+.input-field-select {
+  padding: 8px 16px;
+  gap: 8px;
+
+  @include gilroy-medium;
+  font-size: 14px;
+  background-color: white;
+  color: $modal-input-text-color;
+
+  width: 435px;
+
+  border-radius: 6px;
+
+  border-style: solid;
+}

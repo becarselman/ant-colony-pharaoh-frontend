@@ -26,5 +26,5 @@ export default combineReducers({
   project: projectReducer,
   employee: employeeReducer,
   projectsModal: projectsModalReducer,
-  editProjectsModal: editProjectsModalReducer
+  editProjectsModal: editProjectsModalReducer,
 });

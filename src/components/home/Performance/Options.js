@@ -1,5 +1,5 @@
 import { salesChannelsData, projectScopeData, HoursOverviewData } from './Data';
-import './Home.scss';
+import './Performance.scss';
 
 export const PieOptions = {
     data: salesChannelsData,
