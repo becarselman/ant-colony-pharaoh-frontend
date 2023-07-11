@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchProject } from './modules/actions';
+import { fetchProject, deleteProject} from './modules/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
     {
       fetchProject,
+      deleteProject
     },
     dispatch
   ),

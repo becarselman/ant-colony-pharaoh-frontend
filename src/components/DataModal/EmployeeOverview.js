@@ -8,7 +8,7 @@ import ReactPortal from '../modal/Portal';
 import {openEditEmployeeModal} from "../employees/modules/actions";
 
 
-const EmployeeOverview = ({ handleClose, isOpen, items, parentActions }) => {
+const EmployeeOverview = ({ handleClose, isOpen, items, deleteEmployee, parentActions }) => {
 
   const [userAvatar, setUserAvatar] = useState(null);
 
@@ -125,7 +125,7 @@ const EmployeeOverview = ({ handleClose, isOpen, items, parentActions }) => {
         </div>
       </div>
         <div className='button-container'>
-          <div className='delete-button'>Delete Employee</div>
+          <div className='delete-button' onClick={deleteEmployee} >Delete Employee</div>
           <div className='edit-button' onClick={closeOverviewAndOpenEditModal}>Edit Employee</div>
         </div>
         </div>

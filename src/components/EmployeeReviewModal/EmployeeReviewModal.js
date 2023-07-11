@@ -11,6 +11,10 @@ const EmployeeReviewModal = ({ employeeId, handleClose, isOpen, actions, employe
     handleClose();
   };
 
+  const deleteEmployee = () => {
+    actions.deleteEmployee(employeeId)
+    resetStateAndCloseModal()
+  }
 
   return (
     <>
@@ -19,6 +23,7 @@ const EmployeeReviewModal = ({ employeeId, handleClose, isOpen, actions, employe
         isOpen={isOpen}
         items={employee.employee}
         parentActions={parentActions}
+        deleteEmployee={deleteEmployee}
       />
     </>
   );

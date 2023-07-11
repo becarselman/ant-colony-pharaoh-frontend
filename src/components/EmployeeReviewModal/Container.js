@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchEmployee } from './modules/actions';
+import { fetchEmployee, deleteEmployee } from './modules/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
     {
       fetchEmployee,
+      deleteEmployee
     },
     dispatch
   ),

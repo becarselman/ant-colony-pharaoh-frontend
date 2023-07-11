@@ -29,6 +29,16 @@ export const getEmployeeById = (employeeId) => {
     });
 };
 
+export const deleteEmployee = (employeeId) => {
+  return axiosInstance.delete(`/employee/${employeeId}`)
+    .then(res => {
+      return res
+    })
+    .catch(err => {
+      throw err
+    })
+}
+
 function getEmploymentType(developers, employeeId) {
   const developer = developers.find(dev => dev.employee === employeeId);
   return developer ? developer.employmentType : null;

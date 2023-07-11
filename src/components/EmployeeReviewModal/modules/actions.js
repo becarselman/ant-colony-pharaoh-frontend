@@ -7,6 +7,13 @@ export const fetchEmployee = (employeeId) => ({
   },
 });
 
+export const deleteEmployee = (employeeId) => ({
+  type: actionTypes.DELETE_EMPLOYEE,
+  payload: {
+    employeeId
+  }
+})
+
 export const fetchEmployeeError = (error) => ({
   type: actionTypes.FETCH_EMPLOYEE_ERROR,
   payload: {

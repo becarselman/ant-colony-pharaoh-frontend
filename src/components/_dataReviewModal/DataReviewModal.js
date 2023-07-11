@@ -11,6 +11,11 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, par
     handleClose();
   };
 
+  const deleteProject = () => {
+    actions.deleteProject(projectId)
+    resetStateAndCloseModal()
+  }
+
   return (
     <>
       <ProjectOverview
@@ -18,6 +23,7 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, par
         isOpen={isOpen}
         items={project.project}
         parentActions={parentActions}
+        deleteProject={deleteProject}
       />
     </>
   );

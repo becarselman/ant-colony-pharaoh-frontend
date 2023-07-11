@@ -7,6 +7,13 @@ export const fetchProject = (projectId) => ({
   },
 });
 
+export const deleteProject = (projectId) => ({
+  type: actionTypes.DELETE_PROJECT,
+  payload: {
+    projectId
+  }
+})
+
 export const fetchProjectError = (error) => ({
   type: actionTypes.FETCH_PROJECT_ERROR,
   payload: {

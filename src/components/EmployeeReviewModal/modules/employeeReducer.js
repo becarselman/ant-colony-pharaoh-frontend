@@ -27,6 +27,11 @@ const employeeReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.error,
       };
+    case actionTypes.DELETE_EMPLOYEE:
+      return {
+        ...state,
+        loading: true
+      }
     default:
       return state;
   }

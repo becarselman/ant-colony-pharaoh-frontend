@@ -17,6 +17,16 @@ export const getProjectById = (projectId) => {
     });
 };
 
+export const deleteProject = (projectId) => {
+  return axiosInstance.delete(`/projects/${projectId}`)
+    .then(res => {
+      return res
+    })
+    .catch(err => {
+      throw err
+    })
+}
+
 
 export const getEmployeeById = (employeeId) => {
   return axiosInstance.get(`${URL}/employee/${employeeId}`)
