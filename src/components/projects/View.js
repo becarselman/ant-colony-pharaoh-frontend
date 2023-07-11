@@ -5,6 +5,7 @@ import { tableColumns } from './components/columns';
 import { setPageData } from './modules/actions';
 import { Link } from 'react-router-dom';
 import AddProjectsModal from './components/AddProjectsModal/index';
+import DataReviewModal from '../_dataReviewModal/Index';
 import EditProjectsModal from "./components/EditProjectsModal";
 import AvatarComponent from './components/AddProjectsModal/modules/Avatar';
 
@@ -20,6 +21,9 @@ const Projects = ({
 }) => {
   const [searchInput, setSearchInput] = useState('');
   const [showText, setShowText] = useState('Projects');
+
+  const [isDataModalOpen, setIsDataModalOpen] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
   const clickedProjectData = useRef({})
 
   const handleSearchChange = (input) => {
@@ -57,11 +61,22 @@ const Projects = ({
     clickedProjectData.current = {}
     actions.closeEditProjectModal()
   };
-  
-  const onRowClick = (projectData) => {
-    clickedProjectData.current = projectData
-    handleEditProject()
-  }
+
+  const handleCloseDataModal = () => {
+    setIsDataModalOpen(false);
+    setSelectedProjectId(null);
+  };
+
+
+  const handleOpenDataModal = (projectId) => {
+    setSelectedProjectId(projectId);
+    setIsDataModalOpen(true);
+  };
+
+  const handleProjectClick = (project) => {
+    handleOpenDataModal(project.key);
+  };
+
   const columnsWithAvatar = tableColumns.map((column) => {
     if (column.dataIndex === 'developers') {
       return {
@@ -90,9 +105,9 @@ const Projects = ({
         selectedNavLabel={projectStatus}
         onNavSelect={handleNavSelect}
         onSearchChange={handleSearchChange}
-        onRowClick={onRowClick}
         title="All Projects" 
         showText={showText}
+        onProjectClick={handleProjectClick}
       />
 
       {addModalActive && (
@@ -100,6 +115,10 @@ const Projects = ({
       )}
       {editModalActive && (
         <EditProjectsModal handleClose={handleCloseEditProjectModal} isOpen={editModalActive} employees={employees} projectData={clickedProjectData.current} />
+      )}
+
+      {isDataModalOpen && (
+        <DataReviewModal projectId={selectedProjectId} handleClose={handleCloseDataModal} isOpen={true} />
       )}
     </div>
   );
