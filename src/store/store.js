@@ -46,4 +46,5 @@ sagaMiddleware.run(watchCreateProject);
 sagaMiddleware.run(watchFetchProject);
 sagaMiddleware.run(watchFetchEmployee);
 sagaMiddleware.run(watchEditProject);
+sagaMiddleware.run(watchFetchAllEmployees)
 

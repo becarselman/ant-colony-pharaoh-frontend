@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import Sidebar from '../../sidebar/Sidebar';
 import './Performance.scss';
 import { Select, Space } from 'antd';
 import { Pie, Bar, Column } from '@ant-design/plots';

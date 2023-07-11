@@ -1,7 +1,7 @@
 import EmployeeOverview from '../DataModal/EmployeeOverview';
 import { useEffect } from 'react';
 
-const EmployeeReviewModal = ({ employeeId, handleClose, isOpen, actions, employee }) => {
+const EmployeeReviewModal = ({ employeeId, handleClose, isOpen, actions, employee, parentActions }) => {
 
   useEffect(() => {
     actions.fetchEmployee(employeeId);
@@ -18,6 +18,7 @@ const EmployeeReviewModal = ({ employeeId, handleClose, isOpen, actions, employe
         handleClose={resetStateAndCloseModal}
         isOpen={isOpen}
         items={employee.employee}
+        parentActions={parentActions}
       />
     </>
   );

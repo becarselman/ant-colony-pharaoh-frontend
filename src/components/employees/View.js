@@ -34,14 +34,11 @@ const Employees = ({
   };
 
   const handleEmployeeClick = (employee) => {
+    clickedEmployeeData.current = employee
     handleOpenDataModal(employee.key);
   };
   const openAddEmployeeModal = () => {
     actions.openAddEmployeeModal()
-  }
-
-  const openEditEmployeeModal = () => {
-    actions.openEditEmployeeModal()
   }
 
   const closeAddEmployeeModal = () => {
@@ -62,7 +59,9 @@ const Employees = ({
   }, [selectedEmployeeStatus, searchInput]);
 
   const fetchData = (page, pageSize) => {
-    actions.setPageAndPageSize(page, pageSize)
+    if (page && pageSize) {
+      actions.setPageAndPageSize(page, pageSize)
+    }
     actions.fetchAllEmployees(selectedEmployeeStatus, searchInput);
     setPageData(null);
   };
@@ -71,11 +70,6 @@ const Employees = ({
     setSelectedEmployeeStatus(label);
     fetchData(1, 10);
   };
-
-  const onRowClick = (employeeData) => {
-    clickedEmployeeData.current = employeeData
-    openEditEmployeeModal()
-  }
 
   return (
     <div>
@@ -98,7 +92,7 @@ const Employees = ({
         onProjectClick={handleEmployeeClick}
       />
     {isDataModalOpen && (
-        <EmployeeReviewModal employeeId={selectedEmployeeId} handleClose={handleCloseDataModal} isOpen={true} />
+        <EmployeeReviewModal employeeId={selectedEmployeeId} handleClose={handleCloseDataModal} isOpen={true} parentActions={actions} />
       )}
       {
         addModalActive && (

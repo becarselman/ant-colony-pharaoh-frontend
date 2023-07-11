@@ -1,7 +1,7 @@
 import ProjectOverview from '../DataModal/ProjectOverview';
 import { useEffect } from 'react';
 
-const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project }) => {
+const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, parentActions }) => {
 
   useEffect(() => {
     actions.fetchProject(projectId);
@@ -17,6 +17,7 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project }) =
         handleClose={resetStateAndCloseModal}
         isOpen={isOpen}
         items={project.project}
+        parentActions={parentActions}
       />
     </>
   );

@@ -5,9 +5,10 @@ import { Avatar } from 'antd';
 import InfoCard from './InfoCard';
 import data from './EmployeeData';
 import ReactPortal from '../modal/Portal';
+import {openEditEmployeeModal} from "../employees/modules/actions";
 
 
-const EmployeeOverview = ({ handleClose, isOpen, items}) => {
+const EmployeeOverview = ({ handleClose, isOpen, items, parentActions }) => {
 
   const [userAvatar, setUserAvatar] = useState(null);
 
@@ -88,6 +89,10 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
   ) : null;
   
 
+  const closeOverviewAndOpenEditModal = () => {
+    handleClose()
+    parentActions.openEditEmployeeModal()
+  }
   
     
   return (
@@ -121,7 +126,7 @@ const EmployeeOverview = ({ handleClose, isOpen, items}) => {
       </div>
         <div className='button-container'>
           <div className='delete-button'>Delete Employee</div>
-          <div className='edit-button'>Edit Employee</div>
+          <div className='edit-button' onClick={closeOverviewAndOpenEditModal}>Edit Employee</div>
         </div>
         </div>
     </div>
