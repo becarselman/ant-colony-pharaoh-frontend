@@ -107,15 +107,20 @@
   text-decoration: none;
 }
 
-.sidebar-option span {
+.inactive-sidebar-option span {
   margin-left: 20px;
 
   @include gilroy-medium();
   font-size: 14px;
   line-height: 16px;
-  color: $text-color-secondary;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 
   text-decoration: none;
+}
+
+.inactive-sidebar-option svg {
+  opacity: 0.3;
 }
 
 .sidebar-option:has(> .sidebar-active-link) {

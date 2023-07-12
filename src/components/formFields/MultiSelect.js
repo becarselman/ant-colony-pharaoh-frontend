@@ -9,7 +9,9 @@ const MultiSelect = ({ item }) => {
   };
 
   const onRemoveDeveloper = (developerId) => {
-    const updatedDevelopers = item.value.filter((developer) => developer !== developerId);
+    const updatedDevelopers = Array.isArray(item.value)
+      ? item.value.filter((developer) => developer !== developerId)
+      : [];
     item.setValue(updatedDevelopers);
   };
 
@@ -22,7 +24,7 @@ const MultiSelect = ({ item }) => {
     </div>
   );
 
-  const selectedDevelopers = item.value
+  const selectedDevelopers = Array.isArray(item.value)
     ? item.value.map((developerId) => {
         const developer = item.options.find((option) => option.value === developerId);
         return <SelectedDeveloper key={developer.value} developer={developer} />;
@@ -30,7 +32,7 @@ const MultiSelect = ({ item }) => {
     : [];
 
   const optionElements = item.options.map((option) => {
-    const isChecked = item.value ? item.value.includes(option.value) : false;
+    const isChecked = Array.isArray(item.value) ? item.value.includes(option.value) : false;
     return (
       <Option key={option.value} value={option.value} label={option.label}>
         <div className="developer-option">
@@ -47,7 +49,7 @@ const MultiSelect = ({ item }) => {
     id: item.id,
     name: item.name,
     onChange: onChange,
-    value: item.value,
+    value: Array.isArray(item.value) ? item.value : undefined,
     placeholder: item.placeholder,
     showSearch: true,
     filterOption: (input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0,

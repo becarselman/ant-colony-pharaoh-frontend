@@ -14,11 +14,10 @@ const View = ({name, surname}) => {
   const preventDefault = e => e.preventDefault()
 
     const arrayOfDivsSidebarOptions = sidebarOptions.map(option => {
-        console.log(option)
         if (option.inactive === true)
         {
             return (
-                <div className="sidebar-option" key={option.text}>
+                <div className="sidebar-option inactive-sidebar-option" key={option.text}>
                     {option.image}
                     <span>
                         {option.text}

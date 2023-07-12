@@ -1,6 +1,7 @@
 import React from "react";
 import DatePicker from "antd/lib/date-picker";
 import "./FormField.scss";
+import moment from "moment";
 
 const DateRangeInput = ({ item }) => {
   const handleDateFromChange = (date) => {
@@ -13,6 +14,9 @@ const DateRangeInput = ({ item }) => {
 
   const isDateSelected = item.valueFrom && item.valueTo;
 
+  const formattedValueFrom = item.valueFrom ? moment(item.valueFrom) : null;
+  const formattedValueTo = item.valueTo ? moment(item.valueTo) : null;
+
   return (
     <div className="form-field">
       <label htmlFor={item.id}>{item.labelText}</label>
@@ -21,7 +25,7 @@ const DateRangeInput = ({ item }) => {
           className="date-range-input"
           id={item.id}
           name={item.name}
-          value={item.valueFrom}
+          value={formattedValueFrom}
           onChange={handleDateFromChange}
           placeholder={item.placeholderFrom}
           format="DD/MM/YYYY"
@@ -35,7 +39,7 @@ const DateRangeInput = ({ item }) => {
           className="date-range-input"
           id={item.id}
           name={item.name}
-          value={item.valueTo}
+          value={formattedValueTo}
           onChange={handleDateToChange}
           placeholder={item.placeholderTo}
           format="DD/MM/YYYY"
