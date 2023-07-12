@@ -42,7 +42,6 @@ const Projects = ({
 
   const handleNavSelect = (label) => {
     actions.changeProjectTableStatus(label)
-    fetchData(1, 10);
   };
 
   const handleCreateNewProject = () => {
