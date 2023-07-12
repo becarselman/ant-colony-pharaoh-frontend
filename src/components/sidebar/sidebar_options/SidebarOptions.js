@@ -20,15 +20,18 @@ const sidebarOptions = [
   },
   {
       image: <FinancialOverview />,
-      text: "Financial Overview"
+      text: "Financial Overview",
+      inactive: true
   },
   {
       image: <ProjectReporting />,
-      text: "Project Reporting"
+      text: "Project Reporting",
+      inactive: true
   },
   {
       image: <Invoicing />,
-      text: "Invoicing"
+      text: "Invoicing",
+      inactive: true
   }
 ]
 

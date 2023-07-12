@@ -9,6 +9,8 @@
 
   background: linear-gradient(179.32deg, $background-gradient-first-color 8.04%, $background-gradient-second-color 99.41%);
   border-right: 1px solid $border-color;
+
+  min-height: 100vh;
 }
 
 .logo-section {
@@ -95,6 +97,17 @@
 }
 
 .sidebar-option a {
+  margin-left: 20px;
+
+  @include gilroy-medium();
+  font-size: 14px;
+  line-height: 16px;
+  color: $text-color-secondary;
+
+  text-decoration: none;
+}
+
+.sidebar-option span {
   margin-left: 20px;
 
   @include gilroy-medium();
