@@ -11,6 +11,7 @@ import Logout from "../components/logout/Logout";
 import PublicRoute from "./publicRoute";
 import EmployeeOverview from "../components/DataModal/EmployeeOverview.js";
 import Development from "../components/home/devRevenueCosts/Development.js";
+import Plan from "../components/home/Plan2023/plan2023.js";
 
 
 function CustomRouter() {
@@ -21,6 +22,7 @@ function CustomRouter() {
           <Route index element={<Navigate to="performance" />} />
           <Route exact path="performance" element={<Performance />} />
           <Route exact path="development" element={<Development />} />
+          <Route exact path="plan2023" element={<Plan />} />
           <Route exact path = "projects" element={<Projects />} />
           <Route exact path="employees" element={ <Employees /> } />
           <Route exact path="logout" element={ <Logout /> } />

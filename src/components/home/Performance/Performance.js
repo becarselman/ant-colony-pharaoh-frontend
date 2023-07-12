@@ -38,6 +38,7 @@ const Performance = () => {
   };
   const planClick = () => {
     handleChange('2023 Plan');
+    window.location.href = '/dashboard/plan2023';
   };
 
   const cardItems = data.map((item) => (

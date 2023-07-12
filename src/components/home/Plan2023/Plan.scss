@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import '../../../utilis/colors';
+@import '../../../utilis/mixins';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.right-side {
+  flex-grow: 1;
+  padding-top: 20px;
+  padding-left: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 20px;
+}
+
+.table-container {
+  border: 1px solid $light-gray-border;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.total-revenue-row
+{
+    font-size: 30px;
+    color: yellow;
+
+  }
+
+  .table-container {
+        .revenue-column {
+            font-size: 18px;
+            @include gilroy-medium;
+        }
+  }
+
+  .table-container {
+    .value-column {
+        font-size: 18px;
+        @include gilroy-medium;
+        font-weight: bold;
+    }
+}
+
+

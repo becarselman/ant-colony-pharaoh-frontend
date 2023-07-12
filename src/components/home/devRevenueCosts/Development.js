@@ -42,6 +42,7 @@ const Development = () => {
 
   const planClick = () => {
     handleChange('2023 Plan');
+    window.location.href = '/dashboard/plan2023';
   };
 
   const cardItems = [
@@ -78,7 +79,7 @@ const Development = () => {
                 ? { ...RevenueCostsMonth.yAxis, label: null }
                 : RevenueCostsMonth.yAxis
             }
-            style={index === 0 ? { height: '405px' } : null} // Povećajte visinu samo za prvi chart na poziciji 0
+            style={index === 0 ? { height: '405px' } : null} 
             xAxis={
               index >= 0
                 ? { ...RevenueCostsMonth.xAxis, label: null }
