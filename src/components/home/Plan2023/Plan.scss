@@ -23,17 +23,11 @@
   margin-top: 20px;
 }
 
-.total-revenue-row
-{
-    font-size: 30px;
-    color: yellow;
-
-  }
-
   .table-container {
         .revenue-column {
             font-size: 18px;
             @include gilroy-medium;
+            color: black;
         }
   }
 
@@ -42,7 +36,43 @@
         font-size: 18px;
         @include gilroy-medium;
         font-weight: bold;
+        color: black;
     }
 }
 
+.net-profit-row {
+  background-color: $profit-background-color; 
+}
 
+.table-container .ant-table-tbody .net-profit-row td {
+  font-weight: bold;
+}
+
+.table-container .ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: transparent;
+}
+
+.table-container {
+  border: 1px solid $light-gray-border;
+  border-radius: 6px;
+  margin-top: 20px;
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+
+    tr {
+      &:not(:first-child) {
+        td {
+          border-top: none;
+        }
+      }
+
+      &.ant-table-row {
+        td {
+          border: none;
+        }
+      }
+    }
+  }
+}

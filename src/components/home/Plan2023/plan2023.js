@@ -5,6 +5,8 @@ import { Select, Table } from 'antd';
 import { dataSource } from './Data';
 import { columns } from './columns';
 
+const { Option } = Select;
+
 const Plan = () => {
   const [selectedOption, setSelectedOption] = useState('2023 Plan');
 
@@ -25,6 +27,30 @@ const Plan = () => {
   const planClick = () => {
     handleChange('2023 Plan');
   };
+
+  const rowClassName = (record, index) => {
+    if (record.category === 'NET PROFIT 2023') {
+      return 'net-profit-row no-hover';
+    }
+    return '';
+  };
+
+  const selectElement = (
+    <Select defaultValue='2023' onChange={handleChange}>
+      <Option value='2023'>2023</Option>
+      <Option value='2024'>2024</Option>
+      <Option value='2025'>2025</Option>
+    </Select>
+  );
+
+  const tableElement = (
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      pagination={false}
+      rowClassName={rowClassName}
+    />
+  );
 
   return (
     <div className='container'>
@@ -62,11 +88,11 @@ const Plan = () => {
           </div>
           <div className='year-selection'>
             <div className='year-text'>Year:</div>
-            <Select defaultValue='2023' onChange={handleChange} />
+            {selectElement}
           </div>
         </div>
         <div className='table-container'>
-          <Table dataSource={dataSource} columns={columns} pagination={false} />
+          {tableElement}
         </div>
       </div>
     </div>
