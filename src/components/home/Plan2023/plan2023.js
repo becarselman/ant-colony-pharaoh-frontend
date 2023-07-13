@@ -2,8 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './Plan.scss';
 import { Select, Table } from 'antd';
-import { dataSource } from './Data';
-import { columns } from './columns';
+import { dataSource, columns, expensesColumns, expensesData } from './Data';
 
 const { Option } = Select;
 
@@ -29,8 +28,8 @@ const Plan = () => {
   };
 
   const rowClassName = (record, index) => {
-    if (record.category === 'NET PROFIT 2023') {
-      return 'net-profit-row no-hover';
+    if (record.category === 'NET PROFIT 2023' || record.category === 'TOTAL EXPENSES') {
+      return 'sum-row no-hover';
     }
     return '';
   };
@@ -43,10 +42,19 @@ const Plan = () => {
     </Select>
   );
 
-  const tableElement = (
+  const RevenueTableElement = (
     <Table
       dataSource={dataSource}
       columns={columns}
+      pagination={false}
+      rowClassName={rowClassName}
+    />
+  );
+
+  const expensesTable = (
+    <Table
+      dataSource={expensesData}
+      columns={expensesColumns}
       pagination={false}
       rowClassName={rowClassName}
     />
@@ -92,7 +100,10 @@ const Plan = () => {
           </div>
         </div>
         <div className='table-container'>
-          {tableElement}
+          {RevenueTableElement}
+        </div>
+        <div className='table-container'>
+        {expensesTable}
         </div>
       </div>
     </div>
