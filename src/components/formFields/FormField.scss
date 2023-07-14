@@ -250,10 +250,20 @@ display: flex;
 
 
 
- .ant-select-selection-item {
- font-size:12px ;
+      .ant-select-selection-item {
+      font-size:12px ;
       }
     
       .input-field::placeholder {
         color: $modal-placeholder-color; 
       }
+
+      .form-field {
+      .ant-select-selection-item-content {
+      display:none ;
+      }
+
+      .ant-select-selection-item-remove {
+        display:none ;
+      }   
+    }
