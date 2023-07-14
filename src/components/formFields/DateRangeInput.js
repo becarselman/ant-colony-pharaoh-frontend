@@ -13,9 +13,10 @@ const DateRangeInput = ({ item }) => {
   };
 
   const isDateSelected = item.valueFrom && item.valueTo;
-
-  const formattedValueFrom = item.valueFrom ? moment(item.valueFrom) : null;
-  const formattedValueTo = item.valueTo ? moment(item.valueTo) : null;
+  const formattedValueFrom = item.valueFrom ? moment(item.valueFrom, ["DD/MM/YYYY", "YYYY-MM-DD"]) : null;
+  const formattedValueTo = item.valueTo ? moment(item.valueTo, ["DD/MM/YYYY", "YYYY-MM-DD"]) : null;
+  
+  
 
   return (
     <div className="form-field">
@@ -25,7 +26,7 @@ const DateRangeInput = ({ item }) => {
           className="date-range-input"
           id={item.id}
           name={item.name}
-          value={formattedValueFrom}
+          defaultValue={formattedValueFrom}
           onChange={handleDateFromChange}
           placeholder={item.placeholderFrom}
           format="DD/MM/YYYY"
@@ -39,7 +40,7 @@ const DateRangeInput = ({ item }) => {
           className="date-range-input"
           id={item.id}
           name={item.name}
-          value={formattedValueTo}
+          defaultValue={formattedValueTo}
           onChange={handleDateToChange}
           placeholder={item.placeholderTo}
           format="DD/MM/YYYY"

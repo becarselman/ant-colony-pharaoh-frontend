@@ -30,7 +30,7 @@ const EditProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees,
         to: dateMapper(projectData.duration.split(" - ")[1])
       }))
     }
-    setDevelopers(projectData.developers)
+    setDevelopers(Array.isArray(projectData.developers) ? projectData.developers : []);
     setHourlyRate(projectData.hourlyRate)
     setProjectValue(projectData.projectValue)
     setProjectStatus(projectData.status)
