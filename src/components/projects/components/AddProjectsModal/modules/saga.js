@@ -1,22 +1,33 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchAllEmployeesSuccess, fetchAllEmployeesFailure, createProjectSuccess, createProjectFailure } from './actions';
-import { fetchAllProjects, closeAddProjectModal } from "../../../modules/actions"
+import {
+  fetchAllEmployeesSuccess,
+  fetchAllEmployeesFailure,
+  createProjectSuccess,
+  createProjectFailure,
+} from './actions';
+import { fetchAllProjects, closeAddProjectModal } from '../../../modules/actions';
 import { getEmployees, createProject } from './service';
-import { actionTypes } from "./types";
-import { notification } from "antd";
+import { actionTypes } from './types';
+import { notification } from 'antd';
+import * as Errors from './errors'; 
 
-
-function showSuccessNotification() {
+function showSuccessNotification(message, description) {
   notification.success({
-    message: "Successfully created project",
-    description: "The project has been successfully created.",
+    message,
+    description,
+    style: {
+      fontSize: '20px',
+    },
   });
 }
 
-function showErrorNotification() {
+function showErrorNotification(message, description) {
   notification.error({
-    message: "Project creation failed",
-    description: "An error occurred while creating the project.",
+    message,
+    description,
+    style: {
+      fontSize: '16px',
+    },
   });
 }
 
@@ -63,16 +74,60 @@ function* fetchEmployees() {
 
 function* createProjectSaga(action) {
   try {
+    const {
+      name,
+      description,
+      duration,
+      developers,
+      hourlyRate,
+      projectValue,
+      projectStatus,
+      developerOptions,
+    } = action.payload;
+
+    const errors = [];
+
+    if (!name) {
+      errors.push(Errors.NAME_REQUIRED);
+    }
+    if (!description) {
+      errors.push(Errors.DESCRIPTION_REQUIRED);
+    }
+    if (!duration.from || !duration.to) {
+      errors.push(Errors.DURATION_REQUIRED);
+    }
+    if (developers.length === 0) {
+      errors.push(Errors.DEVELOPERS_REQUIRED);
+    }
+    if (!hourlyRate) {
+      errors.push(Errors.HOURLY_RATE_REQUIRED);
+    } else if (hourlyRate < 0) {
+      errors.push(Errors.HOURLY_RATE_POSITIVE);
+    }
+    if (!projectValue) {
+      errors.push(Errors.PROJECT_VALUE_REQUIRED);
+    } else if (projectValue < 0) {
+      errors.push(Errors.PROJECT_VALUE_POSITIVE);
+    }
+
+    if (errors.length > 0) {
+      showErrorNotification('Project creation failed', errors.join('\n'));
+      yield put(createProjectFailure(errors.join('\n')));
+      return;
+    }
+
     yield call(createProject, action.payload);
     yield put(createProjectSuccess());
-    showSuccessNotification(); 
-    yield put(fetchAllProjects())
-    yield put(closeAddProjectModal())
+    showSuccessNotification('Successfully created project', 'The project has been successfully created.');
+    yield put(fetchAllProjects());
+    yield put(closeAddProjectModal());
   } catch (error) {
     yield put(createProjectFailure(error.message));
-    showErrorNotification(); 
+    showErrorNotification('Project creation failed', 'An error occurred while creating the project.');
   }
 }
+
+
 
 export function* watchFetchEmployees() {
   yield takeEvery(actionTypes.FETCH_ALL_EMPLOYEES_REQUEST, fetchEmployees);
