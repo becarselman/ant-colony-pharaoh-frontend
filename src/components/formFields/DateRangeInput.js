@@ -1,7 +1,7 @@
 import React from "react";
 import DatePicker from "antd/lib/date-picker";
 import "./FormField.scss";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const DateRangeInput = ({ item }) => {
   const handleDateFromChange = (date) => {
@@ -13,8 +13,8 @@ const DateRangeInput = ({ item }) => {
   };
 
   const isDateSelected = item.valueFrom && item.valueTo;
-  const formattedValueFrom = item.valueFrom ? moment(item.valueFrom, ["DD/MM/YYYY", "YYYY-MM-DD"]) : null;
-  const formattedValueTo = item.valueTo ? moment(item.valueTo, ["DD/MM/YYYY", "YYYY-MM-DD"]) : null;
+  const formattedValueFrom = item.valueFrom ? dayjs(item.valueFrom, ["DD/MM/YYYY", "YYYY-MM-DD"]) : null;
+  const formattedValueTo = item.valueTo ? dayjs(item.valueTo, ["DD/MM/YYYY", "YYYY-MM-DD"]) : null;
   
   
 
