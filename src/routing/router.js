@@ -19,10 +19,10 @@ function CustomRouter() {
     <Router>
       <Routes>
         <Route path="/dashboard" element={<ProtectedRoute />} >
-          <Route index element={<Navigate to="performance" />} />
-          <Route exact path="performance" element={<Performance />} />
-          <Route exact path="development" element={<Development />} />
-          <Route exact path="plan2023" element={<Plan />} />
+          <Route index element={<Navigate to="home/performance" />} />
+          <Route exact path="home/performance" element={<Performance />} />
+          <Route exact path="home/development" element={<Development />} />
+          <Route exact path="home/plan2023" element={<Plan />} />
           <Route exact path = "projects" element={<Projects />} />
           <Route exact path="employees" element={ <Employees /> } />
           <Route exact path="logout" element={ <Logout /> } />

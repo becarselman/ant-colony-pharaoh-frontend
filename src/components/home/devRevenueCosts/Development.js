@@ -33,7 +33,7 @@ const Development = () => {
 
   const performanceClick = () => {
     handleChange('2023 Performance');
-    window.location.href = '/dashboard/performance';
+    window.location.href = '/dashboard/home/performance';
   };
 
   const developmentClick = () => {
@@ -42,7 +42,7 @@ const Development = () => {
 
   const planClick = () => {
     handleChange('2023 Plan');
-    window.location.href = '/dashboard/plan2023';
+    window.location.href = '/dashboard/home/plan2023';
   };
 
   const cardItems = [

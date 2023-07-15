@@ -5,6 +5,7 @@
     position: fixed;
     inset: 0;
     background-color: $modal-background-color;
+    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

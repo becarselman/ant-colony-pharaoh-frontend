@@ -15,12 +15,12 @@ const Plan = () => {
 
   const performanceClick = () => {
     handleChange('2023 Performance');
-    window.location.href = '/dashboard/performance';
+    window.location.href = '/dashboard/home/home/performance';
   };
 
   const developmentClick = () => {
     handleChange('Development & Revenue Costs');
-    window.location.href = '/dashboard/development';
+    window.location.href = '/dashboard/home/development';
   };
 
   const planClick = () => {

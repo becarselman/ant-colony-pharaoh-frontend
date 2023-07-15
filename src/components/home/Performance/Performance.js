@@ -34,11 +34,11 @@ const Performance = () => {
   };
   const developmentClick = () => {
     handleChange('Development & Revenue Costs');
-    window.location.href = '/dashboard/development';
+    window.location.href = '/dashboard/home/development';
   };
   const planClick = () => {
     handleChange('2023 Plan');
-    window.location.href = '/dashboard/plan2023';
+    window.location.href = '/dashboard/home/plan2023';
   };
 
   const cardItems = data.map((item) => (
