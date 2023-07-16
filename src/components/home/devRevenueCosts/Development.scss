@@ -273,3 +273,12 @@
     width: 274px;
   }
 
+  .bottom-chart-m {
+    :where(.css-dev-only-do-not-override-1wazalj).ant-col-8 {
+          display:flex ;
+          justify-content: center;
+          width:100%;
+          }
+  
+  }
+  
