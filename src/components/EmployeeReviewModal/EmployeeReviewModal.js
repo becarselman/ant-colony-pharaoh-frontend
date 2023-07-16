@@ -14,6 +14,7 @@ const EmployeeReviewModal = ({ employeeId, handleClose, isOpen, actions, employe
   const deleteEmployee = () => {
     actions.deleteEmployee(employeeId)
     resetStateAndCloseModal()
+    parentActions.fetchAllEmployees("All Employee", "")
   }
 
   return (

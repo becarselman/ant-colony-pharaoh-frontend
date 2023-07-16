@@ -14,6 +14,7 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, par
   const deleteProject = () => {
     actions.deleteProject(projectId)
     resetStateAndCloseModal()
+    parentActions.fetchAllProjects("")
   }
 
   return (
