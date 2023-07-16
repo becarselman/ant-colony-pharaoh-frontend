@@ -265,5 +265,14 @@ display: flex;
 
       .ant-select-selection-item-remove {
         display:none ;
-      }   
+      }
+        .ant-select-selection-item {
+          display: none;
+        }
+
+        .ant-select-selection-overflow {
+          margin-left: 15px;
+        }
     }
+
+

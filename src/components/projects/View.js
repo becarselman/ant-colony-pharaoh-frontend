@@ -70,7 +70,6 @@ const Projects = ({
 
   const handleProjectClick = (project) => {
     handleOpenDataModal(project.key);
-    clickedProjectData.current = project
   };
 
   const columnsWithAvatar = tableColumns.map((column) => {
@@ -114,7 +113,7 @@ const Projects = ({
       )}
 
       {isDataModalOpen && (
-        <DataReviewModal projectId={selectedProjectId} handleClose={handleCloseDataModal} isOpen={true} parentActions={actions} />
+        <DataReviewModal projectId={selectedProjectId} handleClose={handleCloseDataModal} isOpen={true} parentActions={actions} clickedProjectData={clickedProjectData} />
       )}
     </div>
   );

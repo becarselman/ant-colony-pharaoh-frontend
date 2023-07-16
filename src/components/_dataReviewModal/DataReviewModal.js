@@ -1,7 +1,7 @@
 import ProjectOverview from '../DataModal/ProjectOverview';
 import { useEffect } from 'react';
 
-const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, parentActions }) => {
+const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, parentActions, clickedProjectData }) => {
 
   useEffect(() => {
     actions.fetchProject(projectId);
@@ -24,6 +24,7 @@ const DataReviewModal = ({ projectId, handleClose, isOpen, actions, project, par
         items={project.project}
         parentActions={parentActions}
         deleteProject={deleteProject}
+        clickedProjectData={clickedProjectData}
       />
     </>
   );

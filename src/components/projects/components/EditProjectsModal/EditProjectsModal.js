@@ -21,19 +21,20 @@ const EditProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees,
   const [developerOptions, setDeveloperOptions] = useState([]);
 
   useEffect(() => {
-    setId(projectData.key)
+    setId(projectData._id)
     setName(projectData.name)
     setDescription(projectData.description)
     if (projectData.duration) {
       setDuration((prev) => ({
-        from: dateMapper(projectData.duration.split(" - ")[0]),
-        to: dateMapper(projectData.duration.split(" - ")[1])
+        from: projectData.duration.from,
+        to: projectData.duration.to
       }))
     }
-    setDevelopers(Array.isArray(projectData.developers) ? projectData.developers : []);
+    // setDevelopers(projectData.developers.includes(",") ? projectData.developers.split(", ") : projectData.developers.length === 0 ? [] : [projectData.developers]);
+    setDevelopers(projectData.developers.map(developer => developer._id))
     setHourlyRate(projectData.hourlyRate)
     setProjectValue(projectData.projectValue)
-    setProjectStatus(projectData.status)
+    setProjectStatus(projectData.projectStatus)
   }, [projectData])
 
   useEffect(() => {

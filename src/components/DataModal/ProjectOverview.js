@@ -4,7 +4,7 @@ import { LeftOutlined } from '@ant-design/icons';
 import InfoCard from './InfoCard';
 import data from './Data';
 
-const ProjectOverview = ({ handleClose, isOpen, items, deleteProject, parentActions }) => {
+const ProjectOverview = ({ handleClose, isOpen, items, deleteProject, parentActions, clickedProjectData }) => {
 
   useEffect(() => {
     const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
@@ -41,6 +41,7 @@ const ProjectOverview = ({ handleClose, isOpen, items, deleteProject, parentActi
 
   const closeOverviewAndOpenEditModal = () => {
     handleClose()
+    clickedProjectData.current = items
     parentActions.openEditProjectModal()
   }
     
