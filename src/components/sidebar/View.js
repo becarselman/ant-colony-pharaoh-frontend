@@ -7,7 +7,7 @@ import './Sidebar.scss'
 import {NavLink} from "react-router-dom";
 import {Dropdown, Space} from "antd";
 import {UserInfoOptions} from "./sidebar_options/UserInfoOptions";
-import AvatarComponent from "../Avatar/Avatar";
+import AvatarComponent from "./components/Avatar/Avatar";
 
 const View = ({name, surname}) => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Avatar, Popover } from 'antd';
+import {Avatar, Popover} from 'antd';
 
-const AvatarComponent = ({ name, developerList }) => {
+const AvatarComponent = ({name}) => {
     const generateColor = (name) => {
         let hash = 0;
         for (let i = 0; i < name.length; i++) {
@@ -29,11 +29,12 @@ const AvatarComponent = ({ name, developerList }) => {
             .join('');
         return (
             <Avatar
+                shape="square"
                 className=""
                 style={{
                     backgroundColor: color,
-                    backgroundImage: `linear-gradient(to bottom right, ${color}, ${darkenColor(color, 40)})`,
                 }}
+                size={54}
             >
                 {initials}
             </Avatar>
@@ -43,26 +44,8 @@ const AvatarComponent = ({ name, developerList }) => {
     const renderDeveloperAvatar = (developer, developers) => {
         const color = generateColor(developer);
         return (
-            <span className="avatar-container">
-        <Popover
-            content={developers.join(', ')}
-            key={developer}
-            overlayClassName="popover-class"
-            overlayStyle={{ width: 'fit-content', }}
-        >
+            <span className="sidebar-avatar-container">
           {renderAvatar(developer, color)}
-        </Popover>
-      </span>
-        );
-    };
-
-    const renderRemainingDevelopers = (developers) => {
-        const remainingCount = developers.length - 3;
-        return (
-            <span className="avatar-container">
-        {remainingCount > 0 && (
-            <span className="remaining-developers">{`+${remainingCount}`}</span>
-        )}
       </span>
         );
     };
@@ -70,11 +53,10 @@ const AvatarComponent = ({ name, developerList }) => {
     const developerArray = String(name).split(', ');
 
     return (
-        <div className="avatar-container">
+        <div className="sidebar-avatar-container">
             {developerArray.slice(0, 3).map((developer) =>
                 renderDeveloperAvatar(developer, developerArray)
             )}
-            {renderRemainingDevelopers(developerArray)}
         </div>
     );
 };
