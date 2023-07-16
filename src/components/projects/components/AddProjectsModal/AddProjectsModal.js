@@ -4,8 +4,6 @@ import FormFields from "./utils/FormFields";
 import FormField from "./utils/FormField";
 import ProjectStatus from "./utils/ProjectStatus";
 import { formatData as formatProjectData } from "./modules/saga";
-import { Button } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
 
 const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }) => {
   const [name, setName] = useState("");
@@ -39,33 +37,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
 
   const fetchDevelopers = async () => {
     actions.fetchAllEmployeesRequest();
-  };
-
-  const removeDeveloper = (developerId) => {
-    const updatedDevelopers = developers.filter((developer) => developer !== developerId);
-    setDevelopers(updatedDevelopers);
-  };
-
-  const RemoveDeveloperButton = ({ developerId, onClick }) => (
-    <Button
-      className="button-x"
-      type="text"
-      size="small"
-      icon={<CloseOutlined />}
-      onClick={onClick(developerId)}
-    />
-  );
-
-  const renderSelectedDevelopers = () => {
-    return developers.map((developer) => {
-      const fullName = `${developer.firstName} ${developer.lastName}`;
-      return (
-        <div key={developer._id} className="selected-developer">
-          <span>{fullName}</span>
-          <RemoveDeveloperButton developerId={developer._id} onClick={removeDeveloper} />
-        </div>
-      );
-    });
   };
 
   useEffect(() => {
@@ -173,7 +144,6 @@ const AddProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees }
   return (
     <>
       <Modal header="Add New Project" handleClose={resetStateAndCloseModal} isOpen={isOpen} items={items}>
-        <div className="selected-developers-container">{renderSelectedDevelopers()}</div>
       </Modal>
     </>
   );
