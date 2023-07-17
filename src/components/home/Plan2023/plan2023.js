@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './Plan.scss';
 import { Select, Table } from 'antd';
 import { dataSource, columns, expensesColumns, expensesData } from './Data';
+import { useNavigate } from "react-router-dom"
 
 const { Option } = Select;
 
@@ -12,19 +13,19 @@ const Plan = () => {
   const handleChange = (value) => {
     setSelectedOption(value);
   };
-
-  const performanceClick = () => {
-    handleChange('2023 Performance');
-    window.location.href = '/dashboard/home/home/performance';
-  };
-
-  const developmentClick = () => {
-    handleChange('Development & Revenue Costs');
-    window.location.href = '/dashboard/home/development';
-  };
-
+  
+  const navigate = useNavigate();
+    
   const planClick = () => {
     handleChange('2023 Plan');
+  };
+  const developmentClick = () => {
+    handleChange('Development & Revenue Costs');
+    navigate('/dashboard/home/development')
+  };
+  const performanceClick = () => {
+    handleChange('2023 Plan');
+    navigate('/dashboard/home/performance')
   };
 
   const rowClassName = (record, index) => {

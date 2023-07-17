@@ -8,6 +8,7 @@ import { data, items, actualGrossProfit, RevenueCostsM, RevenueGap } from './Dat
 import { RevenueCostsActual, RevenueCostsMonth } from './Options';
 import { Row, Col } from 'antd';
 import { Column } from '@ant-design/plots';
+import { useNavigate } from "react-router-dom";
 
 const Development = () => {
   const [selectedOption, setSelectedOption] = useState('Development & Revenue Costs');
@@ -30,10 +31,12 @@ const Development = () => {
       setHighlightPlan(true);
     }
   };
+  
+  const navigate = useNavigate();
 
   const performanceClick = () => {
     handleChange('2023 Performance');
-    window.location.href = '/dashboard/home/performance';
+    navigate('/dashboard/home/performance')
   };
 
   const developmentClick = () => {
@@ -42,7 +45,7 @@ const Development = () => {
 
   const planClick = () => {
     handleChange('2023 Plan');
-    window.location.href = '/dashboard/home/plan2023';
+    navigate('/dashboard/home/plan2023')
   };
 
   const cardItems = [

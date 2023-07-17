@@ -6,6 +6,7 @@ import { Pie, Bar, Column } from '@ant-design/plots';
 import CardItem from './CardItem';
 import { data, items } from './Data';
 import { PieOptions, BarOptions, ColumnOptions } from './Options';
+import { useNavigate } from "react-router-dom";
 
 const Performance = () => {
   const [selectedOption, setSelectedOption] = useState('2023 Performance');
@@ -29,16 +30,18 @@ const Performance = () => {
     }
   };
 
+  const navigate = useNavigate();
+    
   const performanceClick = () => {
     handleChange('2023 Performance');
   };
   const developmentClick = () => {
     handleChange('Development & Revenue Costs');
-    window.location.href = '/dashboard/home/development';
+    navigate('/dashboard/home/development')
   };
   const planClick = () => {
     handleChange('2023 Plan');
-    window.location.href = '/dashboard/home/plan2023';
+    navigate('/dashboard/home/plan2023')
   };
 
   const cardItems = data.map((item) => (
