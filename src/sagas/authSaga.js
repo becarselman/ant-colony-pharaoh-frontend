@@ -22,7 +22,7 @@ function* loginSaga(action) {
       name,
       surname
     } ))
-    action.payload.navigate('/home');
+    action.payload.navigate('/dashboard');
   } catch (error) {
     yield put(loginError(error.response.data));
     yield put(getErrors(error.response.data));

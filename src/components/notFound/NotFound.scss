@@ -1,0 +1,19 @@
+@import '../../utilis/mixins';
+@import '../../utilis/colors';
+
+.not-found-container {
+  background-image: url("../../images/custom404/notFound.png");
+  background-repeat: no-repeat;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  background-size: 100% 100%;
+}
+
+button {
+  @include button-styles
+}
+
