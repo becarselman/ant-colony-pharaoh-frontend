@@ -3,7 +3,7 @@ import "./modal.scss";
 import {LeftOutlined} from "@ant-design/icons"
 import ReactPortal from "./Portal";
 
-function Modal({header, items, isOpen, handleClose}) {
+function Modal({header, formItems, buttonItems, isOpen, handleClose}) {
     //componentWillUnmount
     useEffect(() => {
         const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null;
@@ -18,9 +18,6 @@ function Modal({header, items, isOpen, handleClose}) {
 
     if (!isOpen) return null;
 
-    let formFields = items.filter(i => i.type.name !== "Button")
-    let formButtons = items.filter(i => i.type.name === "Button")
-
     return (
         <ReactPortal wrapperId={"modal-wrapper"}>
             <div className="modal">
@@ -32,10 +29,10 @@ function Modal({header, items, isOpen, handleClose}) {
                         <span className="modal-header">{header}</span>
                     </div>
                     <div className="modal-content-wrapper modal-wrapper">
-                        {formFields}
+                        {formItems}
                     </div>
                     <div className="modal-buttons-wrapper modal-wrapper">
-                        { formButtons }
+                        { buttonItems }
                     </div>
                 </div>
             </div>

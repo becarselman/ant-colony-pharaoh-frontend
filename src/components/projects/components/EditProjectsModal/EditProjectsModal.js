@@ -5,6 +5,7 @@ import FormField from "./utils/FormField";
 import ProjectStatus from "./utils/ProjectStatus";
 import { formatData as formatProjectData } from "./modules/saga";
 import {dateMapper} from "./utils/dateMapper";
+import ButtonFields from "./utils/ButtonFields";
 
 const EditProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees, projectData }) => {
   const [id, setId] = useState("")
@@ -131,20 +132,19 @@ const EditProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees,
       },
       options: Object.values(ProjectStatus),
     },
-    developerOptions: developerOptions || [],
+    developerOptions: developerOptions || []
+  });
+
+  const buttonFields = ButtonFields({
+    isLoading,
     submitButton: {
       onClick: handleSubmit,
     },
   });
 
-  const items = formFields.map(i => {
-    return i.type !== "button"
-        ? <FormField item={i} key={i.id}/>
-        : FormField({
-          item: i,
-          k: i.id
-        });
-  })
+  const formItems = formFields.map((i) => <FormField item={i} key={i.id} /> );
+
+  const buttonItems = buttonFields.map((i) => <FormField item={i} key={i.id} /> );
 
   const closeModal = () => {
     handleClose();
@@ -152,7 +152,7 @@ const EditProjectsModal = ({ handleClose, isOpen, isLoading, actions, employees,
 
   return (
     <>
-      <Modal header="Edit Project" handleClose={closeModal} isOpen={isOpen} items={items} />
+      <Modal header="Edit Project" handleClose={closeModal} isOpen={isOpen} formItems={formItems} buttonItems={buttonItems} />
     </>
   );
 };

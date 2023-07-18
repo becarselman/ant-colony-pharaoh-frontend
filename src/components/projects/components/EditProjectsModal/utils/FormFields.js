@@ -83,17 +83,7 @@ const FormFields = (componentData) => {
       id: "projectStatus",
       name: "projectStatus",
       labelText: "Project Status",
-    },
-    {
-      type: "button",
-      buttonType: "submit",
-      buttonStyle: "primary",
-      id: "submit",
-      text: componentData.isLoading === false ? "Edit Project" : "...",
-      isLoading: componentData.isLoading,
-      onClick: componentData.submitButton.onClick,
-      
-    },
+    }
   ];
 };
 

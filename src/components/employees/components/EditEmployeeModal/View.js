@@ -5,6 +5,8 @@ import Departments from "./utils/Departments";
 import FormField from "./utils/FormField";
 import Stacks from "./utils/Stacks";
 import Currencies from "./utils/Currencies";
+import formButtons from "./utils/FormButtons";
+import FormButtons from "./utils/FormButtons";
 
 const View = ({handleClose, isOpen, isLoading, actions, employeeData}) => {
     const [id, setId] = useState("")
@@ -89,7 +91,11 @@ const View = ({handleClose, isOpen, isLoading, actions, employeeData}) => {
                 value: stack,
                 setter: setStack
             }
-        },
+        }
+    })
+
+    const formButtons = FormButtons({
+        isLoading,
         submitButton: {
             onClick: handleSubmit
         },
@@ -98,19 +104,13 @@ const View = ({handleClose, isOpen, isLoading, actions, employeeData}) => {
         }
     })
 
-    const items = formFields.map(i => {
-        return i.type !== "button"
-            ? <FormField item={i} key={i.id}/>
-            : FormField({
-            item: i,
-            k: i.id
-        });
-    })
+    const formItems = formFields.map(i => <FormField item={i} key={i.id}/>)
+    const buttonItems = formButtons.map(i => <FormField item={i} key={i.id}/>)
 
 
     return (
         <>
-            <Modal header={"Edit Employee"} handleClose={closeModal} isOpen={isOpen} items={items}/>
+            <Modal header={"Edit Employee"} handleClose={closeModal} isOpen={isOpen} formItems={formItems} buttonItems={buttonItems} />
         </>
     )
 }
