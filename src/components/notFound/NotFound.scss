@@ -13,7 +13,21 @@
   background-size: 100% 100%;
 }
 
-button {
-  @include button-styles
+
+.not-found-button {
+  @include button-styles;
+  border-radius: 6px;
+  margin-top: 145px;
+  width: 250px;
+  font-size: 18px;
 }
 
+.not-found-button:hover {
+  background-color: $dark-green-color;
+  transform: scale(1.05);
+}
+
+.not-found-button:active {
+  background-color: $dark-green-color;
+  transform: scale(0.95);
+}

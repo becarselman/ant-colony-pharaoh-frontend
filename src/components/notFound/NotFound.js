@@ -11,7 +11,7 @@ export const NotFound = () => {
 
   return (
     <div className="not-found-container" >
-      <button onClick={redirectClick} >
+      <button className="not-found-button" onClick={redirectClick} >
         Go to Previous Page
       </button>
     </div>
