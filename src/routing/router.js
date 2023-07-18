@@ -12,6 +12,7 @@ import PublicRoute from "./publicRoute";
 import EmployeeOverview from "../components/DataModal/EmployeeOverview.js";
 import Development from "../components/home/devRevenueCosts/Development.js";
 import Plan from "../components/home/Plan2023/plan2023.js";
+import {NotFound} from "../components/notFound/NotFound";
 
 
 function CustomRouter() {
@@ -19,6 +20,7 @@ function CustomRouter() {
     <Router>
       <Routes>
         <Route path="/dashboard" element={<ProtectedRoute />} >
+          <Route exact path="home" element={<Navigate to="performance" />} />
           <Route index element={<Navigate to="home/performance" />} />
           <Route exact path="home/performance" element={<Performance />} />
           <Route exact path="home/development" element={<Development />} />
@@ -34,8 +36,8 @@ function CustomRouter() {
           <Route exact path="/forgot-password" element={<ForgotPassword/>} />
           <Route exact path="reset-password/:token" element={<ResetPassword/>} />
         </Route>
-        <Route path="/overview" element={<EmployeeOverview/>}></Route>
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
