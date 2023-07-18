@@ -18,8 +18,18 @@ COPY . .
 RUN npm run build
 
 #get the latest alpine image from nginx registry
-FROM nginx:alpine
+FROM node:20-alpine
+
+RUN npm install -g serve
 
 #we copy the output from first stage that is our react build
 #into nginx html directory where it will serve our index file
-COPY --from=build-stage /app/build/ /usr/share/nginx/html
+COPY --from=build-stage /app/build/ /app
+
+WORKDIR /app
+
+EXPOSE 3000
+
+#CMD [ "npm", "start" ]
+CMD serve -s -p 3000
+
