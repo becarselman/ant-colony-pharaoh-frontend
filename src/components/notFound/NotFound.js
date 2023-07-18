@@ -1,5 +1,4 @@
 import {Navigate, useNavigate} from "react-router-dom";
-import errorImage from "../../images/custom404/notFound.png"
 import "./NotFound.scss"
 import antImage from "../../images/custom404/ant.png";
 import antLogo from "../../images/custom404/antlogo.png";
